@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import { getRoutingByNumber, getStateFullName } from '../lib/getData';
 import { generateLookupTitle, generateLookupDescription, generateFAQSchema } from '../lib/seoHelpers';
 import { generateLookupFAQs } from '../lib/faqTemplates';
@@ -10,6 +10,7 @@ import FAQSection from '../components/FAQSection';
 import VerifiedBadge from '../components/VerifiedBadge';
 import PrintDownloadButtons from '../components/PrintDownloadButtons';
 import TransactionBadge from '../components/TransactionBadge';
+import { useRecentlyViewed } from '../hooks/useRecentlyViewed';
 
 function isValidRoutingNumber(routingNumber: string): boolean {
   if (!/^\d{9}$/.test(routingNumber)) {
@@ -26,11 +27,18 @@ function isValidRoutingNumber(routingNumber: string): boolean {
 
 export default function Lookup() {
   const { routingNumber } = useParams<{ routingNumber: string }>();
+  const { addItem } = useRecentlyViewed();
 
   const data = useMemo(() => {
     if (!routingNumber) return null;
     return getRoutingByNumber(routingNumber);
   }, [routingNumber]);
+
+  useEffect(() => {
+    if (data && routingNumber) {
+      addItem(routingNumber, data.bank_name);
+    }
+  }, [data, routingNumber]);
 
   const isValid = useMemo(() => {
     if (!routingNumber) return false;

@@ -19,13 +19,14 @@ import RoutingVsAccountNumber from './pages/RoutingVsAccountNumber';
 
 import MajorBanks from './pages/MajorBanks';
 import CheckDigitCalculator from './pages/CheckDigitCalculator';
+import NotFound from './pages/NotFound';
 
 import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 
 import { Toaster } from 'sonner';
 import { ThemeProvider } from './ThemeContext';
-import { ThemeToggle } from './components/ThemeToggle';
+import Header from './components/Header';
 
 export default function App() {
   return (
@@ -34,23 +35,7 @@ export default function App() {
       <BrowserRouter>
         <Toaster position="top-center" />
         <div className="min-h-screen flex flex-col font-sans bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-blue-200 dark:selection:bg-blue-900">
-          <header className="border-b border-slate-200 dark:border-slate-800 py-4 px-6 bg-white dark:bg-slate-950 shrink-0 sticky top-0 z-50 shadow-sm dark:shadow-none">
-            <div className="max-w-7xl mx-auto flex items-center justify-between">
-              <Link to="/" className="text-2xl font-black text-[#1e3a5f] dark:text-blue-400 tracking-tight">
-                USRouting<span className="text-blue-600 dark:text-blue-300">Number.com</span>
-              </Link>
-              <nav className="hidden lg:flex gap-6 font-semibold text-slate-600 dark:text-slate-300">
-                <Link to="/" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Home</Link>
-                <Link to="/states" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">By State</Link>
-                <Link to="/major-banks" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Major Banks</Link>
-                <Link to="/routing-vs-account-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Routing vs Account</Link>
-                <Link to="/how-to-wire-money" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Wire Guide</Link>
-              </nav>
-              <div className="flex items-center gap-2">
-                <ThemeToggle />
-              </div>
-            </div>
-          </header>
+          <Header />
 
           <main className="flex-grow">
             <Routes>
@@ -69,6 +54,7 @@ export default function App() {
               <Route path="/check-digit-calculator" element={<CheckDigitCalculator />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
 
@@ -85,7 +71,6 @@ export default function App() {
                 <Link to="/privacy-policy" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Privacy Policy</Link>
               </nav>
               <p>&copy; {new Date().getFullYear()} USRoutingNumber.com. All rights reserved.</p>
-              <p className="mt-2">Not affiliated with any official government agency, financial institution, or the Federal Reserve.</p>
               <p className="mt-4 text-xs text-slate-400 dark:text-slate-500 leading-relaxed">
                 <strong>Disclaimer:</strong> The routing numbers and financial information provided on this website are for general informational purposes only. While we strive to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the information. Always verify routing numbers directly with your financial institution before initiating any wire transfers or transactions. The website owners are not liable for any financial losses, delayed transactions, or damaged caused by the use of this information. All bank names and trademarks are the property of their respective owners and are used here under nominative fair use for identification purposes only.
               </p>

@@ -18,6 +18,7 @@ import RelatedLinks from '../components/RelatedLinks';
 import SEO from '../components/SEO';
 import VerifiedBadge from '../components/VerifiedBadge';
 import TransactionBadge from '../components/TransactionBadge';
+import RecentlyViewedWidget from '../components/RecentlyViewedWidget';
 
 export default function BankState() {
   const { bankSlug, state } = useParams<{ bankSlug: string, state: string }>();
@@ -227,21 +228,37 @@ export default function BankState() {
           />
 
           {otherStates.length > 0 && (
-             <RelatedLinks 
-               title={`${bankName} in other states`} 
-               links={otherStates.slice(0, 5).map(s => ({
-                 name: getStateFullName(s),
-                 url: `/routing-number/${bankSlug}/${s.toLowerCase()}`
-               }))}
-             />
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+              <Link 
+                to={`/routing-number/${bankSlug}`} 
+                className="text-lg font-bold text-slate-800 mb-4 hover:text-blue-700 hover:underline block"
+              >
+                {bankName} in other states
+              </Link>
+              <ul className="space-y-3">
+                {otherStates.slice(0, 5).map(s => (
+                  <li key={s}>
+                    <Link
+                      to={`/routing-number/${bankSlug}/${s.toLowerCase()}`}
+                      className="text-blue-600 hover:text-blue-800 hover:underline font-medium flex items-center"
+                    >
+                      <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+                      {getStateFullName(s)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              {otherStates.length > 5 && (
+                 <Link to={`/routing-number/${bankSlug}`} className="text-sm text-blue-600 hover:underline mt-4 inline-block font-semibold">
+                   View all states &rarr;
+                 </Link>
+              )}
+            </div>
           )}
 
-          <div className="bg-[#1e3a5f] text-white p-6 rounded-xl shadow-md">
-            <h3 className="font-bold text-lg mb-2">Need a bank account?</h3>
-            <p className="text-blue-100 text-sm mb-4">Discover the top high-yield savings and checking accounts of {currentYear}.</p>
-            <button className="w-full bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded transition-colors">
-              Compare Offers
-            </button>
+          <div className="sticky top-24">
+             <AdUnit slot="UNIT 4: Sidebar Ad, Display" className="min-h-[250px] mb-8" />
+             <RecentlyViewedWidget />
           </div>
         </aside>
       </div>

@@ -80,12 +80,23 @@ export default function SearchBar() {
       <form onSubmit={handleSearch} className="relative z-20">
         <input
           type="text"
-          className="w-full pl-12 pr-4 py-4 text-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 border-2 border-slate-300 dark:border-slate-700 rounded-xl shadow-sm focus:border-blue-600 focus:ring-blue-600 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500"
+          className="w-full pl-12 pr-28 py-4 text-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 border-2 border-slate-300 dark:border-slate-700 rounded-xl shadow-sm focus:border-blue-600 focus:ring-blue-600 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500"
           placeholder="Search by bank name (e.g. Chase) or routing number..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 w-6 h-6" />
+        
+        {query && (
+          <button 
+            type="button"
+            onClick={() => setQuery('')}
+            className="absolute right-28 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        )}
+        
         <button
           type="submit"
           className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#1e3a5f] text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-800 transition-colors"
@@ -93,6 +104,12 @@ export default function SearchBar() {
           Search
         </button>
       </form>
+
+      {query && results.length === 0 && query.trim().length > 2 && !/^\d{9}$/.test(query.trim()) && (
+        <div className="absolute z-10 w-full mt-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg p-4 text-center text-slate-500 dark:text-slate-400">
+          No banks or routing numbers found matching "{query}".
+        </div>
+      )}
 
       {query && results.length > 0 && (
         <div className="absolute z-10 w-full mt-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg max-h-[80vh] overflow-y-auto">

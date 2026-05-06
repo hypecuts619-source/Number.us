@@ -10,25 +10,58 @@ import AdUnit from '../components/AdUnit';
 export default function StateBankList() {
   const { state } = useParams<{ state: string }>();
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
+  const [selectedZip, setSelectedZip] = useState('');
 
   const stateFullName = state ? getStateFullName(state.toUpperCase()) : '';
 
-  const uniqueBanks = useMemo(() => {
+  const stateData = useMemo(() => {
     if (!state) return [];
-    const stateBanks = data.filter(d => d.state.toLowerCase() === state.toLowerCase());
-    const banks = new Set<string>();
-    stateBanks.forEach(b => banks.add(b.bank_name));
-    return Array.from(banks).sort();
+    return data.filter(d => d.state.toLowerCase() === state.toLowerCase());
   }, [state]);
+
+  const availableCities = useMemo(() => {
+    const citySet = new Set<string>();
+    stateData.forEach(d => {
+      if (d.city) citySet.add(d.city);
+    });
+    return Array.from(citySet).sort();
+  }, [stateData]);
+
+  const availableZips = useMemo(() => {
+    let zipsTemp = stateData;
+    if (selectedCity) {
+      zipsTemp = zipsTemp.filter(d => d.city === selectedCity);
+    }
+    const zipSet = new Set<string>();
+    zipsTemp.forEach(d => {
+      if (d.zip) zipSet.add(d.zip.split('-')[0]);
+    });
+    return Array.from(zipSet).sort();
+  }, [stateData, selectedCity]);
+
+  const uniqueBanks = useMemo(() => {
+    let filtered = stateData;
+    if (selectedCity) {
+       filtered = filtered.filter(d => d.city === selectedCity);
+    }
+    if (selectedZip) {
+       filtered = filtered.filter(d => d.zip && d.zip.split('-')[0] === selectedZip);
+    }
+
+    const banks = new Set<string>();
+    filtered.forEach(b => banks.add(b.bank_name));
+    return Array.from(banks).sort();
+  }, [stateData, selectedCity, selectedZip]);
 
   const filteredBanks = useMemo(() => {
     return uniqueBanks.filter(b => b.toLowerCase().includes(searchTerm.toLowerCase()));
   }, [uniqueBanks, searchTerm]);
 
-  if (!stateFullName || uniqueBanks.length === 0) {
+  if (!stateFullName || stateData.length === 0) {
     return (
       <div className="max-w-5xl mx-auto px-4 py-20 text-center">
-        <h1 className="text-3xl font-bold mb-4">State Not Found</h1>
+        <h1 className="text-3xl font-bold mb-4">State Not Found or No Banks Found</h1>
         <Link to="/states" className="text-blue-600 hover:underline">Return to State Directory</Link>
       </div>
     );
@@ -56,14 +89,59 @@ export default function StateBankList() {
         </p>
       </div>
 
-      <div className="mb-8 relative max-w-xl">
-        <input 
-          type="text" 
-          placeholder={`Search banks in ${stateFullName}...`}
-          className="w-full px-5 py-4 border-2 border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-blue-500 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-lg transition-colors"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+      <div className="mb-8 bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="col-span-1 md:col-span-3">
+            <input 
+              type="text" 
+              placeholder={`Search banks in ${stateFullName}...`}
+              className="w-full px-5 py-3 border-2 border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-blue-500 bg-white dark:bg-slate-800 text-slate-900 dark:text-white transition-colors"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+          <div className="col-span-1 md:col-span-1 border-t md:border-t-0 md:border-r border-slate-200 dark:border-slate-700 pt-4 md:pt-0 md:pr-4">
+             <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Filter by City</label>
+             <select
+               value={selectedCity}
+               onChange={(e) => {
+                 setSelectedCity(e.target.value);
+                 setSelectedZip('');
+               }}
+               className="w-full px-4 py-3 border-2 border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-blue-500 bg-white dark:bg-slate-800 text-slate-900 dark:text-white appearance-none"
+             >
+               <option value="">All Cities</option>
+               {availableCities.map(city => (
+                 <option key={city} value={city}>{city}</option>
+               ))}
+             </select>
+          </div>
+          <div className="col-span-1 md:col-span-1 border-t md:border-t-0 md:border-r border-slate-200 dark:border-slate-700 pt-4 md:pt-0 md:pr-4 md:pl-4">
+             <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Filter by Zip Code</label>
+             <select
+               value={selectedZip}
+               onChange={(e) => setSelectedZip(e.target.value)}
+               className="w-full px-4 py-3 border-2 border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-blue-500 bg-white dark:bg-slate-800 text-slate-900 dark:text-white appearance-none"
+             >
+               <option value="">All Zip Codes</option>
+               {availableZips.map(zip => (
+                 <option key={zip} value={zip}>{zip}</option>
+               ))}
+             </select>
+          </div>
+          <div className="col-span-1 md:col-span-1 pt-4 md:pt-0 md:pl-4 flex flex-col justify-end">
+             <button
+               onClick={() => {
+                 setSearchTerm('');
+                 setSelectedCity('');
+                 setSelectedZip('');
+               }}
+               className="w-full px-4 py-3 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 font-semibold rounded-xl transition-colors"
+             >
+               Clear Filters
+             </button>
+          </div>
+        </div>
       </div>
 
       <AdUnit slot="UNIT 1: Below H1, 728x90 leaderboard" className="my-8 min-h-[90px]" />
