@@ -17,6 +17,7 @@ import FAQSection from '../components/FAQSection';
 import RelatedLinks from '../components/RelatedLinks';
 import SEO from '../components/SEO';
 import VerifiedBadge from '../components/VerifiedBadge';
+import TransactionBadge from '../components/TransactionBadge';
 
 export default function BankState() {
   const { bankSlug, state } = useParams<{ bankSlug: string, state: string }>();
@@ -104,8 +105,11 @@ export default function BankState() {
                   <div className="font-semibold text-slate-800 dark:text-slate-200 group-hover:text-blue-700 dark:group-hover:text-blue-400">{branch.city}</div>
                   <div className="text-xs text-slate-400 dark:text-slate-500">{branch.address}</div>
                 </div>
-                <div className="text-sm bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300 px-2 py-1 rounded font-mono group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                  {branch.routing_number}
+                <div className="flex flex-col items-end gap-1">
+                  <div className="text-sm bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300 px-2 py-0.5 rounded font-mono group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                    {branch.routing_number}
+                  </div>
+                  <TransactionBadge type={branch.type || 'BOTH'} size="sm" />
                 </div>
               </Link>
             ))}

@@ -9,6 +9,7 @@ import SEO from '../components/SEO';
 import FAQSection from '../components/FAQSection';
 import VerifiedBadge from '../components/VerifiedBadge';
 import PrintDownloadButtons from '../components/PrintDownloadButtons';
+import TransactionBadge from '../components/TransactionBadge';
 
 function isValidRoutingNumber(routingNumber: string): boolean {
   if (!/^\d{9}$/.test(routingNumber)) {
@@ -156,8 +157,8 @@ export default function Lookup() {
              </div>
              <div>
                <div className="text-sm text-slate-500 font-semibold mb-1 uppercase">Transaction Type</div>
-               <div className="text-lg font-medium text-slate-800">
-                  {data.type === 'BOTH' ? 'ACH & Wire Transfers' : data.type === 'ACH' ? 'ACH Direct Deposit Only' : 'Wire Transfer Only'}
+               <div className="text-lg font-medium text-slate-800 flex items-center gap-2 mt-1">
+                  <TransactionBadge type={data.type || 'BOTH'} />
                </div>
              </div>
              <div>

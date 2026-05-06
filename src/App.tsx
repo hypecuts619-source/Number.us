@@ -13,6 +13,9 @@ import Lookup from './pages/Lookup';
 import WireTransferGuide from './pages/WireTransferGuide';
 import HowToFind from './pages/HowToFind';
 import InternationalWireGuide from './pages/InternationalWireGuide';
+import StateDirectory from './pages/StateDirectory';
+import StateBankList from './pages/StateBankList';
+import RoutingVsAccountNumber from './pages/RoutingVsAccountNumber';
 
 import MajorBanks from './pages/MajorBanks';
 import CheckDigitCalculator from './pages/CheckDigitCalculator';
@@ -38,10 +41,10 @@ export default function App() {
               </Link>
               <nav className="hidden lg:flex gap-6 font-semibold text-slate-600 dark:text-slate-300">
                 <Link to="/" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Home</Link>
+                <Link to="/states" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">By State</Link>
                 <Link to="/major-banks" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Major Banks</Link>
-                <Link to="/how-to-find-routing-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Find Routing Number</Link>
+                <Link to="/routing-vs-account-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Routing vs Account</Link>
                 <Link to="/how-to-wire-money" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Wire Guide</Link>
-                <Link to="/international-wire-guide" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">International Wires</Link>
               </nav>
               <div className="flex items-center gap-2">
                 <ThemeToggle />
@@ -52,6 +55,9 @@ export default function App() {
           <main className="flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/states" element={<StateDirectory />} />
+              <Route path="/states/:state" element={<StateBankList />} />
+              <Route path="/routing-vs-account-number" element={<RoutingVsAccountNumber />} />
               <Route path="/major-banks" element={<MajorBanks />} />
               <Route path="/routing-number/:bankSlug" element={<BankOverview />} />
               <Route path="/routing-number/:bankSlug/:state" element={<BankState />} />
@@ -68,10 +74,11 @@ export default function App() {
 
           <footer className="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-12 px-6 shrink-0 mt-20 print:hidden">
             <div className="max-w-7xl mx-auto text-center text-slate-500 dark:text-slate-400 text-sm max-w-3xl">
-              <nav className="flex justify-center gap-6 mb-6">
+              <nav className="flex flex-wrap justify-center gap-6 mb-6">
+                <Link to="/states" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Banks By State</Link>
+                <Link to="/routing-vs-account-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Routing vs Account</Link>
                 <Link to="/how-to-wire-money" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Wire Guide</Link>
                 <Link to="/how-to-find-routing-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Find Routing Number</Link>
-                <Link to="/international-wire-guide" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">International Wires</Link>
               </nav>
               <nav className="flex justify-center gap-6 mb-6">
                 <Link to="/terms-of-service" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Terms of Service</Link>

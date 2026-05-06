@@ -47,9 +47,22 @@ const generateSitemap = () => {
     urls.push(`${baseUrl}/routing-number/${slug}`);
   });
 
-  const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+  // Make urls unique just in case
+  urls = [...new Set(urls)];
+
+  const MAX_URLS_PER_SITEMAP = 45000;
+  const numSitemaps = Math.ceil(urls.length / MAX_URLS_PER_SITEMAP);
+
+  const sitemapIndexUrls = [];
+
+  for (let i = 0; i < numSitemaps; i++) {
+    const chunk = urls.slice(i * MAX_URLS_PER_SITEMAP, (i + 1) * MAX_URLS_PER_SITEMAP);
+    const sitemapName = `sitemap-${i + 1}.xml`;
+    const chunkPath = path.resolve(`public/${sitemapName}`);
+    
+    const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${urls.map(url => `
+  ${chunk.map(url => `
   <url>
     <loc>${url}</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
@@ -57,8 +70,22 @@ const generateSitemap = () => {
   </url>`).join('')}
 </urlset>`;
 
-  fs.writeFileSync(sitemapPath, sitemapContent);
-  console.log(`Sitemap generated with ${urls.length} URLs at ${sitemapPath}`);
+    fs.writeFileSync(chunkPath, sitemapContent);
+    sitemapIndexUrls.push(`${baseUrl}/${sitemapName}`);
+    console.log(`Generated ${sitemapName} with ${chunk.length} URLs`);
+  }
+
+  const sitemapIndexContent = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  ${sitemapIndexUrls.map(url => `
+  <sitemap>
+    <loc>${url}</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </sitemap>`).join('')}
+</sitemapindex>`;
+
+  fs.writeFileSync(sitemapPath, sitemapIndexContent);
+  console.log(`Sitemap index generated with ${numSitemaps} sitemaps at ${sitemapPath}`);
 };
 
 generateSitemap();

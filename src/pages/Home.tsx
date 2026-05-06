@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useMemo } from 'react';
 import SearchBar from '../components/SearchBar';
 import AdUnit from '../components/AdUnit';
+import CheckDiagram from '../components/CheckDiagram';
 import { getTopSearchedBanks } from '../lib/getData';
 import { generateSlug } from '../lib/generateSlug';
 import { generateHomeFAQs } from '../lib/faqTemplates';
@@ -41,14 +42,19 @@ export default function Home() {
       <div className="grid md:grid-cols-3 gap-12 mt-16">
         <div className="md:col-span-2">
           <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">What is a Routing Number?</h2>
-          <div className="prose prose-lg text-slate-600">
+          <div className="prose prose-lg text-slate-600 dark:text-slate-300">
             <p>
               A routing transit number (RTN) is a nine-digit code used by banks in the United States to identify the financial institution that holds the account. Created by the American Bankers Association (ABA) in 1910, these digits are essential for facilitating transactions such as electronic funds transfers, direct deposits, bill payments, and wire transfers.
             </p>
-            <p>
-              Depending on the transaction type, your bank might use different routing numbers. For example, the routing number for an ACH direct deposit may differ from the one required for a domestic wire transfer.
+            
+            <CheckDiagram />
+
+            <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-12 mb-4 text-center">Reverse Lookup: Find Your Bank</h3>
+            <p className="text-center">
+              Have a 9 digit number and want to know what bank it belongs to? Use our reverse lookup tool at the top of the page. Enter any valid 9-digit ABA code to INSTANTLY reveal the bank name, branch city, and whether it supports ACH or Wire.
             </p>
-            <h3 className="text-2xl font-bold text-slate-800 mt-8 mb-4">How we verify routing numbers</h3>
+
+            <h3 className="text-2xl font-bold text-slate-800 dark:text-white mt-12 mb-4">How we verify routing numbers</h3>
             <p>
               To ensure mathematical accuracy and verify whether a routing number is structurally valid, we employ the official ABA Checksum validation algorithm. The first 8 digits of the routing number indicate the Federal Reserve routing symbol and the ABA institution identifier. The 9th digit is a checksum. 
             </p>
