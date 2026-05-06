@@ -1,6 +1,7 @@
 import fs from 'fs';
 import https from 'https';
 import path from 'path';
+import zipcodes from 'zipcodes';
 
 async function download(url: string): Promise<any> {
   return new Promise((resolve, reject) => {
@@ -55,24 +56,32 @@ async function updateData() {
     allRecords.forEach((item) => {
       const rn = item.routingNumber;
       if (!map.has(rn)) {
+        const titleCaseCity = item.city
+            .split(' ')
+            .map((w: string) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+            .join(' ');
+        
+        // Try to look up a representative zip code for the city/state
+        const zips = zipcodes.lookupByName(titleCaseCity, item.state);
+        const resolvedZip = zips && zips.length > 0 ? zips[0].zip : 'Unknown';
+
         map.set(rn, {
           routing_number: rn,
           bank_name: item.name.replace(/\s+/g, ' '),
-          city: item.city
-            .split(' ')
-            .map((w: string) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
-            .join(' '),
+          city: titleCaseCity,
           state: item.state,
           type: item.fundsTransferStatus ? 'Wire' : 'ACH',
           address: 'Headquarters / Main Branch',
           phone: 'Check Online',
-          zip: 'Unknown',
+          zip: resolvedZip,
         });
       }
     });
 
     // Apply Fed Reserve overrides
     frbOverrides.forEach(over => {
+       const zips = zipcodes.lookupByName(over.city, over.state);
+       const resolvedZip = zips && zips.length > 0 ? zips[0].zip : 'Unknown';
        map.set(over.rn, {
           routing_number: over.rn,
           bank_name: over.name,
@@ -81,7 +90,7 @@ async function updateData() {
           type: 'Fedwire / ACH',
           address: 'Federal Reserve Bank',
           phone: 'Check Online',
-          zip: 'Unknown'
+          zip: resolvedZip
        });
     });
 
