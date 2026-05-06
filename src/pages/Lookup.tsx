@@ -178,7 +178,7 @@ export default function Lookup() {
              <div>
                <div className="text-sm text-slate-500 font-semibold mb-1 uppercase">Location</div>
                <div className="text-lg font-medium text-slate-800">
-                 {data.city}, {getStateFullName(data.state)} {data.zip}
+                 {data.city}, {getStateFullName(data.state)} {data.zip !== 'Unknown' && data.zip}
                </div>
              </div>
              <div>

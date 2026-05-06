@@ -52,8 +52,7 @@ async function updateData() {
 
     const map = new Map();
 
-    const allRecords = [...ach, ...wire];
-    allRecords.forEach((item) => {
+    ach.forEach((item) => {
       const rn = item.routingNumber;
       if (!map.has(rn)) {
         const titleCaseCity = item.city
@@ -61,7 +60,6 @@ async function updateData() {
             .map((w: string) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
             .join(' ');
         
-        // Try to look up a representative zip code for the city/state
         const zips = zipcodes.lookupByName(titleCaseCity, item.state);
         const resolvedZip = zips && zips.length > 0 ? zips[0].zip : 'Unknown';
 
@@ -70,7 +68,33 @@ async function updateData() {
           bank_name: item.name.replace(/\s+/g, ' '),
           city: titleCaseCity,
           state: item.state,
-          type: item.fundsTransferStatus ? 'Wire' : 'ACH',
+          type: 'ACH',
+          address: 'Headquarters / Main Branch',
+          phone: 'Check Online',
+          zip: resolvedZip,
+        });
+      }
+    });
+
+    wire.forEach((item) => {
+      const rn = item.routingNumber;
+      if (map.has(rn)) {
+         map.get(rn).type = 'BOTH';
+      } else {
+        const titleCaseCity = item.city
+            .split(' ')
+            .map((w: string) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+            .join(' ');
+        
+        const zips = zipcodes.lookupByName(titleCaseCity, item.state);
+        const resolvedZip = zips && zips.length > 0 ? zips[0].zip : 'Unknown';
+
+        map.set(rn, {
+          routing_number: rn,
+          bank_name: item.name.replace(/\s+/g, ' '),
+          city: titleCaseCity,
+          state: item.state,
+          type: 'WIRE',
           address: 'Headquarters / Main Branch',
           phone: 'Check Online',
           zip: resolvedZip,
