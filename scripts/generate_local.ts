@@ -67,5 +67,10 @@ for (let i = 0; i < 25000; i++) {
   });
 }
 
+const outputDir = path.dirname(outputFile);
+if (!fs.existsSync(outputDir)) {
+  fs.mkdirSync(outputDir, { recursive: true });
+}
+
 fs.writeFileSync(outputFile, JSON.stringify(data, null, 2));
 console.log(`Successfully generated ${outputFile} with ${data.length} routing numbers.`);
