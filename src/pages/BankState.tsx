@@ -19,6 +19,7 @@ import SEO from '../components/SEO';
 import VerifiedBadge from '../components/VerifiedBadge';
 import TransactionBadge from '../components/TransactionBadge';
 import RecentlyViewedWidget from '../components/RecentlyViewedWidget';
+import TrustIndicator from '../components/TrustIndicator';
 
 export default function BankState() {
   const { bankSlug, state } = useParams<{ bankSlug: string, state: string }>();
@@ -88,6 +89,7 @@ export default function BankState() {
       </h1>
 
       <VerifiedBadge />
+      <TrustIndicator />
 
       <AdUnit slot="UNIT 1: Below H1, 728x90 leaderboard" className="my-8 min-h-[90px]" />
 

@@ -20,6 +20,7 @@ import { MapPin, Phone, Building2 } from 'lucide-react';
 import Tooltip from '../components/Tooltip';
 import SEO from '../components/SEO';
 import VerifiedBadge from '../components/VerifiedBadge';
+import TrustIndicator from '../components/TrustIndicator';
 
 export default function BranchDetail() {
   const { bankSlug, state, city: citySlug } = useParams<{ bankSlug: string, state: string, city: string }>();
@@ -99,6 +100,7 @@ export default function BranchDetail() {
       <p className="text-xl text-slate-500 dark:text-slate-400 mb-6">{currentYear} Official Branch Routing Information</p>
 
       <VerifiedBadge />
+      <TrustIndicator />
 
       <AdUnit slot="UNIT 1: Below H1, 728x90 leaderboard" className="my-8 min-h-[90px]" />
 

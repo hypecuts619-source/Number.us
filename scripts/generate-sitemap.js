@@ -21,11 +21,20 @@ const generateSitemap = () => {
   
   let urls = [
     `${baseUrl}/`,
+    `${baseUrl}/states`,
     `${baseUrl}/major-banks`,
+    `${baseUrl}/what-is-a-routing-number`,
+    `${baseUrl}/aba-routing-number`,
+    `${baseUrl}/routing-number-vs-account-number`,
+    `${baseUrl}/direct-deposit-routing-number`,
+    `${baseUrl}/find-routing-number-on-check`,
+    `${baseUrl}/routing-number-lookup`,
     `${baseUrl}/how-to-wire-money`,
     `${baseUrl}/international-wire-guide`,
     `${baseUrl}/how-to-find-routing-number`,
-    `${baseUrl}/check-digit-calculator`
+    `${baseUrl}/check-digit-calculator`,
+    `${baseUrl}/terms-of-service`,
+    `${baseUrl}/privacy-policy`
   ];
 
   const banks = new Set();

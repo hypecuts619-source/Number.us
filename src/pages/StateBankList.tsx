@@ -117,7 +117,7 @@ export default function StateBankList() {
              </select>
           </div>
           <div className="col-span-1 md:col-span-1 border-t md:border-t-0 md:border-r border-slate-200 dark:border-slate-700 pt-4 md:pt-0 md:pr-4 md:pl-4">
-             <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Filter by Zip Code</label>
+             <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Branch ZIP Finder</label>
              <select
                value={selectedZip}
                onChange={(e) => setSelectedZip(e.target.value)}

@@ -12,6 +12,8 @@ import RelatedLinks from '../components/RelatedLinks';
 import SEO from '../components/SEO';
 import VerifiedBadge from '../components/VerifiedBadge';
 
+import TrustIndicator from '../components/TrustIndicator';
+
 export default function BankOverview() {
   const { bankSlug } = useParams<{ bankSlug: string }>();
   
@@ -62,6 +64,7 @@ export default function BankOverview() {
       </h1>
       
       <VerifiedBadge />
+      <TrustIndicator />
 
       <AdUnit slot="UNIT 1: Below H1, 728x90 leaderboard" className="min-h-[90px]" />
 

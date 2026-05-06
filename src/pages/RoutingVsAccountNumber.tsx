@@ -15,10 +15,10 @@ export default function RoutingVsAccountNumber() {
       <SEO 
         title={`Routing Number vs Account Number (${currentYear} Guide)`}
         description="Learn the exact difference between a routing number and an account number. Find out where they are on a check and how to use them for direct deposits."
-        canonicalUrl="/routing-vs-account-number"
+        canonicalUrl="/routing-number-vs-account-number"
       />
       
-      <BreadcrumbNav crumbs={[{ name: 'Routing vs Account Number', url: '/routing-vs-account-number' }]} />
+      <BreadcrumbNav crumbs={[{ name: 'Routing vs Account Number', url: '/routing-number-vs-account-number' }]} />
 
       <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-8 mt-8">
         Routing Number vs Account Number: What's the Difference?

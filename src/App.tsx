@@ -16,6 +16,11 @@ import InternationalWireGuide from './pages/InternationalWireGuide';
 import StateDirectory from './pages/StateDirectory';
 import StateBankList from './pages/StateBankList';
 import RoutingVsAccountNumber from './pages/RoutingVsAccountNumber';
+import WhatIsAbaRoutingNumber from './pages/WhatIsAbaRoutingNumber';
+import WhatIsARoutingNumber from './pages/WhatIsARoutingNumber';
+import DirectDepositRoutingNumber from './pages/DirectDepositRoutingNumber';
+import FindRoutingNumberOnCheck from './pages/FindRoutingNumberOnCheck';
+import RoutingNumberLookup from './pages/RoutingNumberLookup';
 
 import MajorBanks from './pages/MajorBanks';
 import CheckDigitCalculator from './pages/CheckDigitCalculator';
@@ -42,7 +47,12 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/states" element={<StateDirectory />} />
               <Route path="/states/:state" element={<StateBankList />} />
-              <Route path="/routing-vs-account-number" element={<RoutingVsAccountNumber />} />
+              <Route path="/routing-number-vs-account-number" element={<RoutingVsAccountNumber />} />
+              <Route path="/what-is-a-routing-number" element={<WhatIsARoutingNumber />} />
+              <Route path="/aba-routing-number" element={<WhatIsAbaRoutingNumber />} />
+              <Route path="/direct-deposit-routing-number" element={<DirectDepositRoutingNumber />} />
+              <Route path="/find-routing-number-on-check" element={<FindRoutingNumberOnCheck />} />
+              <Route path="/routing-number-lookup" element={<RoutingNumberLookup />} />
               <Route path="/major-banks" element={<MajorBanks />} />
               <Route path="/routing-number/:bankSlug" element={<BankOverview />} />
               <Route path="/routing-number/:bankSlug/:state" element={<BankState />} />
@@ -62,9 +72,12 @@ export default function App() {
             <div className="max-w-7xl mx-auto text-center text-slate-500 dark:text-slate-400 text-sm max-w-3xl">
               <nav className="flex flex-wrap justify-center gap-6 mb-6">
                 <Link to="/states" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Banks By State</Link>
-                <Link to="/routing-vs-account-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Routing vs Account</Link>
-                <Link to="/how-to-wire-money" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Wire Guide</Link>
-                <Link to="/how-to-find-routing-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Find Routing Number</Link>
+                <Link to="/what-is-a-routing-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">What is a Routing Number?</Link>
+                <Link to="/find-routing-number-on-check" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Find it on a Check</Link>
+                <Link to="/aba-routing-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">ABA Routing Number</Link>
+                <Link to="/direct-deposit-routing-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Direct Deposit</Link>
+                <Link to="/routing-number-lookup" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Routing Number Lookup</Link>
+                <Link to="/routing-number-vs-account-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Routing vs Account</Link>
               </nav>
               <nav className="flex justify-center gap-6 mb-6">
                 <Link to="/terms-of-service" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Terms of Service</Link>

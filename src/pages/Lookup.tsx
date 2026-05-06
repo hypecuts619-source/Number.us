@@ -1,8 +1,9 @@
 import { useParams, Link } from 'react-router-dom';
 import { useMemo, useEffect } from 'react';
-import { getRoutingByNumber, getStateFullName } from '../lib/getData';
+import { getRoutingByNumber, getStateFullName, getRelatedBanks } from '../lib/getData';
 import { generateLookupTitle, generateLookupDescription, generateFAQSchema } from '../lib/seoHelpers';
 import { generateLookupFAQs } from '../lib/faqTemplates';
+import { generateSlug } from '../lib/generateSlug';
 import CopyButton from '../components/CopyButton';
 import AdUnit from '../components/AdUnit';
 import SEO from '../components/SEO';
@@ -11,6 +12,8 @@ import VerifiedBadge from '../components/VerifiedBadge';
 import PrintDownloadButtons from '../components/PrintDownloadButtons';
 import TransactionBadge from '../components/TransactionBadge';
 import { useRecentlyViewed } from '../hooks/useRecentlyViewed';
+import TrustIndicator from '../components/TrustIndicator';
+import RelatedLinks from '../components/RelatedLinks';
 
 function isValidRoutingNumber(routingNumber: string): boolean {
   if (!/^\d{9}$/.test(routingNumber)) {
@@ -143,6 +146,9 @@ export default function Lookup() {
             </div>
             
             <VerifiedBadge />
+            <div className="max-w-md mx-auto text-left">
+              <TrustIndicator />
+            </div>
             
             <div className="block mt-2">
               {isValid ? (
@@ -200,8 +206,18 @@ export default function Lookup() {
         </p>
       </div>
 
-      <div className="mt-16 bg-white border border-slate-200 rounded-3xl p-8 md:p-12 shadow-sm">
+      <div className="mt-16 bg-white border border-slate-200 rounded-3xl p-8 md:p-12 shadow-sm mb-12">
         <FAQSection faqs={faqs} />
+      </div>
+
+      <div className="mt-8 max-w-sm">
+         <RelatedLinks 
+           title="Related Banks" 
+           links={getRelatedBanks(data.bank_name, 5).map(b => ({
+             name: b,
+             url: `/routing-number/${generateSlug(b)}`
+           }))}
+         />
       </div>
     </div>
   );
