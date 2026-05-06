@@ -7,6 +7,7 @@ import SEO from '../components/SEO';
 import { generateMajorBanksFAQs } from '../lib/faqTemplates';
 import { generateFAQSchema } from '../lib/seoHelpers';
 import FAQSection from '../components/FAQSection';
+import AdUnit from '../components/AdUnit';
 
 const MAJOR_BANKS = [
   { name: 'JPMorgan Chase Bank', abbreviation: 'Chase' },
@@ -57,6 +58,8 @@ export default function MajorBanks() {
           Find routing numbers and wire transfer instructions for the largest financial institutions in the United States.
         </p>
       </div>
+
+      <AdUnit slot="UNIT 1: Below H1, 728x90 leaderboard" className="my-8 min-h-[90px]" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {MAJOR_BANKS.map((bank) => {

@@ -90,6 +90,8 @@ export default function Home() {
         </div>
       </div>
 
+      <AdUnit slot="UNIT 2: Mid content, in-article responsive" className="my-12 min-h-[150px]" />
+
       <div className="mt-16 bg-white border border-slate-200 rounded-3xl p-8 md:p-12 shadow-sm">
         <FAQSection faqs={faqs} />
       </div>

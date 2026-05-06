@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import AdUnit from '../components/AdUnit';
 
 export default function HowToFind() {
   const currentYear = new Date().getFullYear();
@@ -19,7 +20,7 @@ export default function HowToFind() {
         </Link>
       </div>
 
-      <header className="mb-12">
+      <header className="mb-8">
         <h1 className="text-4xl font-extrabold text-[#1e3a5f] mb-4">
           How to Find Your Routing Number
         </h1>
@@ -27,6 +28,8 @@ export default function HowToFind() {
           Whether you're setting up direct deposit, paying a bill, or ordering new checks, you'll need your bank's 9-digit routing number. Here are the fastest ways to find it.
         </p>
       </header>
+
+      <AdUnit slot="UNIT 1: Below H1, In-Article" className="my-8" />
 
       <div className="grid gap-12 lg:grid-cols-[1fr,300px]">
         <article className="prose prose-slate max-w-none prose-headings:text-[#1e3a5f] prose-a:text-blue-600">
@@ -69,6 +72,8 @@ export default function HowToFind() {
             <li><strong>On the website:</strong> Click on your specific checking or savings account. Look for a tab or link titled "Account Details," "Routing & Account Info," or "Direct Deposit Info."</li>
             <li><strong>In the mobile app:</strong> Tap your account balance, then tap the "Show Details" icon (often represented by an "i" or a document icon).</li>
           </ul>
+
+          <AdUnit slot="UNIT 2: Mid Content" className="my-10" />
 
           <h2>Method 3: Check Your Bank Statement</h2>
           <p>

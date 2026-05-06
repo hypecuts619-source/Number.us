@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Calculator, ArrowRight, RefreshCw } from 'lucide-react';
 import SEO from '../components/SEO';
+import AdUnit from '../components/AdUnit';
 
 export default function CheckDigitCalculator() {
   const [eightDigits, setEightDigits] = useState('');
@@ -57,6 +58,8 @@ export default function CheckDigitCalculator() {
           Every valid US routing number has 9 digits. The last digit is a mathematical checksum based on the first 8. Enter 8 digits below to calculate it.
         </p>
       </div>
+
+      <AdUnit slot="UNIT 1: Below H1, 728x90 leaderboard" className="my-8 min-h-[90px]" />
 
       <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-12 border-2 border-slate-200 dark:border-slate-800 shadow-sm max-w-2xl mx-auto mb-16">
         <form onSubmit={handleCalculate} className="space-y-6">
