@@ -119,11 +119,28 @@ export default function BankState() {
           ))}
 
           <section className="prose prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-slate-300 max-w-none">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">What is this routing number used for?</h2>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">ABA routing number for {bankName}</h2>
             <p>
-              The {currentYear} routing number for <strong>{bankName}</strong> in <strong>{stateFullName}</strong> is primarily used to identify your specific bank branch during financial transactions. 
+              The {currentYear} ABA routing number for <strong>{bankName}</strong> in <strong>{stateFullName}</strong> is primarily used to identify your specific bank branch during financial transactions. 
               Depending on the type of account you have, you will use <strong>{primaryData.routing_number}</strong> for:
             </p>
+            
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-3">{bankName} routing number for direct deposit</h3>
+            <p>
+              If you are setting up your paycheck, tax refund, or government benefits, you need the correct ACH routing number. 
+              {(primaryData.type === 'ACH' || primaryData.type === 'BOTH') 
+                ? `The number ${primaryData.routing_number} is fully supported for ACH direct deposits to your ${bankName} account.` 
+                : `Warning: This specific number may not support general direct deposits. Please verify you are using an ACH-compatible routing number.`}
+            </p>
+
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-3">{bankName} wire transfer routing number</h3>
+            <p>
+              Wire transfers process through a different system than ACH. If you are receiving a domestic wire, you must use the correct wire transfer routing number.
+              {(primaryData.type === 'WIRE' || primaryData.type === 'BOTH') 
+                ? `You can safely use ${primaryData.routing_number} as your ${bankName} wire transfer routing number for domestic wires.` 
+                : `This branch number does NOT support wire transfers. Doing a wire transfer using ${primaryData.routing_number} will fail. You must ask ${bankName} for their specific wire routing number.`}
+            </p>
+
             <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden my-6">
               <table className="w-full text-left">
                 <thead className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
@@ -159,20 +176,24 @@ export default function BankState() {
           <AdUnit slot="UNIT 2: Mid content, in-article responsive" className="my-8" />
 
           <section className="prose prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-slate-300 max-w-none">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">How to find your routing number</h2>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white" id="routing-vs-account">routing number vs account number</h2>
+            <p>
+              When setting up direct deposits or payments, understanding the difference between a <strong>routing number vs account number</strong> is crucial.
+            </p>
+            <ul className="mb-6">
+              <li><strong>Routing Number:</strong> The public 9-digit ABA code that identifies the specific bank and location (like {bankName} in {stateFullName}). Everyone at your branch uses the same routing number.</li>
+              <li><strong>Account Number:</strong> Your private identifier, usually 8 to 12 digits, that specifically targets your personal checking or savings account.</li>
+            </ul>
+
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-10">How to find your routing number</h2>
             <p>
               If you aren't sure whether <strong>{primaryData.routing_number}</strong> is the right number for your account, you can quickly verify it in three ways:
             </p>
             <ol className="space-y-2">
-              <li><strong>Bottom of your check:</strong> Look at the bottom left-hand corner of your {bankName} check. The first 9 digits represent your routing number.</li>
+              <li><strong>Bottom of your check:</strong> Look at the bottom left-hand corner of your check. The first 9 digits represent your routing number.</li>
               <li><strong>Online Banking:</strong> Log in to your {bankName} portal and navigate to "Account Details". Both the routing and account numbers are usually displayed there.</li>
               <li><strong>Mobile App:</strong> Open the official mobile app, select your checking account, and view the routing details.</li>
             </ol>
-            
-            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mt-8">Wire Transfer Instructions</h3>
-            <p>
-              When receiving a domestic wire transfer, you must provide your sender with the exact wire routing number. If the table above indicates that this number only supports ACH, doing a wire transfer using <strong>{primaryData.routing_number}</strong> will fail. Always verify the SWIFT/BIC code for international wires directly with {bankName}.
-            </p>
           </section>
 
           <FAQSection faqs={faqs} />

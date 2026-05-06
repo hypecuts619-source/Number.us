@@ -60,7 +60,7 @@ export default function BranchDetail() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
       <SEO 
-        title={`${bankName} Routing Number ${cityTitle}, ${stateFullName} (${currentYear})`}
+        title={`${bankName} Routing Number ${cityTitle}, ${stateFullName} 2026`}
         description={`Verified ${bankName} routing number for branches in ${cityTitle}, ${stateFullName}. Details for ACH, wire transfers, and address at ${primaryData.address}.`}
         canonicalUrl={`/routing-number/${bankSlug}/${state?.toLowerCase()}/${citySlug}`}
       >
@@ -94,7 +94,7 @@ export default function BranchDetail() {
       ]} />
 
       <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-slate-100 tracking-tight mb-4">
-        {bankName} - {cityTitle}, {stateFullName}
+        {bankName} Routing Number {cityTitle}, {stateFullName} 2026
       </h1>
       <p className="text-xl text-slate-500 dark:text-slate-400 mb-6">{currentYear} Official Branch Routing Information</p>
 
@@ -146,12 +146,26 @@ export default function BranchDetail() {
           </section>
 
           <article className="prose prose-lg dark:prose-invert text-slate-600 dark:text-slate-300 max-w-none">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Wire Transfer Instructions for {bankName}</h2>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 capitalize">ABA routing number for {bankName}</h2>
+            <p>
+              When setting up any financial transaction, using the correct <strong>ABA routing number for {bankName}</strong> ensures your money reaches the right branch in <strong>{cityTitle}, {stateFullName}</strong>.
+            </p>
+
+            <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mt-8 mb-3 capitalize">{bankName} routing number for direct deposit</h3>
+            <p>
+              To set up your paycheck or tax returns, you need your ACH direct deposit information. 
+              {primaryData.type === 'ACH' || primaryData.type === 'BOTH' 
+                ? `The number ${primaryData.routing_number} is the correct ${bankName} routing number for direct deposit to accounts at this branch.`
+                : `Caution: This specific number does not fully support ACH direct deposits. Please verify you are using the correct account.`}
+            </p>
+
+            <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mt-8 mb-3 capitalize">{bankName} wire transfer routing number</h3>
             <p>
               When sending a domestic wire transfer to this <strong>{cityTitle}, {stateFullName}</strong> branch, 
               you must use the specific wire routing number. Based on the Federal Reserve record, 
-              the routing number <strong>{primaryData.routing_number}</strong> is configured for 
-              {primaryData.type === 'BOTH' ? ' both ACH and Wire Transfer' : primaryData.type === 'ACH' ? ' ACH Direct Deposits only' : ' Wire Transfers only'}.
+              {(primaryData.type === 'WIRE' || primaryData.type === 'BOTH') 
+                 ? `you can use ${primaryData.routing_number} as your ${bankName} wire transfer routing number.` 
+                 : `this routing number DOES NOT support wire transfers. You must ask ${bankName} for their specific wire routing number.`}
             </p>
             <p>
               <Tooltip text="Society for Worldwide Interbank Financial Telecommunication code, distinct from a standard ABA routing number.">
@@ -159,6 +173,15 @@ export default function BranchDetail() {
               </Tooltip> is required for international wire transfers coming from outside the United States. 
               Always notify the bank before receiving large international transfers to avoid processing delays.
             </p>
+
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-12" id="routing-vs-account">routing number vs account number</h2>
+            <p>
+              Understanding the difference between a <strong>routing number vs account number</strong> is crucial for setting up your {bankName} account properly:
+            </p>
+            <ul>
+              <li><strong>Routing Number:</strong> Identifies this exact {bankName} branch. All customers at this location use the same routing number.</li>
+              <li><strong>Account Number:</strong> Uniquely identifies your personal or business account. Only you use this number.</li>
+            </ul>
 
             <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-12">How to verify your {bankName} routing number</h2>
             <p>

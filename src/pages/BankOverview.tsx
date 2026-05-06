@@ -58,7 +58,7 @@ export default function BankOverview() {
       <BreadcrumbNav crumbs={[{ name: bankName, url: `/routing-number/${bankSlug}` }]} />
 
       <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4">
-        {bankName} Routing Number — All States ({currentYear})
+        {bankName} Routing Number 2026 — All States
       </h1>
       
       <VerifiedBadge />
