@@ -86,6 +86,10 @@ async function updateData() {
     });
 
     const outputPath = path.join(process.cwd(), 'src/data/routing.json');
+    const outputDir = path.dirname(outputPath);
+    if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir, { recursive: true });
+    }
     fs.writeFileSync(outputPath, JSON.stringify(Array.from(map.values()), null, 2));
 
     console.log(`Successfully saved ${map.size} unique records to src/data/routing.json!`);
