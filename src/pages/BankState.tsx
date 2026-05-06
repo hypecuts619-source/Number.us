@@ -81,7 +81,7 @@ export default function BankState() {
         { name: stateFullName, url: `/routing-number/${bankSlug}/${state?.toLowerCase()}` }
       ]} />
 
-      <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-6">
+      <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-6">
         {bankName} Routing Number {stateFullName} ({currentYear})
       </h1>
 
@@ -92,19 +92,19 @@ export default function BankState() {
       <div className="grid lg:grid-cols-3 gap-12 mt-8">
         <div className="lg:col-span-2 space-y-12">
           
-          <h2 className="text-2xl font-bold text-slate-800 mb-6 border-b pb-2">{bankName} Branches in {stateFullName}</h2>
+          <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6 border-b dark:border-slate-700 pb-2">{bankName} Branches in {stateFullName}</h2>
           <div className="grid sm:grid-cols-2 gap-4 mb-12">
             {dataList.map(branch => (
               <Link 
                 key={`${branch.routing_number}-${branch.city}`}
                 to={`/routing-number/${bankSlug}/${state?.toLowerCase()}/${generateSlug(branch.city)}`}
-                className="flex items-center justify-between p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-500 hover:shadow-md transition-all group"
+                className="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-md transition-all group"
               >
                 <div>
-                  <div className="font-semibold text-slate-800 group-hover:text-blue-700">{branch.city}</div>
-                  <div className="text-xs text-slate-400">{branch.address}</div>
+                  <div className="font-semibold text-slate-800 dark:text-slate-200 group-hover:text-blue-700 dark:group-hover:text-blue-400">{branch.city}</div>
+                  <div className="text-xs text-slate-400 dark:text-slate-500">{branch.address}</div>
                 </div>
-                <div className="text-sm bg-slate-100 text-slate-500 px-2 py-1 rounded font-mono group-hover:bg-blue-50 group-hover:text-blue-600">
+                <div className="text-sm bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300 px-2 py-1 rounded font-mono group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 group-hover:text-blue-600 dark:group-hover:text-blue-400">
                   {branch.routing_number}
                 </div>
               </Link>
@@ -113,43 +113,43 @@ export default function BankState() {
 
           {dataList.map((data, i) => (
             <div key={i} className="space-y-4">
-              {dataList.length > 1 && <h3 className="text-xl font-bold text-slate-800">Branch: {data.city} / Type: {data.type}</h3>}
+              {dataList.length > 1 && <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100">Branch: {data.city} / Type: {data.type}</h3>}
               <RoutingNumberCard data={data} />
             </div>
           ))}
 
-          <section className="prose prose-lg text-slate-600 max-w-none">
-            <h2 className="text-2xl font-bold text-slate-900">What is this routing number used for?</h2>
+          <section className="prose prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-slate-300 max-w-none">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">What is this routing number used for?</h2>
             <p>
               The {currentYear} routing number for <strong>{bankName}</strong> in <strong>{stateFullName}</strong> is primarily used to identify your specific bank branch during financial transactions. 
               Depending on the type of account you have, you will use <strong>{primaryData.routing_number}</strong> for:
             </p>
-            <div className="bg-slate-50 border border-slate-200 rounded-xl overflow-hidden my-6">
+            <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden my-6">
               <table className="w-full text-left">
-                <thead className="bg-slate-100 border-b border-slate-200">
+                <thead className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
                   <tr>
-                    <th className="px-6 py-4 text-sm font-bold text-slate-700">Transaction Type</th>
-                    <th className="px-6 py-4 text-sm font-bold text-slate-700">Supported</th>
+                    <th className="px-6 py-4 text-sm font-bold text-slate-700 dark:text-slate-300">Transaction Type</th>
+                    <th className="px-6 py-4 text-sm font-bold text-slate-700 dark:text-slate-300">Supported</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 text-sm">
+                <tbody className="divide-y divide-slate-100 dark:divide-slate-700/50 text-sm">
                   <tr>
-                    <td className="px-6 py-4 font-medium text-slate-800 flex items-center gap-2">
+                    <td className="px-6 py-4 font-medium text-slate-800 dark:text-slate-200 flex items-center gap-2">
                        <div className="w-3 h-3 rounded-full bg-blue-500"></div> ACH Direct Deposit
                     </td>
-                    <td className="px-6 py-4">{(primaryData.type === 'ACH' || primaryData.type === 'BOTH') ? '✅ Yes' : '❌ No'}</td>
+                    <td className="px-6 py-4 dark:text-slate-300">{(primaryData.type === 'ACH' || primaryData.type === 'BOTH') ? '✅ Yes' : '❌ No'}</td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 font-medium text-slate-800 flex items-center gap-2">
+                    <td className="px-6 py-4 font-medium text-slate-800 dark:text-slate-200 flex items-center gap-2">
                        <div className="w-3 h-3 rounded-full bg-orange-500"></div> Wire Transfer (Domestic)
                     </td>
-                    <td className="px-6 py-4">{(primaryData.type === 'WIRE' || primaryData.type === 'BOTH') ? '✅ Yes' : '❌ No'}</td>
+                    <td className="px-6 py-4 dark:text-slate-300">{(primaryData.type === 'WIRE' || primaryData.type === 'BOTH') ? '✅ Yes' : '❌ No'}</td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 font-medium text-slate-800 flex items-center gap-2">
-                       <div className="w-3 h-3 rounded-full bg-slate-500"></div> Paper Checks
+                    <td className="px-6 py-4 font-medium text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                       <div className="w-3 h-3 rounded-full bg-slate-500 dark:bg-slate-400"></div> Paper Checks
                     </td>
-                    <td className="px-6 py-4">✅ Yes</td>
+                    <td className="px-6 py-4 dark:text-slate-300">✅ Yes</td>
                   </tr>
                 </tbody>
               </table>
@@ -158,8 +158,8 @@ export default function BankState() {
 
           <AdUnit slot="UNIT 2: Mid content, in-article responsive" className="my-8" />
 
-          <section className="prose prose-lg text-slate-600 max-w-none">
-            <h2 className="text-2xl font-bold text-slate-900">How to find your routing number</h2>
+          <section className="prose prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-slate-300 max-w-none">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">How to find your routing number</h2>
             <p>
               If you aren't sure whether <strong>{primaryData.routing_number}</strong> is the right number for your account, you can quickly verify it in three ways:
             </p>
@@ -169,7 +169,7 @@ export default function BankState() {
               <li><strong>Mobile App:</strong> Open the official mobile app, select your checking account, and view the routing details.</li>
             </ol>
             
-            <h3 className="text-xl font-bold text-slate-800 mt-8">Wire Transfer Instructions</h3>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mt-8">Wire Transfer Instructions</h3>
             <p>
               When receiving a domestic wire transfer, you must provide your sender with the exact wire routing number. If the table above indicates that this number only supports ACH, doing a wire transfer using <strong>{primaryData.routing_number}</strong> will fail. Always verify the SWIFT/BIC code for international wires directly with {bankName}.
             </p>
@@ -179,7 +179,7 @@ export default function BankState() {
           
           <AdUnit slot="UNIT 3: After FAQ, 300x250 display" className="mx-auto max-w-[300px]" />
 
-          <div className="text-sm text-slate-400 border-t pt-6 mt-8">
+          <div className="text-sm text-slate-400 dark:text-slate-500 border-t dark:border-slate-800 pt-6 mt-8">
             <p><strong>Disclaimer:</strong> The information provided on this page regarding {bankName} is for educational purposes. Always double-check your routing number with your financial institution before initiating any major transfers.</p>
           </div>
         </div>

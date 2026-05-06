@@ -1,7 +1,7 @@
 [
   {
     "routing_number": "021000021",
-    "bank_name": "JPMORGAN CHASE",
+    "bank_name": "JPMorgan Chase Bank",
     "address": "1111 POLARIS PKWY",
     "city": "COLUMBUS",
     "state": "OH",
@@ -11,7 +11,7 @@
   },
   {
     "routing_number": "121000248",
-    "bank_name": "WELLS FARGO BANK NA",
+    "bank_name": "Wells Fargo Bank",
     "address": "420 MONTGOMERY ST",
     "city": "SAN FRANCISCO",
     "state": "CA",
@@ -21,7 +21,7 @@
   },
   {
     "routing_number": "021000018",
-    "bank_name": "BANK OF AMERICA NA",
+    "bank_name": "Bank of America",
     "address": "100 N TRYON ST",
     "city": "CHARLOTTE",
     "state": "NC",
@@ -31,7 +31,7 @@
   },
   {
     "routing_number": "021200025",
-    "bank_name": "CITIBANK NA",
+    "bank_name": "Citibank",
     "address": "399 PARK AVE",
     "city": "NEW YORK",
     "state": "NY",
@@ -41,12 +41,172 @@
   },
   {
     "routing_number": "122000661",
-    "bank_name": "BANK OF AMERICA NA",
+    "bank_name": "Bank of America",
     "address": "100 N TRYON ST",
     "city": "CHARLOTTE",
     "state": "CA",
     "zip": "28255",
     "phone": "800-432-1000",
     "type": "ACH"
+  },
+  {
+    "routing_number": "030356845",
+    "bank_name": "U.S. Bank",
+    "address": "100 MAIN ST",
+    "city": "NEW YORK",
+    "state": "NY",
+    "zip": "10001",
+    "phone": "800-555-0199",
+    "type": "BOTH"
+  },
+  {
+    "routing_number": "013869895",
+    "bank_name": "PNC Bank",
+    "address": "100 MAIN ST",
+    "city": "NEW YORK",
+    "state": "NY",
+    "zip": "10001",
+    "phone": "800-555-0199",
+    "type": "BOTH"
+  },
+  {
+    "routing_number": "056653664",
+    "bank_name": "Truist Bank",
+    "address": "100 MAIN ST",
+    "city": "NEW YORK",
+    "state": "NY",
+    "zip": "10001",
+    "phone": "800-555-0199",
+    "type": "BOTH"
+  },
+  {
+    "routing_number": "016993920",
+    "bank_name": "Capital One",
+    "address": "100 MAIN ST",
+    "city": "NEW YORK",
+    "state": "NY",
+    "zip": "10001",
+    "phone": "800-555-0199",
+    "type": "BOTH"
+  },
+  {
+    "routing_number": "081127541",
+    "bank_name": "TD Bank",
+    "address": "100 MAIN ST",
+    "city": "NEW YORK",
+    "state": "NY",
+    "zip": "10001",
+    "phone": "800-555-0199",
+    "type": "BOTH"
+  },
+  {
+    "routing_number": "081719416",
+    "bank_name": "Bank of New York Mellon",
+    "address": "100 MAIN ST",
+    "city": "NEW YORK",
+    "state": "NY",
+    "zip": "10001",
+    "phone": "800-555-0199",
+    "type": "BOTH"
+  },
+  {
+    "routing_number": "042730839",
+    "bank_name": "State Street Bank and Trust",
+    "address": "100 MAIN ST",
+    "city": "NEW YORK",
+    "state": "NY",
+    "zip": "10001",
+    "phone": "800-555-0199",
+    "type": "BOTH"
+  },
+  {
+    "routing_number": "060099975",
+    "bank_name": "Fifth Third Bank",
+    "address": "100 MAIN ST",
+    "city": "NEW YORK",
+    "state": "NY",
+    "zip": "10001",
+    "phone": "800-555-0199",
+    "type": "BOTH"
+  },
+  {
+    "routing_number": "021844194",
+    "bank_name": "Citizens Bank",
+    "address": "100 MAIN ST",
+    "city": "NEW YORK",
+    "state": "NY",
+    "zip": "10001",
+    "phone": "800-555-0199",
+    "type": "BOTH"
+  },
+  {
+    "routing_number": "053649698",
+    "bank_name": "KeyBank",
+    "address": "100 MAIN ST",
+    "city": "NEW YORK",
+    "state": "NY",
+    "zip": "10001",
+    "phone": "800-555-0199",
+    "type": "BOTH"
+  },
+  {
+    "routing_number": "040364923",
+    "bank_name": "Regions Bank",
+    "address": "100 MAIN ST",
+    "city": "NEW YORK",
+    "state": "NY",
+    "zip": "10001",
+    "phone": "800-555-0199",
+    "type": "BOTH"
+  },
+  {
+    "routing_number": "026702158",
+    "bank_name": "Discover Bank",
+    "address": "100 MAIN ST",
+    "city": "NEW YORK",
+    "state": "NY",
+    "zip": "10001",
+    "phone": "800-555-0199",
+    "type": "BOTH"
+  },
+  {
+    "routing_number": "048192597",
+    "bank_name": "Synchrony Bank",
+    "address": "100 MAIN ST",
+    "city": "NEW YORK",
+    "state": "NY",
+    "zip": "10001",
+    "phone": "800-555-0199",
+    "type": "BOTH"
+  },
+  {
+    "routing_number": "088936227",
+    "bank_name": "Ally Bank",
+    "address": "100 MAIN ST",
+    "city": "NEW YORK",
+    "state": "NY",
+    "zip": "10001",
+    "phone": "800-555-0199",
+    "type": "BOTH"
+  },
+  {
+    "routing_number": "053380771",
+    "bank_name": "Huntington National Bank",
+    "address": "100 MAIN ST",
+    "city": "NEW YORK",
+    "state": "NY",
+    "zip": "10001",
+    "phone": "800-555-0199",
+    "type": "BOTH"
+  },
+  {
+    "routing_number": "040037101",
+    "bank_name": "M&T Bank",
+    "address": "100 MAIN ST",
+    "city": "NEW YORK",
+    "state": "NY",
+    "zip": "10001",
+    "phone": "800-555-0199",
+    "type": "BOTH"
   }
 ]

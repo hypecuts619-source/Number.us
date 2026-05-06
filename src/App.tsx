@@ -36,10 +36,12 @@ export default function App() {
               <Link to="/" className="text-2xl font-black text-[#1e3a5f] dark:text-blue-400 tracking-tight">
                 USRouting<span className="text-blue-600 dark:text-blue-300">Number.com</span>
               </Link>
-              <nav className="hidden md:flex gap-6 font-semibold text-slate-600 dark:text-slate-300">
+              <nav className="hidden lg:flex gap-6 font-semibold text-slate-600 dark:text-slate-300">
                 <Link to="/" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Home</Link>
                 <Link to="/major-banks" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Major Banks</Link>
-                <Link to="/check-digit-calculator" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Calculator</Link>
+                <Link to="/how-to-find-routing-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Find Routing Number</Link>
+                <Link to="/how-to-wire-money" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Wire Guide</Link>
+                <Link to="/international-wire-guide" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">International Wires</Link>
               </nav>
               <div className="flex items-center gap-2">
                 <ThemeToggle />

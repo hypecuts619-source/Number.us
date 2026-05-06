@@ -49,7 +49,6 @@ export default function SearchBar() {
         keys: ['bank_name', 'routing_number', 'state', 'city'],
         threshold: 0.3,
         ignoreLocation: true, // better for partial routing numbers
-        maxPatternLength: 32,
       }),
     [data]
   );

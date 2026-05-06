@@ -1,7 +1,7 @@
 export default function FAQSection({ faqs }: { faqs: { question: string; answer: string }[] }) {
   return (
     <section className="my-12">
-      <h2 className="text-3xl font-bold text-slate-900 mb-8">Frequently Asked Questions</h2>
+      <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-8">Frequently Asked Questions</h2>
       <div className="space-y-6">
         {faqs.map((faq, index) => (
           <div key={index} className="bg-slate-50 rounded-xl p-6 border border-slate-100">

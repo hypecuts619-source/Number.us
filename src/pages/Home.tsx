@@ -40,7 +40,7 @@ export default function Home() {
 
       <div className="grid md:grid-cols-3 gap-12 mt-16">
         <div className="md:col-span-2">
-          <h2 className="text-3xl font-bold text-slate-900 mb-6">What is a Routing Number?</h2>
+          <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">What is a Routing Number?</h2>
           <div className="prose prose-lg text-slate-600">
             <p>
               A routing transit number (RTN) is a nine-digit code used by banks in the United States to identify the financial institution that holds the account. Created by the American Bankers Association (ABA) in 1910, these digits are essential for facilitating transactions such as electronic funds transfers, direct deposits, bill payments, and wire transfers.
@@ -60,7 +60,7 @@ export default function Home() {
 
         <div>
           <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-sm">
-            <h2 className="text-xl font-bold text-slate-900 mb-4">Top Searched Banks</h2>
+            <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Top Searched Banks</h2>
             <ul className="space-y-3">
               {topBanks.map((bank, i) => (
                 <li key={i}>

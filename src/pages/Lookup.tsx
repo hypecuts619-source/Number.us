@@ -55,7 +55,7 @@ export default function Lookup() {
           <h1 className="text-2xl text-slate-500 font-bold uppercase tracking-wider mb-2">
             Routing Number Details
           </h1>
-          <div className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight font-mono mb-6 break-all">
+          <div className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tight font-mono mb-6 break-all">
             {routingNumber}
           </div>
           
@@ -93,7 +93,7 @@ export default function Lookup() {
         <AdUnit slot="UNIT 2: Mid content, in-article responsive" />
 
         <div className="prose prose-lg text-slate-600 max-w-none mt-12 bg-slate-50 p-8 rounded-2xl border border-slate-100">
-          <h2 className="text-2xl font-bold text-slate-900 mt-0">How routing number validation works</h2>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-0">How routing number validation works</h2>
           <p>
             US bank routing numbers use a mathematical module 10 checksum to ensure they are valid. This prevents typos and errors when processing payments (like ACH direct deposits or wire transfers).
           </p>
@@ -126,7 +126,7 @@ export default function Lookup() {
             <h1 className="text-2xl text-slate-500 font-bold uppercase tracking-wider mb-2">
               Routing Number Details
             </h1>
-            <div className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight font-mono mb-6">
+            <div className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tight font-mono mb-6">
               {data.routing_number}
             </div>
             <div className="flex justify-center mb-6">
@@ -152,7 +152,7 @@ export default function Lookup() {
           <div className="grid md:grid-cols-2 gap-8">
              <div>
                <div className="text-sm text-slate-500 font-semibold mb-1 uppercase">Bank Name</div>
-               <div className="text-xl font-bold text-slate-900">{data.bank_name}</div>
+               <div className="text-xl font-bold text-slate-900 dark:text-white">{data.bank_name}</div>
              </div>
              <div>
                <div className="text-sm text-slate-500 font-semibold mb-1 uppercase">Transaction Type</div>
@@ -185,7 +185,7 @@ export default function Lookup() {
       <AdUnit slot="UNIT 2: Mid content, in-article responsive" />
 
       <div className="prose prose-lg text-slate-600 max-w-none mt-12">
-        <h2 className="text-2xl font-bold text-slate-900">How routing number validation works</h2>
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">How routing number validation works</h2>
         <p>
           Routing numbers like <strong className="font-mono">{data.routing_number}</strong> use a mathematical checksum to ensure they are valid. The first 8 digits identify the bank and its location, and the 9th digit is a checksum calculated from the previous 8 digits. This prevents typos and errors when processing payments.
         </p>

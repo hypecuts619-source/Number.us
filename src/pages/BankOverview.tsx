@@ -57,7 +57,7 @@ export default function BankOverview() {
 
       <BreadcrumbNav crumbs={[{ name: bankName, url: `/routing-number/${bankSlug}` }]} />
 
-      <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
+      <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4">
         {bankName} Routing Number — All States ({currentYear})
       </h1>
       
@@ -67,7 +67,7 @@ export default function BankOverview() {
 
       <div className="grid md:grid-cols-3 gap-12 mt-10">
         <div className="md:col-span-2">
-          <div className="prose prose-lg text-slate-600 mb-10">
+          <div className="prose prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-slate-300 mb-10 max-w-none">
             <p>
               To process payments, direct deposits, or wire transfers with <strong>{bankName}</strong>, 
               you will need the correct 9-digit routing number. Due to the size of the bank, 
@@ -78,15 +78,15 @@ export default function BankOverview() {
               <strong>ACH direct deposits</strong> and <strong>Wire transfers</strong> sometimes require different numbers, so be sure to click your state to see the specific usage guidelines.
             </p>
 
-            <h2 className="text-2xl font-bold text-slate-800 mt-8 mb-4 border-b pb-2">About {bankName}</h2>
+            <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mt-8 mb-4 border-b dark:border-slate-700 pb-2">About {bankName}</h2>
             <p>{bankDetails.history}</p>
             
-            <h3 className="text-xl font-bold text-slate-800 mt-6 mb-3">Mission & Key Services</h3>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mt-6 mb-3">Mission & Key Services</h3>
             <p>{bankDetails.mission}</p>
             <p>{bankDetails.services}</p>
             
-            <h3 className="text-xl font-bold text-slate-800 mt-6 mb-4">Interesting Facts</h3>
-            <ul className="bg-slate-50 p-6 rounded-xl border border-slate-200">
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mt-6 mb-4">Interesting Facts</h3>
+            <ul className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-700">
               <li><strong>Founded:</strong> {bankDetails.facts.foundingYear}</li>
               {bankDetails.facts.achievements.map((achievement, i) => (
                 <li key={i}>{achievement}</li>
@@ -94,16 +94,16 @@ export default function BankOverview() {
             </ul>
           </div>
 
-          <h2 className="text-2xl font-bold text-slate-800 mb-6 border-b pb-2">{bankName} Locations by State</h2>
+          <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6 border-b dark:border-slate-700 pb-2">{bankName} Locations by State</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             {states.map(state => (
               <Link 
                 key={state}
                 to={`/routing-number/${bankSlug}/${state.toLowerCase()}`}
-                className="flex items-center justify-between p-4 bg-white border border-slate-200 rounded-xl hover:border-blue-500 hover:shadow-md transition-all group"
+                className="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-md transition-all group"
               >
-                <span className="font-semibold text-slate-800 group-hover:text-blue-700">{getStateFullName(state)}</span>
-                <span className="text-sm bg-slate-100 text-slate-500 px-2 py-1 rounded font-mono group-hover:bg-blue-50 group-hover:text-blue-600">
+                <span className="font-semibold text-slate-800 dark:text-slate-200 group-hover:text-blue-700 dark:group-hover:text-blue-400">{getStateFullName(state)}</span>
+                <span className="text-sm bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 px-2 py-1 rounded font-mono group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 group-hover:text-blue-600 dark:group-hover:text-blue-300">
                   {bankData.filter(d => d.state === state).length} number(s)
                 </span>
               </Link>
