@@ -1,20 +1,23 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# US Routing Number Lookup
 
-# Run and deploy your AI Studio app
+This application provides a directory and search interface for US Bank Routing Numbers (FedACH and Fedwire).
 
-This contains everything you need to run your app locally.
+## Updating Data
 
-View your app in AI Studio: https://ai.studio/apps/e7b1cd69-8d00-4079-8e1b-1d656cda34d7
+As of December 2018, the Federal Reserve no longer allows public manual downloads of the FedACH directory without a FedLine account. To keep this dataset up-to-date, this project relies on a community-maintained GitHub repository tracking the data.
 
-## Run Locally
+To fetch the latest data and merge it for the application:
 
-**Prerequisites:**  Node.js
+```bash
+npm run update-data
+```
 
+Running this will:
+1. Reach out to the public repositories.
+2. Download both the FedACH and Fedwire lists.
+3. Automatically merge, format, and save the updated file to `src/data/routing.json`.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+After the data is successfully updated, rebuild the site to apply the new data:
+```bash
+npm run build
+```
