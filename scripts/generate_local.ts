@@ -38,6 +38,24 @@ function generateRoutingNumber(): string {
   return eight + check.toString();
 }
 
+const ADJECTIVES = ['First', 'Commerce', 'Union', 'Community', 'Farmers', 'Merchants', 'Fidelity', 'Liberty', 'Pinnacle', 'Summit', 'Apex', 'Premier', 'Standard', 'Guaranty', 'Trust', 'Reliant', 'Heritage', 'Legacy', 'Pioneer', 'Frontier', 'Century', 'Pacific', 'Atlantic', 'Southern', 'Northern', 'Western', 'Eastern', 'Peoples', 'Citizens', 'Security', 'Mutual', 'American', 'National', 'State', 'City', 'County', 'Continental', 'Central', 'Capital', 'Universal', 'Global', 'Regional', 'Neighborhood', 'Local', 'Hometown', 'Main Street'];
+
+const NOUNS = ['National Bank', 'Bank', 'State Bank', 'Savings Bank', 'Trust', 'Credit Union', 'Financial', 'Bank & Trust', 'Federal Credit Union', 'Federal Bank', 'Cooperative Bank', 'Mutual Bank'];
+
+function generateFakeBankName(): string {
+  const adj = ADJECTIVES[Math.floor(Math.random() * ADJECTIVES.length)];
+  const noun = NOUNS[Math.floor(Math.random() * NOUNS.length)];
+  
+  // Optional middle words for variety
+  const middleWords = ['Union', 'Commerce', 'Community', 'Trust', 'Holdings', 'Financial', 'County'];
+  if (Math.random() > 0.7) {
+     const mid = middleWords[Math.floor(Math.random() * middleWords.length)];
+     return `${adj} ${mid} ${noun}`;
+  }
+  
+  return `${adj} ${noun}`;
+}
+
 const data = [];
 const usedNumbers = new Set();
 
@@ -51,7 +69,7 @@ for (let i = 0; i < 25000; i++) {
   
   usedNumbers.add(routing_number);
 
-  const bank_name = Math.random() > 0.4 ? MAJOR_BANKS[Math.floor(Math.random() * MAJOR_BANKS.length)] : `Community True Bank ${i}`;
+  const bank_name = Math.random() > 0.4 ? MAJOR_BANKS[Math.floor(Math.random() * MAJOR_BANKS.length)] : generateFakeBankName();
   const state = STATES[Math.floor(Math.random() * STATES.length)];
   const city = CITIES[Math.floor(Math.random() * CITIES.length)];
   
