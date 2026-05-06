@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useMemo } from 'react';
 import SearchBar from '../components/SearchBar';
+import AccountValidator from '../components/AccountValidator';
 import AdUnit from '../components/AdUnit';
 import CheckDiagram from '../components/CheckDiagram';
 import { getTopSearchedBanks } from '../lib/getData';
@@ -26,20 +27,23 @@ export default function Home() {
         </script>
       </SEO>
 
-      <section className="text-center py-16 px-4 bg-gradient-to-b from-[#1e3a5f] to-[#2a5082] rounded-3xl text-white shadow-xl mb-12">
-        <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight">
-          Find Any US Bank <br className="hidden md:block" />
-          <span className="text-blue-300">Routing Number</span>
+      <div className="text-center py-12">
+        <h1 className="text-4xl md:text-5xl font-black mb-4 text-slate-900 dark:text-white tracking-tight">
+          Find Any US Bank Routing Number
         </h1>
-        <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto font-medium">
-          Verify ACH, direct deposit, and wire transfer routing numbers for over 25,000 active US bank institutions.
+        <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8">
+          Verify ACH, direct deposit, and wire transfer routing numbers for over 25,000 active US bank institutions. Search by bank name below.
         </p>
-        <SearchBar />
-      </section>
+        <div className="max-w-3xl mx-auto">
+          <SearchBar />
+        </div>
+      </div>
 
-      <AdUnit slot="UNIT 1: Below H1, 728x90 leaderboard" className="min-h-[90px]" />
+      <AccountValidator />
 
-      <div className="grid md:grid-cols-3 gap-12 mt-16">
+      <AdUnit slot="UNIT 1: Below Validation Tool, 728x90 leaderboard" className="min-h-[90px] my-10" />
+
+      <div className="grid md:grid-cols-3 gap-12 mt-8">
         <div className="md:col-span-2">
           <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">What is a Routing Number?</h2>
           <div className="prose prose-lg text-slate-600 dark:text-slate-300">
