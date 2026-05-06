@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "npm run sitemap && vite build",
+    "build": "npm run update-data && npm run sitemap && vite build",
     "preview": "NODE_ENV=production node server.ts",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
