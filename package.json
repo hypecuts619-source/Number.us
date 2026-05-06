@@ -10,6 +10,7 @@
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
     "sitemap": "node scripts/generate-sitemap.js",
+    "import-real-data": "node scripts/import-real-data.js",
     "data:sync": "tsx scripts/syncData.ts"
   },
   "dependencies": {
