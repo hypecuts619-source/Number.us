@@ -105,6 +105,8 @@ export default function Lookup() {
           </Link>
         </div>
 
+        <AdUnit slot="UNIT 4: Below Lookup Box (Not Found)" className="mb-12" />
+
         <AdUnit slot="UNIT 2: Mid content, in-article responsive" />
 
         <div className="prose prose-lg text-slate-600 max-w-none mt-12 bg-slate-50 p-8 rounded-2xl border border-slate-100">
@@ -203,6 +205,8 @@ export default function Lookup() {
           details={`Location: ${data.city}, ${data.state}\nPhone: ${data.phone}\nType: ${data.type}`} 
         />
       </div>
+
+      <AdUnit slot="UNIT 4: Below Lookup Box (Found)" className="mb-12" />
 
       <TransferCompatibilityChecker routingNumberType={data.type || 'BOTH'} />
 
