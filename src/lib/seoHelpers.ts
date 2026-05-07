@@ -1,5 +1,5 @@
 export const generateBankOverviewTitle = (bankName: string) => {
-  return `${bankName} Routing Number 2026 — All States | USRoutingNumber.com`;
+  return `${bankName} Routing Number 2026 — Lookup ACH & Wire`;
 };
 
 export const generateBankOverviewDescription = (bankName: string) => {
@@ -7,7 +7,7 @@ export const generateBankOverviewDescription = (bankName: string) => {
 };
 
 export const generateBankStateTitle = (bankName: string, stateName: string) => {
-  return `${bankName} Routing Number ${stateName} 2026`;
+  return `${bankName} Routing Number ${stateName} (Lookup 2026)`;
 };
 
 export const generateBankStateDescription = (bankName: string, stateName: string, routingNumber: string) => {
@@ -15,7 +15,7 @@ export const generateBankStateDescription = (bankName: string, stateName: string
 };
 
 export const generateLookupTitle = (routingNumber: string) => {
-  return `Routing Number ${routingNumber} — Bank Details | USRoutingNumber.com`;
+  return `${routingNumber} Routing Number — Bank Lookup & Verification`;
 };
 
 export const generateLookupDescription = (routingNumber: string, bankName: string) => {

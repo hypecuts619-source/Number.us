@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import BreadcrumbNav from '../components/BreadcrumbNav';
+import ArticleAuthorMeta from '../components/ArticleAuthorMeta';
 import AdUnit from '../components/AdUnit';
 import SEO from '../components/SEO';
 import TableOfContents from '../components/TableOfContents';
@@ -19,9 +20,10 @@ export default function WireTransferGuide() {
 
       <BreadcrumbNav crumbs={[{ name: 'How to Wire Money', url: '/how-to-wire-money' }]} />
 
-      <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-8">
+      <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4 mt-8">
         How to Wire Money Using a Routing Number
       </h1>
+      <ArticleAuthorMeta date="March 21, 2026" readTime="6 min read" />
 
       <AdUnit slot="UNIT 1: Below H1" className="my-8" />
 

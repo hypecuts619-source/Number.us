@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import BreadcrumbNav from '../components/BreadcrumbNav';
+import ArticleAuthorMeta from '../components/ArticleAuthorMeta';
 import AdUnit from '../components/AdUnit';
 import SEO from '../components/SEO';
 import TableOfContents from '../components/TableOfContents';
@@ -19,9 +20,10 @@ export default function InternationalWireGuide() {
 
       <BreadcrumbNav crumbs={[{ name: 'International Wire Guide', url: '/international-wire-guide' }]} />
 
-      <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-8">
+      <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4 mt-8">
         International Wire Transfers: SWIFT/BIC & IBANs Explained
       </h1>
+      <ArticleAuthorMeta date="April 4, 2026" readTime="5 min read" />
 
       <AdUnit slot="UNIT 1: Below H1" className="my-8" />
 

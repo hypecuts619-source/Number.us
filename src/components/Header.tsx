@@ -11,7 +11,7 @@ export default function Header() {
     { name: 'Home', path: '/' },
     { name: 'By State', path: '/states' },
     { name: 'Major Banks', path: '/major-banks' },
-    { name: 'Routing vs Account', path: '/routing-number-vs-account-number' },
+    { name: 'Blog & Guides', path: '/blog' },
     { name: 'Wire Guide', path: '/how-to-wire-money' },
   ];
 

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
+import ArticleAuthorMeta from '../components/ArticleAuthorMeta';
 import CheckDiagram from '../components/CheckDiagram';
 import AdUnit from '../components/AdUnit';
 import TableOfContents from '../components/TableOfContents';
@@ -19,9 +20,10 @@ export default function FindRoutingNumberOnCheck() {
       
       <BreadcrumbNav crumbs={[{ name: 'Find Routing Number on Check', url: '/find-routing-number-on-check' }]} />
 
-      <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-8 mt-8">
+      <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4 mt-8">
         How to Find Your Routing Number on a Check
       </h1>
+      <ArticleAuthorMeta date="February 10, 2026" readTime="2 min read" />
         
       <div className="flex flex-col lg:flex-row gap-12">
         <div className="lg:w-2/3">

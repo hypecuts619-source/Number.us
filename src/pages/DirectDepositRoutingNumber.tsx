@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
+import ArticleAuthorMeta from '../components/ArticleAuthorMeta';
 import AdUnit from '../components/AdUnit';
 import TableOfContents from '../components/TableOfContents';
 import RecentlyViewedWidget from '../components/RecentlyViewedWidget';
@@ -18,9 +19,10 @@ export default function DirectDepositRoutingNumber() {
       
       <BreadcrumbNav crumbs={[{ name: 'Direct Deposit Routing Number', url: '/direct-deposit-routing-number' }]} />
 
-      <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-8 mt-8">
+      <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4 mt-8">
         Routing Numbers for Direct Deposit
       </h1>
+      <ArticleAuthorMeta date="March 5, 2026" readTime="3 min read" />
         
       <div className="flex flex-col lg:flex-row gap-12">
         <div className="lg:w-2/3">

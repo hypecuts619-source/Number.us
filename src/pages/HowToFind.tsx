@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import AdUnit from '../components/AdUnit';
 import TableOfContents from '../components/TableOfContents';
+import ArticleAuthorMeta from '../components/ArticleAuthorMeta';
 import RecentlyViewedWidget from '../components/RecentlyViewedWidget';
 
 export default function HowToFind() {
@@ -22,11 +23,12 @@ export default function HowToFind() {
         </Link>
       </div>
 
-      <header className="mb-8">
+      <header className="mb-4">
         <h1 className="text-4xl font-extrabold text-[#1e3a5f] dark:text-white mb-4">
           How to Find Your Routing Number
         </h1>
-        <p className="text-xl text-slate-600 dark:text-slate-400">
+        <ArticleAuthorMeta date="January 28, 2026" readTime="3 min read" />
+        <p className="text-xl text-slate-600 dark:text-slate-400 mt-4">
           Whether you're setting up direct deposit, paying a bill, or ordering new checks, you'll need your bank's 9-digit routing number. Here are the fastest ways to find it.
         </p>
       </header>

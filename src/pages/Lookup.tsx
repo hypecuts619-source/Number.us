@@ -14,6 +14,9 @@ import TransactionBadge from '../components/TransactionBadge';
 import { useRecentlyViewed } from '../hooks/useRecentlyViewed';
 import TrustIndicator from '../components/TrustIndicator';
 import RelatedLinks from '../components/RelatedLinks';
+import CheckDigitVisualizer from '../components/CheckDigitVisualizer';
+import TransferCompatibilityChecker from '../components/TransferCompatibilityChecker';
+import DirectDepositFormGenerator from '../components/DirectDepositFormGenerator';
 
 function isValidRoutingNumber(routingNumber: string): boolean {
   if (!/^\d{9}$/.test(routingNumber)) {
@@ -114,6 +117,10 @@ export default function Lookup() {
           </p>
         </div>
 
+        {routingNumber && /^\d{9}$/.test(routingNumber) && (
+          <CheckDigitVisualizer routingNumber={routingNumber} />
+        )}
+
         <div className="mt-16">
           <FAQSection faqs={faqs} />
         </div>
@@ -197,6 +204,10 @@ export default function Lookup() {
         />
       </div>
 
+      <TransferCompatibilityChecker routingNumberType={data.type || 'BOTH'} />
+
+      <DirectDepositFormGenerator bankName={data.bank_name} routingNumber={data.routing_number} />
+
       <AdUnit slot="UNIT 2: Mid content, in-article responsive" />
 
       <div className="prose prose-lg text-slate-600 dark:text-slate-300 max-w-none mt-12 bg-white p-8 rounded-3xl border border-slate-200">
@@ -209,6 +220,10 @@ export default function Lookup() {
         <p>
           Behind the scenes, the first eight integers denote the localized Federal Reserve sorting territory alongside the specific institutional identifier. The critical 9th digit serves solely as an automated mathematical checksum. By applying a meticulously weighted formula (multiplying specific digits by 3, 7, and 1 respectively), banking software can instantaneously detect human transcription errors, thereby blocking the transaction from initiating until the data is manually corrected.
         </p>
+
+        {data.routing_number && /^\d{9}$/.test(data.routing_number) && (
+          <CheckDigitVisualizer routingNumber={data.routing_number} />
+        )}
 
         <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">Essential Safety Preparations</h3>
         <p>

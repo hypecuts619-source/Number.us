@@ -18,8 +18,8 @@ export default function Home() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <SEO 
-        title="US Bank Routing Number Directory (2026) | USRoutingNumber.com"
-        description="Find and verify US bank routing numbers for direct deposit, ACH, and wire transfers. Search ~70,000 official Federal Reserve routing codes."
+        title="Find Routing Number & Bank Routing Number Lookup (2026)"
+        description="Lookup any US bank routing number for direct deposit, ACH, and wire transfers. Find routing numbers for Chase, Wells Fargo, Bank of America, and more."
         canonicalUrl="/"
       >
         <script type="application/ld+json">
@@ -32,7 +32,7 @@ export default function Home() {
           Find Any US Bank Routing Number
         </h1>
         <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8">
-          Instantly verify ACH, direct deposit, and wire transfer routing numbers for every active US financial institution. Access the most up-to-date Federal Reserve directory to securely route your funds.
+          Instantly execute a routing number lookup for ACH, direct deposit, and wire transfers. Search ~70,000 official ABA routing numbers and easily find your bank routing number.
         </p>
         <div className="max-w-3xl mx-auto">
           <SearchBar />

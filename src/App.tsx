@@ -29,6 +29,7 @@ import NotFound from './pages/NotFound';
 
 import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import Blog from './pages/Blog';
 
 import { Toaster } from 'sonner';
 import { ThemeProvider } from './ThemeContext';
@@ -87,6 +88,7 @@ export default function App() {
               <Route path="/how-to-wire-money" element={<WireTransferGuide />} />
               <Route path="/international-wire-guide" element={<InternationalWireGuide />} />
               <Route path="/how-to-find-routing-number" element={<HowToFind />} />
+              <Route path="/blog" element={<Blog />} />
               <Route path="/check-digit-calculator" element={<CheckDigitCalculator />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
