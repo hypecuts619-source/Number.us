@@ -2,9 +2,8 @@ import React, { useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
-import { getStateFullName } from '../lib/getData';
+import { getStateFullName, getAllRoutingData } from '../lib/getData';
 import { generateSlug } from '../lib/generateSlug';
-import data from '../data/routing.json';
 import AdUnit from '../components/AdUnit';
 
 export default function StateBankList() {
@@ -17,6 +16,7 @@ export default function StateBankList() {
 
   const stateData = useMemo(() => {
     if (!state) return [];
+    const data = getAllRoutingData();
     return data.filter(d => d.state.toLowerCase() === state.toLowerCase());
   }, [state]);
 

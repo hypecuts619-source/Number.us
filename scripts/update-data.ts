@@ -118,14 +118,14 @@ async function updateData() {
        });
     });
 
-    const outputPath = path.join(process.cwd(), 'src/data/routing.json');
+    const outputPath = path.join(process.cwd(), 'public/data/routing.json');
     const outputDir = path.dirname(outputPath);
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
     }
     fs.writeFileSync(outputPath, JSON.stringify(Array.from(map.values()), null, 2));
 
-    console.log(`Successfully saved ${map.size} unique records to src/data/routing.json!`);
+    console.log(`Successfully saved ${map.size} unique records to public/data/routing.json!`);
     console.log('You can now rebuild the application to deploy the new data.');
   } catch (e) {
     console.error('Error updating data:', e);

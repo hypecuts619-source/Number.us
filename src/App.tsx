@@ -5,6 +5,7 @@
 
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import Home from './pages/Home';
 import BankOverview from './pages/BankOverview';
 import BankState from './pages/BankState';
@@ -34,6 +35,31 @@ import { ThemeProvider } from './ThemeContext';
 import Header from './components/Header';
 
 export default function App() {
+  const [dataLoaded, setDataLoaded] = useState(false);
+
+  useEffect(() => {
+    fetch('/data/routing.json')
+      .then(res => res.json())
+      .then(data => {
+        window.__ROUTING_DATA__ = data;
+        setDataLoaded(true);
+      })
+      .catch(err => {
+        console.error('Failed to load routing data', err);
+        window.__ROUTING_DATA__ = [];
+        setDataLoaded(true);
+      });
+  }, []);
+
+  if (!dataLoaded) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-950">
+         <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+         <p className="mt-4 text-slate-500 font-medium animate-pulse">Loading routing database...</p>
+      </div>
+    );
+  }
+
   return (
     <ThemeProvider>
       <HelmetProvider>

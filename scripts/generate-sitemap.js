@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 // Note: Running this requires node with module support or tsx
-const routingDataPath = path.resolve('src/data/routing.json');
+const routingDataPath = path.resolve('public/data/routing.json');
 const sitemapPath = path.resolve('public/sitemap.xml');
 
 const generateSlug = (text) => {

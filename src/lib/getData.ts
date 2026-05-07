@@ -1,9 +1,14 @@
-import routingJson from '../data/routing.json';
 import { RoutingData } from './types';
 import { generateSlug } from './generateSlug';
 
+declare global {
+  interface Window {
+    __ROUTING_DATA__: RoutingData[];
+  }
+}
+
 export const getAllRoutingData = (): RoutingData[] => {
-  return routingJson as RoutingData[];
+  return window.__ROUTING_DATA__ || [];
 };
 
 export const getBanks = (): string[] => {
