@@ -32,7 +32,7 @@ export default function Home() {
           Find Any US Bank Routing Number
         </h1>
         <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8">
-          Verify ACH, direct deposit, and wire transfer routing numbers for over 25,000 active US bank institutions. Search by bank name below.
+          Instantly verify ACH, direct deposit, and wire transfer routing numbers for every active US financial institution. Access the most up-to-date Federal Reserve directory to securely route your funds.
         </p>
         <div className="max-w-3xl mx-auto">
           <SearchBar />
