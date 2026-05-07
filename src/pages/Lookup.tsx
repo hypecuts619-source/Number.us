@@ -199,10 +199,20 @@ export default function Lookup() {
 
       <AdUnit slot="UNIT 2: Mid content, in-article responsive" />
 
-      <div className="prose prose-lg text-slate-600 max-w-none mt-12">
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">How routing number validation works</h2>
+      <div className="prose prose-lg text-slate-600 dark:text-slate-300 max-w-none mt-12 bg-white p-8 rounded-3xl border border-slate-200">
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-0">Understanding Your Validated Routing Number</h2>
         <p>
-          Routing numbers like <strong className="font-mono">{data.routing_number}</strong> use a mathematical checksum to ensure they are valid. The first 8 digits identify the bank and its location, and the 9th digit is a checksum calculated from the previous 8 digits. This prevents typos and errors when processing payments.
+          Routing numbers, such as <strong className="font-mono">{data.routing_number}</strong> currently associated with <strong>{data.bank_name}</strong>, leverage a precise algorithmic structure mandated by the American Bankers Association (ABA). The primary objective of this nine-digit code is to act as a flawless GPS coordinate system guiding your capital exclusively through the Federal Reserve architecture without risking bounces or misapplied funds.
+        </p>
+        
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">Mechanical Checksum Validation</h3>
+        <p>
+          Behind the scenes, the first eight integers denote the localized Federal Reserve sorting territory alongside the specific institutional identifier. The critical 9th digit serves solely as an automated mathematical checksum. By applying a meticulously weighted formula (multiplying specific digits by 3, 7, and 1 respectively), banking software can instantaneously detect human transcription errors, thereby blocking the transaction from initiating until the data is manually corrected.
+        </p>
+
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-6 mb-3">Essential Safety Preparations</h3>
+        <p>
+          Whether you are submitting authorization forms for a new corporate paycheck direct deposit, configuring recurring mortgage drafts via an Automated Clearing House (ACH) portal, or wiring emergency funds domestically across state lines, possessing an accurate routing numeric sequence is paramount. When in absolute doubt relative to standard ACH vs expedited wire operations, we categorically advise contacting a licensed {data.bank_name} banking representative physically stationed in {data.city}, {getStateFullName(data.state)} to guarantee absolute transfer fulfillment.
         </p>
       </div>
 
