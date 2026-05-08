@@ -5,6 +5,9 @@ import CopyButton from './CopyButton';
 import ChequeVisualizer from './ChequeVisualizer';
 
 export default function RoutingNumberCard({ data }: { data: RoutingData }) {
+  const type = data.type || 'ACH';
+  const zipStr = data.zip && data.zip !== 'Unknown' ? ` ${data.zip}` : '';
+
   return (
     <div className="flex flex-col gap-6">
       <div className="bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 print:border-none print:shadow-none print:p-0">
@@ -16,19 +19,19 @@ export default function RoutingNumberCard({ data }: { data: RoutingData }) {
             <PrintDownloadButtons 
               bankName={data.bank_name} 
               routingNumber={data.routing_number} 
-              details={`${data.city}, ${data.state} ${data.zip} - ${data.type}`} 
+              details={`${data.city}, ${data.state}${zipStr} - ${type}`} 
             />
           </div>
           <div className="font-mono text-5xl font-black text-slate-900 dark:text-white tracking-tight">
             {data.routing_number}
           </div>
           <div className="mt-4 flex flex-wrap gap-2 justify-center md:justify-start">
-            {(data.type === 'ACH' || data.type === 'BOTH') && (
+            {(type === 'ACH' || type === 'BOTH') && (
               <span className="bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase flex items-center gap-1">
                 <span className="w-2 h-2 rounded-full bg-blue-500 dark:bg-blue-400"></span> ACH Ready
               </span>
             )}
-            {(data.type === 'WIRE' || data.type === 'BOTH') && (
+            {(type === 'WIRE' || type === 'BOTH') && (
               <span className="bg-orange-100 dark:bg-orange-900/40 text-orange-800 dark:text-orange-300 border border-orange-200 dark:border-orange-800 text-xs font-bold px-3 py-1 rounded-full uppercase flex items-center gap-1">
                 <span className="w-2 h-2 rounded-full bg-orange-500 dark:bg-orange-400"></span> Wire Transfer
               </span>

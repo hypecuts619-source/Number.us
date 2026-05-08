@@ -1,10 +1,10 @@
 export interface RoutingData {
   routing_number: string;
   bank_name: string;
-  address: string;
+  address?: string;
   city: string;
   state: string;
-  zip: string;
-  phone: string;
-  type: string; // ACH, WIRE, BOTH
+  zip?: string;
+  phone?: string;
+  type?: string; // ACH, Fedwire, Fedwire / ACH. Default is ACH.
 }

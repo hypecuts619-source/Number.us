@@ -191,13 +191,13 @@ export default function Lookup() {
              <div>
                <div className="text-sm text-slate-500 font-semibold mb-1 uppercase">Location</div>
                <div className="text-lg font-medium text-slate-800">
-                 {data.city}, {getStateFullName(data.state)} {data.zip !== 'Unknown' && data.zip}
+                 {data.city}, {getStateFullName(data.state)} {data.zip && data.zip !== 'Unknown' ? data.zip : ''}
                </div>
              </div>
              <div>
                <div className="text-sm text-slate-500 font-semibold mb-1 uppercase">Phone Number</div>
                <div className="text-lg font-medium text-slate-800">
-                 {data.phone}
+                 {data.phone || 'Check Online'}
                </div>
              </div>
           </div>
@@ -206,7 +206,7 @@ export default function Lookup() {
         <PrintDownloadButtons 
           bankName={data.bank_name} 
           routingNumber={data.routing_number} 
-          details={`Location: ${data.city}, ${data.state}\nPhone: ${data.phone}\nType: ${data.type}`} 
+          details={`Location: ${data.city}, ${data.state}\nPhone: ${data.phone || 'Check Online'}\nType: ${data.type || 'ACH'}`} 
         />
       </div>
 

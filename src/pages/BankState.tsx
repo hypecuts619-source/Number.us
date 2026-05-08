@@ -106,7 +106,7 @@ export default function BankState() {
               >
                 <div>
                   <div className="font-semibold text-slate-800 dark:text-slate-200 group-hover:text-blue-700 dark:group-hover:text-blue-400">{branch.city}</div>
-                  <div className="text-xs text-slate-400 dark:text-slate-500">{branch.address}</div>
+                  <div className="text-xs text-slate-400 dark:text-slate-500">{branch.address || 'Main Office'}</div>
                 </div>
                 <div className="flex flex-col items-end gap-1">
                   <div className="text-sm bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300 px-2 py-0.5 rounded font-mono group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 group-hover:text-blue-600 dark:group-hover:text-blue-400">
@@ -151,7 +151,8 @@ export default function BankState() {
             </p>
 
             <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden my-6">
-              <table className="w-full text-left">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left">
                 <thead className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
                   <tr>
                     <th className="px-6 py-4 text-sm font-bold text-slate-700 dark:text-slate-300">Transaction Type</th>
@@ -179,6 +180,7 @@ export default function BankState() {
                   </tr>
                 </tbody>
               </table>
+              </div>
             </div>
 
             <p>

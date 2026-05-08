@@ -47,11 +47,7 @@ async function mergeData() {
                 routing_number: rn,
                 bank_name: toTitleCase(item.name),
                 city: toTitleCase(item.city),
-                state: item.state,
-                type: 'ACH',
-                address: 'Main Office',
-                phone: 'Check Online',
-                zip: 'Unknown'
+                state: item.state
             });
         });
         console.log(`SMWA ACH: Processed ${achData.length} records.`);
@@ -69,17 +65,15 @@ async function mergeData() {
             if (!rn) return;
             const existing = dataMap.get(rn);
             if (existing) {
-                existing.type = existing.type === 'ACH' ? 'Fedwire / ACH' : 'Fedwire';
+                // If existing.type is missing, it implies ACH
+                existing.type = (!existing.type || existing.type === 'ACH') ? 'BOTH' : 'WIRE';
             } else {
                 dataMap.set(rn, {
                     routing_number: rn,
                     bank_name: toTitleCase(item.name),
                     city: toTitleCase(item.city),
                     state: item.state,
-                    type: 'Fedwire',
-                    address: 'Main Office',
-                    phone: 'Check Online',
-                    zip: 'Unknown'
+                    type: 'WIRE'
                 });
             }
         });
@@ -122,11 +116,7 @@ async function mergeData() {
                     routing_number: rn,
                     bank_name: toTitleCase(bankName),
                     city: toTitleCase(city),
-                    state: state,
-                    type: 'ACH', // Default
-                    address: address || 'Main Office',
-                    phone: 'Check Online',
-                    zip: zip || 'Unknown'
+                    state: state
                 });
             }
         });

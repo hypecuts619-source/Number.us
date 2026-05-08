@@ -121,8 +121,8 @@ export default function BranchDetail() {
                 <div>
                   <div className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase mb-1">Address</div>
                   <div className="text-lg font-medium text-slate-800 dark:text-slate-200">
-                    {primaryData.address}<br />
-                    {primaryData.city}, {primaryData.state} {primaryData.zip !== 'Unknown' && primaryData.zip}
+                    {primaryData.address || 'Main Office'}<br />
+                    {primaryData.city}, {primaryData.state} {primaryData.zip && primaryData.zip !== 'Unknown' ? primaryData.zip : ''}
                   </div>
                 </div>
               </div>
@@ -130,7 +130,7 @@ export default function BranchDetail() {
                 <Phone className="text-slate-400 shrink-0 mt-1" />
                 <div>
                   <div className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase mb-1">Phone</div>
-                  <div className="text-lg font-medium text-slate-800 dark:text-slate-200">{primaryData.phone}</div>
+                  <div className="text-lg font-medium text-slate-800 dark:text-slate-200">{primaryData.phone || 'Check Online'}</div>
                 </div>
               </div>
             </div>
@@ -141,7 +141,7 @@ export default function BranchDetail() {
                  width="100%" 
                  height="100%" 
                  frameBorder="0" 
-                 src={`https://maps.google.com/maps?q=${encodeURIComponent(`${primaryData.address}, ${primaryData.city}, ${primaryData.state} ${primaryData.zip !== 'Unknown' ? primaryData.zip : ''}`)}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
+                 src={`https://maps.google.com/maps?q=${encodeURIComponent(`${primaryData.address || 'Main Office'}, ${primaryData.city}, ${primaryData.state} ${primaryData.zip && primaryData.zip !== 'Unknown' ? primaryData.zip : ''}`)}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
                  allowFullScreen
                ></iframe>
             </div>
