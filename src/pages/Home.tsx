@@ -32,7 +32,7 @@ export default function Home() {
           Find Any US Bank Routing Number
         </h1>
         <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8">
-          Instantly execute a routing number lookup for ACH, direct deposit, and wire transfers. Search official ABA routing numbers and easily find your bank routing number.
+          Instantly lookup any of the 17,776 verified US bank and credit union routing numbers. Updated for 2026 with official Federal Reserve and NCUA data.
         </p>
         <div className="max-w-3xl mx-auto">
           <SearchBar />

@@ -30,6 +30,7 @@ import NotFound from './pages/NotFound';
 import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Blog from './pages/Blog';
+import CaliforniaRoutingNumbers from './pages/CaliforniaRoutingNumbers';
 
 import { Toaster } from 'sonner';
 import { ThemeProvider } from './ThemeContext';
@@ -73,6 +74,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/states" element={<StateDirectory />} />
+              <Route path="/states/ca" element={<CaliforniaRoutingNumbers />} />
               <Route path="/states/:state" element={<StateBankList />} />
               <Route path="/routing-number-vs-account-number" element={<RoutingVsAccountNumber />} />
               <Route path="/what-is-a-routing-number" element={<WhatIsARoutingNumber />} />
@@ -100,6 +102,7 @@ export default function App() {
             <div className="max-w-7xl mx-auto text-center text-slate-500 dark:text-slate-400 text-sm max-w-3xl">
               <nav className="flex flex-wrap justify-center gap-6 mb-6">
                 <Link to="/states" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Banks By State</Link>
+                <Link to="/states/ca" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 font-bold transition-colors">CA Routing Numbers</Link>
                 <Link to="/what-is-a-routing-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">What is a Routing Number?</Link>
                 <Link to="/find-routing-number-on-check" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Find it on a Check</Link>
                 <Link to="/aba-routing-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">ABA Routing Number</Link>

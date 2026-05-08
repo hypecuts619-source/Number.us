@@ -24,7 +24,7 @@ export default function RoutingNumberLookup() {
     <div className="max-w-7xl mx-auto px-4 py-12">
       <SEO 
         title="Routing Number Lookup & Bank Search Engine"
-        description="Search our database of over 25,000 Federal Reserve ABA routing numbers. Find your bank's routing number instantly by name or reverse lookup an existing number."
+        description="Search our comprehensive database of Federal Reserve ABA routing numbers. Find your bank's routing number instantly by name or reverse lookup an existing number."
         canonicalUrl="/routing-number-lookup"
       />
       

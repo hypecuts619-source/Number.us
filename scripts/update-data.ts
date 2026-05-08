@@ -123,7 +123,7 @@ async function updateData() {
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
     }
-    fs.writeFileSync(outputPath, JSON.stringify(Array.from(map.values()), null, 2));
+    fs.writeFileSync(outputPath, JSON.stringify(Array.from(map.values())));
 
     console.log(`Successfully saved ${map.size} unique records to public/data/routing.json!`);
     console.log('You can now rebuild the application to deploy the new data.');

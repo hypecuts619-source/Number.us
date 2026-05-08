@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
-import { getStateFullName } from '../lib/getData';
+import { getStateFullName, getAllRoutingData } from '../lib/getData';
 import { MapPin } from 'lucide-react';
 import AdUnit from '../components/AdUnit';
 
@@ -13,11 +13,24 @@ const STATES = [
 ];
 
 export default function StateDirectory() {
+  const data = getAllRoutingData();
+  
+  const stateCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    data.forEach(d => {
+      const s = d.state.toUpperCase();
+      counts[s] = (counts[s] || 0) + 1;
+    });
+    return counts;
+  }, [data]);
+
+  const totalRecords = data.length;
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <SEO 
         title="View Banks by State | USRoutingNumber.com"
-        description="Directory of US banks and their routing numbers organized by state. Select your state to find local bank branches."
+        description={`Directory of US banks and their routing numbers organized by state. Browse ${totalRecords.toLocaleString()} routing identifiers across all 50 states.`}
         canonicalUrl="/states"
       />
       
@@ -27,8 +40,8 @@ export default function StateDirectory() {
         <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4">
           US Banks by State
         </h1>
-        <p className="text-xl text-slate-600 dark:text-slate-400">
-          Select a state below to view all registered financial institutions and their local branch routing numbers.
+        <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl">
+          Select a state below to view all registered financial institutions and their local branch routing numbers. We currently track <strong>{totalRecords.toLocaleString()}</strong> unique routing identifiers.
         </p>
       </div>
 
@@ -43,7 +56,7 @@ export default function StateDirectory() {
            >
              <MapPin className="w-8 h-8 text-blue-400 mb-3 group-hover:text-blue-600 transition-colors" />
              <div className="font-bold text-slate-800 dark:text-slate-100 text-center">{getStateFullName(state)}</div>
-             <div className="text-sm font-mono text-slate-400 mt-1">{state}</div>
+             <div className="text-sm font-mono text-slate-400 mt-1">{stateCounts[state] || 0} Records</div>
            </Link>
         ))}
       </div>

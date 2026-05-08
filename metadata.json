@@ -1,6 +1,6 @@
 {
   "name": "US Bank Routing Directory",
-  "description": "A programmatic SEO directory of US bank routing numbers, featuring direct deposit, wire transfer, and ACH guidelines.",
+  "description": "Programmatic US bank routing directory with over 17,700 verified institutions. Enriched with data from Federal Reserve (ACH/Wire) and NCUA/Braintree open-source datasets.",
   "requestFramePermissions": [],
   "majorCapabilities": []
 }

@@ -74,9 +74,11 @@ export default function Lookup() {
             {routingNumber}
           </div>
           
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-4">
             <CopyButton text={routingNumber || ''} />
           </div>
+
+          <AdUnit slot="UNIT 5: Immediately Below Routing Number (Not Found)" className="mb-6" />
 
           {isValid ? (
             <div className="inline-block bg-yellow-50 text-yellow-800 border border-yellow-200 px-4 py-2 rounded-full font-bold text-sm mb-6">
@@ -150,9 +152,11 @@ export default function Lookup() {
             <div className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tight font-mono mb-6">
               {data.routing_number}
             </div>
-            <div className="flex justify-center mb-6">
+            <div className="flex justify-center mb-4">
               <CopyButton text={data.routing_number} />
             </div>
+
+            <AdUnit slot="UNIT 6: Immediately Below Routing Number (Found)" className="mb-6" />
             
             <VerifiedBadge />
             <div className="max-w-md mx-auto text-left">
