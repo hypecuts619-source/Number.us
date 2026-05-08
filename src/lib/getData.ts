@@ -21,15 +21,22 @@ export const getRoutingByNumber = (routingNumber: string): RoutingData | undefin
   return getAllRoutingData().find((d) => d.routing_number === routingNumber);
 };
 
+export const isBankSlugMatch = (dbBankName: string, searchSlug: string): boolean => {
+  const dbSlug = generateSlug(dbBankName);
+  if (dbSlug === searchSlug) return true;
+  const rem = dbSlug.replace(searchSlug + '-', '');
+  return dbSlug.startsWith(searchSlug + '-') && ['na', 'national-association', 'inc', 'llc', 'corp', 'company', 'bank', 'bank-na', 'bank-national-association'].includes(rem);
+};
+
 export const getRoutingByBank = (bankSlug: string): RoutingData[] => {
   const data = getAllRoutingData();
-  return data.filter((d) => generateSlug(d.bank_name) === bankSlug);
+  return data.filter((d) => isBankSlugMatch(d.bank_name, bankSlug));
 };
 
 export const getRoutingByBankAndState = (bankSlug: string, state: string): RoutingData[] => {
   const data = getAllRoutingData();
   return data.filter(
-    (d) => generateSlug(d.bank_name) === bankSlug && d.state.toLowerCase() === state.toLowerCase()
+    (d) => isBankSlugMatch(d.bank_name, bankSlug) && d.state.toLowerCase() === state.toLowerCase()
   );
 };
 
@@ -51,7 +58,7 @@ export const getRoutingByBankStateAndCity = (bankSlug: string, state: string, ci
   const data = getAllRoutingData();
   return data.filter(
     (d) => 
-      generateSlug(d.bank_name) === bankSlug && 
+      isBankSlugMatch(d.bank_name, bankSlug) && 
       d.state.toLowerCase() === state.toLowerCase() &&
       generateSlug(d.city) === citySlug
   );
