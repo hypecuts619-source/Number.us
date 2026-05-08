@@ -10,7 +10,7 @@ export default function RoutingNumberCard({ data }: { data: RoutingData }) {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 print:border-none print:shadow-none print:p-0">
+      <div className="bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-5 md:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 print:border-none print:shadow-none print:p-0">
         <div className="text-center md:text-left flex-grow">
           <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
             <div className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">

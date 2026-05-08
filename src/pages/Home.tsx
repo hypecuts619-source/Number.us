@@ -7,7 +7,7 @@ import CheckDiagram from '../components/CheckDiagram';
 import { getTopSearchedBanks } from '../lib/getData';
 import { generateSlug } from '../lib/generateSlug';
 import { generateHomeFAQs } from '../lib/faqTemplates';
-import { generateFAQSchema } from '../lib/seoHelpers';
+import { generateFAQSchema, generateWebSiteSchema } from '../lib/seoHelpers';
 import SEO from '../components/SEO';
 import FAQSection from '../components/FAQSection';
 
@@ -24,31 +24,28 @@ export default function Home() {
         canonicalUrl="/"
       >
         <script type="application/ld+json">
+          {generateWebSiteSchema()}
+        </script>
+        <script type="application/ld+json">
           {generateFAQSchema(faqs)}
         </script>
       </SEO>
 
-      <div className="flex flex-col md:block">
-        <div className="order-1 md:hidden mb-6">
-          <AccountValidator />
-        </div>
-
-        <div className="order-2 text-center py-6 md:py-12">
-          <h1 className="text-3xl md:text-5xl font-black mb-4 text-slate-900 dark:text-white tracking-tight">
-            Find Any US Bank Routing Number
-          </h1>
-          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8">
-            Instantly lookup any of the 17,776 verified US bank and credit union routing numbers. Updated for 2026 with official Federal Reserve and NCUA data.
-          </p>
-          <div className="max-w-3xl mx-auto">
-            <SearchBar />
-          </div>
-        </div>
-
-        <div className="hidden md:block">
-          <AccountValidator />
+      <div className="text-center py-6 md:py-12">
+        <h1 className="text-3xl md:text-5xl font-black mb-4 text-slate-900 dark:text-white tracking-tight">
+          Find Any US Bank Routing Number
+        </h1>
+        <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8">
+          Instantly lookup any of the 17,776 verified US bank and credit union routing numbers. Updated for 2026 with official Federal Reserve and NCUA data.
+        </p>
+        <div className="max-w-3xl mx-auto">
+          <SearchBar />
         </div>
       </div>
+
+      <AdUnit slot="UNIT 1.5: Below Search Bar (Mobile)" className="md:hidden min-h-[100px] my-6" />
+
+      <AccountValidator />
 
       <AdUnit slot="UNIT 1: Below Validation Tool, 728x90 leaderboard" className="hidden md:block min-h-[90px] my-10" />
 
@@ -115,6 +112,8 @@ export default function Home() {
       <div className="mt-8 md:mt-16 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 md:p-12 shadow-sm">
         <FAQSection faqs={faqs} />
       </div>
+
+      <AdUnit slot="UNIT 3: Below FAQ (Mobile)" className="md:hidden mt-10 min-h-[100px]" />
 
       <div className="md:hidden fixed bottom-4 left-4 right-4 z-40">
         <button 

@@ -38,7 +38,7 @@ export default function StateDirectory() {
 
       <div className="mb-12">
         <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4">
-          US Banks by State
+          US Bank Routing Numbers By State Directory (Federal Reserve 2026)
         </h1>
         <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl">
           Select a state below to view all registered financial institutions and their local branch routing numbers. We currently track <strong>{totalRecords.toLocaleString()}</strong> unique routing identifiers.

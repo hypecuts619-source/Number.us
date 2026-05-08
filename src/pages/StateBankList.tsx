@@ -82,14 +82,14 @@ export default function StateBankList() {
 
       <div className="mb-8">
         <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4">
-          Banks in {stateFullName}
+          {stateFullName} Bank Routing Numbers Directory (Federal Reserve 2026)
         </h1>
         <p className="text-xl text-slate-600 dark:text-slate-400">
           Showing {uniqueBanks.length} registered financial institutions with branch routing numbers in {stateFullName}.
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
         <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl border border-blue-100 dark:border-blue-800">
            <div className="text-blue-600 dark:text-blue-400 text-sm font-bold uppercase mb-1">Total Banks</div>
            <div className="text-3xl font-black text-slate-900 dark:text-white">{uniqueBanks.length}</div>
@@ -103,9 +103,22 @@ export default function StateBankList() {
            <div className="text-3xl font-black text-slate-900 dark:text-white">{availableCities.length}</div>
         </div>
         <div className="bg-slate-50 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
-           <div className="text-slate-500 text-sm font-bold uppercase mb-1">Accuracy</div>
-           <div className="text-3xl font-black text-slate-900 dark:text-white">99.8%</div>
+           <div className="text-slate-500 text-sm font-bold uppercase mb-1">Data Source</div>
+           <div className="text-xl font-black text-slate-900 dark:text-white pt-1">Fed Reserve</div>
         </div>
+      </div>
+
+      <div className="prose prose-base md:prose-lg text-slate-600 dark:text-slate-300 max-w-none mb-10">
+        <p>
+          Welcome to the comprehensive, official Federal Reserve 2026 routing number directory for the state of {stateFullName}. 
+          Whether you are setting up automatic direct deposit for your paycheck, scheduling a recurring ACH bill payment, or initiating an urgent domestic wire transfer, obtaining the correct 9-digit American Bankers Association (ABA) routing transit number is paramount. 
+          Financial institutions operating within {stateFullName} hold specific routing codes assigned to local branches, meaning the 9 digits you need can differ significantly from the number an account holder in a neighboring state might use for the exact same banking brand.
+        </p>
+        <p>
+          In our meticulously maintained {stateFullName} databank, you can search and cross-reference exactly <strong>{stateData.length}</strong> unique routing identifiers distributed across <strong>{uniqueBanks.length}</strong> individual banks and credit unions. 
+          Be exceedingly cautious when referencing these codes; direct deposits, ACH transfers, and Wire transfers often require mathematically distinct sequences. Submitting an invalid digit usually results in intercepted capital, multi-day delays, and expensive bank return fees. 
+          Use the intuitive search matrix below to pinpoint your exact local branch by Bank Name, City, or zip code, instantly revealing the precise financial coordinates needed to ensure your automated and manual transfers succeed on the very first attempt.
+        </p>
       </div>
 
       <div className="mb-8 bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700">

@@ -1,25 +1,25 @@
 export const generateBankOverviewTitle = (bankName: string) => {
-  return `${bankName} Routing Number 2026 — Lookup ACH & Wire`;
+  return `${bankName} Routing Number Directory (Federal Reserve 2026)`;
 };
 
 export const generateBankOverviewDescription = (bankName: string) => {
-  return `Find all routing numbers for ${bankName} across all states. Check which number to use for ACH direct deposits, wire transfers, and paper checks safely.`;
+  return `Find the official 2026 routing numbers for ${bankName} across all states. Verify exact numbers for direct deposits, wire transfers, and ACH routing.`;
 };
 
 export const generateBankStateTitle = (bankName: string, stateName: string) => {
-  return `${bankName} Routing Number ${stateName} (Lookup 2026)`;
+  return `${bankName} Routing Number ${stateName} (Federal Reserve 2026)`;
 };
 
 export const generateBankStateDescription = (bankName: string, stateName: string, routingNumber: string) => {
-  return `The ${new Date().getFullYear()} routing number for ${bankName} in ${stateName} is ${routingNumber}. Learn how to use it safely for direct deposits, wire transfers, and ordering checks.`;
+  return `The official 2026 Federal Reserve verified routing number for ${bankName} in ${stateName} is ${routingNumber}. Use this code for direct deposit, ACH and wire transfers.`;
 };
 
 export const generateLookupTitle = (routingNumber: string) => {
-  return `${routingNumber} Routing Number — Bank Lookup & Verification`;
+  return `Lookup Routing Number ${routingNumber} — Federal Reserve Verification`;
 };
 
 export const generateLookupDescription = (routingNumber: string, bankName: string) => {
-  return `Bank details for routing number ${routingNumber}. Verify this number belongs to ${bankName} and check if it supports ACH, wire transfers, or paper checks.`;
+  return `Verify if routing number ${routingNumber} belongs to ${bankName}. Check instantaneous validation status for wire transfers, ACH direct deposits and checks.`;
 };
 
 // Return a stringified script tag for SEO
@@ -88,5 +88,20 @@ export const generateFinancialInstitutionSchema = (
     schema.telephone = phone;
   }
 
+  return JSON.stringify(schema);
+};
+
+export const generateWebSiteSchema = () => {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'USRoutingNumber.com',
+    url: 'https://usroutingnumber.com/',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://usroutingnumber.com/search?q={search_term_string}',
+      'query-input': 'required name=search_term_string'
+    }
+  };
   return JSON.stringify(schema);
 };

@@ -60,7 +60,7 @@ export default function BankOverview() {
       <BreadcrumbNav crumbs={[{ name: bankName, url: `/routing-number/${bankSlug}` }]} />
 
       <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4">
-        {bankName} Routing Number 2026 — All States
+        {bankName} Routing Number Directory (Federal Reserve 2026)
       </h1>
       
       <VerifiedBadge />
@@ -70,7 +70,7 @@ export default function BankOverview() {
 
       <div className="grid md:grid-cols-3 gap-12 mt-10">
         <div className="md:col-span-2">
-          <div className="prose prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-slate-300 mb-10 max-w-none">
+          <div className="prose prose-base md:prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-slate-300 mb-10 max-w-none">
             <p>
               To effectively and securely process vital financial transactions—such as online bill payments, automated paycheck direct deposits, or rapid domestic wire transfers—with <strong>{bankName}</strong>, 
               you will absolutely need the correct, publicly verified 9-digit American Bankers Association (ABA) routing number. Because financial institutions of this magnitude possess sprawling networks of branches stretching across multiple regions, 

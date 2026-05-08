@@ -85,7 +85,7 @@ export default function BankState() {
       ]} />
 
       <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-6">
-        {bankName} Routing Number {stateFullName} ({currentYear})
+        {bankName} Routing Number {stateFullName} (Federal Reserve {currentYear})
       </h1>
 
       <VerifiedBadge />
@@ -125,7 +125,7 @@ export default function BankState() {
             </div>
           ))}
 
-          <section className="prose prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-slate-300 max-w-none">
+          <section className="prose prose-base md:prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-slate-300 max-w-none">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white">ABA routing number for {bankName} in {stateFullName}</h2>
             <p>
               The {currentYear} American Bankers Association (ABA) routing number for <strong>{bankName}</strong> within the state of <strong>{stateFullName}</strong> serves as a critical 9-digit identifier that links your specific bank branch location to the broader United States financial infrastructure. Every domestic transfer you initiate relies heavily on this code to ensure that your hard-earned funds are accurately routed through the Federal Reserve system or the automated clearing house (ACH) network securely and efficiently without delays.
@@ -190,7 +190,7 @@ export default function BankState() {
 
           <AdUnit slot="UNIT 2: Mid content, in-article responsive" className="my-8" />
 
-          <section className="prose prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-slate-300 max-w-none">
+          <section className="prose prose-base md:prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-slate-300 max-w-none">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white" id="routing-vs-account">Routing Number Versus Account Number</h2>
             <p>
               When navigating an online portal to orchestrate direct deposits, automated clearing house payments, or standard electronic funds transfers, comprehending the fundamental mechanical divergence between a <strong>routing number vs account number</strong> is absolutely vital. Mixing these distinct numerical sequences up is the leading catalyst for returned transactions.

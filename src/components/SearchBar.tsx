@@ -77,37 +77,60 @@ export default function SearchBar() {
 
   return (
     <div className="relative w-full max-w-2xl mx-auto">
-      <form onSubmit={handleSearch} className="relative z-20">
-        <input
-          type="text"
-          className="w-full pl-12 pr-28 py-4 text-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 border-2 border-slate-300 dark:border-slate-700 rounded-xl shadow-sm focus:border-blue-600 focus:ring-blue-600 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500"
-          placeholder="Search by bank name (e.g. Chase) or routing number..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 w-6 h-6" />
-        
-        {query && (
-          <button 
-            type="button"
-            onClick={() => setQuery('')}
-            className="absolute right-28 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+      <form onSubmit={handleSearch} className="relative z-20 flex flex-col md:block">
+        <div className="relative w-full">
+          <input
+            type="text"
+            className="w-full pl-10 md:pl-12 pr-10 md:pr-28 py-3 md:py-4 text-base md:text-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 border-2 border-slate-300 dark:border-slate-700 rounded-xl shadow-sm focus:border-blue-600 focus:ring-blue-600 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500"
+            placeholder="Search by bank name (e.g. Chase) or routing number..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <Search className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 w-5 h-5 md:w-6 md:h-6" />
+          
+          {query && (
+            <button 
+              type="button"
+              onClick={() => setQuery('')}
+              className="absolute right-3 md:right-28 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          )}
+          
+          <button
+            type="submit"
+            className="hidden md:block absolute right-2 top-1/2 -translate-y-1/2 bg-[#1e3a5f] text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-800 transition-colors"
           >
-            <X className="w-5 h-5" />
+            Search
           </button>
-        )}
-        
+        </div>
         <button
           type="submit"
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#1e3a5f] text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-800 transition-colors"
+          className="md:hidden mt-3 w-full bg-[#1e3a5f] text-white px-4 py-3 rounded-xl font-bold hover:bg-blue-800 transition-colors shadow-sm"
         >
           Search
         </button>
       </form>
 
       {query && results.length === 0 && query.trim().length > 2 && !/^\d{9}$/.test(query.trim()) && (
-        <div className="absolute z-10 w-full mt-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg p-4 text-center text-slate-500 dark:text-slate-400">
-          No banks or routing numbers found matching "{query}".
+        <div className="absolute z-10 w-full mt-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg p-6 text-center">
+          <div className="mx-auto w-12 h-12 bg-slate-100 dark:bg-slate-900 rounded-full flex items-center justify-center mb-3">
+            <Search className="w-6 h-6 text-slate-400 dark:text-slate-500" />
+          </div>
+          <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">No results found</h3>
+          <p className="text-slate-500 dark:text-slate-400 text-sm mb-4">
+            We couldn't find any financial institutions or routing numbers matching "{query}".
+          </p>
+          <div className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg text-sm text-slate-600 dark:text-slate-400 text-left">
+            <p className="font-semibold text-slate-700 dark:text-slate-300 mb-2">Try the following:</p>
+            <ul className="list-disc list-inside space-y-1">
+              <li>Check for spelling errors in the bank name</li>
+              <li>Try searching by state abbreviation (e.g., "NY" or "Texas")</li>
+              <li>Search by a complete 9-digit routing number</li>
+              <li>Use part of the name instead of the full legal name (e.g., "Chase" instead of "JPMorgan Chase Bank")</li>
+            </ul>
+          </div>
         </div>
       )}
 

@@ -60,31 +60,31 @@ export default function AccountValidator() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto my-10">
+    <div className="w-full max-w-4xl mx-auto my-6 md:my-10">
       <div className="bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-2xl shadow-xl overflow-hidden">
-        <div className="bg-[#1e3a5f] p-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-2">Routing Number & Bank Account Lookup</h2>
-          <p className="text-blue-100 text-lg">Search routing number and bank account validation</p>
-          <p className="text-blue-200 text-sm mt-1 mb-6">Lookup example: 021000021 and account 26207729</p>
+        <div className="bg-[#1e3a5f] p-5 md:p-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Routing Number & Bank Account Lookup</h2>
+          <p className="text-blue-100 text-base md:text-lg">Search routing number and bank account validation</p>
+          <p className="text-blue-200 text-xs md:text-sm mt-1 mb-6">Lookup example: 021000021 and account 26207729</p>
 
-          <form onSubmit={handleValidate} className="flex flex-col md:flex-row gap-4 items-stretch max-w-3xl mx-auto">
+          <form onSubmit={handleValidate} className="flex flex-col md:flex-row gap-3 md:gap-4 items-stretch max-w-3xl mx-auto">
             <input
               type="text"
               placeholder="Routing Number"
-              className="flex-1 px-4 py-3 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 border-2 border-transparent focus:border-blue-400 focus:outline-none"
+              className="flex-1 px-4 py-3 md:py-3.5 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 border-2 border-transparent focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/50"
               value={routingNumber}
               onChange={(e) => setRoutingNumber(e.target.value.replace(/\D/g, '').slice(0, 9))}
             />
             <input
               type="text"
               placeholder="Account Number (Optional)"
-              className="flex-1 px-4 py-3 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 border-2 border-transparent focus:border-blue-400 focus:outline-none"
+              className="flex-1 px-4 py-3 md:py-3.5 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder:text-slate-500 dark:placeholder:text-slate-400 border-2 border-transparent focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/50"
               value={accountNumber}
               onChange={(e) => setAccountNumber(e.target.value.replace(/\D/g, '').slice(0, 17))}
             />
             <button
               type="submit"
-              className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-8 rounded-lg transition-colors whitespace-nowrap shadow-lg shadow-emerald-500/20"
+              className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 md:py-3.5 px-8 rounded-lg transition-colors whitespace-nowrap shadow-lg shadow-emerald-500/20 text-lg md:text-base"
             >
               {isLoading ? 'Validating...' : 'Validate'}
             </button>
@@ -92,7 +92,7 @@ export default function AccountValidator() {
         </div>
 
         {hasValidated && result && !isLoading && (
-          <div className="p-8 bg-slate-50 dark:bg-slate-900">
+          <div className="p-5 md:p-8 bg-slate-50 dark:bg-slate-900">
             <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">Validation Results</h3>
             
             <div className="space-y-4">
@@ -121,8 +121,8 @@ export default function AccountValidator() {
                   ) : (
                     <div className="text-sm text-slate-600 dark:text-slate-400 mt-1">
                       {!result.routingValid 
-                        ? 'Must be exactly 9 digits and pass the ABA checksum validation.' 
-                        : 'This routing number passes the checksum but is not currently listed in our Federal Reserve database directory.'}
+                        ? 'A routing number must be exactly 9 digits and mathematically pass the official ABA module 10 checksum. Please double-check the 9 digits located on the bottom left corner of your check.' 
+                        : 'This routing number passes mathematical validation but cannot be verified as an active ACH/Wire endpoint in the official Federal Reserve directory. It may belong to a very new credit union, an internal routing code not used for external transfers, or it may be retired.'}
                     </div>
                   )}
                 </div>

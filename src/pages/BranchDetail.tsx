@@ -147,7 +147,7 @@ export default function BranchDetail() {
             </div>
           </section>
 
-          <article className="prose prose-lg dark:prose-invert text-slate-600 dark:text-slate-300 max-w-none">
+          <article className="prose prose-base md:prose-lg dark:prose-invert text-slate-600 dark:text-slate-300 max-w-none">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 capitalize">Comprehensive ABA Routing Knowledge for {bankName}</h2>
             <p>
               When methodically setting up any digital financial integration online—ranging from paying your monthly utility bills to receiving an important client invoice—leveraging the precise <strong>American Bankers Association (ABA) routing number for {bankName}</strong> guarantees that your moving capital seamlessly discovers its destination at the specific branch operating within <strong>{cityTitle}, {stateFullName}</strong>. These nine digits behave like a meticulous GPS coordinate system devised strictly by the Federal Reserve.

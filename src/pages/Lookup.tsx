@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useMemo, useEffect } from 'react';
 import { getRoutingByNumber, getStateFullName, getRelatedBanks } from '../lib/getData';
-import { generateLookupTitle, generateLookupDescription, generateFAQSchema } from '../lib/seoHelpers';
+import { generateLookupTitle, generateLookupDescription, generateFAQSchema, generateFinancialInstitutionSchema } from '../lib/seoHelpers';
 import { generateLookupFAQs } from '../lib/faqTemplates';
 import { generateSlug } from '../lib/generateSlug';
 import CopyButton from '../components/CopyButton';
@@ -66,7 +66,7 @@ export default function Lookup() {
           </script>
         </SEO>
         
-        <div className="bg-white border-2 border-slate-200 rounded-3xl p-8 md:p-12 shadow-sm mb-12 text-center">
+        <div className="bg-white border-2 border-slate-200 rounded-3xl p-6 md:p-12 shadow-sm mb-12 text-center">
           <h1 className="text-2xl text-slate-500 font-bold uppercase tracking-wider mb-2">
             Routing Number Details
           </h1>
@@ -111,7 +111,7 @@ export default function Lookup() {
 
         <AdUnit slot="UNIT 2: Mid content, in-article responsive" />
 
-        <div className="prose prose-lg text-slate-600 max-w-none mt-12 bg-slate-50 p-8 rounded-2xl border border-slate-100">
+        <div className="prose prose-base md:prose-lg text-slate-600 max-w-none mt-12 bg-slate-50 p-5 md:p-8 rounded-2xl border border-slate-100">
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-0">How routing number validation works</h2>
           <p>
             US bank routing numbers use a mathematical module 10 checksum to ensure they are valid. This prevents typos and errors when processing payments (like ACH direct deposits or wire transfers).
@@ -140,11 +140,22 @@ export default function Lookup() {
         canonicalUrl={`/lookup/${data.routing_number}`}
       >
         <script type="application/ld+json">
+          {generateFinancialInstitutionSchema(
+            data.bank_name,
+            data.routing_number,
+            data.address,
+            data.city,
+            getStateFullName(data.state),
+            data.zip !== 'Unknown' ? data.zip : undefined,
+            data.phone
+          )}
+        </script>
+        <script type="application/ld+json">
           {generateFAQSchema(faqs)}
         </script>
       </SEO>
 
-        <div className="bg-white border-2 border-slate-200 rounded-3xl p-8 md:p-12 shadow-sm mb-12">
+        <div className="bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-3xl p-6 md:p-12 shadow-sm mb-12">
           <div className="text-center mb-8">
             <h1 className="text-2xl text-slate-500 font-bold uppercase tracking-wider mb-2">
               Routing Number Details
@@ -176,8 +187,8 @@ export default function Lookup() {
             </div>
           </div>
 
-        <div className="bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-100">
-          <div className="grid md:grid-cols-2 gap-8">
+        <div className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 md:p-8 border border-slate-100 dark:border-slate-700">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
              <div>
                <div className="text-sm text-slate-500 font-semibold mb-1 uppercase">Bank Name</div>
                <div className="text-xl font-bold text-slate-900 dark:text-white">{data.bank_name}</div>
@@ -218,7 +229,7 @@ export default function Lookup() {
 
       <AdUnit slot="UNIT 2: Mid content, in-article responsive" />
 
-      <div className="prose prose-lg text-slate-600 dark:text-slate-300 max-w-none mt-12 bg-white p-8 rounded-3xl border border-slate-200">
+      <div className="prose prose-base md:prose-lg text-slate-600 dark:text-slate-300 max-w-none mt-12 bg-white dark:bg-slate-800 p-5 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-700">
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-0">Understanding Your Validated Routing Number</h2>
         <p>
           Routing numbers, such as <strong className="font-mono">{data.routing_number}</strong> currently associated with <strong>{data.bank_name}</strong>, leverage a precise algorithmic structure mandated by the American Bankers Association (ABA). The primary objective of this nine-digit code is to act as a flawless GPS coordinate system guiding your capital exclusively through the Federal Reserve architecture without risking bounces or misapplied funds.
@@ -239,7 +250,7 @@ export default function Lookup() {
         </p>
       </div>
 
-      <div className="mt-16 bg-white border border-slate-200 rounded-3xl p-8 md:p-12 shadow-sm mb-12">
+      <div className="mt-8 md:mt-16 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 md:p-12 shadow-sm mb-12">
         <FAQSection faqs={faqs} />
       </div>
 
