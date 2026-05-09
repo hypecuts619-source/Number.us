@@ -3,18 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>USRoutingNumber.com - Bank Routing Numbers</title>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4ZFCTC3E7F"></script>
+    <!-- Deferred third-party scripts -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-4ZFCTC3E7F');
+
+      function loadThirdPartyScripts() {
+        if (window.thirdPartyScriptsLoaded) return;
+        window.thirdPartyScriptsLoaded = true;
+        
+        // Google Analytics
+        const gaScript = document.createElement('script');
+        gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-4ZFCTC3E7F";
+        gaScript.async = true;
+        document.head.appendChild(gaScript);
+
+        // Google AdSense
+        const adScript = document.createElement('script');
+        adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7380090598384677";
+        adScript.async = true;
+        adScript.crossOrigin = "anonymous";
+        document.head.appendChild(adScript);
+      }
+
+      // Load mostly on interaction or after 3.5 seconds
+      window.addEventListener('scroll', loadThirdPartyScripts, { once: true, passive: true });
+      window.addEventListener('mousemove', loadThirdPartyScripts, { once: true, passive: true });
+      window.addEventListener('touchstart', loadThirdPartyScripts, { once: true, passive: true });
+      setTimeout(loadThirdPartyScripts, 3500);
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7380090598384677" crossorigin="anonymous"></script>
   </head>
   <body>
     <div id="root"></div>

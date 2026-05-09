@@ -5,36 +5,37 @@
 
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import Home from './pages/Home';
-import BankOverview from './pages/BankOverview';
-import BankState from './pages/BankState';
-import BranchDetail from './pages/BranchDetail';
-import Lookup from './pages/Lookup';
-import WireTransferGuide from './pages/WireTransferGuide';
-import HowToFind from './pages/HowToFind';
-import InternationalWireGuide from './pages/InternationalWireGuide';
-import ZelleRoutingNumber from './pages/ZelleRoutingNumber';
-import RoutingNumberValidator from './pages/RoutingNumberValidator';
-import StateDirectory from './pages/StateDirectory';
-import StateBankList from './pages/StateBankList';
-import RoutingVsAccountNumber from './pages/RoutingVsAccountNumber';
-import WhatIsAbaRoutingNumber from './pages/WhatIsAbaRoutingNumber';
-import WhatIsARoutingNumber from './pages/WhatIsARoutingNumber';
-import DirectDepositRoutingNumber from './pages/DirectDepositRoutingNumber';
-import FindRoutingNumberOnCheck from './pages/FindRoutingNumberOnCheck';
-import RoutingNumberLookup from './pages/RoutingNumberLookup';
+import { useState, useEffect, lazy, Suspense } from 'react';
 
-import MajorBanks from './pages/MajorBanks';
-import CheckDigitCalculator from './pages/CheckDigitCalculator';
-import NotFound from './pages/NotFound';
+const Home = lazy(() => import('./pages/Home'));
+const BankOverview = lazy(() => import('./pages/BankOverview'));
+const BankState = lazy(() => import('./pages/BankState'));
+const BranchDetail = lazy(() => import('./pages/BranchDetail'));
+const Lookup = lazy(() => import('./pages/Lookup'));
+const WireTransferGuide = lazy(() => import('./pages/WireTransferGuide'));
+const HowToFind = lazy(() => import('./pages/HowToFind'));
+const InternationalWireGuide = lazy(() => import('./pages/InternationalWireGuide'));
+const ZelleRoutingNumber = lazy(() => import('./pages/ZelleRoutingNumber'));
+const RoutingNumberValidator = lazy(() => import('./pages/RoutingNumberValidator'));
+const StateDirectory = lazy(() => import('./pages/StateDirectory'));
+const StateBankList = lazy(() => import('./pages/StateBankList'));
+const RoutingVsAccountNumber = lazy(() => import('./pages/RoutingVsAccountNumber'));
+const WhatIsAbaRoutingNumber = lazy(() => import('./pages/WhatIsAbaRoutingNumber'));
+const WhatIsARoutingNumber = lazy(() => import('./pages/WhatIsARoutingNumber'));
+const DirectDepositRoutingNumber = lazy(() => import('./pages/DirectDepositRoutingNumber'));
+const FindRoutingNumberOnCheck = lazy(() => import('./pages/FindRoutingNumberOnCheck'));
+const RoutingNumberLookup = lazy(() => import('./pages/RoutingNumberLookup'));
 
-import TermsOfService from './pages/TermsOfService';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import Blog from './pages/Blog';
-import Changes2026 from './pages/Changes2026';
-import AboutUs from './pages/AboutUs';
-import CaliforniaRoutingNumbers from './pages/CaliforniaRoutingNumbers';
+const MajorBanks = lazy(() => import('./pages/MajorBanks'));
+const CheckDigitCalculator = lazy(() => import('./pages/CheckDigitCalculator'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+
+const TermsOfService = lazy(() => import('./pages/TermsOfService'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const Blog = lazy(() => import('./pages/Blog'));
+const Changes2026 = lazy(() => import('./pages/Changes2026'));
+const AboutUs = lazy(() => import('./pages/AboutUs'));
+const CaliforniaRoutingNumbers = lazy(() => import('./pages/CaliforniaRoutingNumbers'));
 
 import { Toaster } from 'sonner';
 import { ThemeProvider } from './ThemeContext';
@@ -57,15 +58,6 @@ export default function App() {
       });
   }, []);
 
-  if (!dataLoaded) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-950">
-         <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-         <p className="mt-4 text-slate-500 font-medium animate-pulse">Loading routing database...</p>
-      </div>
-    );
-  }
-
   return (
     <ThemeProvider>
       <HelmetProvider>
@@ -75,35 +67,47 @@ export default function App() {
           <Header />
 
           <main className="flex-grow">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/states" element={<StateDirectory />} />
-              <Route path="/states/ca" element={<CaliforniaRoutingNumbers />} />
-              <Route path="/states/:state" element={<StateBankList />} />
-              <Route path="/routing-number-vs-account-number" element={<RoutingVsAccountNumber />} />
-              <Route path="/what-is-a-routing-number" element={<WhatIsARoutingNumber />} />
-              <Route path="/aba-routing-number" element={<WhatIsAbaRoutingNumber />} />
-              <Route path="/direct-deposit-routing-number" element={<DirectDepositRoutingNumber />} />
-              <Route path="/find-routing-number-on-check" element={<FindRoutingNumberOnCheck />} />
-              <Route path="/routing-number-lookup" element={<RoutingNumberLookup />} />
-              <Route path="/major-banks" element={<MajorBanks />} />
-              <Route path="/routing-number/:bankSlug" element={<BankOverview />} />
-              <Route path="/routing-number/:bankSlug/:state" element={<BankState />} />
-              <Route path="/routing-number/:bankSlug/:state/:city" element={<BranchDetail />} />
-              <Route path="/lookup/:routingNumber" element={<Lookup />} />
-              <Route path="/how-to-wire-money" element={<WireTransferGuide />} />
-              <Route path="/international-wire-guide" element={<InternationalWireGuide />} />
-              <Route path="/how-to-find-routing-number" element={<HowToFind />} />
-              <Route path="/zelle-routing-number" element={<ZelleRoutingNumber />} />
-              <Route path="/routing-number-validator" element={<RoutingNumberValidator />} />
-              <Route path="/routing-number-changes-2026" element={<Changes2026 />} />
-              <Route path="/about-us" element={<AboutUs />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/check-digit-calculator" element={<CheckDigitCalculator />} />
-              <Route path="/terms-of-service" element={<TermsOfService />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            {!dataLoaded ? (
+              <div className="min-h-[60vh] flex flex-col items-center justify-center">
+                 <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+              </div>
+            ) : (
+              <Suspense fallback={
+                <div className="min-h-[60vh] flex flex-col items-center justify-center">
+                   <div className="w-10 h-10 border-4 border-slate-300 dark:border-slate-700 border-t-blue-500 rounded-full animate-spin"></div>
+                </div>
+              }>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/states" element={<StateDirectory />} />
+                  <Route path="/states/ca" element={<CaliforniaRoutingNumbers />} />
+                  <Route path="/states/:state" element={<StateBankList />} />
+                  <Route path="/routing-number-vs-account-number" element={<RoutingVsAccountNumber />} />
+                  <Route path="/what-is-a-routing-number" element={<WhatIsARoutingNumber />} />
+                  <Route path="/aba-routing-number" element={<WhatIsAbaRoutingNumber />} />
+                  <Route path="/direct-deposit-routing-number" element={<DirectDepositRoutingNumber />} />
+                  <Route path="/find-routing-number-on-check" element={<FindRoutingNumberOnCheck />} />
+                  <Route path="/routing-number-lookup" element={<RoutingNumberLookup />} />
+                  <Route path="/major-banks" element={<MajorBanks />} />
+                  <Route path="/routing-number/:bankSlug" element={<BankOverview />} />
+                  <Route path="/routing-number/:bankSlug/:state" element={<BankState />} />
+                  <Route path="/routing-number/:bankSlug/:state/:city" element={<BranchDetail />} />
+                  <Route path="/lookup/:routingNumber" element={<Lookup />} />
+                  <Route path="/how-to-wire-money" element={<WireTransferGuide />} />
+                  <Route path="/international-wire-guide" element={<InternationalWireGuide />} />
+                  <Route path="/how-to-find-routing-number" element={<HowToFind />} />
+                  <Route path="/zelle-routing-number" element={<ZelleRoutingNumber />} />
+                  <Route path="/routing-number-validator" element={<RoutingNumberValidator />} />
+                  <Route path="/routing-number-changes-2026" element={<Changes2026 />} />
+                  <Route path="/about-us" element={<AboutUs />} />
+                  <Route path="/blog" element={<Blog />} />
+                  <Route path="/check-digit-calculator" element={<CheckDigitCalculator />} />
+                  <Route path="/terms-of-service" element={<TermsOfService />} />
+                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Suspense>
+            )}
           </main>
 
           <footer className="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-12 px-6 shrink-0 mt-20 print:hidden">
