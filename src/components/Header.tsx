@@ -11,8 +11,8 @@ export default function Header() {
     { name: 'Home', path: '/' },
     { name: 'By State', path: '/states' },
     { name: 'Major Banks', path: '/major-banks' },
+    { name: 'Validator Tools', path: '/routing-number-validator' },
     { name: 'Blog & Guides', path: '/blog' },
-    { name: 'Wire Guide', path: '/how-to-wire-money' },
   ];
 
   const closeMenu = () => setIsMenuOpen(false);

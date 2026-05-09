@@ -8,6 +8,7 @@ import {
   generateFAQSchema,
   generateFinancialInstitutionSchema
 } from '../lib/seoHelpers';
+import { Printer } from 'lucide-react';
 import { generateBankStateFAQs } from '../lib/faqTemplates';
 import { generateSlug } from '../lib/generateSlug';
 import BreadcrumbNav from '../components/BreadcrumbNav';
@@ -88,8 +89,20 @@ export default function BankState() {
         {bankName} Routing Number {stateFullName} (Federal Reserve {currentYear})
       </h1>
 
-      <VerifiedBadge />
-      <TrustIndicator />
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+        <div className="flex flex-wrap gap-4 items-center">
+          <VerifiedBadge />
+          <TrustIndicator />
+        </div>
+        <button 
+          onClick={() => window.print()} 
+          className="print:hidden inline-flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold rounded-lg transition-colors border border-slate-200 dark:border-slate-700 text-sm shadow-sm"
+          aria-label="Print or save routing numbers as PDF"
+        >
+          <Printer className="w-4 h-4" /> 
+          <span>Print / Save PDF</span>
+        </button>
+      </div>
 
       <AdUnit slot="UNIT 1: Below H1, 728x90 leaderboard" className="my-8 min-h-[90px]" />
 

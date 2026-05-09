@@ -13,6 +13,8 @@ const urls = [
   '/direct-deposit-routing-number',
   '/how-to-wire-money',
   '/international-wire-transfer-routing-number',
+  '/zelle-routing-number',
+  '/routing-number-validator',
   '/check-digit-calculator',
   '/major-banks',
   '/routing-number-lookup',

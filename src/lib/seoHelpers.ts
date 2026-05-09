@@ -105,3 +105,31 @@ export const generateWebSiteSchema = () => {
   };
   return JSON.stringify(schema);
 };
+
+export const generateArticleSchema = (title: string, description: string, url: string, datePublished: string) => {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': url
+    },
+    headline: title,
+    description: description,
+    author: {
+      '@type': 'Organization',
+      name: 'USRoutingNumber.com Editorial Team'
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'USRoutingNumber.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://usroutingnumber.com/logo.png'
+      }
+    },
+    datePublished: datePublished,
+    dateModified: datePublished,
+  };
+  return JSON.stringify(schema);
+};

@@ -101,20 +101,41 @@ export default function BankOverview() {
             </p>
           </div>
 
-          <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6 border-b dark:border-slate-700 pb-2">{bankName} Locations by State</h2>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {states.map(state => (
-              <Link 
-                key={state}
-                to={`/routing-number/${bankSlug}/${state.toLowerCase()}`}
-                className="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-md transition-all group"
-              >
-                <span className="font-semibold text-slate-800 dark:text-slate-200 group-hover:text-blue-700 dark:group-hover:text-blue-400">{getStateFullName(state)}</span>
-                <span className="text-sm bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 px-2 py-1 rounded font-mono group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 group-hover:text-blue-600 dark:group-hover:text-blue-300">
-                  {bankData.filter(d => d.state === state).length} number(s)
-                </span>
-              </Link>
-            ))}
+          <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-6 border-b dark:border-slate-700 pb-2">{bankName} Routing Numbers by State</h2>
+          <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700 mb-10">
+            <table className="w-full text-left border-collapse">
+              <caption className="sr-only">Federal Reserve Verified {bankName} Routing Numbers by State</caption>
+              <thead>
+                <tr className="bg-slate-50 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+                  <th className="px-6 py-4 font-semibold text-slate-900 dark:text-white">State</th>
+                  <th className="px-6 py-4 font-semibold text-slate-900 dark:text-white">Active Routing Codes</th>
+                  <th className="px-6 py-4 font-semibold text-slate-900 dark:text-white text-right">View Directory</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900 bg-opacity-50">
+                {states.map(state => (
+                  <tr key={state} className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                    <td className="px-6 py-4 font-medium text-slate-900 dark:text-slate-100">
+                      {getStateFullName(state)}
+                    </td>
+                    <td className="px-6 py-4 text-slate-600 dark:text-slate-400">
+                      <span className="inline-flex items-center justify-center bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-2.5 py-1 rounded-md text-sm font-semibold">
+                        {bankData.filter(d => d.state === state).length} verified codes
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 text-right">
+                      <Link 
+                        to={`/routing-number/${bankSlug}/${state.toLowerCase()}`}
+                        className="inline-flex font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:underline"
+                        aria-label={`View ${bankName} routing numbers in ${getStateFullName(state)}`}
+                      >
+                        View Details &rarr;
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
 
           <AdUnit slot="UNIT 2: Mid content, in-article responsive" className="my-12 min-h-[150px]" />

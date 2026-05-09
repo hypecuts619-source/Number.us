@@ -14,6 +14,8 @@ import Lookup from './pages/Lookup';
 import WireTransferGuide from './pages/WireTransferGuide';
 import HowToFind from './pages/HowToFind';
 import InternationalWireGuide from './pages/InternationalWireGuide';
+import ZelleRoutingNumber from './pages/ZelleRoutingNumber';
+import RoutingNumberValidator from './pages/RoutingNumberValidator';
 import StateDirectory from './pages/StateDirectory';
 import StateBankList from './pages/StateBankList';
 import RoutingVsAccountNumber from './pages/RoutingVsAccountNumber';
@@ -30,6 +32,7 @@ import NotFound from './pages/NotFound';
 import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Blog from './pages/Blog';
+import Changes2026 from './pages/Changes2026';
 import CaliforniaRoutingNumbers from './pages/CaliforniaRoutingNumbers';
 
 import { Toaster } from 'sonner';
@@ -90,6 +93,9 @@ export default function App() {
               <Route path="/how-to-wire-money" element={<WireTransferGuide />} />
               <Route path="/international-wire-guide" element={<InternationalWireGuide />} />
               <Route path="/how-to-find-routing-number" element={<HowToFind />} />
+              <Route path="/zelle-routing-number" element={<ZelleRoutingNumber />} />
+              <Route path="/routing-number-validator" element={<RoutingNumberValidator />} />
+              <Route path="/routing-number-changes-2026" element={<Changes2026 />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/check-digit-calculator" element={<CheckDigitCalculator />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />

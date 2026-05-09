@@ -5,6 +5,15 @@ import { ArrowRight, BookOpen, Clock } from 'lucide-react';
 
 const articles = [
   {
+    title: "Routing Number Changes in 2026: What You Need to Know",
+    description: "The 2026 banking landscape is seeing routing numbers consolidate due to mergers. Learn what you must do to avoid failed payments.",
+    path: "/routing-number-changes-2026",
+    date: "May 8, 2026",
+    readTime: "7 min read",
+    category: "Updates",
+    slug: "routing-number-changes-2026"
+  },
+  {
     title: "Routing Number vs Account Number: What's the Difference?",
     description: "Understand the key differences between bank routing numbers and account numbers, when to use each, and how to keep them safe.",
     path: "/routing-number-vs-account-number",
@@ -66,6 +75,24 @@ const articles = [
     readTime: "5 min read",
     category: "Transfers",
     slug: "international-wire-transfers"
+  },
+  {
+    title: "What is the Zelle Routing Number?",
+    description: "Looking for a Zelle routing number? Learn why Zelle doesn't have an official routing number, and how it connects to your underlying bank.",
+    path: "/zelle-routing-number",
+    date: "April 18, 2026",
+    readTime: "4 min read",
+    category: "Transfers",
+    slug: "zelle-routing-number"
+  },
+  {
+    title: "Routing Number Validator tool",
+    description: "Verify any 9-digit US routing number against the official ABA module 10 checksum algorithm and check if it's currently active.",
+    path: "/routing-number-validator",
+    date: "May 2, 2026",
+    readTime: "Tool",
+    category: "Tools",
+    slug: "routing-number-validator"
   }
 ];
 
