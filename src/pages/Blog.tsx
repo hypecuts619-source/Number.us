@@ -23,8 +23,8 @@ const articles = [
     slug: "routing-number-vs-account-number"
   },
   {
-    title: "How to Find Your Bank Routing Number (4 Easy Ways)",
-    description: "Learn how to instantly locate your 9-digit bank routing number using your checks, mobile banking app, browser, or customer service.",
+    title: "How to Find a Routing Number Without a Checkbook",
+    description: "Learn how to instantly locate your 9-digit bank routing number without checks, using your mobile banking app, browser, or customer service.",
     path: "/how-to-find-routing-number",
     date: "January 28, 2026",
     readTime: "3 min read",
@@ -68,8 +68,8 @@ const articles = [
     slug: "how-to-wire-money"
   },
   {
-    title: "International Wire Transfers: Do You Need a Routing Number?",
-    description: "Sending money abroad? Learn the difference between SWIFT/BIC codes, IBAN numbers, and when US routing numbers are appropriate.",
+    title: "What Routing Number to Use For International Wire to US",
+    description: "Sending money abroad to the US? Learn the difference between SWIFT/BIC codes, IBAN numbers, and when US routing numbers are appropriate.",
     path: "/international-wire-guide",
     date: "April 4, 2026",
     readTime: "5 min read",

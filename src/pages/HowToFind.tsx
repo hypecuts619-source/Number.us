@@ -11,8 +11,8 @@ export default function HowToFind() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <SEO 
-        title={`How to Find Your Routing Number (${currentYear}) | USRoutingNumber.com`}
-        description="Learn exactly where to find your bank routing number on a check, in your online banking app, or on a bank statement. Complete guide to routing transit numbers."
+        title={`How to Find a Routing Number Without a Checkbook (${currentYear})`}
+        description="Learn exactly where to find your bank routing number without a checkbook, in your online banking app, or on a bank statement. Complete guide to routing transit numbers."
         canonicalUrl="/how-to-find-routing-number"
         type="article"
       />
@@ -25,7 +25,7 @@ export default function HowToFind() {
 
       <header className="mb-4">
         <h1 className="text-4xl font-extrabold text-[#1e3a5f] dark:text-white mb-4">
-          How to Find Your Routing Number
+          How to Find a Routing Number Without a Checkbook
         </h1>
         <ArticleAuthorMeta date="January 28, 2026" readTime="3 min read" />
         <p className="text-xl text-slate-600 dark:text-slate-400 mt-4">

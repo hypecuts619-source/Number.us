@@ -139,7 +139,7 @@ export default function BankState() {
           ))}
 
           <section className="prose prose-base md:prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-slate-300 max-w-none">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">ABA routing number for {bankName} in {stateFullName}</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white break-words">ABA routing number for {bankName} in {stateFullName}</h2>
             <p>
               The {currentYear} American Bankers Association (ABA) routing number for <strong>{bankName}</strong> within the state of <strong>{stateFullName}</strong> serves as a critical 9-digit identifier that links your specific bank branch location to the broader United States financial infrastructure. Every domestic transfer you initiate relies heavily on this code to ensure that your hard-earned funds are accurately routed through the Federal Reserve system or the automated clearing house (ACH) network securely and efficiently without delays.
             </p>
@@ -147,7 +147,7 @@ export default function BankState() {
               Depending on the precise financial operation you intend to perform—whether it is receiving your monthly salary via direct deposit or fulfilling an urgent bill payment—you will require the <strong>{primaryData.routing_number}</strong> code. It is fundamental to recognize that larger financial institutions may deploy distinct routing transit numbers (RTNs) dependent upon state lines or occasionally depending on the fundamental type of transaction taking place.
             </p>
             
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-3">Direct Deposit Routing Number for {bankName}</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mt-8 mb-3 break-words">Direct Deposit Routing Number for {bankName}</h3>
             <p>
               If your intent involves setting up recurrent electronic inflows—such as your paycheck from an employer, a yearly tax refund from the IRS, or government-issued social security benefits—you are obligated to provide a valid ACH routing number. 
               {(primaryData.type === 'ACH' || primaryData.type === 'BOTH') 
@@ -155,7 +155,7 @@ export default function BankState() {
                 : ` Warning: This specific routing number may not be appropriately equipped to handle general ACH direct deposits. Please contact a bank representative to verify you possess an ACH-compatible routing code before proceeding.`} Selecting the incorrect set of digits routinely leads to delayed paychecks, returned transfers, and unwanted banking fees, emphasizing the necessity of double-checking your details.
             </p>
 
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-3">Wire Transfer Instructions for {bankName}</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mt-8 mb-3 break-words">Wire Transfer Instructions for {bankName}</h3>
             <p>
               Domestic wire transfers operate along an entirely separate conduit than the standard ACH network. Because wire transfers are expedited, irrevocable transfers of funds from one banking entity to another, they demand absolute precision. If you expect to receive a domestic wire directly into your {stateFullName} branch account, utilizing the proper wire routing transit number is absolutely essential.
               {(primaryData.type === 'WIRE' || primaryData.type === 'BOTH') 

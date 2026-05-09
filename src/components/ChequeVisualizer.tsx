@@ -47,29 +47,29 @@ export default function ChequeVisualizer({ routingNumber, bankName }: { routingN
         </div>
 
         {/* The MICR Line (Magnetic Ink Character Recognition) */}
-        <div className="mt-12 flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-8 font-mono text-xl sm:text-3xl sm:tracking-widest opacity-80" style={{ fontFamily: 'monospace, "Courier New"' }}>
+        <div className="mt-8 sm:mt-12 flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-8 font-mono text-base sm:text-3xl sm:tracking-widest opacity-80" style={{ fontFamily: 'monospace, "Courier New"' }}>
           {/* Routing Number with Highlighting */}
-          <div className="relative flex items-center">
-            <span className="text-slate-400 mr-2">|:</span>
+          <div className="relative flex items-center mb-6 sm:mb-0">
+            <span className="text-slate-400 mr-1 sm:mr-2">|:</span>
             <span className="font-bold text-blue-600 relative z-10 px-1 rounded bg-blue-100 ring-2 ring-blue-500/50 shadow-[0_0_15px_rgba(37,99,235,0.2)] scale-110 transform transition-transform group-hover:scale-125 origin-left">
               {routingNumber || '000000000'}
             </span>
-            <span className="text-slate-400 ml-2">|:</span>
+            <span className="text-slate-400 ml-1 sm:ml-2">|:</span>
             
             {/* Tooltip-style label */}
-            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs font-bold text-blue-600 flex flex-col items-center animate-bounce">
-              <div className="w-0.5 h-3 bg-blue-600 mb-1"></div>
+            <div className="absolute -bottom-6 sm:-bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] sm:text-xs font-bold text-blue-600 flex flex-col items-center animate-bounce">
+              <div className="w-0.5 h-2 sm:h-3 bg-blue-600 mb-0.5 sm:mb-1"></div>
               Your Routing Number
             </div>
           </div>
 
           {/* Fake Account Number */}
           <div className="text-slate-400 flex items-center">
-            1234567890 <span className="ml-2">||"</span>
+            1234567890 <span className="ml-1 sm:ml-2">||"</span>
           </div>
           
           {/* Fake Check Number */}
-          <div className="text-slate-400">
+          <div className="text-slate-400 hidden sm:block">
             1234
           </div>
         </div>

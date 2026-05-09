@@ -26,6 +26,8 @@ export default function SEO({
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={currentUrl} />
+      <link rel="alternate" hrefLang="en-US" href={currentUrl} />
+      <link rel="alternate" hrefLang="x-default" href={currentUrl} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />

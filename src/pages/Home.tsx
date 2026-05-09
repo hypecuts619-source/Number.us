@@ -86,7 +86,7 @@ export default function Home() {
         </div>
 
         <div>
-          <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm">
+          <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm mb-8">
             <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Top Searched Banks</h2>
             <ul className="space-y-3">
               {topBanks.map((bank, i) => (
@@ -102,6 +102,27 @@ export default function Home() {
                   </Link>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm">
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Popular Guides</h2>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/how-to-wire-money" className="text-blue-700 dark:text-blue-400 font-medium hover:underline block leading-snug">
+                  How to Wire Money Using a Routing Number
+                </Link>
+              </li>
+              <li>
+                <Link to="/international-wire-guide" className="text-blue-700 dark:text-blue-400 font-medium hover:underline block leading-snug">
+                  International Wire Transfers: SWIFT & IBAN
+                </Link>
+              </li>
+              <li>
+                <Link to="/find-routing-number-on-check" className="text-blue-700 dark:text-blue-400 font-medium hover:underline block leading-snug">
+                  How to Find Your Routing Number Without a Check
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

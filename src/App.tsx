@@ -33,6 +33,7 @@ import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Blog from './pages/Blog';
 import Changes2026 from './pages/Changes2026';
+import AboutUs from './pages/AboutUs';
 import CaliforniaRoutingNumbers from './pages/CaliforniaRoutingNumbers';
 
 import { Toaster } from 'sonner';
@@ -96,6 +97,7 @@ export default function App() {
               <Route path="/zelle-routing-number" element={<ZelleRoutingNumber />} />
               <Route path="/routing-number-validator" element={<RoutingNumberValidator />} />
               <Route path="/routing-number-changes-2026" element={<Changes2026 />} />
+              <Route path="/about-us" element={<AboutUs />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/check-digit-calculator" element={<CheckDigitCalculator />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
@@ -117,6 +119,7 @@ export default function App() {
                 <Link to="/routing-number-vs-account-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Routing vs Account</Link>
               </nav>
               <nav className="flex justify-center gap-6 mb-6">
+                <Link to="/about-us" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">About Us</Link>
                 <Link to="/terms-of-service" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Terms of Service</Link>
                 <Link to="/privacy-policy" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Privacy Policy</Link>
               </nav>

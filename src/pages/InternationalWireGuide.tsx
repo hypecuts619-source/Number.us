@@ -12,8 +12,8 @@ export default function InternationalWireGuide() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <SEO 
-        title={`International Wire Transfers Guide (${currentYear}) | USRoutingNumber.com`}
-        description="Complete guide on sending and receiving international wire transfers. Learn about SWIFT codes, BICs, IBANs, and how to avoid common international transfer pitfalls."
+        title="How to Wire Money Internationally to the US (2026 Guide)"
+        description="Need to send an international wire? Find out exactly what info is needed, including SWIFT codes and US routing numbers for major banks in America."
         canonicalUrl="/international-wire-guide"
         type="article"
       />
