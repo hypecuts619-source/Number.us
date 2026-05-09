@@ -47,7 +47,7 @@ export default function ChequeVisualizer({ routingNumber, bankName }: { routingN
         </div>
 
         {/* The MICR Line (Magnetic Ink Character Recognition) */}
-        <div className="mt-12 flex items-center justify-center sm:justify-start gap-4 sm:gap-8 font-mono text-2xl sm:text-3xl tracking-widest opacity-80" style={{ fontFamily: 'monospace, "Courier New"' }}>
+        <div className="mt-12 flex flex-wrap items-center justify-center sm:justify-start gap-4 sm:gap-8 font-mono text-xl sm:text-3xl sm:tracking-widest opacity-80" style={{ fontFamily: 'monospace, "Courier New"' }}>
           {/* Routing Number with Highlighting */}
           <div className="relative flex items-center">
             <span className="text-slate-400 mr-2">|:</span>

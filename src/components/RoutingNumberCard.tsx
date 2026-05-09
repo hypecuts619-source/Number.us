@@ -12,8 +12,8 @@ export default function RoutingNumberCard({ data }: { data: RoutingData }) {
     <div className="flex flex-col gap-6">
       <div className="bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-2xl p-5 md:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 print:border-none print:shadow-none print:p-0">
         <div className="text-center md:text-left flex-grow">
-          <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-            <div className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">
+            <div className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
               Official Routing Number
             </div>
             <PrintDownloadButtons 
@@ -22,7 +22,7 @@ export default function RoutingNumberCard({ data }: { data: RoutingData }) {
               details={`${data.city}, ${data.state}${zipStr} - ${type}`} 
             />
           </div>
-          <div className="font-mono text-5xl font-black text-slate-900 dark:text-white tracking-tight">
+          <div className="font-mono text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
             {data.routing_number}
           </div>
           <div className="mt-4 flex flex-wrap gap-2 justify-center md:justify-start">
