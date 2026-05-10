@@ -4,6 +4,7 @@ import SearchBar from '../components/SearchBar';
 import AccountValidator from '../components/AccountValidator';
 import AdUnit from '../components/AdUnit';
 import CheckDiagram from '../components/CheckDiagram';
+import RegionalBankDirectory from '../components/RegionalBankDirectory';
 import { getTopSearchedBanks } from '../lib/getData';
 import { generateSlug } from '../lib/generateSlug';
 import { generateHomeFAQs } from '../lib/faqTemplates';
@@ -19,12 +20,28 @@ export default function Home() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 md:py-12 relative">
       <SEO 
-        title="Find Any US Routing Number & Bank Lookup (2026)"
+        title="United States Routing Number Search | Find Any US Bank (2026)"
         description="Looking for your bank's routing number? Lookup any US bank routing number for direct deposit, ACH, and wire transfers instantly."
         canonicalUrl="/"
       >
         <script type="application/ld+json">
           {generateWebSiteSchema()}
+        </script>
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "USRoutingNumber",
+              "url": "https://usroutingnumber.com",
+              "logo": "https://usroutingnumber.com/favicon.svg",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "contact@usroutingnumber.com",
+                "contactType": "customer service"
+              }
+            }
+          `}
         </script>
         <script type="application/ld+json">
           {generateFAQSchema(faqs)}
@@ -145,6 +162,8 @@ export default function Home() {
       </div>
 
       <AdUnit slot="UNIT 2: Mid content, in-article responsive" className="my-10 min-h-[100px] md:min-h-[150px]" />
+      
+      <RegionalBankDirectory />
 
       <div className="mt-8 md:mt-16 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 md:p-12 shadow-sm">
         <div className="mt-12 mb-8 bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 rounded-3xl p-8 text-center max-w-4xl mx-auto">

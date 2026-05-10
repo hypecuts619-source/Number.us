@@ -25,6 +25,7 @@ const WhatIsARoutingNumber = lazy(() => import('./pages/WhatIsARoutingNumber'));
 const DirectDepositRoutingNumber = lazy(() => import('./pages/DirectDepositRoutingNumber'));
 const FindRoutingNumberOnCheck = lazy(() => import('./pages/FindRoutingNumberOnCheck'));
 const RoutingNumberLookup = lazy(() => import('./pages/RoutingNumberLookup'));
+const RegionalBankOverview = lazy(() => import('./pages/RegionalBankOverview'));
 
 const MajorBanks = lazy(() => import('./pages/MajorBanks'));
 const CheckDigitCalculator = lazy(() => import('./pages/CheckDigitCalculator'));
@@ -106,6 +107,7 @@ export default function App() {
                 <Route path="/states/:state" element={!dataLoaded ? <div className="min-h-[60vh] flex justify-center items-center"><div className="w-10 h-10 border-4 border-t-blue-500 rounded-full animate-spin"></div></div> : <StateBankList />} />
                 
                 <Route path="/routing-number-lookup" element={<RoutingNumberLookup />} />
+                <Route path="/regional-banks/:bankSlug" element={<RegionalBankOverview />} />
                 <Route path="/major-banks" element={<MajorBanks />} />
                 
                 {/* Specific lookups that absolutely need data */}
@@ -128,8 +130,8 @@ export default function App() {
                 <Link to="/privacy-policy" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Privacy Policy</Link>
               </nav>
               <p>&copy; {new Date().getFullYear()} USRoutingNumber.com. All rights reserved.</p>
-              <p className="mt-4 text-xs text-slate-400 dark:text-slate-500 leading-relaxed">
-                <strong>Disclaimer:</strong> The routing numbers and financial information provided on this website are for general informational purposes only. While we strive to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the information. Always verify routing numbers directly with your financial institution before initiating any wire transfers or transactions. The website owners are not liable for any financial losses, delayed transactions, or damaged caused by the use of this information. All bank names and trademarks are the property of their respective owners and are used here under nominative fair use for identification purposes only.
+              <p className="mt-4 text-xs text-slate-400 dark:text-slate-500 leading-relaxed max-w-4xl mx-auto">
+                <strong>Important Medical & Financial Disclaimer:</strong> USRoutingNumber.com is an independent educational publisher and is <strong>NOT</strong> a bank, financial institution, broker, or investment advisor. The information provided on this website is for general informational and educational purposes only and does not constitute financial, legal, or professional advice. While we strive to maintain our database using public records from the Federal Reserve and other regulatory bodies, we make no guarantees regarding the completeness, accuracy, or current validity of any routing numbers, SWIFT codes, or institutional data. <strong>Always verify</strong> routing numbers, wire instructions, and transaction details directly with your official financial institution before initiating any wire transfers, direct deposits, or ACH transactions. USRoutingNumber.com and its authors are not liable for any misrouted funds, financial losses, delayed transactions, return fees, or damages arising from reliance on this information. All bank names, logos, and trademarks are the property of their respective owners and are used strictly under nominative fair use for identification purposes.
               </p>
             </div>
           </footer>

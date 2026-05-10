@@ -1,4 +1,5 @@
 import SEO from '../components/SEO';
+import { Link } from 'react-router-dom';
 import AccountValidator from '../components/AccountValidator';
 import AdUnit from '../components/AdUnit';
 

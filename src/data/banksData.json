@@ -1,0 +1,107 @@
+[
+  {
+    "bankName": "First California Federal Credit Union",
+    "routingNumbers": ["322079540"],
+    "state": "California",
+    "description": "First California Federal Credit Union provides regional banking services focused on community growth and personal finance. They offer competitive rates on loans and high-yield savings for their members.",
+    "slug": "first-california-federal-cu"
+  },
+  {
+    "bankName": "Texas Dow Employees Credit Union",
+    "routingNumbers": ["311986423", "311986424"],
+    "state": "Texas",
+    "description": "Texas Dow Employees Credit Union (TDECU) is one of the largest credit unions in Texas, offering extensive financial services. They specialize in mortgage lending and member-first checking accounts.",
+    "slug": "texas-dow-employees-cu"
+  },
+  {
+    "bankName": "Suncoast Credit Union",
+    "routingNumbers": ["263183577"],
+    "state": "Florida",
+    "description": "Suncoast Credit Union serves schools and communities across Florida with low-fee financial products. It is Florida's largest credit union, providing robust online banking and personal loans.",
+    "slug": "suncoast-credit-union"
+  },
+  {
+    "bankName": "SchoolsFirst Federal Credit Union",
+    "routingNumbers": ["322079537"],
+    "state": "California",
+    "description": "SchoolsFirst FCU exclusively serves educational professionals and their families in California. They are renowned for their highly competitive auto loan rates and dedicated member service.",
+    "slug": "schoolsfirst-federal-cu"
+  },
+  {
+    "bankName": "Desert Financial Credit Union",
+    "routingNumbers": ["322172780"],
+    "state": "Arizona",
+    "description": "Desert Financial Credit Union is a staple in Arizona, offering comprehensive consumer and business banking. They focus on regional community outreach and accessible financial education.",
+    "slug": "desert-financial-cu"
+  },
+  {
+    "bankName": "BECU (Boeing Employees Credit Union)",
+    "routingNumbers": ["325081403"],
+    "state": "Washington",
+    "description": "Initially serving Boeing employees, BECU now serves all Washington state residents. They provide excellent digital banking tools alongside high-yield checking and savings accounts.",
+    "slug": "becu-boeing-employees-cu"
+  },
+  {
+    "bankName": "Alliant Credit Union",
+    "routingNumbers": ["271081403"],
+    "state": "Illinois",
+    "description": "Alliant Credit Union is a fully digital credit union headquartered in Chicago. They consistently offer some of the best high-yield savings rates nationally without monthly fees.",
+    "slug": "alliant-credit-union"
+  },
+  {
+    "bankName": "Mountain America Credit Union",
+    "routingNumbers": ["324377516"],
+    "state": "Utah",
+    "description": "Mountain America Credit Union operates across several western states, focusing on personal and business banking. They are highly rated for their mobile app experience and extensive ATM network.",
+    "slug": "mountain-america-cu"
+  },
+  {
+    "bankName": "OnPoint Community Credit Union",
+    "routingNumbers": ["323071858"],
+    "state": "Oregon",
+    "description": "OnPoint Community Credit Union is the largest community-owned financial institution in Oregon. Their commitment to favorable interest rates makes them a regional alternative to big banks.",
+    "slug": "onpoint-community-cu"
+  },
+  {
+    "bankName": "Veridian Credit Union",
+    "routingNumbers": ["273970425"],
+    "state": "Iowa",
+    "description": "Veridian Credit Union, based in Iowa, has grown to serve members nationally with diverse financial products. They are particularly strong in facilitating commercial loans and community grants.",
+    "slug": "veridian-credit-union"
+  },
+  {
+    "bankName": "Ent Credit Union",
+    "routingNumbers": ["102000076"],
+    "state": "Colorado",
+    "description": "Ent Credit Union is Colorado's leading credit union, known for no-fee checking accounts and low-rate loans. They maintain a strong physical presence across the Front Range.",
+    "slug": "ent-credit-union"
+  },
+  {
+    "bankName": "Lake Trust Credit Union",
+    "routingNumbers": ["272481309"],
+    "state": "Michigan",
+    "description": "Lake Trust Credit Union serves Michigan residents with personalized financial products designed to build localized wealth. They emphasize cooperative economics and small business support.",
+    "slug": "lake-trust-cu"
+  },
+  {
+    "bankName": "Redwood Credit Union",
+    "routingNumbers": ["121142511"],
+    "state": "California",
+    "description": "Redwood Credit Union focuses heavily on the Northern California region, bringing comprehensive banking and insurance services. They have been frequently recognized for exceptional customer satisfaction.",
+    "slug": "redwood-credit-union"
+  },
+  {
+    "bankName": "Delta Community Credit Union",
+    "routingNumbers": ["061113415"],
+    "state": "Georgia",
+    "description": "Serving metro Atlanta, Delta Community Credit Union offers comprehensive banking beyond the airline industry origin. They highlight low-interest consumer loans and rewarding credit cards.",
+    "slug": "delta-community-cu"
+  },
+  {
+    "bankName": "Community First Credit Union",
+    "routingNumbers": ["263080065"],
+    "state": "Florida",
+    "description": "Operating primarily in Northeast Florida, Community First Credit Union focuses heavily on localized member benefits. They offer distinct first-time homebuyer programs and local auto financing.",
+    "slug": "community-first-cu"
+  }
+]

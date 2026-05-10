@@ -17,6 +17,10 @@ const generateSlug = (text) => {
 
 const generateSitemap = () => {
   const data = JSON.parse(fs.readFileSync(routingDataPath, 'utf8'));
+  const regionalBanksPath = path.resolve('src/data/banksData.json');
+  const regionalBanksData = fs.existsSync(regionalBanksPath) 
+    ? JSON.parse(fs.readFileSync(regionalBanksPath, 'utf8')) 
+    : [];
   const baseUrl = 'https://usroutingnumber.com';
   
   let urls = [
@@ -60,6 +64,13 @@ const generateSitemap = () => {
   // Add bank overviews
   banks.forEach(slug => {
     urls.push(`${baseUrl}/routing-number/${slug}`);
+  });
+
+  // Add regional bank overviews
+  regionalBanksData.forEach(bank => {
+    if (bank.slug) {
+      urls.push(`${baseUrl}/regional-banks/${bank.slug}`);
+    }
   });
 
   // Make urls unique just in case

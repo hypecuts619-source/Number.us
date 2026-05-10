@@ -42,6 +42,19 @@ export default function AboutUs() {
         </ul>
 
         <div className="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 my-8">
+          <h3 className="font-bold text-xl mt-0 mb-2">Our Editorial & Data Guidelines</h3>
+          <p className="mb-4 text-sm leading-relaxed">
+            As a publisher of "Your Money or Your Life" (YMYL) content, we hold ourselves to strict editorial standards:
+          </p>
+          <ul className="mb-0 text-sm space-y-2 pl-4">
+            <li><strong>Accuracy First:</strong> All routing data is cross-referenced with public Federal Reserve datasets and official institutional public disclosures.</li>
+            <li><strong>Expert Review:</strong> Our financial guides covering wire transfers and routing numbers are reviewed by professionals with banking and fintech experience.</li>
+            <li><strong>Clear Disclosures:</strong> We never disguise advertisements or affiliate links as editorial content. Our validation tools perform mathematical client-side formatting checks only, protecting user privacy.</li>
+            <li><strong>No Financial Advice:</strong> We provide infrastructure data, not financial or investment advice. Always verify final transfer details with your institution.</li>
+          </ul>
+        </div>
+        
+        <div className="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 my-8">
           <h3 className="font-bold text-xl mt-0 mb-2">Our Team</h3>
           <p className="mb-0 text-sm">
             USRoutingNumber.com is maintained by a small team of fintech developers and data researchers dedicated to making banking infrastructure transparent. While we are not a financial institution, we pair public Federal Reserve data with intelligent search algorithms to surface the information you need in seconds.

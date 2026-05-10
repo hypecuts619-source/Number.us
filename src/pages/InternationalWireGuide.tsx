@@ -12,7 +12,7 @@ export default function InternationalWireGuide() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <SEO 
-        title="How to Wire Money Internationally to the US (2026 Guide)"
+        title="International Wire Transfer Info Needed | SWIFT Codes & US Routing Numbers"
         description="Need to send an international wire? Find out exactly what info is needed, including SWIFT codes and US routing numbers for major banks in America."
         canonicalUrl="/international-wire-guide"
         type="article"

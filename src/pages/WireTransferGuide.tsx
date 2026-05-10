@@ -33,8 +33,8 @@ export default function WireTransferGuide() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <SEO 
-        title={`How to Wire Money Internationally to the US (Updated May ${currentYear})`}
-        description="Need to send an international wire? Find out exactly what info is needed, including SWIFT codes and US routing numbers for major banks."
+        title={`What is a Wire Transfer Routing Number? | US Guide (${currentYear})`}
+        description="Need to send a wire? Learn what a wire transfer routing number is, how it differs from ACH, and exactly what info is needed."
         canonicalUrl="/how-to-wire-money"
         type="article"
       >
