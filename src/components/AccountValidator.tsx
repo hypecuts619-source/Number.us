@@ -148,13 +148,65 @@ export default function AccountValidator() {
                   </div>
                 </div>
               )}
+
+              {/* What This Means */}
+              {(result.routingValid || result.routingFound) && (
+                <div className="mt-6 border-t border-slate-200 dark:border-slate-700 pt-6">
+                  <h4 className="font-semibold text-slate-800 dark:text-slate-200 mb-2">What this means:</h4>
+                  <div className="text-sm text-slate-600 dark:text-slate-400 space-y-2">
+                    {result.routingValid && result.routingFound && result.bankName ? (
+                      <p>This routing number mathematically passes the ABA Checksum and matches a known active entity in our directory: <strong>{result.bankName}</strong>. This confirms the number is well-formatted and assigned to an institution.</p>
+                    ) : result.routingValid && !result.routingFound ? (
+                      <p>The sequence is a structurally valid 9-digit routing number (mathematical checksum passes), but it was <strong>not found</strong> in our public directory. It may be internal, recently issued, or retired.</p>
+                    ) : (
+                      <p>The sequence fails the standard ABA module 10 routing number checksum algorithm. This is typically due to a typo or transcription error.</p>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Checksum Math */}
+              {routingNumber.length === 9 && !isNaN(Number(routingNumber)) && (
+                <div className="mt-6 border-t border-slate-200 dark:border-slate-700 pt-6">
+                  <h4 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mb-3">Mathematical Checksum Calculation:</h4>
+                  <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg text-sm font-mono overflow-x-auto whitespace-nowrap text-slate-700 dark:text-slate-300 space-y-2 border border-slate-200 dark:border-slate-700">
+                    <div>Formula: <span className="font-bold text-slate-900 dark:text-white">3(d1+d4+d7) + 7(d2+d5+d8) + 1(d3+d6+d9) mod 10 = 0</span></div>
+                    <div className="text-slate-500">
+                      d = [{routingNumber.split('').join(', ')}]
+                    </div>
+                    {(() => {
+                      const d = routingNumber.split('').map(Number);
+                      const sum = (3 * (d[0] + d[3] + d[6])) + (7 * (d[1] + d[4] + d[7])) + (1 * (d[2] + d[5] + d[8]));
+                      return (
+                        <>
+                          <div>
+                            {`3(${d[0]}+${d[3]}+${d[6]}) + 7(${d[1]}+${d[4]}+${d[7]}) + 1(${d[2]}+${d[5]}+${d[8]}) = `}
+                            <strong className="text-slate-900 dark:text-white">{sum}</strong>
+                          </div>
+                          <div className={sum % 10 === 0 ? "text-emerald-600 dark:text-emerald-400 font-bold" : "text-red-600 dark:text-red-400 font-bold"}>
+                            {sum} mod 10 = {sum % 10}
+                            <span className="ml-2 font-normal">
+                              {sum % 10 === 0 ? "(Valid Checksum)" : "(Invalid Checksum)"}
+                            </span>
+                          </div>
+                        </>
+                      );
+                    })()}
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="mt-8 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/30 rounded-lg flex gap-3 text-amber-800 dark:text-amber-200/80 text-sm">
               <AlertCircle className="w-5 h-5 shrink-0" />
-              <p>
-                <strong>Format verified. We do not store your account number.</strong> This tool checks the structural format of the routing and account combination. For your security, we do not connect to live banking mainframes to verify if the account is currently open or has funds. Contact your bank to verify actual account status.
-              </p>
+              <div className="space-y-3">
+                <p>
+                  <strong>Important Disclaimer:</strong> Even if a routing number is valid and recognized, <strong>ACH routing numbers and Wire routing numbers frequently differ</strong>, even for the exact same banking institution (like Western Union, Chase, or Bank of America).
+                </p>
+                <p>
+                  A mathematically valid checksum does <em>not</em> guarantee the routing number is actively accepting funds or correct for your specific transaction. For your security, always verify the exact routing number needed for your specific transaction type directly with your bank. We do not store your account number.
+                </p>
+              </div>
             </div>
           </div>
         )}

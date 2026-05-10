@@ -61,6 +61,23 @@ export default function MajorBanks() {
 
       <AdUnit slot="UNIT 1: Below H1, 728x90 leaderboard" className="my-8 min-h-[90px]" />
 
+      <div className="mb-8 grid md:grid-cols-2 gap-4">
+        <Link to="/routing-number-validator" className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/30 rounded-xl p-5 hover:shadow-sm transition-all flex items-center justify-between group">
+          <div>
+            <h3 className="font-bold text-blue-900 dark:text-blue-100 group-hover:text-blue-700 dark:group-hover:text-blue-300">Validate a Routing Number</h3>
+            <p className="text-sm text-blue-700/80 dark:text-blue-300/80 mt-1">Check if a 9-digit code passes the ABA checksum.</p>
+          </div>
+          <ChevronRight className="text-blue-400 dark:text-blue-600 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
+        </Link>
+        <Link to="/routing-number-lookup" className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl p-5 hover:shadow-sm transition-all flex items-center justify-between group">
+          <div>
+            <h3 className="font-bold text-slate-800 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400">Reverse Lookup</h3>
+            <p className="text-sm text-slate-500 mt-1">Found a routing number? Look up which bank it belongs to.</p>
+          </div>
+          <ChevronRight className="text-slate-300 dark:text-slate-600 group-hover:text-blue-500" />
+        </Link>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {MAJOR_BANKS.map((bank) => {
           const slug = generateSlug(bank.name);

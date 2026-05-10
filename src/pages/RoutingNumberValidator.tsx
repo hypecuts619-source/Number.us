@@ -39,6 +39,34 @@ export default function RoutingNumberValidator() {
           Entering an incorrect routing number can cause severe delays and fees. If you provide an invalid structural number (one that fails the checksum) to your employer or a merchant, their software will typically reject it immediately. 
           However, providing a mathematically valid but <em>wrong</em> routing number (for example, the wire transfer routing number instead of the ACH routing number for your bank) can result in intercepted funds and bank return fees. That's why verifying the number against our Federal Reserve directory is critical before setting up direct deposits.
         </p>
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-4">Common Mistakes: Why a Routing Number Fails</h2>
+        <p>
+          Getting a "wrong routing number" or "routing number not working" error is a high-anxiety moment. Before panicking, check these common failure modes:
+        </p>
+        <ul className="list-disc pl-6 space-y-4 font-normal mt-4">
+          <li><strong>ACH vs Wire Confusion:</strong> Using an ACH routing number when a wire number is required (or vice versa). E.g., Chase has a universal wire routing number, but dozens of state-specific ACH routing numbers.</li>
+          <li><strong>Mistyped Digit & Checksum Mismatch:</strong> A single transposed number guarantees the ABA checksum will fail. For example, typing "021000022" instead of "021000021".</li>
+          <li><strong>State-Specific Variations:</strong> Large banks often use different routing numbers depending on the state where you <em>originally opened</em> your account.</li>
+          <li><strong>Merger-Related Changes:</strong> When banks merge (e.g., SunTrust and BB&T merging into Truist), old routing numbers are eventually retired. It might mathematically validate, but the transaction will bounce if the bank no longer supports the legacy code.</li>
+          <li><strong>Formatting Errors:</strong> Copy-pasting a routing number with spaces or dashes (e.g., "021-000-021") into poorly coded billing software can throw an error. Numbers should always be contiguous.</li>
+        </ul>
+
+        <div className="mt-8 grid md:grid-cols-2 gap-4">
+          <Link to="/routing-number-lookup" className="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl p-5 hover:border-blue-500 transition-all flex items-center justify-between group no-underline">
+            <div>
+              <h3 className="font-bold text-slate-900 dark:text-white m-0 group-hover:text-blue-600 dark:group-hover:text-blue-400">Reverse Lookup Tool</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400 m-0 mt-1">Found a number? Look up the bank.</p>
+            </div>
+            <span className="text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </Link>
+          <Link to="/what-is-a-routing-number" className="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl p-5 hover:border-blue-500 transition-all flex items-center justify-between group no-underline">
+            <div>
+              <h3 className="font-bold text-slate-900 dark:text-white m-0 group-hover:text-blue-600 dark:group-hover:text-blue-400">What is a Routing Number?</h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400 m-0 mt-1">Read our complete guide to ABA codes.</p>
+            </div>
+            <span className="text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </Link>
+        </div>
       </div>
     </div>
   );

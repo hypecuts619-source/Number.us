@@ -137,7 +137,26 @@ export default function WireTransferGuide() {
 
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">Frequently Asked Questions</h2>
             <FAQSection faqs={faqs} />
-          </article>
+          
+            <div className="mt-12 bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 rounded-2xl p-6">
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 mt-0">Free Financial Tools</h2>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <Link to="/routing-number-validator" className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-4 hover:border-blue-500 transition-all flex items-center justify-between group no-underline">
+                  <div>
+                    <h3 className="font-bold text-slate-900 dark:text-white m-0 text-base group-hover:text-blue-600 dark:group-hover:text-blue-400">Validate Routing Number</h3>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 m-0 mt-1">Check the ABA Checksum</p>
+                  </div>
+                  <span className="text-blue-600 dark:text-blue-400 font-bold">&rarr;</span>
+                </Link>
+                <Link to="/routing-number-lookup" className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-4 hover:border-blue-500 transition-all flex items-center justify-between group no-underline">
+                  <div>
+                    <h3 className="font-bold text-slate-900 dark:text-white m-0 text-base group-hover:text-blue-600 dark:group-hover:text-blue-400">Reverse Lookup</h3>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 m-0 mt-1">Find the bank for a number</p>
+                  </div>
+                  <span className="text-blue-600 dark:text-blue-400 font-bold">&rarr;</span>
+                </Link>
+              </div>
+            </div>\n          </article>
           
           <div className="bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 rounded-2xl p-8 mt-12">
             <h3 className="text-xl font-bold text-[#1e3a5f] dark:text-blue-300 mb-4">Pro Tip: Use Our Lookup Tool</h3>

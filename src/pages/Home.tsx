@@ -105,6 +105,22 @@ export default function Home() {
             </ul>
           </div>
 
+          <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm mb-8">
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Verification Tools</h2>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/routing-number-validator" className="text-blue-700 dark:text-blue-400 font-medium hover:underline block leading-snug">
+                  Validate Routing Number Checksum
+                </Link>
+              </li>
+              <li>
+                <Link to="/routing-number-lookup" className="text-blue-700 dark:text-blue-400 font-medium hover:underline block leading-snug">
+                  Reverse Routing Number Lookup
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm">
             <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Popular Guides</h2>
             <ul className="space-y-3">

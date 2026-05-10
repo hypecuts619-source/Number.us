@@ -79,6 +79,7 @@ export default function FooterLinks() {
             Resources & Guides
           </h3>
           <ul className="space-y-2 text-sm">
+            <li><Link to="/routing-number-lookup" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Reverse Lookup</Link></li>
             <li><Link to="/what-is-a-routing-number" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">What is a Routing Number?</Link></li>
             <li><Link to="/find-routing-number-on-check" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Find it on a Check</Link></li>
             <li><Link to="/how-to-wire-money" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">How to Wire Money</Link></li>

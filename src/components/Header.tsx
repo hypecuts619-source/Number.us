@@ -11,6 +11,7 @@ export default function Header() {
     { name: 'Home', path: '/' },
     { name: 'By State', path: '/states' },
     { name: 'Major Banks', path: '/major-banks' },
+    { name: 'Reverse Lookup', path: '/routing-number-lookup' },
     { name: 'Validator Tools', path: '/routing-number-validator' },
     { name: 'Blog & Guides', path: '/blog' },
   ];
