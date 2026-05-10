@@ -19,8 +19,8 @@ export default function Home() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 md:py-12 relative">
       <SEO 
-        title="Find Routing Number & Bank Routing Number Lookup (2026)"
-        description="Lookup any US bank routing number for direct deposit, ACH, and wire transfers. Find routing numbers for Chase, Wells Fargo, Bank of America, and more."
+        title="Find Any US Routing Number & Bank Lookup (2026)"
+        description="Looking for your bank's routing number? Lookup any US bank routing number for direct deposit, ACH, and wire transfers instantly."
         canonicalUrl="/"
       >
         <script type="application/ld+json">

@@ -32,6 +32,11 @@ const generateSitemap = () => {
     `${baseUrl}/how-to-wire-money`,
     `${baseUrl}/international-wire-guide`,
     `${baseUrl}/how-to-find-routing-number`,
+    `${baseUrl}/zelle-routing-number`,
+    `${baseUrl}/routing-number-validator`,
+    `${baseUrl}/routing-number-changes-2026`,
+    `${baseUrl}/about-us`,
+    `${baseUrl}/blog`,
     `${baseUrl}/check-digit-calculator`,
     `${baseUrl}/terms-of-service`,
     `${baseUrl}/privacy-policy`
@@ -95,6 +100,16 @@ const generateSitemap = () => {
 
   fs.writeFileSync(sitemapPath, sitemapIndexContent);
   console.log(`Sitemap index generated with ${numSitemaps} sitemaps at ${sitemapPath}`);
+
+  // Create robots.txt
+  const robotsPath = path.resolve('public/robots.txt');
+  const robotsTxt = `User-agent: *
+Allow: /
+
+Sitemap: ${baseUrl}/sitemap.xml
+`;
+  fs.writeFileSync(robotsPath, robotsTxt);
+  console.log('🤖 robots.txt generated successfully');
 };
 
 generateSitemap();
