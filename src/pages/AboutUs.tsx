@@ -1,6 +1,7 @@
 import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import { Link } from 'react-router-dom';
+import { ShieldCheck } from 'lucide-react';
 
 export default function AboutUs() {
   return (
@@ -55,10 +56,18 @@ export default function AboutUs() {
         </div>
         
         <div className="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 my-8">
-          <h3 className="font-bold text-xl mt-0 mb-2">Our Team</h3>
-          <p className="mb-0 text-sm">
-            USRoutingNumber.com is maintained by a small team of fintech developers and data researchers dedicated to making banking infrastructure transparent. While we are not a financial institution, we pair public Federal Reserve data with intelligent search algorithms to surface the information you need in seconds.
+          <h3 className="font-bold text-xl mt-0 mb-4 flex items-center gap-2">
+            <ShieldCheck className="w-5 h-5 text-blue-600" /> Data Sources & Verification
+          </h3>
+          <p className="mb-4 text-sm leading-relaxed">
+            To provide the most accurate and up-to-date routing information, we aggregate and verify data from the following authoritative sources:
           </p>
+          <ul className="mb-0 text-sm space-y-3 pl-4">
+            <li><strong>Federal Reserve Financial Services (FRFS):</strong> We ingest the official E-Payments Routing Directory provided by the Federal Reserve to ensure legal compliance and active status.</li>
+            <li><strong>ABA Routing Number Administrative Services:</strong> We reference the American Bankers Association guidelines to verify "Check Digit" logic and institution eligibility.</li>
+            <li><strong>Financial Institution Disclosures:</strong> For regional banks and credit unions (like those in our <Link to="/regional-banks/suncoast-credit-union">regional directory</Link>), we cross-reference public fee schedules and wire instruction documents.</li>
+            <li><strong>The FDIC BankFind Tool:</strong> We use FDIC-insured institution data to track bank closures, renames, and mergers in real-time.</li>
+          </ul>
         </div>
 
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-10">Contact Us</h2>

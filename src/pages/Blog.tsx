@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { ArrowRight, BookOpen, Clock } from 'lucide-react';
+import glossaryData from '../data/glossaryData.json';
 
 const articles = [
   {
@@ -93,6 +94,33 @@ const articles = [
     readTime: "Tool",
     category: "Tools",
     slug: "routing-number-validator"
+  },
+  {
+    title: "ACH vs. Wire Transfers: Which Routing Number Should You Use?",
+    description: "Understanding the critical differences between ACH and Wire transfer routing numbers and when to use each for maximum speed.",
+    path: "/blog/ach-vs-wire-routing-guide",
+    date: "May 10, 2026",
+    readTime: "9 min read",
+    category: "Transfers",
+    slug: "ach-vs-wire-routing"
+  },
+  {
+    title: "How to Protect Your Bank Details: A Guide to Secure Wire Transfers",
+    description: "Expert tips on securing your routing and account numbers to prevent wire transfer fraud and protect your privacy.",
+    path: "/blog/secure-wire-transfer-guide",
+    date: "May 10, 2026",
+    readTime: "11 min read",
+    category: "Security",
+    slug: "secure-wire-transfers"
+  },
+  {
+    title: "Common Reasons Your Routing Number is Being Rejected and How to Fix It",
+    description: "Troubleshoot common routing number rejection errors for ACH and Wires with these 2026 technical fixes.",
+    path: "/blog/rejected-routing-number-troubleshooting",
+    date: "May 10, 2026",
+    readTime: "10 min read",
+    category: "Troubleshooting",
+    slug: "rejected-routing-fixes"
   }
 ];
 
@@ -148,6 +176,27 @@ export default function Blog() {
             </div>
           </Link>
         ))}
+      </div>
+      
+      <div className="mt-24">
+        <div className="flex items-center gap-3 mb-8">
+          <div className="h-8 w-1.5 bg-blue-600 rounded-full"></div>
+          <h2 className="text-3xl font-black text-slate-900 dark:text-white">Banking & Wire Transfer Glossary</h2>
+        </div>
+        <p className="text-slate-600 dark:text-slate-400 mb- aggregation-8 max-w-2xl">
+          Quickly understand essential terms in the US banking infrastructure. Each definition is verified for 2026 standards.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+          {glossaryData.map((item) => (
+            <Link 
+              key={item.slug} 
+              to={`/glossary/${item.slug}`}
+              className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all font-medium text-sm text-slate-700 dark:text-slate-300"
+            >
+              {item.term.split('(')[0].trim()}
+            </Link>
+          ))}
+        </div>
       </div>
       
       <div className="mt-20 bg-slate-50 dark:bg-slate-800/50 rounded-3xl p-8 md:p-12 text-center border border-slate-200 dark:border-slate-700/50">

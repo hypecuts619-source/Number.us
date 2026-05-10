@@ -14,23 +14,55 @@ export default defineConfig(({mode}) => {
         registerType: 'autoUpdate',
         includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
         workbox: {
-          maximumFileSizeToCacheInBytes: 10 * 1024 * 1024 // 10 MiB
+          maximumFileSizeToCacheInBytes: 15 * 1024 * 1024, // 15 MiB for the database
+          globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
+          runtimeCaching: [
+            {
+              urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+              handler: 'CacheFirst',
+              options: {
+                cacheName: 'google-fonts-cache',
+                expiration: {
+                  maxEntries: 10,
+                  maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
+                },
+                cacheableResponse: {
+                  statuses: [0, 200],
+                },
+              },
+            },
+            {
+              urlPattern: /.*routing\.json.*/,
+              handler: 'StaleWhileRevalidate',
+              options: {
+                cacheName: 'routing-data-cache',
+                expiration: {
+                  maxAgeSeconds: 60 * 60 * 24 * 7, // 7 days
+                }
+              }
+            }
+          ]
         },
         manifest: {
-          name: 'USRoutingNumber.com',
-          short_name: 'USRoutingNumber',
-          description: 'Search and verify US bank routing numbers instantly.',
-          theme_color: '#1e3a5f',
+          name: 'RoutingNumbers.app',
+          short_name: 'Routing',
+          description: 'Verified US Bank & Credit Union Routing Numbers.',
+          theme_color: '#2563eb',
+          background_color: '#ffffff',
+          display: 'standalone',
+          orientation: 'portrait',
           icons: [
             {
               src: 'pwa-192x192.png',
               sizes: '192x192',
-              type: 'image/png'
+              type: 'image/png',
+              purpose: 'any maskable'
             },
             {
               src: 'pwa-512x512.png',
               sizes: '512x512',
-              type: 'image/png'
+              type: 'image/png',
+              purpose: 'any'
             }
           ]
         }

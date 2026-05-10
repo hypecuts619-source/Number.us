@@ -70,6 +70,14 @@ export default function FooterLinks() {
                 Full A-Z Bank Directory &rarr;
               </Link>
             </li>
+            <li>
+              <Link 
+                to="/regional-banks"
+                className="text-slate-500 dark:text-slate-400 text-xs hover:underline transition-colors mt-1 inline-block"
+              >
+                Regional Credit Unions
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -79,6 +87,7 @@ export default function FooterLinks() {
             Resources & Guides
           </h3>
           <ul className="space-y-2 text-sm">
+            <li><Link to="/how-to-find-routing-number-guide" className="text-blue-600 dark:text-blue-400 font-bold hover:underline transition-colors">2026 Routing Number Guide</Link></li>
             <li><Link to="/routing-number-lookup" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Reverse Lookup</Link></li>
             <li><Link to="/what-is-a-routing-number" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">What is a Routing Number?</Link></li>
             <li><Link to="/find-routing-number-on-check" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Find it on a Check</Link></li>
@@ -90,6 +99,8 @@ export default function FooterLinks() {
             <li><Link to="/routing-number-validator" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Routing Number Validator</Link></li>
             <li><Link to="/check-digit-calculator" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Check Digit Calculator</Link></li>
             <li><Link to="/blog" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">All Financial Guides</Link></li>
+            <li><Link to="/banks/a-z" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">A-Z Bank Directory</Link></li>
+            <li><Link to="/webmaster-tools" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">Webmaster & Blog Widgets</Link></li>
           </ul>
         </div>
 

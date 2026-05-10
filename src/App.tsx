@@ -25,7 +25,15 @@ const WhatIsARoutingNumber = lazy(() => import('./pages/WhatIsARoutingNumber'));
 const DirectDepositRoutingNumber = lazy(() => import('./pages/DirectDepositRoutingNumber'));
 const FindRoutingNumberOnCheck = lazy(() => import('./pages/FindRoutingNumberOnCheck'));
 const RoutingNumberLookup = lazy(() => import('./pages/RoutingNumberLookup'));
+const RegionalBanksLanding = lazy(() => import('./pages/RegionalBanksLanding'));
 const RegionalBankOverview = lazy(() => import('./pages/RegionalBankOverview'));
+const EssentialGuide = lazy(() => import('./pages/EssentialGuide'));
+const ACHvsWire = lazy(() => import('./pages/ACHvsWire'));
+const SecureTransfers = lazy(() => import('./pages/SecureTransfers'));
+const RejectedRoutingFix = lazy(() => import('./pages/RejectedRoutingFix'));
+const GlossaryTerm = lazy(() => import('./pages/GlossaryTerm'));
+const AlphabeticalDirectoryPage = lazy(() => import('./pages/AlphabeticalDirectoryPage'));
+const WebmasterTools = lazy(() => import('./pages/WebmasterTools'));
 
 const MajorBanks = lazy(() => import('./pages/MajorBanks'));
 const CheckDigitCalculator = lazy(() => import('./pages/CheckDigitCalculator'));
@@ -107,7 +115,16 @@ export default function App() {
                 <Route path="/states/:state" element={!dataLoaded ? <div className="min-h-[60vh] flex justify-center items-center"><div className="w-10 h-10 border-4 border-t-blue-500 rounded-full animate-spin"></div></div> : <StateBankList />} />
                 
                 <Route path="/routing-number-lookup" element={<RoutingNumberLookup />} />
+                <Route path="/regional-banks" element={<RegionalBanksLanding />} />
                 <Route path="/regional-banks/:bankSlug" element={<RegionalBankOverview />} />
+              <Route path="/how-to-find-routing-number-guide" element={<EssentialGuide />} />
+              <Route path="/blog/ach-vs-wire-routing-guide" element={<ACHvsWire />} />
+              <Route path="/blog/secure-wire-transfer-guide" element={<SecureTransfers />} />
+              <Route path="/blog/rejected-routing-number-troubleshooting" element={<RejectedRoutingFix />} />
+              <Route path="/glossary/:slug" element={<GlossaryTerm />} />
+              <Route path="/banks/a-z" element={<AlphabeticalDirectoryPage />} />
+              <Route path="/banks/a-z/:letter" element={<AlphabeticalDirectoryPage />} />
+              <Route path="/webmaster-tools" element={<WebmasterTools />} />
                 <Route path="/major-banks" element={<MajorBanks />} />
                 
                 {/* Specific lookups that absolutely need data */}
