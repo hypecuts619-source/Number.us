@@ -32,11 +32,14 @@
         document.head.appendChild(adScript);
       }
 
-      // Load mostly on interaction or after 3.5 seconds
-      window.addEventListener('scroll', loadThirdPartyScripts, { once: true, passive: true });
-      window.addEventListener('mousemove', loadThirdPartyScripts, { once: true, passive: true });
-      window.addEventListener('touchstart', loadThirdPartyScripts, { once: true, passive: true });
-      setTimeout(loadThirdPartyScripts, 3500);
+      // Load on user interaction or delayed after load
+      ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(evt => 
+        window.addEventListener(evt, loadThirdPartyScripts, { once: true, passive: true })
+      );
+      
+      window.addEventListener('load', () => {
+        setTimeout(loadThirdPartyScripts, 7000); // 7s fallback after load
+      });
     </script>
   </head>
   <body>

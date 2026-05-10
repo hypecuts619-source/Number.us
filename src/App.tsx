@@ -7,7 +7,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { useState, useEffect, lazy, Suspense } from 'react';
 
-const Home = lazy(() => import('./pages/Home'));
+import Home from './pages/Home';
 const BankOverview = lazy(() => import('./pages/BankOverview'));
 const BankState = lazy(() => import('./pages/BankState'));
 const BranchDetail = lazy(() => import('./pages/BranchDetail'));
@@ -72,48 +72,51 @@ export default function App() {
           <Header />
 
           <main className="flex-grow">
-            {!dataLoaded ? (
+            <Suspense fallback={
               <div className="min-h-[60vh] flex flex-col items-center justify-center">
-                 <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                 <div className="w-10 h-10 border-4 border-slate-300 dark:border-slate-700 border-t-blue-500 rounded-full animate-spin"></div>
               </div>
-            ) : (
-              <Suspense fallback={
-                <div className="min-h-[60vh] flex flex-col items-center justify-center">
-                   <div className="w-10 h-10 border-4 border-slate-300 dark:border-slate-700 border-t-blue-500 rounded-full animate-spin"></div>
-                </div>
-              }>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/banks" element={<AllBanksDirectory />} />
-                  <Route path="/states" element={<StateDirectory />} />
-                  <Route path="/states/ca" element={<CaliforniaRoutingNumbers />} />
-                  <Route path="/states/:state" element={<StateBankList />} />
-                  <Route path="/routing-number-vs-account-number" element={<RoutingVsAccountNumber />} />
-                  <Route path="/what-is-a-routing-number" element={<WhatIsARoutingNumber />} />
-                  <Route path="/aba-routing-number" element={<WhatIsAbaRoutingNumber />} />
-                  <Route path="/direct-deposit-routing-number" element={<DirectDepositRoutingNumber />} />
-                  <Route path="/find-routing-number-on-check" element={<FindRoutingNumberOnCheck />} />
-                  <Route path="/routing-number-lookup" element={<RoutingNumberLookup />} />
-                  <Route path="/major-banks" element={<MajorBanks />} />
-                  <Route path="/routing-number/:bankSlug" element={<BankOverview />} />
-                  <Route path="/routing-number/:bankSlug/:state" element={<BankState />} />
-                  <Route path="/routing-number/:bankSlug/:state/:city" element={<BranchDetail />} />
-                  <Route path="/lookup/:routingNumber" element={<Lookup />} />
-                  <Route path="/how-to-wire-money" element={<WireTransferGuide />} />
-                  <Route path="/international-wire-guide" element={<InternationalWireGuide />} />
-                  <Route path="/how-to-find-routing-number" element={<HowToFind />} />
-                  <Route path="/zelle-routing-number" element={<ZelleRoutingNumber />} />
-                  <Route path="/routing-number-validator" element={<RoutingNumberValidator />} />
-                  <Route path="/routing-number-changes-2026" element={<Changes2026 />} />
-                  <Route path="/about-us" element={<AboutUs />} />
-                  <Route path="/blog" element={<Blog />} />
-                  <Route path="/check-digit-calculator" element={<CheckDigitCalculator />} />
-                  <Route path="/terms-of-service" element={<TermsOfService />} />
-                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </Suspense>
-            )}
+            }>
+              <Routes>
+                {/* Pages that do not strictly require routing data to render */}
+                <Route path="/" element={<Home />} />
+                <Route path="/how-to-wire-money" element={<WireTransferGuide />} />
+                <Route path="/international-wire-guide" element={<InternationalWireGuide />} />
+                <Route path="/how-to-find-routing-number" element={<HowToFind />} />
+                <Route path="/zelle-routing-number" element={<ZelleRoutingNumber />} />
+                <Route path="/routing-number-validator" element={<RoutingNumberValidator />} />
+                <Route path="/routing-number-changes-2026" element={<Changes2026 />} />
+                <Route path="/about-us" element={<AboutUs />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/check-digit-calculator" element={<CheckDigitCalculator />} />
+                <Route path="/terms-of-service" element={<TermsOfService />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/routing-number-vs-account-number" element={<RoutingVsAccountNumber />} />
+                <Route path="/what-is-a-routing-number" element={<WhatIsARoutingNumber />} />
+                <Route path="/aba-routing-number" element={<WhatIsAbaRoutingNumber />} />
+                <Route path="/direct-deposit-routing-number" element={<DirectDepositRoutingNumber />} />
+                <Route path="/find-routing-number-on-check" element={<FindRoutingNumberOnCheck />} />
+
+                {/* Data Dependent Pages - We can conditionally render them or their data will re-render anyway given App's state update. Since App's state update to dataLoaded=true causes a re-render from the top down, they will render empty initially and flesh out, WHICH IS EXACTLY WHAT WE WANT to prevent LCP blocking! 
+                    However, some data pages might break if they parse empty data, but if they worked before with an empty array we can let them render. Let's just render them. 
+                */}
+                <Route path="/banks" element={!dataLoaded ? <div className="min-h-[60vh] flex justify-center items-center"><div className="w-10 h-10 border-4 border-t-blue-500 rounded-full animate-spin"></div></div> : <AllBanksDirectory />} />
+                <Route path="/states" element={!dataLoaded ? <div className="min-h-[60vh] flex justify-center items-center"><div className="w-10 h-10 border-4 border-t-blue-500 rounded-full animate-spin"></div></div> : <StateDirectory />} />
+                <Route path="/states/ca" element={!dataLoaded ? <div className="min-h-[60vh] flex justify-center items-center"><div className="w-10 h-10 border-4 border-t-blue-500 rounded-full animate-spin"></div></div> : <CaliforniaRoutingNumbers />} />
+                <Route path="/states/:state" element={!dataLoaded ? <div className="min-h-[60vh] flex justify-center items-center"><div className="w-10 h-10 border-4 border-t-blue-500 rounded-full animate-spin"></div></div> : <StateBankList />} />
+                
+                <Route path="/routing-number-lookup" element={<RoutingNumberLookup />} />
+                <Route path="/major-banks" element={<MajorBanks />} />
+                
+                {/* Specific lookups that absolutely need data */}
+                <Route path="/routing-number/:bankSlug" element={!dataLoaded ? <div className="min-h-[60vh]"></div> : <BankOverview />} />
+                <Route path="/routing-number/:bankSlug/:state" element={!dataLoaded ? <div className="min-h-[60vh]"></div> : <BankState />} />
+                <Route path="/routing-number/:bankSlug/:state/:city" element={!dataLoaded ? <div className="min-h-[60vh]"></div> : <BranchDetail />} />
+                <Route path="/lookup/:routingNumber" element={!dataLoaded ? <div className="min-h-[60vh]"></div> : <Lookup />} />
+
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
           </main>
 
           <footer className="bg-slate-50 dark:bg-slate-900 overflow-hidden shrink-0 mt-20 print:hidden pt-8 pb-12 px-6">

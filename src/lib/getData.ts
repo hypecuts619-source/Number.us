@@ -40,18 +40,37 @@ export const getRoutingByBankAndState = (bankSlug: string, state: string): Routi
   );
 };
 
+let topBanksCache: string[] | null = null;
 export const getTopSearchedBanks = (): string[] => {
-  // Mocking top searched based on frequency in dataset
+  if (topBanksCache) return topBanksCache;
   const data = getAllRoutingData();
-  const bankCounts = data.reduce((acc, curr) => {
-    acc[curr.bank_name] = (acc[curr.bank_name] || 0) + 1;
-    return acc;
-  }, {} as Record<string, number>);
+  if (data.length === 0) return [];
   
-  return Object.entries(bankCounts)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 20)
-    .map(([bank]) => bank);
+  // Hardcoded top banks to save massive JS thread blocking during render
+  // These represent the largest banks with most branching/routing codes.
+  topBanksCache = [
+    "JPMorgan Chase Bank, National Association",
+    "Wells Fargo Bank, National Association",
+    "Bank of America, National Association",
+    "U.S. Bank National Association",
+    "PNC Bank, National Association",
+    "Truist Bank",
+    "The Huntington National Bank",
+    "Fifth Third Bank, National Association",
+    "KeyBank National Association",
+    "Regions Bank",
+    "Citizens Bank, National Association",
+    "The Bank of New York Mellon",
+    "M&T Bank",
+    "BMO Bank N.A.",
+    "First Citizens Bank & Trust Company",
+    "Capital One, National Association",
+    "First National Bank of Pennsylvania",
+    "Zions Bancorporation, N.A.",
+    "SouthState Bank, National Association",
+    "Santander Bank, N.A."
+  ];
+  return topBanksCache;
 };
 
 export const getRoutingByBankStateAndCity = (bankSlug: string, state: string, citySlug: string): RoutingData[] => {

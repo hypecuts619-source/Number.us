@@ -43,17 +43,25 @@ export default function SearchBar() {
     });
   };
 
-  const fuse = useMemo(
-    () =>
-      new Fuse(data, {
-        keys: ['bank_name', 'routing_number', 'state', 'city'],
-        threshold: 0.3,
-        ignoreLocation: true, // better for partial routing numbers
-      }),
-    [data]
-  );
+  const [fuseInstance, setFuseInstance] = useState<Fuse<RoutingData> | null>(null);
 
-  const results = query ? fuse.search(query).slice(0, 5) : [];
+  useEffect(() => {
+    // Only parse and index when we have data, but delay it to avoid blocking initial render
+    if (data && data.length > 0 && !fuseInstance) {
+      const timer = setTimeout(() => {
+        setFuseInstance(
+          new Fuse(data, {
+            keys: ['bank_name', 'routing_number', 'state', 'city'],
+            threshold: 0.3,
+            ignoreLocation: true, 
+          })
+        );
+      }, 500); // Wait 500ms after render to not block LCP
+      return () => clearTimeout(timer);
+    }
+  }, [data, fuseInstance]);
+
+  const results = (query && fuseInstance) ? fuseInstance.search(query).slice(0, 5) : [];
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
