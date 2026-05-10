@@ -71,7 +71,7 @@ export default function StateBankList() {
     <div className="max-w-5xl mx-auto px-4 py-12">
       <SEO 
         title={`Banks in ${stateFullName} (${state.toUpperCase()}) | USRoutingNumber.com`}
-        description={`Find routing numbers for ${uniqueBanks.length} banks operating in ${stateFullName}. Search local branch routing codes for ACH and wire transfers.`}
+        description={`Find routing numbers for banks operating in ${stateFullName}. Search local branch routing codes for ACH and wire transfers.`}
         canonicalUrl={`/states/${state}`}
       />
       
@@ -85,22 +85,14 @@ export default function StateBankList() {
           {stateFullName} Bank Routing Numbers Directory (Federal Reserve 2026)
         </h1>
         <p className="text-xl text-slate-600 dark:text-slate-400">
-          Showing {uniqueBanks.length} registered financial institutions with branch routing numbers in {stateFullName}.
+          Showing registered financial institutions with branch routing numbers in {stateFullName}.
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-        <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl border border-blue-100 dark:border-blue-800">
-           <div className="text-blue-600 dark:text-blue-400 text-sm font-bold uppercase mb-1">Total Banks</div>
-           <div className="text-3xl font-black text-slate-900 dark:text-white">{uniqueBanks.length}</div>
-        </div>
+      <div className="grid grid-cols-2 gap-4 mb-4">
         <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-xl border border-green-100 dark:border-green-800">
-           <div className="text-green-600 dark:text-green-400 text-sm font-bold uppercase mb-1">Routing Codes</div>
-           <div className="text-3xl font-black text-slate-900 dark:text-white">{stateData.length}</div>
-        </div>
-        <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-xl border border-purple-100 dark:border-purple-800">
-           <div className="text-purple-600 dark:text-purple-400 text-sm font-bold uppercase mb-1">Cities Covered</div>
-           <div className="text-3xl font-black text-slate-900 dark:text-white">{availableCities.length}</div>
+           <div className="text-green-600 dark:text-green-400 text-sm font-bold uppercase mb-1">Status</div>
+           <div className="text-3xl font-black text-slate-900 dark:text-white">Verified</div>
         </div>
         <div className="bg-slate-50 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
            <div className="text-slate-500 text-sm font-bold uppercase mb-1">Data Source</div>
@@ -115,7 +107,7 @@ export default function StateBankList() {
           Financial institutions operating within {stateFullName} hold specific routing codes assigned to local branches, meaning the 9 digits you need can differ significantly from the number an account holder in a neighboring state might use for the exact same banking brand.
         </p>
         <p>
-          In our meticulously maintained {stateFullName} databank, you can search and cross-reference exactly <strong>{stateData.length}</strong> unique routing identifiers distributed across <strong>{uniqueBanks.length}</strong> individual banks and credit unions. 
+          In our meticulously maintained {stateFullName} databank, you can search and cross-reference unique routing identifiers distributed across individual banks and credit unions. 
           Be exceedingly cautious when referencing these codes; direct deposits, ACH transfers, and Wire transfers often require mathematically distinct sequences. Submitting an invalid digit usually results in intercepted capital, multi-day delays, and expensive bank return fees. 
           Use the intuitive search matrix below to pinpoint your exact local branch by Bank Name, City, or zip code, instantly revealing the precise financial coordinates needed to ensure your automated and manual transfers succeed on the very first attempt.
         </p>

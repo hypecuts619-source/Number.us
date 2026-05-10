@@ -46,12 +46,12 @@ export default function CaliforniaRoutingNumbers() {
             California Routing Numbers Directory
           </h1>
           <p className="text-xl md:text-2xl text-blue-100 opacity-90 leading-relaxed mb-8">
-            Complete database of financial institutions in the Golden State. Access <strong>{caData.length.toLocaleString()}</strong> verified routing codes for ACH, Wire, and Direct Deposit.
+            Complete database of financial institutions in the Golden State. Access verified routing codes for ACH, Wire, and Direct Deposit.
           </p>
           <div className="flex flex-wrap gap-4">
              <div className="bg-white/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/20">
                 <span className="block text-blue-200 text-xs font-bold uppercase tracking-widest mb-1">Records Found</span>
-                <span className="text-2xl font-black">{caData.length}</span>
+                <span className="text-2xl font-black">All Verified</span>
              </div>
              <div className="bg-white/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/20">
                 <span className="block text-blue-200 text-xs font-bold uppercase tracking-widest mb-1">Live Status</span>

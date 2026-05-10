@@ -28,7 +28,7 @@ export default function AboutUs() {
           Large financial institutions frequently use different routing numbers depending on the state where you opened your account or the type of transaction (ACH vs. Wire).
         </p>
         <p>
-          Our mission is to simplify this process. We provide a clean, ad-light, and mathematically verifiable database of <strong>over 17,000 active routing numbers</strong> to help everyday Americans and international senders navigate the complex US financial system confidently and securely.
+          Our mission is to simplify this process. We provide a clean, ad-light, and mathematically verifiable database of <strong>active routing numbers</strong> to help everyday Americans and international senders navigate the complex US financial system confidently and securely.
         </p>
 
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-10">Why Trust Us? (E-E-A-T)</h2>

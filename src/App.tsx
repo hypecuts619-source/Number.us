@@ -43,6 +43,7 @@ import { ThemeProvider } from './ThemeContext';
 import Header from './components/Header';
 
 import FooterLinks from './components/FooterLinks';
+import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -65,6 +66,7 @@ export default function App() {
     <ThemeProvider>
       <HelmetProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Toaster position="top-center" />
         <div className="min-h-screen flex flex-col font-sans bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-blue-200 dark:selection:bg-blue-900">
           <Header />

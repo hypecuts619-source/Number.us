@@ -133,7 +133,7 @@ export default function Home() {
       <div className="mt-8 md:mt-16 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 md:p-12 shadow-sm">
         <div className="mt-12 mb-8 bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 rounded-3xl p-8 text-center max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Complete US Financial Directory</h2>
-        <p className="text-slate-600 dark:text-slate-300 mb-6">Explore our exhaustive directory of over 17,000 active routing numbers across all 50 states.</p>
+        <p className="text-slate-600 dark:text-slate-300 mb-6">Explore our exhaustive directory of active routing numbers across all 50 states.</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link 
             to="/states" 

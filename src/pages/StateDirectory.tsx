@@ -24,13 +24,11 @@ export default function StateDirectory() {
     return counts;
   }, [data]);
 
-  const totalRecords = data.length;
-
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <SEO 
         title="View Banks by State | USRoutingNumber.com"
-        description={`Directory of US banks and their routing numbers organized by state. Browse ${totalRecords.toLocaleString()} routing identifiers across all 50 states.`}
+        description="Directory of US banks and their routing numbers organized by state. Browse routing identifiers across all 50 states."
         canonicalUrl="/states"
       />
       
@@ -41,7 +39,7 @@ export default function StateDirectory() {
           US Bank Routing Numbers By State Directory (Federal Reserve 2026)
         </h1>
         <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl">
-          Select a state below to view all registered financial institutions and their local branch routing numbers. We currently track <strong>{totalRecords.toLocaleString()}</strong> unique routing identifiers.
+          Select a state below to view all registered financial institutions and their local branch routing numbers.
         </p>
       </div>
 

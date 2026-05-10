@@ -46,7 +46,7 @@ export default function AllBanksDirectory() {
           A-Z Bank Directory
         </h1>
         <p className="text-xl text-slate-600 dark:text-slate-400">
-          Browse our complete list of {allBanks.length.toLocaleString()} verified financial institutions registered with the Federal Reserve.
+          Browse our complete list of verified financial institutions registered with the Federal Reserve.
         </p>
       </div>
 
