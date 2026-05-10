@@ -21,6 +21,7 @@ const generateSitemap = () => {
   
   let urls = [
     `${baseUrl}/`,
+    `${baseUrl}/banks`,
     `${baseUrl}/states`,
     `${baseUrl}/major-banks`,
     `${baseUrl}/what-is-a-routing-number`,

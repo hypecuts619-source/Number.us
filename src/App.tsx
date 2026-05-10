@@ -36,10 +36,13 @@ const Blog = lazy(() => import('./pages/Blog'));
 const Changes2026 = lazy(() => import('./pages/Changes2026'));
 const AboutUs = lazy(() => import('./pages/AboutUs'));
 const CaliforniaRoutingNumbers = lazy(() => import('./pages/CaliforniaRoutingNumbers'));
+const AllBanksDirectory = lazy(() => import('./pages/AllBanksDirectory'));
 
 import { Toaster } from 'sonner';
 import { ThemeProvider } from './ThemeContext';
 import Header from './components/Header';
+
+import FooterLinks from './components/FooterLinks';
 
 export default function App() {
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -79,6 +82,7 @@ export default function App() {
               }>
                 <Routes>
                   <Route path="/" element={<Home />} />
+                  <Route path="/banks" element={<AllBanksDirectory />} />
                   <Route path="/states" element={<StateDirectory />} />
                   <Route path="/states/ca" element={<CaliforniaRoutingNumbers />} />
                   <Route path="/states/:state" element={<StateBankList />} />
@@ -110,19 +114,10 @@ export default function App() {
             )}
           </main>
 
-          <footer className="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-12 px-6 shrink-0 mt-20 print:hidden">
+          <footer className="bg-slate-50 dark:bg-slate-900 overflow-hidden shrink-0 mt-20 print:hidden pt-8 pb-12 px-6">
+            <FooterLinks />
             <div className="max-w-7xl mx-auto text-center text-slate-500 dark:text-slate-400 text-sm max-w-3xl">
-              <nav className="flex flex-wrap justify-center gap-6 mb-6">
-                <Link to="/states" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Banks By State</Link>
-                <Link to="/states/ca" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 font-bold transition-colors">CA Routing Numbers</Link>
-                <Link to="/what-is-a-routing-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">What is a Routing Number?</Link>
-                <Link to="/find-routing-number-on-check" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Find it on a Check</Link>
-                <Link to="/aba-routing-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">ABA Routing Number</Link>
-                <Link to="/direct-deposit-routing-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Direct Deposit</Link>
-                <Link to="/routing-number-lookup" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Routing Number Lookup</Link>
-                <Link to="/routing-number-vs-account-number" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Routing vs Account</Link>
-              </nav>
-              <nav className="flex justify-center gap-6 mb-6">
+              <nav className="flex justify-center flex-wrap gap-x-6 gap-y-2 mb-6">
                 <Link to="/about-us" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">About Us</Link>
                 <Link to="/terms-of-service" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Terms of Service</Link>
                 <Link to="/privacy-policy" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Privacy Policy</Link>

@@ -131,7 +131,26 @@ export default function Home() {
       <AdUnit slot="UNIT 2: Mid content, in-article responsive" className="my-10 min-h-[100px] md:min-h-[150px]" />
 
       <div className="mt-8 md:mt-16 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 md:p-12 shadow-sm">
-        <FAQSection faqs={faqs} />
+        <div className="mt-12 mb-8 bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 rounded-3xl p-8 text-center max-w-4xl mx-auto">
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Complete US Financial Directory</h2>
+        <p className="text-slate-600 dark:text-slate-300 mb-6">Explore our exhaustive directory of over 17,000 active routing numbers across all 50 states.</p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <Link 
+            to="/states" 
+            className="w-full sm:w-auto bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-200 font-bold py-3 px-8 rounded-full hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-slate-400 transition-colors shadow-sm"
+          >
+            Browse Banks by State &rarr;
+          </Link>
+          <Link 
+            to="/banks" 
+            className="w-full sm:w-auto bg-blue-600 dark:bg-blue-500 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors shadow-sm"
+          >
+            A-Z Bank Directory &rarr;
+          </Link>
+        </div>
+      </div>
+
+      <FAQSection faqs={faqs} />
       </div>
 
       <AdUnit slot="UNIT 3: Below FAQ (Mobile)" className="md:hidden mt-10 min-h-[100px]" />
