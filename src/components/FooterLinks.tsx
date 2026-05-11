@@ -72,10 +72,18 @@ export default function FooterLinks() {
             </li>
             <li>
               <Link 
+                to="/credit-unions"
+                className="text-slate-500 dark:text-slate-400 text-xs hover:underline transition-colors mt-1 inline-block font-bold"
+              >
+                Credit Union Routing Directory
+              </Link>
+            </li>
+            <li>
+              <Link 
                 to="/regional-banks"
                 className="text-slate-500 dark:text-slate-400 text-xs hover:underline transition-colors mt-1 inline-block"
               >
-                Regional Credit Unions
+                State Regional Banks
               </Link>
             </li>
           </ul>

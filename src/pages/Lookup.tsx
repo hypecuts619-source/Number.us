@@ -80,15 +80,25 @@ export default function Lookup() {
 
           <AdUnit slot="UNIT 5: Immediately Below Routing Number (Not Found)" className="mb-6" />
 
-          {isValid ? (
-            <div className="inline-block bg-yellow-50 text-yellow-800 border border-yellow-200 px-4 py-2 rounded-full font-bold text-sm mb-6">
-              ✓ Mathematically Valid (Institution Unknown)
-            </div>
-          ) : (
-            <div className="inline-block bg-red-50 text-red-700 border border-red-200 px-4 py-2 rounded-full font-bold text-sm mb-6">
-              ✗ Invalid Routing Number
-            </div>
-          )}
+          <div className="flex flex-col items-center gap-4 mb-6">
+            {isValid ? (
+              <div className="inline-block bg-yellow-50 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-400 border border-yellow-200 dark:border-yellow-800 px-4 py-2 rounded-full font-bold text-sm">
+                ✓ Mathematically Valid (Institution Unknown)
+              </div>
+            ) : (
+              <div className="inline-block bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800 px-4 py-2 rounded-full font-bold text-sm">
+                ✗ Invalid Routing Number
+              </div>
+            )}
+            <a 
+              href="https://routingnumber.aba.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-xs text-slate-500 hover:text-blue-600 transition-colors flex items-center gap-1 font-medium underline underline-offset-4"
+            >
+              Check official ABA.com directory for new institutions
+            </a>
+          </div>
 
           <div className="text-slate-600 mb-8 max-w-2xl mx-auto">
             {isValid ? (
@@ -174,16 +184,24 @@ export default function Lookup() {
               <TrustIndicator />
             </div>
             
-            <div className="block mt-2">
+            <div className="block mt-2 flex flex-col items-center gap-3">
               {isValid ? (
-                <div className="inline-block bg-green-50 text-green-700 border border-green-200 px-4 py-2 rounded-full font-bold text-sm">
+                <div className="inline-block bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800 px-4 py-2 rounded-full font-bold text-sm">
                   ✓ Valid Routing Number
                 </div>
               ) : (
-                <div className="inline-block bg-red-50 text-red-700 border border-red-200 px-4 py-2 rounded-full font-bold text-sm">
+                <div className="inline-block bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800 px-4 py-2 rounded-full font-bold text-sm">
                   ✗ Invalid Checksum
                 </div>
               )}
+              <a 
+                href="https://routingnumber.aba.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-xs text-slate-500 hover:text-blue-600 transition-colors flex items-center gap-1 font-medium underline underline-offset-4"
+              >
+                Verify on official ABA.com directory
+              </a>
             </div>
           </div>
 

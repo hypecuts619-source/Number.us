@@ -31,6 +31,7 @@ const EssentialGuide = lazy(() => import('./pages/EssentialGuide'));
 const ACHvsWire = lazy(() => import('./pages/ACHvsWire'));
 const SecureTransfers = lazy(() => import('./pages/SecureTransfers'));
 const RejectedRoutingFix = lazy(() => import('./pages/RejectedRoutingFix'));
+const CreditUnionDirectory = lazy(() => import('./pages/CreditUnionDirectory'));
 const GlossaryTerm = lazy(() => import('./pages/GlossaryTerm'));
 const AlphabeticalDirectoryPage = lazy(() => import('./pages/AlphabeticalDirectoryPage'));
 const WebmasterTools = lazy(() => import('./pages/WebmasterTools'));
@@ -121,6 +122,7 @@ export default function App() {
               <Route path="/blog/ach-vs-wire-routing-guide" element={<ACHvsWire />} />
               <Route path="/blog/secure-wire-transfer-guide" element={<SecureTransfers />} />
               <Route path="/blog/rejected-routing-number-troubleshooting" element={<RejectedRoutingFix />} />
+              <Route path="/credit-unions" element={<CreditUnionDirectory />} />
               <Route path="/glossary/:slug" element={<GlossaryTerm />} />
               <Route path="/banks/a-z" element={<AlphabeticalDirectoryPage />} />
               <Route path="/banks/a-z/:letter" element={<AlphabeticalDirectoryPage />} />

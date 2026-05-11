@@ -67,6 +67,7 @@ export default function AboutUs() {
             <li><strong>ABA Routing Number Administrative Services:</strong> We reference the American Bankers Association guidelines to verify "Check Digit" logic and institution eligibility.</li>
             <li><strong>Financial Institution Disclosures:</strong> For regional banks and credit unions (like those in our <Link to="/regional-banks/suncoast-credit-union">regional directory</Link>), we cross-reference public fee schedules and wire instruction documents.</li>
             <li><strong>The FDIC BankFind Tool:</strong> We use FDIC-insured institution data to track bank closures, renames, and mergers in real-time.</li>
+            <li><strong>NCUA Quarterly Call Reports:</strong> Our credit union directory is enriched with raw data from the National Credit Union Administration (NCUA), specifically targeting the 5300 Call Report files for the most accurate member-owned institution data.</li>
           </ul>
         </div>
 

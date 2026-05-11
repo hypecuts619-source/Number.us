@@ -123,6 +123,16 @@ export default function Home() {
           </div>
 
           <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm mb-8">
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-2">Member-Owned Banking</h2>
+            <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+              Our directory is enriched with <strong>NCUA Quarterly Call Report</strong> data, ensuring verified coverage for over 5,000 US Credit Unions.
+            </p>
+            <Link to="/credit-unions" className="text-blue-700 dark:text-blue-400 font-bold hover:underline text-sm flex items-center gap-1">
+              Browse Credit Union Directory &rarr;
+            </Link>
+          </div>
+
+          <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm mb-8">
             <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Verification Tools</h2>
             <ul className="space-y-3">
               <li>
