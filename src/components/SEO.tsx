@@ -7,6 +7,7 @@ interface SEOProps {
   canonicalUrl: string;
   type?: 'website' | 'article';
   imageUrl?: string;
+  noindex?: boolean;
   children?: React.ReactNode;
 }
 
@@ -16,6 +17,7 @@ export default function SEO({
   canonicalUrl, 
   type = 'website',
   imageUrl = 'https://usroutingnumber.com/og-image.jpg', // Default OG image placeholder
+  noindex = false,
   children
 }: SEOProps) {
   const currentUrl = `https://usroutingnumber.com${canonicalUrl.startsWith('/') ? canonicalUrl : `/${canonicalUrl}`}`;
@@ -42,6 +44,9 @@ export default function SEO({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
+      
+      {/* Search Engine Directives */}
+      <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
 
       {/* Prevent clickjacking */}
       <meta httpEquiv="X-Frame-Options" content="DENY" />

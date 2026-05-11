@@ -103,28 +103,28 @@ export default function RegionalBankOverview() {
         </ol>
       </nav>
 
-      <div className="mb-6 flex flex-wrap items-center gap-3 h-max">
-        <div className="flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/20 px-4 py-2 rounded-lg border border-emerald-100 dark:border-emerald-800/50 w-max h-[42px]">
+      <div className="mb-6 flex flex-wrap items-center gap-2">
+        <div className="flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/20 px-3 py-2 rounded-lg border border-emerald-100 dark:border-emerald-800/50 min-h-[42px] w-full sm:w-auto">
           <ShieldCheck className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
-          <span className="text-sm font-medium text-emerald-800 dark:text-emerald-300">
-            Fact Checked by Financial Review Board
+          <span className="text-xs font-bold text-emerald-800 dark:text-emerald-300 uppercase tracking-tight">
+            Fact Checked: Financial Review Board
           </span>
         </div>
-        <div className="flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 px-4 py-2 rounded-lg border border-blue-100 dark:border-blue-800/50 w-max h-[42px]">
-          <span className="text-xs font-bold text-blue-700 dark:text-blue-300 uppercase tracking-wider">
-            Verified as of {currentMonth} {currentYear}
+        <div className="flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 px-3 py-2 rounded-lg border border-blue-100 dark:border-blue-800/50 min-h-[42px] flex-1 sm:flex-none">
+          <span className="text-[10px] font-bold text-blue-700 dark:text-blue-300 uppercase tracking-widest whitespace-nowrap">
+            Updated {currentMonth} {currentYear}
           </span>
         </div>
         {bank.institutionType && (
-          <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 w-max h-[42px]">
-            <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+          <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 min-h-[42px] flex-1 sm:flex-none">
+            <span className="text-[10px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-widest whitespace-nowrap text-center w-full uppercase">
               {bank.institutionType}
             </span>
           </div>
         )}
         {bank.insuranceCert && (
-          <div className="flex items-center gap-2 bg-amber-50 dark:bg-amber-900/20 px-4 py-2 rounded-lg border border-amber-100 dark:border-amber-800/50 w-max h-[42px]">
-            <span className="text-xs font-bold text-amber-700 dark:text-amber-300 uppercase tracking-wider">
+          <div className="flex items-center gap-2 bg-amber-50 dark:bg-amber-900/20 px-3 py-2 rounded-lg border border-amber-100 dark:border-amber-800/50 min-h-[42px] flex-1 sm:flex-none">
+            <span className="text-[10px] font-bold text-amber-700 dark:text-amber-300 uppercase tracking-widest whitespace-nowrap text-center w-full">
               {bank.insuranceCert}
             </span>
           </div>

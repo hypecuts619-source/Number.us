@@ -24,8 +24,33 @@ export const getRoutingByNumber = (routingNumber: string): RoutingData | undefin
 export const isBankSlugMatch = (dbBankName: string, searchSlug: string): boolean => {
   const dbSlug = generateSlug(dbBankName);
   if (dbSlug === searchSlug) return true;
+  
+  // Normalize by removing all dashes for a deep comparison
+  const normalizedDb = dbSlug.replace(/-/g, '');
+  const normalizedSearch = searchSlug.replace(/-/g, '');
+  
+  if (normalizedDb === normalizedSearch) return true;
+  
+  // Special handling for JPMorgan which commony varies between jpmorgan and jp-morgan
+  if (normalizedSearch.includes('jpmorgan') || normalizedSearch.includes('chase')) {
+    if (normalizedDb.includes('jpmorgan') || normalizedDb.includes('chase')) {
+      return true;
+    }
+  }
+
+  // Handle Bank of America
+  if (normalizedSearch.includes('bankofamerica') || normalizedSearch === 'boa') {
+    if (normalizedDb.includes('bankofamerica')) return true;
+  }
+
+  // Handle Wells Fargo
+  if (normalizedSearch.includes('wellsfargo')) {
+    if (normalizedDb.includes('wellsfargo')) return true;
+  }
+
+  // Fallback to prefix matching with known common suffixes
   const rem = dbSlug.replace(searchSlug + '-', '');
-  return dbSlug.startsWith(searchSlug + '-') && ['na', 'national-association', 'inc', 'llc', 'corp', 'company', 'bank', 'bank-na', 'bank-national-association'].includes(rem);
+  return dbSlug.startsWith(searchSlug + '-') && ['na', 'national-association', 'inc', 'llc', 'corp', 'company', 'bank', 'bank-na', 'bank-national-association', 'federal-credit-union', 'fcu', 'credit-union', 'cu'].includes(rem);
 };
 
 export const getRoutingByBank = (bankSlug: string): RoutingData[] => {

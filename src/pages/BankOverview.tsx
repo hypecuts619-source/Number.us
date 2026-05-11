@@ -22,6 +22,9 @@ export default function BankOverview() {
     return getRoutingByBank(bankSlug);
   }, [bankSlug]);
 
+  const bankName = bankData.length > 0 ? bankData[0].bank_name : '';
+  const bankDetails = useMemo(() => bankName ? getBankDetails(bankName) : null, [bankName]);
+
   if (!bankData || bankData.length === 0) {
     return (
       <div className="max-w-5xl mx-auto px-4 py-20 text-center">
@@ -31,11 +34,9 @@ export default function BankOverview() {
     );
   }
 
-  const bankName = bankData[0].bank_name;
   const currentYear = new Date().getFullYear();
   
   const faqs = generateGeneralBankFAQs(bankName);
-  const bankDetails = useMemo(() => getBankDetails(bankName), [bankName]);
   
   // Group by state
   const states = Array.from(new Set(bankData.map(d => d.state))).sort() as string[];
@@ -82,16 +83,16 @@ export default function BankOverview() {
             </p>
 
             <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mt-10 mb-4 border-b dark:border-slate-700 pb-2">Extensive Overview of {bankName}</h2>
-            <p className="mt-4">{bankDetails.history}</p>
+            <p className="mt-4">{bankDetails?.history}</p>
             
             <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mt-8 mb-3">Institutional Mission & Essential Services</h3>
-            <p>{bankDetails.mission}</p>
-            <p className="mt-3">{bankDetails.services}</p>
+            <p>{bankDetails?.mission}</p>
+            <p className="mt-3">{bankDetails?.services}</p>
             
             <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mt-8 mb-4">Historical Milestones & Interesting Facts</h3>
             <ul className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-200 dark:border-slate-700 space-y-3">
-              <li><strong>Officially Founded:</strong> {bankDetails.facts.foundingYear}</li>
-              {bankDetails.facts.achievements.map((achievement, i) => (
+              <li><strong>Officially Founded:</strong> {bankDetails?.facts?.foundingYear}</li>
+              {bankDetails?.facts?.achievements.map((achievement, i) => (
                 <li key={i}>{achievement}</li>
               ))}
             </ul>

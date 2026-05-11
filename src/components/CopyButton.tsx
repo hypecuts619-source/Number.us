@@ -22,7 +22,7 @@ export default function CopyButton({ text }: { text: string }) {
     <button
       onClick={handleCopy}
       className={cn(
-        "flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-black text-xl text-white transition-all transform active:scale-95 shadow-md shadow-blue-900/20 w-full",
+        "flex items-center justify-center gap-2 sm:gap-3 px-4 py-3 sm:px-8 sm:py-4 rounded-xl font-black text-lg sm:text-xl text-white transition-all transform active:scale-95 shadow-md shadow-blue-900/20 w-full",
         copied 
           ? "bg-emerald-600 hover:bg-emerald-700 ring-4 ring-emerald-500/30" 
           : "bg-[#1e3a5f] hover:bg-blue-800 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-900/30"
@@ -31,12 +31,12 @@ export default function CopyButton({ text }: { text: string }) {
     >
       {copied ? (
         <>
-          <Check className="w-6 h-6 animate-in zoom-in" />
+          <Check className="w-5 h-5 sm:w-6 sm:h-6 animate-in zoom-in" />
           Copied!
         </>
       ) : (
         <>
-          <Copy className="w-6 h-6" />
+          <Copy className="w-5 h-5 sm:w-6 sm:h-6" />
           Copy Number
         </>
       )}

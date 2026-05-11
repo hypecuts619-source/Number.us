@@ -24,10 +24,14 @@ export const generateLookupDescription = (routingNumber: string, bankName: strin
 
 // Return a stringified script tag for SEO
 export const generateBreadcrumbSchema = (crumbs: { name: string; url: string }[]) => {
+  const allCrumbs = [
+    { name: 'Home', url: 'https://usroutingnumber.com/' },
+    ...crumbs
+  ];
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: crumbs.map((crumb, index) => ({
+    itemListElement: allCrumbs.map((crumb, index) => ({
       '@type': 'ListItem',
       position: index + 1,
       name: crumb.name,

@@ -60,6 +60,7 @@ export default function Lookup() {
           title="Routing Number Validation Result | USRoutingNumber.com"
           description={`Routing number search result for ${routingNumber}. Verify mathematical validity and checksum.`}
           canonicalUrl={`/lookup/${routingNumber}`}
+          noindex={true}
         >
           <script type="application/ld+json">
             {generateFAQSchema(faqs)}
