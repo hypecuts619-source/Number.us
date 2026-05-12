@@ -55,27 +55,10 @@ import Header from './components/Header';
 import FooterLinks from './components/FooterLinks';
 import ScrollToTop from './components/ScrollToTop';
 
-export default function App() {
-  const [dataLoaded, setDataLoaded] = useState(false);
-
-  useEffect(() => {
-    fetch('/data/routing.json')
-      .then(res => res.json())
-      .then(data => {
-        window.__ROUTING_DATA__ = data;
-        setDataLoaded(true);
-      })
-      .catch(err => {
-        console.error('Failed to load routing data', err);
-        window.__ROUTING_DATA__ = [];
-        setDataLoaded(true);
-      });
-  }, []);
-
+// For SSR support
+export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
   return (
     <ThemeProvider>
-      <HelmetProvider>
-      <BrowserRouter>
         <ScrollToTop />
         <Toaster position="top-center" />
         <div className="min-h-screen flex flex-col font-sans bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-blue-200 dark:selection:bg-blue-900">
@@ -107,9 +90,7 @@ export default function App() {
                 <Route path="/direct-deposit-routing-number" element={<DirectDepositRoutingNumber />} />
                 <Route path="/find-routing-number-on-check" element={<FindRoutingNumberOnCheck />} />
 
-                {/* Data Dependent Pages - We can conditionally render them or their data will re-render anyway given App's state update. Since App's state update to dataLoaded=true causes a re-render from the top down, they will render empty initially and flesh out, WHICH IS EXACTLY WHAT WE WANT to prevent LCP blocking! 
-                    However, some data pages might break if they parse empty data, but if they worked before with an empty array we can let them render. Let's just render them. 
-                */}
+                {/* Data Dependent Pages */}
                 <Route path="/banks" element={!dataLoaded ? <div className="min-h-[60vh] flex justify-center items-center"><div className="w-10 h-10 border-4 border-t-blue-500 rounded-full animate-spin"></div></div> : <AllBanksDirectory />} />
                 <Route path="/states" element={!dataLoaded ? <div className="min-h-[60vh] flex justify-center items-center"><div className="w-10 h-10 border-4 border-t-blue-500 rounded-full animate-spin"></div></div> : <StateDirectory />} />
                 <Route path="/states/ca" element={!dataLoaded ? <div className="min-h-[60vh] flex justify-center items-center"><div className="w-10 h-10 border-4 border-t-blue-500 rounded-full animate-spin"></div></div> : <CaliforniaRoutingNumbers />} />
@@ -155,8 +136,39 @@ export default function App() {
             </div>
           </footer>
         </div>
-      </BrowserRouter>
-      </HelmetProvider>
     </ThemeProvider>
+  );
+}
+
+export default function App({ initialData = null, RouterComponent = BrowserRouter, routerProps = {}, helmetContext = {} }: any) {
+  const [dataLoaded, setDataLoaded] = useState(!!initialData);
+
+  useEffect(() => {
+    if (initialData) {
+      if (typeof window !== 'undefined') {
+        (window as any).__ROUTING_DATA__ = initialData;
+      }
+      return;
+    }
+    
+    fetch('/data/routing.json')
+      .then(res => res.json())
+      .then(data => {
+        (window as any).__ROUTING_DATA__ = data;
+        setDataLoaded(true);
+      })
+      .catch(err => {
+        console.error('Failed to load routing data', err);
+        (window as any).__ROUTING_DATA__ = [];
+        setDataLoaded(true);
+      });
+  }, [initialData]);
+
+  return (
+    <HelmetProvider context={helmetContext}>
+      <RouterComponent {...routerProps}>
+        <AppContent dataLoaded={dataLoaded} />
+      </RouterComponent>
+    </HelmetProvider>
   );
 }

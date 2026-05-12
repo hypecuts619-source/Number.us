@@ -11,9 +11,11 @@ export function useRecentlyViewed() {
 
   useEffect(() => {
     try {
-      const stored = localStorage.getItem('recentlyViewed');
-      if (stored) {
-        setItems(JSON.parse(stored));
+      if (typeof window !== 'undefined') {
+        const stored = localStorage.getItem('recentlyViewed');
+        if (stored) {
+          setItems(JSON.parse(stored));
+        }
       }
     } catch (e) {
       console.error('Failed to load recently viewed items', e);
@@ -29,7 +31,9 @@ export function useRecentlyViewed() {
       const newItems = [newItem, ...filtered].slice(0, 5);
       
       try {
-        localStorage.setItem('recentlyViewed', JSON.stringify(newItems));
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('recentlyViewed', JSON.stringify(newItems));
+        }
       } catch (e) {
         console.error('Failed to save recently viewed items', e);
       }

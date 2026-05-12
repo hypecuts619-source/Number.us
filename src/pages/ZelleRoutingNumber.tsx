@@ -76,7 +76,8 @@ export default function ZelleRoutingNumber() {
                   <span className="text-blue-600 dark:text-blue-400 font-bold">&rarr;</span>
                 </Link>
               </div>
-            </div>\n          </article>
+            </div>
+          </article>
 
       <AdUnit slot="UNIT 2: Below Zelle Guide" className="my-10" />
     </div>

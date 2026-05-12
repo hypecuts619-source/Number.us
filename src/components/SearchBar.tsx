@@ -14,12 +14,14 @@ export default function SearchBar() {
   const data = useMemo(() => getAllRoutingData(), []);
 
   useEffect(() => {
-    const saved = localStorage.getItem('recentSearches');
-    if (saved) {
-      try {
-        setRecentSearches(JSON.parse(saved).slice(0, 5));
-      } catch (e) {
-        // ignore
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('recentSearches');
+      if (saved) {
+        try {
+          setRecentSearches(JSON.parse(saved).slice(0, 5));
+        } catch (e) {
+          // ignore
+        }
       }
     }
   }, []);
@@ -28,7 +30,9 @@ export default function SearchBar() {
     setRecentSearches(prev => {
       const filtered = prev.filter(p => `${p.routing_number}-${p.bank_name}` !== `${item.routing_number}-${item.bank_name}`);
       const next = [item, ...filtered].slice(0, 5);
-      localStorage.setItem('recentSearches', JSON.stringify(next));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('recentSearches', JSON.stringify(next));
+      }
       return next;
     });
   };
@@ -38,7 +42,9 @@ export default function SearchBar() {
     e.stopPropagation();
     setRecentSearches(prev => {
       const next = prev.filter(p => `${p.routing_number}-${p.bank_name}` !== `${item.routing_number}-${item.bank_name}`);
-      localStorage.setItem('recentSearches', JSON.stringify(next));
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('recentSearches', JSON.stringify(next));
+      }
       return next;
     });
   };

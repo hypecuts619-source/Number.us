@@ -156,7 +156,8 @@ export default function WireTransferGuide() {
                   <span className="text-blue-600 dark:text-blue-400 font-bold">&rarr;</span>
                 </Link>
               </div>
-            </div>\n          </article>
+            </div>
+          </article>
           
           <div className="bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 rounded-2xl p-8 mt-12">
             <h3 className="text-xl font-bold text-[#1e3a5f] dark:text-blue-300 mb-4">Pro Tip: Use Our Lookup Tool</h3>

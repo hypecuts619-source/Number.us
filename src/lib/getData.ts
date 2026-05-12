@@ -7,8 +7,17 @@ declare global {
   }
 }
 
+let ssrData: RoutingData[] = [];
+
+export const setSSRData = (data: RoutingData[]) => {
+  ssrData = data;
+};
+
 export const getAllRoutingData = (): RoutingData[] => {
-  return window.__ROUTING_DATA__ || [];
+  if (typeof window !== 'undefined') {
+    return window.__ROUTING_DATA__ || ssrData || [];
+  }
+  return ssrData || [];
 };
 
 export const getBanks = (): string[] => {
@@ -68,8 +77,6 @@ export const getRoutingByBankAndState = (bankSlug: string, state: string): Routi
 let topBanksCache: string[] | null = null;
 export const getTopSearchedBanks = (): string[] => {
   if (topBanksCache) return topBanksCache;
-  const data = getAllRoutingData();
-  if (data.length === 0) return [];
   
   // Hardcoded top banks to save massive JS thread blocking during render
   // These represent the largest banks with most branching/routing codes.

@@ -106,7 +106,8 @@ export default function InternationalWireGuide() {
                   <span className="text-blue-600 dark:text-blue-400 font-bold">&rarr;</span>
                 </Link>
               </div>
-            </div>\n          </article>
+            </div>
+          </article>
 
           <AdUnit slot="UNIT 2: Mid Content" className="my-12" />
           
