@@ -8,6 +8,7 @@ export interface FavoriteBank {
 
 export function useFavorites() {
   const [favorites, setFavorites] = useState<FavoriteBank[]>([]);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     try {
@@ -19,6 +20,8 @@ export function useFavorites() {
       }
     } catch (e) {
       console.error('Failed to load favorite banks', e);
+    } finally {
+      setLoaded(true);
     }
   }, []);
 
@@ -47,5 +50,5 @@ export function useFavorites() {
 
   const isFavorite = (slug: string) => favorites.some(f => f.slug === slug);
 
-  return { favorites, toggleFavorite, isFavorite };
+  return { favorites, toggleFavorite, isFavorite, loaded };
 }

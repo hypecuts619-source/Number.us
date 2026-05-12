@@ -8,6 +8,7 @@ export interface ViewedItem {
 
 export function useRecentlyViewed() {
   const [items, setItems] = useState<ViewedItem[]>([]);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     try {
@@ -19,6 +20,8 @@ export function useRecentlyViewed() {
       }
     } catch (e) {
       console.error('Failed to load recently viewed items', e);
+    } finally {
+      setLoaded(true);
     }
   }, []);
 
@@ -42,5 +45,5 @@ export function useRecentlyViewed() {
     });
   };
 
-  return { items, addItem };
+  return { items, addItem, loaded };
 }

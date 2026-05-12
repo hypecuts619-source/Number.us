@@ -9,7 +9,7 @@ export default function EmbedWidget() {
   const siteUrl = window.location.origin;
   const embedCode = `<div id="routing-checker-widget" data-theme="light"></div>
 <script src="${siteUrl}/widgets/checker.js" async></script>
-<p style="font-size: 10px; color: #666; margin-top: 5px;">Powered by <a href="${siteUrl}" target="_blank">RoutingNumbers.app</a></p>`;
+<p style="font-size: 10px; color: #666; margin-top: 5px;">Powered by <a href="${siteUrl}" target="_blank">USRoutingNumber.com</a></p>`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(embedCode);
@@ -74,7 +74,7 @@ export default function EmbedWidget() {
               </div>
               <div className="mt-4 pt-4 border-t border-slate-100 flex justify-between items-center">
                 <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Preview Mode</span>
-                <span className="text-[10px] text-slate-400">Powered by RoutingNumbers.app</span>
+                <span className="text-[10px] text-slate-400">Powered by USRoutingNumber.com</span>
               </div>
             </div>
 

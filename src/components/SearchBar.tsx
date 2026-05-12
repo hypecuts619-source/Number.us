@@ -95,7 +95,7 @@ export default function SearchBar() {
         <div className="relative w-full">
           <input
             type="text"
-            className="w-full pl-10 md:pl-12 pr-10 md:pr-28 py-3 md:py-4 text-base md:text-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 border-2 border-slate-300 dark:border-slate-700 rounded-xl shadow-sm focus:border-blue-600 focus:ring-blue-600 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500"
+            className="w-full pl-10 md:pl-12 pr-10 md:pr-28 py-3.5 md:py-5 text-base md:text-xl bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 border-2 border-slate-300 dark:border-slate-700 rounded-2xl shadow-lg focus:border-blue-600 focus:ring-4 focus:ring-blue-500/20 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500"
             placeholder="Search by bank name (e.g. Chase) or routing number..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}

@@ -44,8 +44,8 @@ export default defineConfig(({mode}) => {
           ]
         },
         manifest: {
-          name: 'RoutingNumbers.app',
-          short_name: 'Routing',
+          name: 'USRoutingNumber.com',
+          short_name: 'USRouting',
           description: 'Verified US Bank & Credit Union Routing Numbers.',
           theme_color: '#2563eb',
           background_color: '#ffffff',

@@ -60,7 +60,7 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
   return (
     <ThemeProvider>
         <ScrollToTop />
-        <Toaster position="top-center" />
+        <Toaster position="top-right" />
         <div className="min-h-screen flex flex-col font-sans bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-blue-200 dark:selection:bg-blue-900">
           <Header />
 
