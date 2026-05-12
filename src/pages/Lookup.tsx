@@ -9,6 +9,8 @@ import AdUnit from '../components/AdUnit';
 import SEO from '../components/SEO';
 import FAQSection from '../components/FAQSection';
 import VerifiedBadge from '../components/VerifiedBadge';
+import RegulatoryBadge from '../components/RegulatoryBadge';
+import FeedbackModule from '../components/FeedbackModule';
 import PrintDownloadButtons from '../components/PrintDownloadButtons';
 import TransactionBadge from '../components/TransactionBadge';
 import { useRecentlyViewed } from '../hooks/useRecentlyViewed';
@@ -17,6 +19,7 @@ import RelatedLinks from '../components/RelatedLinks';
 import CheckDigitVisualizer from '../components/CheckDigitVisualizer';
 import TransferCompatibilityChecker from '../components/TransferCompatibilityChecker';
 import DirectDepositFormGenerator from '../components/DirectDepositFormGenerator';
+import { ClickableRoutingNumber } from '../components/ClickableRoutingNumber';
 
 function isValidRoutingNumber(routingNumber: string): boolean {
   if (!/^\d{9}$/.test(routingNumber)) {
@@ -71,8 +74,11 @@ export default function Lookup() {
           <h1 className="text-2xl text-slate-500 font-bold uppercase tracking-wider mb-2">
             Routing Number Details
           </h1>
-          <div className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tight font-mono mb-6 break-all">
-            {routingNumber}
+          <div className="mb-6 flex justify-center">
+            <ClickableRoutingNumber 
+              number={routingNumber || ''} 
+              className="text-5xl md:text-7xl px-8 py-6 rounded-3xl"
+            />
           </div>
           
           <div className="flex justify-center mb-4">
@@ -139,6 +145,8 @@ export default function Lookup() {
         <div className="mt-16">
           <FAQSection faqs={faqs} />
         </div>
+        
+        <FeedbackModule bankName="Unknown Institution" routingNumber={routingNumber} context="Lookup Page (Not Found)" />
       </div>
     );
   }
@@ -171,8 +179,11 @@ export default function Lookup() {
             <h1 className="text-2xl text-slate-500 font-bold uppercase tracking-wider mb-2">
               Routing Number Details
             </h1>
-            <div className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tight font-mono mb-6">
-              {data.routing_number}
+            <div className="mb-6 flex justify-center">
+              <ClickableRoutingNumber 
+                number={data.routing_number} 
+                className="text-5xl md:text-7xl px-8 py-6 rounded-3xl"
+              />
             </div>
             <div className="flex justify-center mb-4">
               <CopyButton text={data.routing_number} />
@@ -181,6 +192,7 @@ export default function Lookup() {
             <AdUnit slot="UNIT 6: Immediately Below Routing Number (Found)" className="mb-6" />
             
             <VerifiedBadge />
+            <RegulatoryBadge bankName={data.bank_name} />
             <div className="max-w-md mx-auto text-left">
               <TrustIndicator />
             </div>
@@ -272,6 +284,8 @@ export default function Lookup() {
       <div className="mt-8 md:mt-16 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 md:p-12 shadow-sm mb-12">
         <FAQSection faqs={faqs} />
       </div>
+
+      <FeedbackModule bankName={data.bank_name} routingNumber={data.routing_number} context="Lookup Page (Found)" />
 
       <div className="mt-8 max-w-sm">
          <RelatedLinks 

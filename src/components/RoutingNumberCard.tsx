@@ -3,6 +3,7 @@ import { cn } from '../lib/utils';
 import PrintDownloadButtons from './PrintDownloadButtons';
 import CopyButton from './CopyButton';
 import ChequeVisualizer from './ChequeVisualizer';
+import { ClickableRoutingNumber } from './ClickableRoutingNumber';
 
 export default function RoutingNumberCard({ data }: { data: RoutingData }) {
   const type = data.type || 'ACH';
@@ -22,8 +23,11 @@ export default function RoutingNumberCard({ data }: { data: RoutingData }) {
               details={`${data.city}, ${data.state}${zipStr} - ${type}`} 
             />
           </div>
-          <div className="font-mono text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 dark:text-white tracking-widest break-all md:text-left">
-            {data.routing_number}
+          <div className="flex md:justify-start justify-center">
+            <ClickableRoutingNumber 
+              number={data.routing_number} 
+              className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl px-4 py-3 sm:px-6 sm:py-4 rounded-2xl"
+            />
           </div>
           <div className="mt-6 flex flex-wrap gap-2 justify-center md:justify-start">
             {(type === 'ACH' || type === 'BOTH') && (

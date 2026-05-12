@@ -19,6 +19,9 @@ import RelatedLinks from '../components/RelatedLinks';
 import SEO from '../components/SEO';
 import VerifiedBadge from '../components/VerifiedBadge';
 import TransactionBadge from '../components/TransactionBadge';
+import RegulatoryBadge from '../components/RegulatoryBadge';
+import FeedbackModule from '../components/FeedbackModule';
+import { ClickableRoutingNumber } from '../components/ClickableRoutingNumber';
 import RecentlyViewedWidget from '../components/RecentlyViewedWidget';
 import TrustIndicator from '../components/TrustIndicator';
 
@@ -92,6 +95,7 @@ export default function BankState() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
         <div className="flex flex-wrap gap-4 items-center">
           <VerifiedBadge />
+          <RegulatoryBadge bankName={bankName} />
           <TrustIndicator />
         </div>
         <button 
@@ -122,9 +126,7 @@ export default function BankState() {
                   <div className="text-xs text-slate-400 dark:text-slate-500">{branch.address || 'Main Office'}</div>
                 </div>
                 <div className="flex flex-col items-end gap-1">
-                  <div className="text-sm bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300 px-2 py-0.5 rounded font-mono group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                    {branch.routing_number}
-                  </div>
+                  <ClickableRoutingNumber number={branch.routing_number} className="text-sm px-2 py-1 font-mono group-hover:scale-105" />
                   <TransactionBadge type={branch.type || 'BOTH'} size="sm" />
                 </div>
               </Link>
@@ -229,6 +231,8 @@ export default function BankState() {
 
           <FAQSection faqs={faqs} />
           
+          <FeedbackModule bankName={bankName} routingNumber={primaryData.routing_number} context={`Bank State Page: ${stateFullName}`} />
+
           <AdUnit slot="UNIT 3: After FAQ, 300x250 display" className="mx-auto max-w-[300px]" />
 
           <div className="text-sm text-slate-400 dark:text-slate-500 border-t dark:border-slate-800 pt-6 mt-8">

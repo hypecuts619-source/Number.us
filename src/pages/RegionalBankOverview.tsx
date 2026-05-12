@@ -2,13 +2,30 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import banksData from '../data/banksData.json';
 import SEO from '../components/SEO';
-import { ShieldCheck, Share2, Copy, Check } from 'lucide-react';
+import { ShieldCheck, Share2, Copy, Check, Heart } from 'lucide-react';
 import { toast } from 'sonner';
+import { useFavorites } from '../hooks/useFavorites';
+import { ClickableRoutingNumber } from '../components/ClickableRoutingNumber';
 
 export default function RegionalBankOverview() {
   const { bankSlug } = useParams<{ bankSlug: string }>();
+  const { toggleFavorite, isFavorite } = useFavorites();
   
   const bank = banksData.find(b => b.slug === bankSlug);
+  const favorited = isFavorite(bankSlug || '');
+
+  const handleToggleFavorite = () => {
+    if (bank) {
+      toggleFavorite({
+        slug: bank.slug,
+        bankName: bank.bankName,
+        state: bank.state
+      });
+      if (!favorited) {
+        toast.success(`Saved ${bank.bankName} to favorites`);
+      }
+    }
+  };
 
   const handleShare = async () => {
     const shareUrl = `${window.location.origin}/regional-banks/${bankSlug}?utm_source=user_share`;
@@ -136,12 +153,26 @@ export default function RegionalBankOverview() {
         <h1 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight max-w-2xl">
           {bank.bankName} Routing Number Directory
         </h1>
-        <button 
-          onClick={handleShare}
-          className="inline-flex items-center gap-2 px-5 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold hover:opacity-90 transition-all shrink-0 shadow-lg shadow-slate-200 dark:shadow-none"
-        >
-          <Share2 className="w-4 h-4" /> Share Details
-        </button>
+        <div className="flex gap-2">
+          <button 
+            onClick={handleToggleFavorite}
+            className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl font-bold transition-all shrink-0 shadow-lg ${
+              favorited 
+                ? 'bg-rose-500 text-white shadow-rose-200 dark:shadow-none' 
+                : 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 hover:bg-slate-50 shadow-slate-200 dark:shadow-none'
+            }`}
+            title={favorited ? "Remove from favorites" : "Save to favorites"}
+          >
+            <Heart className={`w-4 h-4 ${favorited ? 'fill-current' : ''}`} />
+            {favorited ? 'Saved' : 'Save Bank'}
+          </button>
+          <button 
+            onClick={handleShare}
+            className="inline-flex items-center gap-2 px-5 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold hover:opacity-90 transition-all shrink-0 shadow-lg shadow-slate-200 dark:shadow-none"
+          >
+            <Share2 className="w-4 h-4" /> Share
+          </button>
+        </div>
       </div>
 
       <div className="prose prose-lg prose-slate dark:prose-invert max-w-none mb-10 min-h-[120px]">
@@ -169,12 +200,12 @@ export default function RegionalBankOverview() {
                 <td className="px-6 py-4 text-slate-600 dark:text-slate-400 align-middle">
                   {bank.state}
                 </td>
-                <td className="px-6 py-4 font-mono font-medium text-blue-700 dark:text-blue-400 align-middle tracking-wider">
-                  {bank.routingNumbers.map(rn => (
-                    <div key={rn} className="mb-1 last:mb-0 bg-blue-50 dark:bg-slate-800 inline-block px-2 py-1 rounded border border-blue-100 dark:border-slate-700">
-                      {rn}
-                    </div>
-                  ))}
+                <td className="px-6 py-4 align-middle">
+                  <div className="flex flex-wrap gap-2">
+                    {bank.routingNumbers.map(rn => (
+                      <ClickableRoutingNumber key={rn} number={rn} />
+                    ))}
+                  </div>
                 </td>
               </tr>
             </tbody>

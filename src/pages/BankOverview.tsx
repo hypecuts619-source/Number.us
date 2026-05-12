@@ -11,11 +11,16 @@ import FAQSection from '../components/FAQSection';
 import RelatedLinks from '../components/RelatedLinks';
 import SEO from '../components/SEO';
 import VerifiedBadge from '../components/VerifiedBadge';
-
+import RegulatoryBadge from '../components/RegulatoryBadge';
+import FeedbackModule from '../components/FeedbackModule';
 import TrustIndicator from '../components/TrustIndicator';
+import { useFavorites } from '../hooks/useFavorites';
+import { Heart, Share2 } from 'lucide-react';
+import { toast } from 'sonner';
 
 export default function BankOverview() {
   const { bankSlug } = useParams<{ bankSlug: string }>();
+  const { toggleFavorite, isFavorite } = useFavorites();
   
   const bankData = useMemo(() => {
     if (!bankSlug) return [];
@@ -23,6 +28,38 @@ export default function BankOverview() {
   }, [bankSlug]);
 
   const bankName = bankData.length > 0 ? bankData[0].bank_name : '';
+  const favorited = isFavorite(bankSlug || '');
+
+  const handleToggleFavorite = () => {
+    if (bankName && bankSlug) {
+      toggleFavorite({
+        slug: bankSlug,
+        bankName: bankName,
+        state: bankData[0]?.state || 'US'
+      });
+      if (!favorited) {
+        toast.success(`Saved ${bankName} to favorites`);
+      }
+    }
+  };
+
+  const handleShare = async () => {
+    const shareUrl = window.location.href;
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `${bankName} Routing Number`,
+          text: `Verified routing numbers for ${bankName}`,
+          url: shareUrl,
+        });
+      } catch (err) {
+        // ignore
+      }
+    } else {
+      await navigator.clipboard.writeText(shareUrl);
+      toast.success('Link copied to clipboard!');
+    }
+  };
   const bankDetails = useMemo(() => bankName ? getBankDetails(bankName) : null, [bankName]);
 
   if (!bankData || bankData.length === 0) {
@@ -60,11 +97,33 @@ export default function BankOverview() {
 
       <BreadcrumbNav crumbs={[{ name: bankName, url: `/routing-number/${bankSlug}` }]} />
 
-      <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4">
-        {bankName} Routing Number Directory (Federal Reserve 2026)
-      </h1>
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight max-w-2xl">
+          {bankName} Routing Number Directory (Federal Reserve 2026)
+        </h1>
+        <div className="flex gap-2">
+          <button 
+            onClick={handleToggleFavorite}
+            className={`flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold transition-all shadow-lg ${
+              favorited 
+                ? 'bg-rose-500 text-white shadow-rose-200 dark:shadow-none' 
+                : 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 hover:bg-slate-50'
+            }`}
+          >
+            <Heart className={`w-4 h-4 ${favorited ? 'fill-current' : ''}`} />
+            {favorited ? 'Saved' : 'Save'}
+          </button>
+          <button 
+            onClick={handleShare}
+            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold hover:opacity-90 transition-all shadow-lg"
+          >
+            <Share2 className="w-4 h-4" /> Share
+          </button>
+        </div>
+      </div>
       
       <VerifiedBadge />
+      <RegulatoryBadge bankName={bankName} />
       <TrustIndicator />
 
       <AdUnit slot="UNIT 1: Below H1, 728x90 leaderboard" className="min-h-[90px]" />
@@ -143,6 +202,8 @@ export default function BankOverview() {
 
           <FAQSection faqs={faqs} />
           
+          <FeedbackModule bankName={bankName} context="Bank Overview Page" />
+
           <AdUnit slot="UNIT 3: After FAQ, 300x250 display" className="min-h-[250px] max-w-[300px] mx-auto" />
         </div>
 

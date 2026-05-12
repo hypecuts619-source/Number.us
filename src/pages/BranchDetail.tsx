@@ -20,6 +20,8 @@ import { MapPin, Phone, Building2 } from 'lucide-react';
 import Tooltip from '../components/Tooltip';
 import SEO from '../components/SEO';
 import VerifiedBadge from '../components/VerifiedBadge';
+import RegulatoryBadge from '../components/RegulatoryBadge';
+import FeedbackModule from '../components/FeedbackModule';
 import TrustIndicator from '../components/TrustIndicator';
 
 export default function BranchDetail() {
@@ -100,6 +102,7 @@ export default function BranchDetail() {
       <p className="text-xl text-slate-500 dark:text-slate-400 mb-6">{currentYear} Official Branch Routing Information</p>
 
       <VerifiedBadge />
+      <RegulatoryBadge bankName={bankName} />
       <TrustIndicator />
 
       <AdUnit slot="UNIT 1: Below H1, 728x90 leaderboard" className="my-8 min-h-[90px]" />
@@ -197,6 +200,8 @@ export default function BranchDetail() {
 
           <FAQSection faqs={faqs} />
           
+          <FeedbackModule bankName={bankName} routingNumber={primaryData.routing_number} context={`Branch Detail: ${cityTitle}, ${stateFullName}`} />
+
           <AdUnit slot="UNIT 3: After FAQ, 300x250 display" className="mx-auto max-w-[300px]" />
 
           <div className="text-sm text-slate-400 dark:text-slate-500 border-t border-slate-200 dark:border-slate-800 pt-6">

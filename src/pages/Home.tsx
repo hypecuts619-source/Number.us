@@ -11,11 +11,16 @@ import { generateHomeFAQs } from '../lib/faqTemplates';
 import { generateFAQSchema, generateWebSiteSchema } from '../lib/seoHelpers';
 import SEO from '../components/SEO';
 import FAQSection from '../components/FAQSection';
+import { useFavorites } from '../hooks/useFavorites';
+import { useRecentlyViewed } from '../hooks/useRecentlyViewed';
+import { Heart, Clock, ArrowRight } from 'lucide-react';
 
 export default function Home() {
   const topBanks = getTopSearchedBanks();
   const faqs = useMemo(() => generateHomeFAQs(), []);
   const [isArticleExpanded, setIsArticleExpanded] = useState(false);
+  const { favorites } = useFavorites();
+  const { items: recentItems } = useRecentlyViewed();
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 md:py-12 relative">
@@ -103,6 +108,59 @@ export default function Home() {
         </div>
 
         <div>
+          {favorites.length > 0 && (
+            <div className="bg-rose-50 dark:bg-rose-900/10 border border-rose-100 dark:border-rose-900/30 rounded-2xl p-6 shadow-sm mb-8 animate-in fade-in slide-in-from-right-4 duration-500">
+              <div className="flex items-center gap-2 mb-4 text-rose-700 dark:text-rose-400">
+                <Heart className="w-5 h-5 fill-current" />
+                <h2 className="text-xl font-bold">My Saved Banks</h2>
+              </div>
+              <ul className="space-y-3">
+                {favorites.map((bank) => (
+                  <li key={bank.slug}>
+                    <Link
+                      to={`/regional-banks/${bank.slug}`}
+                      className="flex justify-between items-center group bg-white dark:bg-slate-800 p-3 rounded-xl border border-rose-200 dark:border-rose-900/20 hover:border-rose-400 transition-all"
+                    >
+                      <div className="flex flex-col">
+                        <span className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-rose-600">
+                          {bank.bankName}
+                        </span>
+                        <span className="text-[10px] text-slate-400 uppercase tracking-widest">{bank.state}</span>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-rose-300 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {recentItems.length > 0 && (
+            <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm mb-8">
+              <div className="flex items-center gap-2 mb-4 text-slate-700 dark:text-slate-300">
+                <Clock className="w-5 h-5" />
+                <h2 className="text-xl font-bold">Recently Viewed</h2>
+              </div>
+              <ul className="space-y-3">
+                {recentItems.slice(0, 3).map((item) => (
+                  <li key={item.routingNumber}>
+                    <Link
+                      to={`/lookup/${item.routingNumber}`}
+                      className="block group"
+                    >
+                      <div className="flex flex-col">
+                        <span className="text-sm font-medium text-slate-900 dark:text-white group-hover:text-blue-600 group-hover:underline line-clamp-1">
+                          {item.bankName}
+                        </span>
+                        <span className="text-xs text-slate-400 font-mono">{item.routingNumber}</span>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm mb-8">
             <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Top Searched Banks</h2>
             <ul className="space-y-3">
