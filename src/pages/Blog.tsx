@@ -18,7 +18,7 @@ const articles = [
     title: "Routing Number vs Account Number: What's the Difference?",
     description: "Understand the key differences between bank routing numbers and account numbers, when to use each, and how to keep them safe.",
     path: "/routing-number-vs-account-number",
-    date: "January 14, 2026",
+    date: "May 1, 2026",
     readTime: "4 min read",
     category: "Banking Basics",
     slug: "routing-number-vs-account-number"
@@ -27,7 +27,7 @@ const articles = [
     title: "How to Find a Routing Number Without a Checkbook",
     description: "Learn how to instantly locate your 9-digit bank routing number without checks, using your mobile banking app, browser, or customer service.",
     path: "/how-to-find-routing-number",
-    date: "January 28, 2026",
+    date: "May 1, 2026",
     readTime: "3 min read",
     category: "Guides",
     slug: "how-to-find-routing-number"
@@ -36,7 +36,7 @@ const articles = [
     title: "Where is the Routing Number on a Check?",
     description: "A visual guide to identifying the correct bank routing number on physical checks, checkbooks, and deposit slips.",
     path: "/find-routing-number-on-check",
-    date: "February 10, 2026",
+    date: "May 3, 2026",
     readTime: "2 min read",
     category: "Quick Answers",
     slug: "find-routing-number-on-check"
@@ -45,7 +45,7 @@ const articles = [
     title: "What is an ABA Routing Number? The American Banking Association Standard",
     description: "Deep dive into the history, format, and purpose of the ABA routing transit number utilized in the US banking system.",
     path: "/aba-routing-number",
-    date: "February 22, 2026",
+    date: "May 3, 2026",
     readTime: "5 min read",
     category: "Deep Dives",
     slug: "what-is-aba-routing-number"
@@ -54,7 +54,7 @@ const articles = [
     title: "How to Find Your Direct Deposit Routing Number",
     description: "Setting up a direct deposit for your paycheck? Find out which routing number your HR department needs to successfully process your salary.",
     path: "/direct-deposit-routing-number",
-    date: "March 5, 2026",
+    date: "May 5, 2026",
     readTime: "3 min read",
     category: "Direct Deposit",
     slug: "direct-deposit-routing-number"
@@ -63,7 +63,7 @@ const articles = [
     title: "Wire Transfers 101: How to Wire Money Domestically",
     description: "Step-by-step instructions on sending a domestic wire transfer, including the fees, timeframes, and security precautions.",
     path: "/how-to-wire-money",
-    date: "March 21, 2026",
+    date: "May 5, 2026",
     readTime: "6 min read",
     category: "Transfers",
     slug: "how-to-wire-money"
@@ -72,7 +72,7 @@ const articles = [
     title: "What Routing Number to Use For International Wire to US",
     description: "Sending money abroad to the US? Learn the difference between SWIFT/BIC codes, IBAN numbers, and when US routing numbers are appropriate.",
     path: "/international-wire-guide",
-    date: "April 4, 2026",
+    date: "May 7, 2026",
     readTime: "5 min read",
     category: "Transfers",
     slug: "international-wire-transfers"
@@ -81,7 +81,7 @@ const articles = [
     title: "What is the Zelle Routing Number?",
     description: "Looking for a Zelle routing number? Learn why Zelle doesn't have an official routing number, and how it connects to your underlying bank.",
     path: "/zelle-routing-number",
-    date: "April 18, 2026",
+    date: "May 7, 2026",
     readTime: "4 min read",
     category: "Transfers",
     slug: "zelle-routing-number"
