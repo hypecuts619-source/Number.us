@@ -25,7 +25,7 @@ export default function ACHvsWire() {
         <ArticleAuthorMeta 
           date="May 15, 2026" 
           readTime="15 min read" 
-          author="Editorial Team" 
+          author="Stephen Sebastian, Head of Marketing & Product" 
           reviewer="Financial Review Board"
         />
         <p className="text-xl text-slate-600 dark:text-slate-400 mt-6 leading-relaxed">
@@ -67,13 +67,6 @@ export default function ACHvsWire() {
         <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Related Guides & Deep Dives</h3>
         <div className="grid md:grid-cols-3 gap-6">
           
-          <Link to="/blog/wire-transfers-demystified" className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-blue-500 dark:hover:border-blue-500 transition-all shadow-sm hover:shadow-md flex flex-col h-full">
-            <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2 line-clamp-2">Wire Transfers Demystified</h4>
-            <div className="mt-auto flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 pt-4">
-              Read Article <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-            </div>
-          </Link>
-          
           <Link to="/how-to-wire-money" className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-blue-500 dark:hover:border-blue-500 transition-all shadow-sm hover:shadow-md flex flex-col h-full">
             <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2 line-clamp-2">How To Wire Money</h4>
             <div className="mt-auto flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 pt-4">
@@ -81,8 +74,15 @@ export default function ACHvsWire() {
             </div>
           </Link>
           
-          <Link to="/blog/international-vs-domestic-routing" className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-blue-500 dark:hover:border-blue-500 transition-all shadow-sm hover:shadow-md flex flex-col h-full">
-            <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2 line-clamp-2">International Vs Domestic Routing</h4>
+          <Link to="/routing-number-changes-2026" className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-blue-500 dark:hover:border-blue-500 transition-all shadow-sm hover:shadow-md flex flex-col h-full">
+            <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2 line-clamp-2">Routing Number Changes 2026</h4>
+            <div className="mt-auto flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 pt-4">
+              Read Article <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+          
+          <Link to="/blog/rejected-routing-number-troubleshooting" className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-blue-500 dark:hover:border-blue-500 transition-all shadow-sm hover:shadow-md flex flex-col h-full">
+            <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2 line-clamp-2">Rejected Routing Number Troubleshooting</h4>
             <div className="mt-auto flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 pt-4">
               Read Article <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
             </div>

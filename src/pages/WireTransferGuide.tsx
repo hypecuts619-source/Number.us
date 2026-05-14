@@ -25,7 +25,7 @@ export default function WireTransferGuide() {
         <ArticleAuthorMeta 
           date="May 15, 2026" 
           readTime="15 min read" 
-          author="Editorial Team" 
+          author="Mathew George, Head of Financial Data Architecture" 
           reviewer="Financial Review Board"
         />
         <p className="text-xl text-slate-600 dark:text-slate-400 mt-6 leading-relaxed">
@@ -67,22 +67,22 @@ export default function WireTransferGuide() {
         <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Related Guides & Deep Dives</h3>
         <div className="grid md:grid-cols-3 gap-6">
           
-          <Link to="/find-routing-number-on-check" className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-blue-500 dark:hover:border-blue-500 transition-all shadow-sm hover:shadow-md flex flex-col h-full">
-            <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2 line-clamp-2">Find Routing Number On Check</h4>
+          <Link to="/international-wire-guide" className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-blue-500 dark:hover:border-blue-500 transition-all shadow-sm hover:shadow-md flex flex-col h-full">
+            <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2 line-clamp-2">International Wire Guide</h4>
             <div className="mt-auto flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 pt-4">
               Read Article <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
           
-          <Link to="/aba-routing-number" className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-blue-500 dark:hover:border-blue-500 transition-all shadow-sm hover:shadow-md flex flex-col h-full">
-            <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2 line-clamp-2">What Is ABA Routing Number</h4>
+          <Link to="/blog/bank-mergers-routing-numbers" className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-blue-500 dark:hover:border-blue-500 transition-all shadow-sm hover:shadow-md flex flex-col h-full">
+            <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2 line-clamp-2">Bank Mergers Routing Numbers</h4>
             <div className="mt-auto flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 pt-4">
               Read Article <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
           
-          <Link to="/blog/rejected-routing-number-troubleshooting" className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-blue-500 dark:hover:border-blue-500 transition-all shadow-sm hover:shadow-md flex flex-col h-full">
-            <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2 line-clamp-2">Rejected Routing Number Troubleshooting</h4>
+          <Link to="/blog/ultimate-guide-to-ach-transfers" className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-blue-500 dark:hover:border-blue-500 transition-all shadow-sm hover:shadow-md flex flex-col h-full">
+            <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2 line-clamp-2">Ultimate Guide To ACH Transfers</h4>
             <div className="mt-auto flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 pt-4">
               Read Article <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
             </div>

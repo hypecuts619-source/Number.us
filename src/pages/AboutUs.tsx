@@ -25,10 +25,10 @@ export default function AboutUs() {
 
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-10">Our Story</h2>
         <p>
-          It all started when our founders, <strong>Alex Thompson</strong> and <strong>Sarah Jenkins</strong>, experienced the sheer panic of an improperly routed payment. They were trying to manage a critical wire transfer and found themselves completely lost in a sea of conflicting information—unable to decipher which 9-digit code was meant for domestic wires, international receipts, or standard ACH transfers. 
+          It all started when our founders, <strong>Stephen Sebastian</strong>, Head of Marketing & Product, and <strong>Mathew George</strong>, Head of Financial Data Architecture, experienced the sheer panic of an improperly routed payment. They were trying to manage a critical wire transfer and found themselves completely lost in a sea of conflicting information—unable to decipher which 9-digit code was meant for domestic wires, international receipts, or standard ACH transfers. 
         </p>
         <p>
-          They realized that if they were struggling with this, millions of everyday Americans were likely experiencing the exact same frustration. That's why Alex and Sarah teamed up to build USRoutingNumber.com. Their goal was simple: take the stress, confusion, and guesswork out of moving money.
+          They realized that if they were struggling with this, millions of everyday Americans were likely experiencing the exact same frustration. That's why Stephen and Mathew teamed up to build USRoutingNumber.com. Their goal was simple: take the stress, confusion, and guesswork out of moving money.
         </p>
 
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-10">Our Mission</h2>

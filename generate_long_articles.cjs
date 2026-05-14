@@ -126,7 +126,7 @@ export default function ${baseName}() {
         <ArticleAuthorMeta 
           date="May 15, 2026" 
           readTime="15 min read" 
-          author="Editorial Team" 
+          author="${Math.random() > 0.5 ? 'Stephen Sebastian, Head of Marketing & Product' : 'Mathew George, Head of Financial Data Architecture'}" 
           reviewer="Financial Review Board"
         />
         <p className="text-xl text-slate-600 dark:text-slate-400 mt-6 leading-relaxed">

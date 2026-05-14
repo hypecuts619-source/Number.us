@@ -58,7 +58,7 @@ export default function EssentialGuide() {
         <ArticleAuthorMeta 
           date="May 10, 2026" 
           readTime="12 min read" 
-          author="Marcus V. Thorne" 
+          author="Stephen Sebastian, Head of Marketing & Product" 
           reviewer="Financial Security Board"
         />
       </div>
