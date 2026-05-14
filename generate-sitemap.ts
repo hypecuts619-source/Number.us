@@ -19,7 +19,19 @@ const urls = [
   '/major-banks',
   '/routing-number-lookup',
   '/terms-of-service',
-  '/privacy-policy'
+  '/privacy-policy',
+  '/blog',
+  '/blog/ach-vs-wire-routing-guide',
+  '/blog/secure-wire-transfer-guide',
+  '/blog/rejected-routing-number-troubleshooting',
+  '/blog/ultimate-guide-to-ach-transfers',
+  '/blog/wire-transfers-demystified',
+  '/blog/bank-mergers-routing-numbers',
+  '/blog/future-instant-payments-fednow',
+  '/blog/routing-number-security',
+  '/blog/anatomy-of-a-check',
+  '/blog/international-vs-domestic-routing',
+  '/blog/understanding-modulus-10-algorithm'
 ];
 
 const STATES = [
