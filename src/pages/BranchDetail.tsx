@@ -24,6 +24,8 @@ import RegulatoryBadge from '../components/RegulatoryBadge';
 import FeedbackModule from '../components/FeedbackModule';
 import TrustIndicator from '../components/TrustIndicator';
 
+import NotFound from './NotFound';
+
 export default function BranchDetail() {
   const { bankSlug, state, city: citySlug } = useParams<{ bankSlug: string, state: string, city: string }>();
 
@@ -48,12 +50,7 @@ export default function BranchDetail() {
   }, [state, bankName]);
 
   if (dataList.length === 0) {
-    return (
-      <div className="max-w-5xl mx-auto px-4 py-20 text-center">
-        <h1 className="text-3xl font-bold mb-4 text-slate-800 dark:text-slate-100">Branch Detail Not Found</h1>
-        <Link to="/" className="text-blue-600 dark:text-blue-400 hover:underline">Return Home</Link>
-      </div>
-    );
+    return <NotFound />;
   }
 
   const primaryData = dataList[0];

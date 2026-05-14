@@ -26,7 +26,10 @@ export default function TermsOfService() {
         <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">3. Not a Financial Institution</h2>
         <p>USRoutingNumber.com is an independent informational directory. We are not a financial institution, bank, credit union, or payment processor. We are not affiliated with, endorsed by, or partnered with any official government agency, the Federal Reserve, or any of the banks or financial institutions listed on this Website.</p>
 
-        <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">4. Trademarks, Copyrights, and Fair Use</h2>
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">4. Privacy and Local Data</h2>
+        <p>Your privacy is important to us. We securely store personalized preferences (such as Favorites and Recently Viewed items) exclusively within your browser's local storage. This data is not harvested, sold, or maintained on external servers. Furthermore, we explicitly do not collect Personally Identifiable Information (PII) or sensitive banking account numbers. Visit our Privacy Policy for more details.</p>
+
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">5. Trademarks, Copyrights, and Fair Use</h2>
         <p>All bank names, logos, and trademarks mentioned on this website are the property of their respective owners. Their use on USRoutingNumber.com is strictly for identification and informational purposes under the doctrine of nominative fair use. We do not claim ownership of any third-party trademarks.</p>
         <p><strong>ABA Routing Numbers:</strong> ABA Routing Numbers are established by the American Bankers Association. The routing transit numbers provided on this Website are for informational and educational purposes only. USRoutingNumber.com is not an official registrar and is not affiliated with the ABA, LexisNexis Risk Solutions (the official routing number registrar), or the Federal Reserve.</p>
 

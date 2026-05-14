@@ -18,6 +18,8 @@ import { useFavorites } from '../hooks/useFavorites';
 import { Heart, Share2 } from 'lucide-react';
 import { toast } from 'sonner';
 
+import NotFound from './NotFound';
+
 export default function BankOverview() {
   const { bankSlug } = useParams<{ bankSlug: string }>();
   const { toggleFavorite, isFavorite } = useFavorites();
@@ -63,12 +65,7 @@ export default function BankOverview() {
   const bankDetails = useMemo(() => bankName ? getBankDetails(bankName) : null, [bankName]);
 
   if (!bankData || bankData.length === 0) {
-    return (
-      <div className="max-w-5xl mx-auto px-4 py-20 text-center">
-        <h1 className="text-3xl font-bold mb-4">Bank Not Found</h1>
-        <Link to="/" className="text-blue-600 hover:underline">Return Home</Link>
-      </div>
-    );
+    return <NotFound />;
   }
 
   const currentYear = new Date().getFullYear();

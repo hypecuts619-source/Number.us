@@ -121,6 +121,78 @@ const articles = [
     readTime: "10 min read",
     category: "Troubleshooting",
     slug: "rejected-routing-fixes"
+  },
+  {
+    title: "The Ultimate Guide to ACH Transfers: Speed, Costs, and Mechanics",
+    description: "Everything you need to know about navigating the Automated Clearing House network in 2026. Avoid fees and delays.",
+    path: "/blog/ultimate-guide-to-ach-transfers",
+    date: "May 14, 2026",
+    readTime: "12 min read",
+    category: "Transfers",
+    slug: "ultimate-guide-to-ach-transfers"
+  },
+  {
+    title: "Wire Transfers Demystified: Secure High-Volume Financial Movements",
+    description: "A comprehensive break-down of the Fedwire system, when to use it, and how to verify recipient routing data.",
+    path: "/blog/wire-transfers-demystified",
+    date: "May 14, 2026",
+    readTime: "12 min read",
+    category: "Transfers",
+    slug: "wire-transfers-demystified"
+  },
+  {
+    title: "How Bank Mergers Impact Your Routing Numbers",
+    description: "Mergers and acquisitions force infrastructure changes. Learn how to protect your auto-pays and direct deposits during transitional periods.",
+    path: "/blog/bank-mergers-routing-numbers",
+    date: "May 14, 2026",
+    readTime: "15 min read",
+    category: "Updates",
+    slug: "bank-mergers-routing-numbers"
+  },
+  {
+    title: "The Future of Banking: FedNow and Instant Payments",
+    description: "The US Federal Reserve has modernized electronic transfers. Understand how FedNow compares to legacy ACH and Wire networks.",
+    path: "/blog/future-instant-payments-fednow",
+    date: "May 14, 2026",
+    readTime: "11 min read",
+    category: "Deep Dives",
+    slug: "future-instant-payments-fednow"
+  },
+  {
+    title: "Routing Number Security and Phishing Prevention",
+    description: "A deep dive into how financial institutions and modern networks secure electronic funds and combat systemic fraud.",
+    path: "/blog/routing-number-security",
+    date: "May 14, 2026",
+    readTime: "13 min read",
+    category: "Security",
+    slug: "routing-number-security"
+  },
+  {
+    title: "The Anatomy of a Bank Check: MICR to Routing Verification",
+    description: "Explore the historical development and modern application of check routing, MICR lines, and ABA standard transit codes.",
+    path: "/blog/anatomy-of-a-check",
+    date: "May 14, 2026",
+    readTime: "10 min read",
+    category: "Guides",
+    slug: "anatomy-of-a-check"
+  },
+  {
+    title: "International SWIFT vs. Domestic ABA Routing",
+    description: "Sending money abroad? Learn the structural differences between SWIFT/BIC codes and domestic routing transit numbers.",
+    path: "/blog/international-vs-domestic-routing",
+    date: "May 14, 2026",
+    readTime: "12 min read",
+    category: "Transfers",
+    slug: "international-vs-domestic-routing"
+  },
+  {
+    title: "Understanding the Modulus 10 ABA Routing Algorithm",
+    description: "The mathematics behind American banking. Discover how check digits prevent massive amounts of failed transactions instantly.",
+    path: "/blog/understanding-modulus-10-algorithm",
+    date: "May 14, 2026",
+    readTime: "14 min read",
+    category: "Deep Dives",
+    slug: "understanding-modulus-10-algorithm"
   }
 ];
 

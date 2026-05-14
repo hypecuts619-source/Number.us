@@ -45,8 +45,18 @@ const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const Blog = lazy(() => import('./pages/Blog'));
 const Changes2026 = lazy(() => import('./pages/Changes2026'));
 const AboutUs = lazy(() => import('./pages/AboutUs'));
+const ContactUs = lazy(() => import('./pages/ContactUs'));
 const CaliforniaRoutingNumbers = lazy(() => import('./pages/CaliforniaRoutingNumbers'));
 const AllBanksDirectory = lazy(() => import('./pages/AllBanksDirectory'));
+
+const TheUltimateGuideToACHTransfers = lazy(() => import('./pages/TheUltimateGuideToACHTransfers'));
+const WireTransfersDemystified = lazy(() => import('./pages/WireTransfersDemystified'));
+const BankMergersAndRoutingNumbers = lazy(() => import('./pages/BankMergersAndRoutingNumbers'));
+const TheFutureOfInstantPayments = lazy(() => import('./pages/TheFutureOfInstantPayments'));
+const RoutingNumberSecurityProtocols = lazy(() => import('./pages/RoutingNumberSecurityProtocols'));
+const AnatomyOfACheck = lazy(() => import('./pages/AnatomyOfACheck'));
+const InternationalVsDomesticRouting = lazy(() => import('./pages/InternationalVsDomesticRouting'));
+const UnderstandingTheModulus10Algorithm = lazy(() => import('./pages/UnderstandingTheModulus10Algorithm'));
 
 import { Toaster } from 'sonner';
 import { ThemeProvider } from './ThemeContext';
@@ -80,6 +90,7 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
                 <Route path="/routing-number-validator" element={<RoutingNumberValidator />} />
                 <Route path="/routing-number-changes-2026" element={<Changes2026 />} />
                 <Route path="/about-us" element={<AboutUs />} />
+                <Route path="/contact-us" element={<ContactUs />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/check-digit-calculator" element={<CheckDigitCalculator />} />
                 <Route path="/terms-of-service" element={<TermsOfService />} />
@@ -103,6 +114,16 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
               <Route path="/blog/ach-vs-wire-routing-guide" element={<ACHvsWire />} />
               <Route path="/blog/secure-wire-transfer-guide" element={<SecureTransfers />} />
               <Route path="/blog/rejected-routing-number-troubleshooting" element={<RejectedRoutingFix />} />
+
+              <Route path="/blog/ultimate-guide-to-ach-transfers" element={<TheUltimateGuideToACHTransfers />} />
+              <Route path="/blog/wire-transfers-demystified" element={<WireTransfersDemystified />} />
+              <Route path="/blog/bank-mergers-routing-numbers" element={<BankMergersAndRoutingNumbers />} />
+              <Route path="/blog/future-instant-payments-fednow" element={<TheFutureOfInstantPayments />} />
+              <Route path="/blog/routing-number-security" element={<RoutingNumberSecurityProtocols />} />
+              <Route path="/blog/anatomy-of-a-check" element={<AnatomyOfACheck />} />
+              <Route path="/blog/international-vs-domestic-routing" element={<InternationalVsDomesticRouting />} />
+              <Route path="/blog/understanding-modulus-10-algorithm" element={<UnderstandingTheModulus10Algorithm />} />
+
               <Route path="/credit-unions" element={<CreditUnionDirectory />} />
               <Route path="/glossary/:slug" element={<GlossaryTerm />} />
               <Route path="/banks/a-z" element={<AlphabeticalDirectoryPage />} />
@@ -126,6 +147,7 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
             <div className="max-w-7xl mx-auto text-center text-slate-500 dark:text-slate-400 text-sm max-w-3xl">
               <nav className="flex justify-center flex-wrap gap-x-6 gap-y-2 mb-6">
                 <Link to="/about-us" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">About Us</Link>
+                <Link to="/contact-us" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Contact Us</Link>
                 <Link to="/terms-of-service" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Terms of Service</Link>
                 <Link to="/privacy-policy" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Privacy Policy</Link>
               </nav>

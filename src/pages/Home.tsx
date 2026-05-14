@@ -63,8 +63,19 @@ export default function Home() {
         </script>
       </SEO>
 
-      {/* 1. Favorites - High Priority Smart Access */}
-      <div className="order-1">
+      {/* Header - Desktop Top, Mobile Below Search */}
+      <div className="order-2 md:order-1 text-center md:text-left mb-8 md:mb-12 mt-8 md:mt-0">
+        <h1 className="text-3xl md:text-6xl font-black mb-4 text-slate-900 dark:text-white tracking-tight leading-tight">
+          Financial Routing <span className="text-blue-600 dark:text-blue-400">Dashboard</span>
+        </h1>
+        <p className="text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto md:mx-0">
+          Instantly access verified routing data for 2026. Secure, authorized Federal Reserve records at your fingertips.
+        </p>
+      </div>
+
+      {/* Main Action Area - Mobile Top, Desktop Below Header */}
+      <div className="order-1 md:order-2 flex flex-col w-full">
+        {/* 1. Favorites - High Priority Smart Access */}
         {!favsLoaded ? (
           <PersonalizationSkeleton />
         ) : favorites.length > 0 ? (
@@ -99,71 +110,61 @@ export default function Home() {
             </div>
           </div>
         ) : null}
-      </div>
 
-      {/* 2. Primary Search - Absolute Mobile Priority */}
-      <div className="order-2 mb-8 md:mb-12 relative z-20">
-        <div className="bg-white dark:bg-slate-800/40 p-6 md:p-10 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-2xl shadow-slate-200/50 dark:shadow-none">
-          <div className="flex items-center gap-2 mb-6">
-            <span className="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-[0.2em] bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full">Secure Lookup</span>
-            <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800"></div>
+        {/* 2. Primary Search */}
+        <div className="mb-8 md:mb-12 relative z-20">
+          <div className="bg-white dark:bg-slate-800/40 p-6 md:p-10 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-2xl shadow-slate-200/50 dark:shadow-none">
+            <div className="flex items-center gap-2 mb-6">
+              <span className="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-[0.2em] bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full">Secure Lookup</span>
+              <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800"></div>
+            </div>
+            <SearchBar />
+            <p className="text-center mt-6 text-xs font-medium text-slate-400 dark:text-slate-500">
+              Search by institution name, routing number, or location.
+            </p>
           </div>
-          <SearchBar />
-          <p className="text-center mt-6 text-xs font-medium text-slate-400 dark:text-slate-500">
-            Search by institution name, routing number, or location.
-          </p>
         </div>
-      </div>
 
-      {/* 3. Recently Viewed - Fast Returns */}
-      <div className="order-3 mb-12">
-        {!recentLoaded ? (
-          <PersonalizationSkeleton />
-        ) : recentItems.length > 0 ? (
-          <div className="bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <div className="flex items-center gap-3 mb-6 text-slate-700 dark:text-slate-300">
-              <div className="p-2 bg-white dark:bg-slate-700/50 rounded-xl shadow-sm italic">
-                <Clock className="w-5 h-5" />
+        {/* 3. Recently Viewed */}
+        <div className="mb-12">
+          {!recentLoaded ? (
+            <PersonalizationSkeleton />
+          ) : recentItems.length > 0 ? (
+            <div className="bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <div className="flex items-center gap-3 mb-6 text-slate-700 dark:text-slate-300">
+                <div className="p-2 bg-white dark:bg-slate-700/50 rounded-xl shadow-sm italic">
+                  <Clock className="w-5 h-5" />
+                </div>
+                <h2 className="text-xl font-black tracking-tight">Recent Activity</h2>
               </div>
-              <h2 className="text-xl font-black tracking-tight">Recent Activity</h2>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {recentItems.slice(0, 3).map((item) => (
-                <Link
-                  key={item.routingNumber}
-                  to={`/lookup/${item.routingNumber}`}
-                  className="group bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-500/5 transition-all outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  <div className="flex flex-col">
-                    <span className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-blue-600 truncate mb-1">
-                      {item.bankName}
-                    </span>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-mono text-slate-400">{item.routingNumber}</span>
-                      <span className="text-[10px] text-emerald-500 font-black uppercase tracking-tighter">Verified</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {recentItems.slice(0, 3).map((item) => (
+                  <Link
+                    key={item.routingNumber}
+                    to={`/lookup/${item.routingNumber}`}
+                    className="group bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-500/5 transition-all outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    <div className="flex flex-col">
+                      <span className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-blue-600 truncate mb-1">
+                        {item.bankName}
+                      </span>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-mono text-slate-400">{item.routingNumber}</span>
+                        <span className="text-[10px] text-emerald-500 font-black uppercase tracking-tighter">Verified</span>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-        ) : null}
-      </div>
-
-      {/* 4. Secondary Content & Header - Desktop-First but Mobile-Post-Search */}
-      <div className="order-last md:order-first">
-        <div className="text-center md:text-left mb-8 md:mb-12">
-          <h1 className="text-3xl md:text-6xl font-black mb-4 text-slate-900 dark:text-white tracking-tight leading-tight">
-            Financial Routing <span className="text-blue-600 dark:text-blue-400">Dashboard</span>
-          </h1>
-          <p className="text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-2xl">
-            Instantly access verified routing data for 2026. Secure, authorized Federal Reserve records at your fingertips.
-          </p>
+          ) : null}
         </div>
       </div>
 
-      {/* 5. Exploration & Tools */}
-      <div className="order-last grid lg:grid-cols-3 gap-8 md:gap-12">
+      {/* Main Content Area - Always Bottom */}
+      <div className="order-3 w-full flex flex-col">
+        {/* Exploration & Tools */}
+        <div className="grid lg:grid-cols-3 gap-8 md:gap-12">
         <div className="lg:col-span-2 space-y-12">
           <AdUnit slot="UNIT 1: Mid Dashboard" className="min-h-[90px]" />
           
@@ -272,6 +273,8 @@ export default function Home() {
 
       {/* Spacer for sticky button */}
       <div className="md:hidden h-20"></div>
+      
+      </div> {/* End order-3 w-full flex flex-col */}
     </div>
   );
 }

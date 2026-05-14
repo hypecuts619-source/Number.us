@@ -20,7 +20,13 @@ export default function PrivacyPolicy() {
         
         <p>When you visit the Website, we automatically collect certain information about your device, including information about your web browser, IP address, time zone, and some of the cookies that are installed on your device. Additionally, as you browse the Website, we collect information about the individual web pages or products that you view, what websites or search terms referred you to the Website, and information about how you interact with the Website.</p>
 
-        <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">2. Cookies and Tracking Technologies</h2>
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">2. Local Storage and Saved Data</h2>
+        <p>To improve your user experience, we use your browser's local storage (e.g., localStorage) to save your "Favorite" banks and "Recently Viewed" routing numbers. This information remains solely on your device. We do not transmit, sync, or store this personalized data on our servers.</p>
+
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">3. Personally Identifiable Information (PII)</h2>
+        <p>We <strong>do not</strong> request, collect, process, or store Personally Identifiable Information (PII) such as personal account numbers, social security numbers, passwords, or full identity profiles. Our contact forms collect only your name and email for the sole purpose of responding to your inquiry.</p>
+
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">4. Cookies and Tracking Technologies</h2>
         <p>We use "cookies" and similar tracking technologies to track the activity on our Service and hold certain information. Cookies are files with small amount of data which may include an anonymous unique identifier. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.</p>
 
         <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">3. Use of Data</h2>
