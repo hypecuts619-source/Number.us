@@ -4,7 +4,6 @@ import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import { getAllRoutingData } from '../lib/getData';
 import { generateSlug } from '../lib/generateSlug';
-import AdUnit from '../components/AdUnit';
 
 export default function AllBanksDirectory() {
   const allBanks = useMemo(() => {
@@ -62,8 +61,7 @@ export default function AllBanksDirectory() {
         ))}
       </div>
 
-      <AdUnit slot="UNIT 1: Below H1" className="mb-10" />
-
+      
       <div className="space-y-16">
         {banksByLetter.map(([letter, banks]) => (
           <section key={letter} id={`letter-${letter}`} className="scroll-mt-24">

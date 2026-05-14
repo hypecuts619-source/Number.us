@@ -3,7 +3,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Search, MapPin } from 'lucide-react';
 import { motion } from 'motion/react';
 import SEO from '../components/SEO';
-import AdUnit from '../components/AdUnit';
 
 export default function RoutingNumberLookup() {
   const [searchInput, setSearchInput] = useState('');
@@ -68,8 +67,7 @@ export default function RoutingNumberLookup() {
         </form>
       </motion.div>
 
-      <AdUnit slot="UNIT 1: Mid Search" className="my-8" />
-
+      
       <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
         <div className="p-8 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl">
           <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center rounded-xl mb-6">

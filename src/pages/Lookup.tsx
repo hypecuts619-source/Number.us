@@ -5,7 +5,6 @@ import { generateLookupTitle, generateLookupDescription, generateFAQSchema, gene
 import { generateLookupFAQs } from '../lib/faqTemplates';
 import { generateSlug } from '../lib/generateSlug';
 import CopyButton from '../components/CopyButton';
-import AdUnit from '../components/AdUnit';
 import SEO from '../components/SEO';
 import FAQSection from '../components/FAQSection';
 import VerifiedBadge from '../components/VerifiedBadge';
@@ -85,8 +84,7 @@ export default function Lookup() {
             <CopyButton text={routingNumber || ''} />
           </div>
 
-          <AdUnit slot="UNIT 5: Immediately Below Routing Number (Not Found)" className="mb-6" />
-
+          
           <div className="flex flex-col items-center gap-4 mb-6">
             {isValid ? (
               <div className="inline-block bg-yellow-50 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-400 border border-yellow-200 dark:border-yellow-800 px-4 py-2 rounded-full font-bold text-sm">
@@ -124,10 +122,8 @@ export default function Lookup() {
           </Link>
         </div>
 
-        <AdUnit slot="UNIT 4: Below Lookup Box (Not Found)" className="mb-12" />
-
-        <AdUnit slot="UNIT 2: Mid content, in-article responsive" />
-
+        
+        
         <div className="prose prose-base md:prose-lg text-slate-600 max-w-none mt-12 bg-slate-50 p-5 md:p-8 rounded-2xl border border-slate-100">
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-0">How routing number validation works</h2>
           <p>
@@ -189,8 +185,7 @@ export default function Lookup() {
               <CopyButton text={data.routing_number} />
             </div>
 
-            <AdUnit slot="UNIT 6: Immediately Below Routing Number (Found)" className="mb-6" />
-            
+                        
             <VerifiedBadge />
             <RegulatoryBadge bankName={data.bank_name} />
             <div className="max-w-md mx-auto text-left">
@@ -252,14 +247,12 @@ export default function Lookup() {
         />
       </div>
 
-      <AdUnit slot="UNIT 4: Below Lookup Box (Found)" className="mb-12" />
-
+      
       <TransferCompatibilityChecker routingNumberType={data.type || 'BOTH'} />
 
       <DirectDepositFormGenerator bankName={data.bank_name} routingNumber={data.routing_number} />
 
-      <AdUnit slot="UNIT 2: Mid content, in-article responsive" />
-
+      
       <div className="prose prose-base md:prose-lg text-slate-600 dark:text-slate-300 max-w-none mt-12 bg-white dark:bg-slate-800 p-5 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-700">
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-0">Understanding Your Validated Routing Number</h2>
         <p>

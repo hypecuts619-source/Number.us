@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { useMemo, useState } from 'react';
 import SearchBar from '../components/SearchBar';
 import AccountValidator from '../components/AccountValidator';
-import AdUnit from '../components/AdUnit';
 import CheckDiagram from '../components/CheckDiagram';
 import RegionalBankDirectory from '../components/RegionalBankDirectory';
 import { getTopSearchedBanks } from '../lib/getData';
@@ -166,8 +165,7 @@ export default function Home() {
         {/* Exploration & Tools */}
         <div className="grid lg:grid-cols-3 gap-8 md:gap-12">
         <div className="lg:col-span-2 space-y-12">
-          <AdUnit slot="UNIT 1: Mid Dashboard" className="min-h-[90px]" />
-          
+                    
           <AccountValidator />
 
           {/* SEO Text (Pushed Down) */}
@@ -231,8 +229,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <AdUnit slot="UNIT 4: Sticky Sidebar" className="sticky top-24" />
-        </aside>
+                  </aside>
       </div>
 
       <div className="mt-16 pt-16 border-t border-slate-100 dark:border-slate-800">

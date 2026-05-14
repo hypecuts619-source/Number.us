@@ -20,7 +20,15 @@ export default function AboutUs() {
         </h1>
 
         <p className="lead text-xl">
-          Welcome to USRoutingNumber.com, the Internet's <strong>fastest and most accessible directory</strong> for verifying United States bank routing transit numbers (RTNs).
+          Welcome to USRoutingNumber.com! We built this platform because we believe finding your bank's routing number shouldn't require a degree in finance.
+        </p>
+
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-10">Our Story</h2>
+        <p>
+          It all started when our founders, <strong>Alex Thompson</strong> and <strong>Sarah Jenkins</strong>, experienced the sheer panic of an improperly routed payment. They were trying to manage a critical wire transfer and found themselves completely lost in a sea of conflicting information—unable to decipher which 9-digit code was meant for domestic wires, international receipts, or standard ACH transfers. 
+        </p>
+        <p>
+          They realized that if they were struggling with this, millions of everyday Americans were likely experiencing the exact same frustration. That's why Alex and Sarah teamed up to build USRoutingNumber.com. Their goal was simple: take the stress, confusion, and guesswork out of moving money.
         </p>
 
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-10">Our Mission</h2>
@@ -29,7 +37,7 @@ export default function AboutUs() {
           Large financial institutions frequently use different routing numbers depending on the state where you opened your account or the type of transaction (ACH vs. Wire).
         </p>
         <p>
-          Our mission is to simplify this process. We provide a clean, ad-light, and mathematically verifiable database of <strong>active routing numbers</strong> to help everyday Americans and international senders navigate the complex US financial system confidently and securely.
+          Our mission is to simplify this process for you. We provide a friendly, clean, and mathematically verifiable database of <strong>active routing numbers</strong> to help everyday Americans and international senders navigate the complex US financial system confidently and securely. Whether you're buying a home or just setting up a direct deposit, we're here to help make sure your money gets exactly where it needs to go.
         </p>
 
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-10">Why Trust Us? (E-E-A-T)</h2>

@@ -6,7 +6,6 @@ import { generateBankOverviewTitle, generateBankOverviewDescription, generateFAQ
 import { generateGeneralBankFAQs } from '../lib/faqTemplates';
 import { getBankDetails } from '../lib/bankDetails';
 import BreadcrumbNav from '../components/BreadcrumbNav';
-import AdUnit from '../components/AdUnit';
 import FAQSection from '../components/FAQSection';
 import RelatedLinks from '../components/RelatedLinks';
 import SEO from '../components/SEO';
@@ -123,8 +122,7 @@ export default function BankOverview() {
       <RegulatoryBadge bankName={bankName} />
       <TrustIndicator />
 
-      <AdUnit slot="UNIT 1: Below H1, 728x90 leaderboard" className="min-h-[90px]" />
-
+      
       <div className="grid md:grid-cols-3 gap-12 mt-10">
         <div className="md:col-span-2">
           <div className="prose prose-base md:prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-slate-300 mb-10 max-w-none">
@@ -195,14 +193,12 @@ export default function BankOverview() {
             </table>
           </div>
 
-          <AdUnit slot="UNIT 2: Mid content, in-article responsive" className="my-12 min-h-[150px]" />
-
+          
           <FAQSection faqs={faqs} />
           
           <FeedbackModule bankName={bankName} context="Bank Overview Page" />
 
-          <AdUnit slot="UNIT 3: After FAQ, 300x250 display" className="min-h-[250px] max-w-[300px] mx-auto" />
-        </div>
+                  </div>
 
         <aside className="space-y-8">
           <RelatedLinks 

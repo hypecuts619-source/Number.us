@@ -1,7 +1,6 @@
 import SEO from '../components/SEO';
 import { Link } from 'react-router-dom';
 import AccountValidator from '../components/AccountValidator';
-import AdUnit from '../components/AdUnit';
 
 export default function RoutingNumberValidator() {
   return (
@@ -23,8 +22,7 @@ export default function RoutingNumberValidator() {
 
       <AccountValidator />
 
-      <AdUnit slot="UNIT 1: Below Validator" className="my-12 min-h-[90px] hidden md:block" />
-
+      
       <div className="prose prose-base md:prose-lg text-slate-600 dark:text-slate-300 max-w-none mt-12 bg-slate-50 dark:bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">How does the validation work?</h2>
         <p>

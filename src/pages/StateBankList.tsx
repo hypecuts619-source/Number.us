@@ -4,7 +4,6 @@ import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import { getStateFullName, getAllRoutingData } from '../lib/getData';
 import { generateSlug } from '../lib/generateSlug';
-import AdUnit from '../components/AdUnit';
 
 export default function StateBankList() {
   const { state } = useParams<{ state: string }>();
@@ -168,8 +167,7 @@ export default function StateBankList() {
         </div>
       </div>
 
-      <AdUnit slot="UNIT 1: Below H1, 728x90 leaderboard" className="my-8 min-h-[90px]" />
-
+      
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredBanks.map(bank => (
           <Link

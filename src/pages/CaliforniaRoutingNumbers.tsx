@@ -5,7 +5,6 @@ import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import { getAllRoutingData } from '../lib/getData';
 import { generateSlug } from '../lib/generateSlug';
-import AdUnit from '../components/AdUnit';
 import { MapPin, Building2, Search } from 'lucide-react';
 
 export default function CaliforniaRoutingNumbers() {
@@ -61,8 +60,7 @@ export default function CaliforniaRoutingNumbers() {
         </div>
       </div>
 
-      <AdUnit slot="UNIT 1" className="mb-12" />
-
+      
       <div className="grid lg:grid-cols-3 gap-12">
         <div className="lg:col-span-2">
           <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">

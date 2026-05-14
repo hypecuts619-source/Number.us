@@ -13,7 +13,6 @@ import { generateBankStateFAQs } from '../lib/faqTemplates';
 import { generateSlug } from '../lib/generateSlug';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import RoutingNumberCard from '../components/RoutingNumberCard';
-import AdUnit from '../components/AdUnit';
 import FAQSection from '../components/FAQSection';
 import RelatedLinks from '../components/RelatedLinks';
 import SEO from '../components/SEO';
@@ -105,8 +104,7 @@ export default function BankState() {
         </button>
       </div>
 
-      <AdUnit slot="UNIT 1: Below H1, 728x90 leaderboard" className="my-8 min-h-[90px]" />
-
+      
       <div className="grid lg:grid-cols-3 gap-12 mt-8">
         <div className="lg:col-span-2 space-y-12">
           
@@ -200,8 +198,7 @@ export default function BankState() {
             </p>
           </section>
 
-          <AdUnit slot="UNIT 2: Mid content, in-article responsive" className="my-8" />
-
+          
           <section className="prose prose-base md:prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-slate-300 max-w-none">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white" id="routing-vs-account">Routing Number Versus Account Number</h2>
             <p>
@@ -230,8 +227,7 @@ export default function BankState() {
           
           <FeedbackModule bankName={bankName} routingNumber={primaryData.routing_number} context={`Bank State Page: ${stateFullName}`} />
 
-          <AdUnit slot="UNIT 3: After FAQ, 300x250 display" className="mx-auto max-w-[300px]" />
-
+          
           <div className="text-sm text-slate-400 dark:text-slate-500 border-t dark:border-slate-800 pt-6 mt-8">
             <p><strong>Disclaimer:</strong> The information provided on this page regarding {bankName} is for educational purposes. Always double-check your routing number with your financial institution before initiating any major transfers.</p>
           </div>
@@ -284,8 +280,7 @@ export default function BankState() {
           )}
 
           <div className="sticky top-24">
-             <AdUnit slot="UNIT 4: Sidebar Ad, Display" className="min-h-[250px] mb-8" />
-             <RecentlyViewedWidget />
+                          <RecentlyViewedWidget />
           </div>
         </aside>
       </div>

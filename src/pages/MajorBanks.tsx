@@ -7,7 +7,6 @@ import SEO from '../components/SEO';
 import { generateMajorBanksFAQs } from '../lib/faqTemplates';
 import { generateFAQSchema } from '../lib/seoHelpers';
 import FAQSection from '../components/FAQSection';
-import AdUnit from '../components/AdUnit';
 
 const MAJOR_BANKS = [
   { name: 'JPMorgan Chase Bank', abbreviation: 'Chase' },
@@ -59,8 +58,7 @@ export default function MajorBanks() {
         </p>
       </div>
 
-      <AdUnit slot="UNIT 1: Below H1, 728x90 leaderboard" className="my-8 min-h-[90px]" />
-
+      
       <div className="mb-8 grid md:grid-cols-2 gap-4">
         <Link to="/routing-number-validator" className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/30 rounded-xl p-5 hover:shadow-sm transition-all flex items-center justify-between group">
           <div>

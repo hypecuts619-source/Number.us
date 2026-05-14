@@ -4,7 +4,6 @@ import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import { getStateFullName, getAllRoutingData } from '../lib/getData';
 import { MapPin } from 'lucide-react';
-import AdUnit from '../components/AdUnit';
 
 const STATES = [
   'AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY',
@@ -43,8 +42,7 @@ export default function StateDirectory() {
         </p>
       </div>
 
-      <AdUnit slot="UNIT 1: Below H1, 728x90 leaderboard" className="my-8 min-h-[90px]" />
-
+      
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {STATES.map(state => (
            <Link 

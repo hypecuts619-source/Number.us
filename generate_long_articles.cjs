@@ -27,59 +27,91 @@ const PARAGRAPHS = {
 };
 
 const ARTICLES = [
-  { file: 'RoutingNumberChanges2026.tsx', topics: ['merger_1', 'merger_2', 'fednow_1', 'ach_basics_1', 'fednow_2', 'practical_1', 'practical_2', 'security_1'] },
-  { file: 'RoutingVsAccountNumber.tsx', topics: ['ach_basics_1', 'practical_1', 'checks_1', 'security_1', 'practical_2', 'merger_2', 'history_1', 'checks_2'] },
-  { file: 'HowToFind.tsx', topics: ['practical_1', 'checks_1', 'practical_2', 'security_1', 'ach_basics_2', 'merger_1', 'fednow_1', 'zelle_1'] },
-  { file: 'FindRoutingNumberOnCheck.tsx', topics: ['checks_1', 'history_1', 'practical_1', 'algorithm_1', 'checks_2', 'security_1', 'ach_basics_1'] },
-  { file: 'WhatIsAbaRoutingNumber.tsx', topics: ['history_1', 'history_2', 'algorithm_1', 'algorithm_2', 'ach_basics_1', 'wire_basics_1', 'merger_1', 'fednow_1'] },
-  { file: 'DirectDepositRoutingNumber.tsx', topics: ['ach_basics_1', 'ach_basics_2', 'practical_1', 'practical_2', 'checks_1', 'merger_1', 'merger_2', 'security_1'] },
-  { file: 'WireTransferGuide.tsx', topics: ['wire_basics_1', 'wire_basics_2', 'international_1', 'security_1', 'security_2', 'practical_2', 'fednow_1', 'algorithm_1'] },
-  { file: 'InternationalWireGuide.tsx', topics: ['international_1', 'international_2', 'wire_basics_1', 'security_1', 'security_2', 'history_2', 'practical_2', 'wire_basics_2'] },
-  { file: 'ZelleRoutingNumber.tsx', topics: ['zelle_1', 'zelle_2', 'fednow_1', 'ach_basics_1', 'security_1', 'practical_1', 'wire_basics_1', 'fednow_2'] },
-  { file: 'ACHvsWire.tsx', topics: ['ach_basics_1', 'ach_basics_2', 'wire_basics_1', 'wire_basics_2', 'fednow_1', 'fednow_2', 'international_1', 'security_1'] },
-  { file: 'SecureTransfers.tsx', topics: ['security_1', 'security_2', 'wire_basics_1', 'wire_basics_2', 'international_2', 'checks_2', 'practical_2', 'fednow_2'] },
-  { file: 'RejectedRoutingFix.tsx', topics: ['algorithm_1', 'algorithm_2', 'wire_basics_2', 'merger_1', 'merger_2', 'practical_2', 'zelle_2', 'ach_basics_2'] },
-  { file: 'TheUltimateGuideToACHTransfers.tsx', topics: ['ach_basics_1', 'ach_basics_2', 'history_2', 'algorithm_1', 'security_1', 'merger_1', 'practical_1', 'fednow_1'] },
-  { file: 'WireTransfersDemystified.tsx', topics: ['wire_basics_1', 'wire_basics_2', 'international_1', 'international_2', 'security_1', 'security_2', 'history_2', 'practical_2'] },
-  { file: 'BankMergersAndRoutingNumbers.tsx', topics: ['merger_1', 'merger_2', 'practical_2', 'ach_basics_1', 'security_1', 'checks_1', 'algorithm_1', 'history_2'] },
-  { file: 'TheFutureOfInstantPayments.tsx', topics: ['fednow_1', 'fednow_2', 'zelle_1', 'zelle_2', 'wire_basics_1', 'ach_basics_1', 'security_1', 'security_2'] },
-  { file: 'RoutingNumberSecurityProtocols.tsx', topics: ['security_1', 'security_2', 'algorithm_1', 'algorithm_2', 'checks_2', 'practical_2', 'wire_basics_1', 'international_2'] },
-  { file: 'AnatomyOfACheck.tsx', topics: ['checks_1', 'checks_2', 'history_1', 'history_2', 'algorithm_1', 'practical_1', 'ach_basics_1', 'merger_1'] },
-  { file: 'InternationalVsDomesticRouting.tsx', topics: ['international_1', 'international_2', 'wire_basics_1', 'wire_basics_2', 'ach_basics_1', 'history_1', 'security_1', 'security_2'] },
-  { file: 'UnderstandingTheModulus10Algorithm.tsx', topics: ['algorithm_1', 'algorithm_2', 'history_1', 'history_2', 'checks_1', 'security_1', 'practical_1', 'ach_basics_1'] }
+  { file: 'Changes2026.tsx', slug: 'routing-number-changes-2026', title: 'Routing Number Changes 2026', topics: ['merger_1', 'merger_2', 'fednow_1', 'ach_basics_1', 'fednow_2', 'practical_1', 'practical_2', 'security_1'] },
+  { file: 'RoutingVsAccountNumber.tsx', slug: 'routing-number-vs-account-number', title: 'Routing Number Vs Account Number', topics: ['ach_basics_1', 'practical_1', 'checks_1', 'security_1', 'practical_2', 'merger_2', 'history_1', 'checks_2'] },
+  { file: 'HowToFind.tsx', slug: 'how-to-find-routing-number', title: 'How To Find Routing Number', topics: ['practical_1', 'checks_1', 'practical_2', 'security_1', 'ach_basics_2', 'merger_1', 'fednow_1', 'zelle_1'] },
+  { file: 'FindRoutingNumberOnCheck.tsx', slug: 'find-routing-number-on-check', title: 'Find Routing Number On Check', topics: ['checks_1', 'history_1', 'practical_1', 'algorithm_1', 'checks_2', 'security_1', 'ach_basics_1', 'merger_2'] },
+  { file: 'WhatIsAbaRoutingNumber.tsx', slug: 'aba-routing-number', title: 'What Is ABA Routing Number', topics: ['history_1', 'history_2', 'algorithm_1', 'algorithm_2', 'ach_basics_1', 'wire_basics_1', 'merger_1', 'fednow_1'] },
+  { file: 'WhatIsARoutingNumber.tsx', slug: 'what-is-a-routing-number', title: 'What Is A Routing Number', topics: ['ach_basics_1', 'history_1', 'practical_1', 'security_1', 'merger_1', 'fednow_1', 'algorithm_1', 'checks_1'] },
+  { file: 'DirectDepositRoutingNumber.tsx', slug: 'direct-deposit-routing-number', title: 'Direct Deposit Routing Number', topics: ['ach_basics_1', 'ach_basics_2', 'practical_1', 'practical_2', 'checks_1', 'merger_1', 'merger_2', 'security_1'] },
+  { file: 'WireTransferGuide.tsx', slug: 'how-to-wire-money', title: 'How To Wire Money', topics: ['wire_basics_1', 'wire_basics_2', 'international_1', 'security_1', 'security_2', 'practical_2', 'fednow_1', 'algorithm_1'] },
+  { file: 'InternationalWireGuide.tsx', slug: 'international-wire-guide', title: 'International Wire Guide', topics: ['international_1', 'international_2', 'wire_basics_1', 'security_1', 'security_2', 'history_2', 'practical_2', 'wire_basics_2'] },
+  { file: 'ZelleRoutingNumber.tsx', slug: 'zelle-routing-number', title: 'Zelle Routing Number', topics: ['zelle_1', 'zelle_2', 'fednow_1', 'ach_basics_1', 'security_1', 'practical_1', 'wire_basics_1', 'fednow_2'] },
+  { file: 'ACHvsWire.tsx', slug: 'blog/ach-vs-wire-routing-guide', title: 'ACH Vs Wire Routing Guide', topics: ['ach_basics_1', 'ach_basics_2', 'wire_basics_1', 'wire_basics_2', 'fednow_1', 'fednow_2', 'international_1', 'security_1'] },
+  { file: 'SecureTransfers.tsx', slug: 'blog/secure-wire-transfer-guide', title: 'Secure Wire Transfer Guide', topics: ['security_1', 'security_2', 'wire_basics_1', 'wire_basics_2', 'international_2', 'checks_2', 'practical_2', 'fednow_2'] },
+  { file: 'RejectedRoutingFix.tsx', slug: 'blog/rejected-routing-number-troubleshooting', title: 'Rejected Routing Number Troubleshooting', topics: ['algorithm_1', 'algorithm_2', 'wire_basics_2', 'merger_1', 'merger_2', 'practical_2', 'zelle_2', 'ach_basics_2'] },
+  { file: 'TheUltimateGuideToACHTransfers.tsx', slug: 'blog/ultimate-guide-to-ach-transfers', title: 'Ultimate Guide To ACH Transfers', topics: ['ach_basics_1', 'ach_basics_2', 'history_2', 'algorithm_1', 'security_1', 'merger_1', 'practical_1', 'fednow_1'] },
+  { file: 'WireTransfersDemystified.tsx', slug: 'blog/wire-transfers-demystified', title: 'Wire Transfers Demystified', topics: ['wire_basics_1', 'wire_basics_2', 'international_1', 'international_2', 'security_1', 'security_2', 'history_2', 'practical_2'] },
+  { file: 'BankMergersAndRoutingNumbers.tsx', slug: 'blog/bank-mergers-routing-numbers', title: 'Bank Mergers Routing Numbers', topics: ['merger_1', 'merger_2', 'practical_2', 'ach_basics_1', 'security_1', 'checks_1', 'algorithm_1', 'history_2'] },
+  { file: 'TheFutureOfInstantPayments.tsx', slug: 'blog/future-instant-payments-fednow', title: 'Future Instant Payments Fednow', topics: ['fednow_1', 'fednow_2', 'zelle_1', 'zelle_2', 'wire_basics_1', 'ach_basics_1', 'security_1', 'security_2'] },
+  { file: 'RoutingNumberSecurityProtocols.tsx', slug: 'blog/routing-number-security', title: 'Routing Number Security', topics: ['security_1', 'security_2', 'algorithm_1', 'algorithm_2', 'checks_2', 'practical_2', 'wire_basics_1', 'international_2'] },
+  { file: 'AnatomyOfACheck.tsx', slug: 'blog/anatomy-of-a-check', title: 'Anatomy Of A Check', topics: ['checks_1', 'checks_2', 'history_1', 'history_2', 'algorithm_1', 'practical_1', 'ach_basics_1', 'merger_1'] },
+  { file: 'InternationalVsDomesticRouting.tsx', slug: 'blog/international-vs-domestic-routing', title: 'International Vs Domestic Routing', topics: ['international_1', 'international_2', 'wire_basics_1', 'wire_basics_2', 'ach_basics_1', 'history_1', 'security_1', 'security_2'] },
+  { file: 'UnderstandingTheModulus10Algorithm.tsx', slug: 'blog/understanding-modulus-10-algorithm', title: 'Understanding Modulus 10 Algorithm', topics: ['algorithm_1', 'algorithm_2', 'history_1', 'history_2', 'checks_1', 'security_1', 'practical_1', 'ach_basics_1'] }
 ]
 
-function generateMarkdown(topics) {
+function generateMarkdown(topics, currentSlug) {
    let pt = topics.map(t => PARAGRAPHS[t] || PARAGRAPHS['ach_basics_1']);
    
    return pt.map((p, i) => {
        let text = p;
-       if(i === 1) text = text.replace('Federal Reserve', '<Link to="/states" className="text-blue-600 hover:underline">Federal Reserve</Link>');
-       if(i === 2) text = text.replace('banks', '<Link to="/banks/a-z" className="text-blue-600 hover:underline">US banks</Link>');
-       if(i === 3) text = text.replace('routing number', '<Link to="/routing-number-validator" className="text-blue-600 hover:underline">routing number</Link>');
-       if(i === 4) text = text.replace('verify', '<Link to="/routing-number-lookup" className="text-blue-600 hover:underline">verify</Link>');
+       
+       // Generalized keywords to link internally to relevant blogs
+       // Ensure we don't link to the current page itself
+       const linkReplacements = [
+           { word: 'Federal Reserve', link: '/states' },
+           { word: 'banks', link: '/banks/a-z' },
+           { word: 'routing number', link: '/routing-number-validator' },
+           { word: 'verify', link: '/routing-number-lookup' },
+           { word: 'wire transfer', link: '/how-to-wire-money' },
+           { word: 'ACH', link: '/blog/ultimate-guide-to-ach-transfers' },
+           { word: 'domestic', link: '/blog/international-vs-domestic-routing' },
+           { word: 'international', link: '/international-wire-guide' },
+           { word: 'FedNow', link: '/blog/future-instant-payments-fednow' },
+           { word: 'merger', link: '/blog/bank-mergers-routing-numbers' },
+           { word: 'SWIFT', link: '/international-wire-guide' },
+           { word: 'Modulus 10', link: '/blog/understanding-modulus-10-algorithm' },
+           { word: 'check', link: '/blog/anatomy-of-a-check' }
+       ];
+       
+       linkReplacements.forEach(lr => {
+           if (lr.link !== '/' + currentSlug && !text.includes(lr.link)) {
+               // Replace first occurrence only to avoid spamming links
+               // Use word boundary and negative lookbehind/ahead for html attributes/tags if needed, 
+               // but first let's just make sure we do not match inside an existing <Link> or </Link>.
+               // A simplified approach is just word boundaries since the original text has no HTML initially.
+               // We need to avoid matching parts of already inserted Links. 
+               // If we just use a regex that matches the word not between < and >, we can avoid matching inside HTML.
+               // regex: \bword\b(?![^<]*>)
+               const regex = new RegExp(`\\b${lr.word}\\b(?![^<]*>)`, 'i');
+               text = text.replace(regex, `<Link to="${lr.link}" className="text-blue-600 dark:text-blue-400 hover:underline">$&</Link>`);
+           }
+       });
+
        return `<p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">${text}</p>`;
-   }).join('\\n\\n        ');
+   }).join('\n\n        ');
 }
 
 const template = (article) => {
    let baseName = article.file.replace('.tsx', '');
-   let title = baseName.replace(/([A-Z])/g, ' $1').trim() + " Guide & Deep Dive 2026";
-   let slug = article.file.replace('.tsx', '').toLowerCase();
+   let currentTitle = article.title + " Guide & Deep Dive 2026";
+   
+   // Select 3 random related articles for suggested reading
+   let suggested = ARTICLES.filter(a => a.file !== article.file).sort(() => 0.5 - Math.random()).slice(0, 3);
    
    return `import React from 'react';
 import SEO from '../components/SEO';
 import { Link } from 'react-router-dom';
-import { Clock } from 'lucide-react';
+import { Clock, ArrowRight } from 'lucide-react';
 import ArticleAuthorMeta from '../components/ArticleAuthorMeta';
 
 export default function ${baseName}() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 w-full">
       <SEO 
-        title="${title}"
-        description="A comprehensive 2026 editorial guide on ${title.toLowerCase()}. Discover the mechanics, history, and technical aspects of bank routing numbers."
-        canonicalUrl="/${slug}"
+        title="${currentTitle}"
+        description="A comprehensive 2026 editorial guide on ${currentTitle.toLowerCase()}. Discover the mechanics, history, and technical aspects of bank routing numbers."
+        canonicalUrl="/${article.slug}"
       />
 
       <div className="mb-10 lg:mb-14 not-prose">
@@ -89,7 +121,7 @@ export default function ${baseName}() {
           <span className="whitespace-nowrap">15 min read</span>
         </div>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight mb-6 leading-tight">
-          ${title}
+          ${currentTitle}
         </h1>
         <ArticleAuthorMeta 
           date="May 15, 2026" 
@@ -103,10 +135,10 @@ export default function ${baseName}() {
       </div>
 
       <div className="prose prose-lg md:prose-xl prose-slate dark:prose-invert max-w-none">
-        ${generateMarkdown(article.topics)}
+        ${generateMarkdown(article.topics, article.slug)}
         
         <h2 className="text-2xl font-bold mt-12 mb-4">Conclusion & Financial Outlook</h2>
-        <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">Navigating the complexities of the domestic and international banking sectors demands constant vigilance. As the US financial infrastructure boldly transitions into 2026, the humble 9-digit ABA routing transit number remains the steadfast anchor connecting legacy systems to the future of real-time macroeconomic exchange. Ensure you always mathematically validate your banking instructions and leverage authoritative directories to prevent severe payment failure disruptions.</p>
+        <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">Navigating the complexities of the domestic and banking sectors demands constant vigilance. As the US financial infrastructure boldly transitions into 2026, the humble 9-digit ABA routing transit number remains the steadfast anchor connecting legacy systems to the future of real-time macroeconomic exchange. Ensure you always mathematically validate your banking instructions and leverage authoritative directories to prevent severe payment failure disruptions.</p>
       </div>
       
       <div className="mt-16 bg-blue-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-blue-100 dark:border-slate-700">
@@ -115,6 +147,20 @@ export default function ${baseName}() {
         <div className="flex flex-col sm:flex-row gap-4">
             <Link to="/routing-number-validator" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-colors text-center inline-block">Validator Tool</Link>
             <Link to="/" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-600 hover:border-slate-400 font-bold py-3 px-6 rounded-xl transition-colors text-center inline-block">Database Lookup</Link>
+        </div>
+      </div>
+      
+      <div className="mt-16 pt-10 border-t border-slate-200 dark:border-slate-800">
+        <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Related Guides & Deep Dives</h3>
+        <div className="grid md:grid-cols-3 gap-6">
+          ${suggested.map(s => `
+          <Link to="/${s.slug}" className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-blue-500 dark:hover:border-blue-500 transition-all shadow-sm hover:shadow-md flex flex-col h-full">
+            <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2 line-clamp-2">${s.title}</h4>
+            <div className="mt-auto flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 pt-4">
+              Read Article <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+          `).join('')}
         </div>
       </div>
     </div>

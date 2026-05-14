@@ -13,7 +13,6 @@ import { generateBankStateFAQs } from '../lib/faqTemplates';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import RoutingNumberCard from '../components/RoutingNumberCard';
 import DirectDepositFormGenerator from '../components/DirectDepositFormGenerator';
-import AdUnit from '../components/AdUnit';
 import FAQSection from '../components/FAQSection';
 import RelatedLinks from '../components/RelatedLinks';
 import { MapPin, Phone, Building2 } from 'lucide-react';
@@ -102,8 +101,7 @@ export default function BranchDetail() {
       <RegulatoryBadge bankName={bankName} />
       <TrustIndicator />
 
-      <AdUnit slot="UNIT 1: Below H1, 728x90 leaderboard" className="my-8 min-h-[90px]" />
-
+      
       <div className="grid lg:grid-cols-3 gap-12 mt-8">
         <div className="lg:col-span-2 space-y-12">
           
@@ -199,8 +197,7 @@ export default function BranchDetail() {
           
           <FeedbackModule bankName={bankName} routingNumber={primaryData.routing_number} context={`Branch Detail: ${cityTitle}, ${stateFullName}`} />
 
-          <AdUnit slot="UNIT 3: After FAQ, 300x250 display" className="mx-auto max-w-[300px]" />
-
+          
           <div className="text-sm text-slate-400 dark:text-slate-500 border-t border-slate-200 dark:border-slate-800 pt-6">
             <p><strong>Disclaimer:</strong> {bankName} routing numbers are subject to change due to bank mergers or geographic restructuring. USRoutingNumber.com makes every effort to keep these {currentYear} records accurate using Federal Reserve data feeds.</p>
           </div>
