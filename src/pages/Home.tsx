@@ -204,6 +204,19 @@ export default function Home() {
         </div>
 
         <aside className="space-y-8">
+          <div className="bg-gradient-to-br from-indigo-600 to-purple-700 dark:from-indigo-800 dark:to-purple-900 rounded-3xl p-8 text-white shadow-xl shadow-indigo-900/20">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/20 rounded-full text-xs font-bold mb-4">
+               Featured Research
+            </div>
+            <h2 className="text-xl font-black mb-2 tracking-tight">2026 Credit Union Migration Report</h2>
+            <p className="text-sm text-indigo-100 mb-6 leading-relaxed">
+              Why Americans are moving away from Big Tech banking, plus our directory of the Top 10 Most Accessible Credit Unions.
+            </p>
+            <Link to="/reports/2026-us-credit-union-report" className="inline-flex items-center gap-2 bg-white text-indigo-900 px-5 py-2.5 rounded-xl font-bold text-sm shadow-sm hover:bg-indigo-50 transition-colors w-full justify-center">
+              Read the Full Report <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
           <div className="bg-slate-900 dark:bg-blue-600 rounded-3xl p-8 text-white shadow-2xl shadow-blue-900/20">
             <h2 className="text-xl font-black mb-4">Top Searched Institutions</h2>
             <ul className="space-y-4">
