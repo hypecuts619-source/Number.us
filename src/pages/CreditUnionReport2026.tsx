@@ -139,7 +139,7 @@ export default function CreditUnionReport2026() {
           One hurdle that remains for credit union members is the complexity of routing numbers. Unlike Chase, which might use a single routing number for the entire state of California, a local credit union might use secondary routing transit numbers (RTNs) for specific legacy charters or merged institutions.
         </p>
         <p>
-          This is where <Link to="/" className="text-blue-600 font-bold hover:underline">USRoutingNumber.com</Link> provides its primary utility. By cross-referencing Federal Reserve data with local ABA records, we ensure that as members switch to credit unions, their direct deposits, tax returns, and social security payments are never interrupted due to "Return to Sender" routing errors. For a full list of these institutions, visit our <Link to="/routing-number-by-state/texas" className="text-blue-600 font-bold hover:underline">Texas Routing Number Directory</Link>.
+          This is where <Link to="/" className="text-blue-600 font-bold hover:underline">USRoutingNumber.com</Link> provides its primary utility. By cross-referencing Federal Reserve data with local ABA records, we ensure that as members switch to credit unions, their direct deposits, tax returns, and social security payments are never interrupted due to "Return to Sender" routing errors. For a full list of these institutions, visit our <Link to="/states/texas" className="text-blue-600 font-bold hover:underline">Texas Routing Number Directory</Link>.
         </p>
 
         <section className="mt-20 p-8 bg-blue-600 rounded-3xl text-white">

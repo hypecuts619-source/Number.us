@@ -63,7 +63,7 @@ export default function HTMLSitemap() {
           {states.map(state => (
             <Link 
               key={state} 
-              to={`/routing-number-by-state/${generateSlug(state)}`}
+              to={`/states/${generateSlug(state)}`}
               className="px-4 py-2 bg-slate-50 dark:bg-slate-800 rounded-lg text-sm text-slate-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-900/30 hover:text-blue-600 transition-colors"
             >
               {state}
