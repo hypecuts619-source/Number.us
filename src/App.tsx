@@ -48,6 +48,8 @@ const AboutUs = lazy(() => import('./pages/AboutUs'));
 const ContactUs = lazy(() => import('./pages/ContactUs'));
 const CaliforniaRoutingNumbers = lazy(() => import('./pages/CaliforniaRoutingNumbers'));
 const AllBanksDirectory = lazy(() => import('./pages/AllBanksDirectory'));
+const HTMLSitemap = lazy(() => import('./pages/HTMLSitemap'));
+const CreditUnionReport2026 = lazy(() => import('./pages/CreditUnionReport2026'));
 
 const TheUltimateGuideToACHTransfers = lazy(() => import('./pages/TheUltimateGuideToACHTransfers'));
 const WireTransfersDemystified = lazy(() => import('./pages/WireTransfersDemystified'));
@@ -95,6 +97,8 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
                 <Route path="/check-digit-calculator" element={<CheckDigitCalculator />} />
                 <Route path="/terms-of-service" element={<TermsOfService />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/sitemap" element={<HTMLSitemap />} />
+                <Route path="/reports/2026-us-credit-union-report" element={<CreditUnionReport2026 />} />
                 <Route path="/routing-number-vs-account-number" element={<RoutingVsAccountNumber />} />
                 <Route path="/what-is-a-routing-number" element={<WhatIsARoutingNumber />} />
                 <Route path="/aba-routing-number" element={<WhatIsAbaRoutingNumber />} />
@@ -148,6 +152,7 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
               <nav className="flex justify-center flex-wrap gap-x-6 gap-y-2 mb-6">
                 <Link to="/about-us" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">About Us</Link>
                 <Link to="/contact-us" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Contact Us</Link>
+                <Link to="/sitemap" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Site Map</Link>
                 <Link to="/terms-of-service" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Terms of Service</Link>
                 <Link to="/privacy-policy" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Privacy Policy</Link>
               </nav>

@@ -22,6 +22,8 @@ import VerifiedBadge from '../components/VerifiedBadge';
 import RegulatoryBadge from '../components/RegulatoryBadge';
 import FeedbackModule from '../components/FeedbackModule';
 import TrustIndicator from '../components/TrustIndicator';
+import CheckDigitValidation from '../components/CheckDigitValidation';
+import { generateUniqueBankDescriptionForPage } from '../lib/seoHelpers';
 
 import NotFound from './NotFound';
 
@@ -55,6 +57,9 @@ export default function BranchDetail() {
   const primaryData = dataList[0];
   const currentYear = new Date().getFullYear();
   const faqs = generateBankStateFAQs(bankName, stateFullName, primaryData.routing_number, primaryData.type);
+  const uniqueDescription = generateUniqueBankDescriptionForPage(bankName, cityTitle, stateFullName, primaryData.routing_number, primaryData.type, primaryData.zip);
+
+  const isCreditUnion = bankName.toLowerCase().includes('credit union');
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
@@ -97,14 +102,27 @@ export default function BranchDetail() {
       </h1>
       <p className="text-xl text-slate-500 dark:text-slate-400 mb-6">{currentYear} Official Branch Routing Information</p>
 
-      <VerifiedBadge />
-      <RegulatoryBadge bankName={bankName} />
+      <div className="flex flex-wrap gap-3 mb-8">
+        <VerifiedBadge />
+        <RegulatoryBadge bankName={bankName} />
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded-full text-sm font-bold border border-emerald-200 dark:border-emerald-800">
+          <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+          Operating Status: Active
+        </div>
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full text-sm font-bold border border-blue-200 dark:border-blue-800">
+          Institution Type: {isCreditUnion ? 'Credit Union' : 'National/State Bank'}
+        </div>
+      </div>
       <TrustIndicator />
 
       
       <div className="grid lg:grid-cols-3 gap-12 mt-8">
         <div className="lg:col-span-2 space-y-12">
           
+          <div className="bg-blue-50 dark:bg-blue-900/10 p-6 rounded-2xl border border-blue-100 dark:border-blue-900/30 mb-8">
+             <p className="text-blue-900 dark:text-blue-200 leading-relaxed italic">{uniqueDescription}</p>
+          </div>
+
           <RoutingNumberCard data={primaryData} />
 
           <DirectDepositFormGenerator bankName={bankName} routingNumber={primaryData.routing_number} />
@@ -204,6 +222,8 @@ export default function BranchDetail() {
         </div>
 
         <aside className="space-y-8">
+          <CheckDigitValidation routingNumber={primaryData.routing_number} />
+          
           <RelatedLinks 
             title={`Other Banks in ${stateFullName}`} 
             links={otherBanksInState.map(b => ({

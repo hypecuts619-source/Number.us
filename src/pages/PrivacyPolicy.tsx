@@ -26,10 +26,22 @@ export default function PrivacyPolicy() {
         <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">3. Personally Identifiable Information (PII)</h2>
         <p>We <strong>do not</strong> request, collect, process, or store Personally Identifiable Information (PII) such as personal account numbers, social security numbers, passwords, or full identity profiles. Our contact forms collect only your name and email for the sole purpose of responding to your inquiry.</p>
 
-        <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">4. Cookies and Tracking Technologies</h2>
-        <p>We use "cookies" and similar tracking technologies to track the activity on our Service and hold certain information. Cookies are files with small amount of data which may include an anonymous unique identifier. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.</p>
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">4. Cookies and Advertising</h2>
+        <p>We use "cookies" to track activity on our Service and hold certain information. Cookies are files with small amount of data which may include an anonymous unique identifier.</p>
+        
+        <p><strong>Google AdSense:</strong> We use Google AdSense to serve advertisements on our Website. Google, as a third-party vendor, uses cookies (such as the DART cookie) to serve ads based on your visit to our site and other sites on the Internet. You may opt out of the use of the DART cookie by visiting the Google Ad and Content Network privacy policy.</p>
 
-        <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">3. Use of Data</h2>
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">5. California Consumer Privacy Act (CCPA)</h2>
+        <p>If you are a California resident, you have the right to request that we disclose what personal information we collect, use, disclose, and sell. We do not sell your personal information. Under the CCPA, you have the right to:</p>
+        <ul className="list-disc pl-6 space-y-2">
+          <li>Know what personal data is being collected about you.</li>
+          <li>Know whether your personal data is sold or disclosed and to whom.</li>
+          <li>Say no to the sale of personal data.</li>
+          <li>Access your personal data.</li>
+          <li>Request we delete any personal information about you.</li>
+        </ul>
+
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">6. Use of Data</h2>
         <p>USRoutingNumber.com uses the collected data for various purposes:</p>
         <ul className="list-disc pl-6 space-y-2">
           <li>To provide and maintain the Service</li>

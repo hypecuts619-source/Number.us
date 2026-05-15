@@ -201,3 +201,7 @@ export const getStateFullName = (abbr: string): string => {
   const names = getStateNames();
   return names[abbr.toUpperCase()] || abbr;
 };
+
+export const getStates = (): string[] => {
+  return Object.values(getStateNames()).sort();
+};

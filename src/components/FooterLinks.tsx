@@ -92,37 +92,30 @@ export default function FooterLinks() {
         {/* Resources Column */}
         <div>
           <h3 className="text-slate-900 dark:text-slate-100 font-bold mb-4 uppercase tracking-wider text-xs">
-            Resources & Guides
+            Resources
           </h3>
           <ul className="space-y-2 text-sm">
             <li><Link to="/how-to-find-routing-number-guide" className="text-blue-600 dark:text-blue-400 font-bold hover:underline transition-colors">2026 Routing Number Guide</Link></li>
             <li><Link to="/routing-number-lookup" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Reverse Lookup</Link></li>
-            <li><Link to="/what-is-a-routing-number" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">What is a Routing Number?</Link></li>
-            <li><Link to="/find-routing-number-on-check" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Find it on a Check</Link></li>
-            <li><Link to="/how-to-wire-money" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">How to Wire Money</Link></li>
-            <li><Link to="/international-wire-guide" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">International Wire Transfers</Link></li>
-            <li><Link to="/routing-number-validator" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Routing Number Validator</Link></li>
-            <li><Link to="/check-digit-calculator" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Check Digit Calculator</Link></li>
-            <li><Link to="/blog" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors border-b border-slate-200 dark:border-slate-700 pb-2">All Financial Guides</Link></li>
-            <li><Link to="/banks/a-z" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">A-Z Bank Directory</Link></li>
-            <li><Link to="/webmaster-tools" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">Webmaster & Blog Widgets</Link></li>
+            <li><Link to="/routing-number-validator" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">ABA Validator</Link></li>
+            <li><Link to="/contact-us" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact Support</Link></li>
+            <li><Link to="/privacy-policy" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Privacy Policy</Link></li>
+            <li><Link to="/terms-of-service" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Terms of Service</Link></li>
           </ul>
         </div>
         
-        {/* Editorial Features */}
+        {/* Our Standards Column */}
         <div>
-          <h3 className="text-slate-900 dark:text-slate-100 font-bold mb-4 uppercase tracking-wider text-xs">
-            Editorial Features
+           <h3 className="text-slate-900 dark:text-slate-100 font-bold mb-4 uppercase tracking-wider text-xs">
+            Our Standards
           </h3>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/blog/ultimate-guide-to-ach-transfers" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">ACH Transfers Guide</Link></li>
-            <li><Link to="/blog/wire-transfers-demystified" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Wire Transfers Demystified</Link></li>
-            <li><Link to="/blog/bank-mergers-routing-numbers" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Bank Mergers Impact</Link></li>
-            <li><Link to="/blog/anatomy-of-a-check" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Anatomy of a Bank Check</Link></li>
-            <li><Link to="/blog/routing-number-security" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Routing Number Security</Link></li>
-            <li><Link to="/blog/international-vs-domestic-routing" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">SWIFT vs ABA Routing</Link></li>
-            <li><Link to="/blog/understanding-modulus-10-algorithm" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Modulus 10 Algorithm</Link></li>
-            <li><Link to="/blog/future-instant-payments-fednow" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">FedNow & Instant Payments</Link></li>
+            <li><Link to="/about-us" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About Us</Link></li>
+            <li><Link to="/about-us#verification" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">How We Verify Data</Link></li>
+            <li><Link to="/about-us#regulatory-sources" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Regulatory Sources</Link></li>
+            <li><Link to="/about-us#editorial-guidelines" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Editorial Guidelines</Link></li>
+            <li><Link to="/blog" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors border-b border-slate-200 dark:border-slate-700 pb-2">Financial Analysis Blog</Link></li>
+            <li><Link to="/reports/2026-us-credit-union-report" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">2026 Market Report</Link></li>
           </ul>
         </div>
 

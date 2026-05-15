@@ -13,6 +13,7 @@ import FAQSection from '../components/FAQSection';
 import { useFavorites } from '../hooks/useFavorites';
 import { useRecentlyViewed } from '../hooks/useRecentlyViewed';
 import { Heart, Clock, ArrowRight, Search } from 'lucide-react';
+import DataIntegrityBadge from '../components/DataIntegrityBadge';
 
 export default function Home() {
   const topBanks = getTopSearchedBanks();
@@ -64,6 +65,9 @@ export default function Home() {
 
       {/* Header - Desktop Top, Mobile Below Search */}
       <div className="order-2 md:order-1 text-center md:text-left mb-8 md:mb-12 mt-8 md:mt-0">
+        <div className="mb-4">
+          <DataIntegrityBadge />
+        </div>
         <h1 className="text-3xl md:text-6xl font-black mb-4 text-slate-900 dark:text-white tracking-tight leading-tight">
           Financial Routing <span className="text-blue-600 dark:text-blue-400">Dashboard</span>
         </h1>

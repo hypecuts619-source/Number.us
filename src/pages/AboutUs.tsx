@@ -2,10 +2,37 @@ import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import { Link } from 'react-router-dom';
 import { ShieldCheck } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 export default function AboutUs() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "USRoutingNumber",
+      "founder": [
+        {
+          "@type": "Person",
+          "name": "Stephen Sebastian",
+          "jobTitle": "Head of Marketing & Product"
+        },
+        {
+          "@type": "Person",
+          "name": "Mathew George",
+          "jobTitle": "Head of Financial Data Architecture"
+        }
+      ]
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 md:py-12">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      </Helmet>
       <SEO 
         title="About Us | USRoutingNumber.com"
         description="Learn about USRoutingNumber.com, our mission, and why you can trust our financial routing directory."
@@ -31,16 +58,19 @@ export default function AboutUs() {
           They realized that if they were struggling with this, millions of everyday Americans were likely experiencing the exact same frustration. That's why Stephen and Mathew teamed up to build USRoutingNumber.com. Their goal was simple: take the stress, confusion, and guesswork out of moving money.
         </p>
 
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-10">Our Mission</h2>
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-10">Our Mission & Data Integrity</h2>
         <p>
           Have you ever tried to set up a direct deposit or wire transfer, only to be confused by multiple routing numbers associated with your bank? You aren't alone. 
           Large financial institutions frequently use different routing numbers depending on the state where you opened your account or the type of transaction (ACH vs. Wire).
         </p>
         <p>
-          Our mission is to simplify this process for you. We provide a friendly, clean, and mathematically verifiable database of <strong>active routing numbers</strong> to help everyday Americans and international senders navigate the complex US financial system confidently and securely. Whether you're buying a home or just setting up a direct deposit, we're here to help make sure your money gets exactly where it needs to go.
+          Our mission is to eliminate the "black box" of American banking infrastructure. We provide a friendly, clean, and mathematically verifiable database of <strong>active routing numbers</strong> to help everyday Americans and international senders navigate the complex US financial system confidently and securely. 
+        </p>
+        <p>
+          <strong>Total Financial Transparency:</strong> We believe that access to basic routing data shouldn't be gated or confusing. Unlike generic directories, our platform is built on real-time Federal Reserve data feeds and is managed by a team with expertise in financial data architecture and regulatory compliance.
         </p>
 
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-10">Why Trust Us? (E-E-A-T)</h2>
+        <h2 id="verification" className="text-2xl font-bold text-slate-900 dark:text-white mt-10">Why Trust Us? (E-E-A-T)</h2>
         <p>
           In the financial realm, accuracy isn't just a preference—it's a requirement. A single incorrect digit can result in bounced payments, lost wages, and severe banking fees.
         </p>
@@ -50,7 +80,7 @@ export default function AboutUs() {
           <li><strong>Continuous Monitoring:</strong> We actively track bank mergers and acquisitions, such as the upcoming <Link to="/routing-number-changes-2026">2026 consolidation shifts</Link>, to flag routing codes that are being retired.</li>
         </ul>
 
-        <div className="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 my-8">
+        <div id="editorial-guidelines" className="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 my-8">
           <h3 className="font-bold text-xl mt-0 mb-2">Our Editorial & Data Guidelines</h3>
           <p className="mb-4 text-sm leading-relaxed">
             As a publisher of "Your Money or Your Life" (YMYL) content, we hold ourselves to strict editorial standards:
@@ -63,7 +93,7 @@ export default function AboutUs() {
           </ul>
         </div>
         
-        <div className="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 my-8">
+        <div id="regulatory-sources" className="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 my-8">
           <h3 className="font-bold text-xl mt-0 mb-4 flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-blue-600" /> Data Sources & Verification
           </h3>
