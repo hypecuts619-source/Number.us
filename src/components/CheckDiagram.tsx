@@ -49,8 +49,10 @@ export default function CheckDiagram({
         </div>
       </div>
 
-      <div className="overflow-x-auto pb-4">
-        <div className="min-w-[600px] max-w-2xl mx-auto bg-amber-50 border-2 border-slate-300 rounded-xl p-6 shadow-md relative font-serif text-slate-800 transition-all">
+      <div className="w-full relative">
+        <div className="md:hidden absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white dark:from-slate-900 to-transparent pointer-events-none z-10 rounded-r-xl" />
+        <div className="w-full overflow-x-auto pb-6" style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-x' }}>
+          <div className="min-w-[600px] w-full max-w-2xl mx-auto bg-amber-50 border-2 border-slate-300 rounded-xl p-6 shadow-md relative font-serif text-slate-800 transition-all">
           <div className="flex justify-between items-start mb-12">
             <div>
               <div className="font-bold text-lg">Your Name Here</div>
@@ -119,6 +121,7 @@ export default function CheckDiagram({
           <div className="flex items-center gap-1"><span className="w-3 h-3 bg-emerald-500 rounded-full inline-block"></span> Account Number</div>
           <div className="flex items-center gap-1"><span className="w-3 h-3 bg-slate-400 rounded-full inline-block"></span> Check Number</div>
         </div>
+      </div>
       </div>
     </div>
   );
