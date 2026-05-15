@@ -11,16 +11,16 @@ export default function AboutUs() {
     "mainEntity": {
       "@type": "Organization",
       "name": "USRoutingNumber",
-      "founder": [
-        {
-          "@type": "Person",
-          "name": "Stephen Sebastian",
-          "jobTitle": "Head of Marketing & Product"
-        },
+      "founder": {
+        "@type": "Person",
+        "name": "Stephen Sebastian",
+        "jobTitle": "Founder & CEO"
+      },
+      "employee": [
         {
           "@type": "Person",
           "name": "Mathew George",
-          "jobTitle": "Head of Financial Data Architecture"
+          "jobTitle": "Lead Data Architect"
         }
       ]
     }
