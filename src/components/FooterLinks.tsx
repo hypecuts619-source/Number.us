@@ -45,7 +45,7 @@ const statesList = [
 export default function FooterLinks() {
   return (
     <div className="w-full max-w-7xl mx-auto mb-10 pt-8 border-t border-slate-200 dark:border-slate-800">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 text-left">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8 text-left">
         {/* Top Banks Column */}
         <div>
           <h3 className="text-slate-900 dark:text-slate-100 font-bold mb-4 uppercase tracking-wider text-xs">
@@ -119,8 +119,23 @@ export default function FooterLinks() {
           </ul>
         </div>
 
+        {/* Popular Guides Column */}
+        <div>
+           <h3 className="text-slate-900 dark:text-slate-100 font-bold mb-4 uppercase tracking-wider text-xs">
+            Popular Guides
+          </h3>
+          <ul className="space-y-2 text-sm">
+            <li><Link to="/routing-number-changes-2026" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">2026 Routing Changes</Link></li>
+            <li><Link to="/routing-number-vs-account-number" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Routing vs Account Number</Link></li>
+            <li><Link to="/how-to-wire-money" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">How to Wire Money</Link></li>
+            <li><Link to="/international-wire-guide" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">International Wires</Link></li>
+            <li><Link to="/find-routing-number-on-check" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Routing Number on Checks</Link></li>
+            <li><Link to="/blog/ultimate-guide-to-ach-transfers" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium border-t border-slate-100 dark:border-slate-800 pt-2 mt-1 block">Ultimate ACH Guide</Link></li>
+          </ul>
+        </div>
+
         {/* States Column */}
-        <div className="col-span-1 lg:col-span-2">
+        <div className="col-span-1 md:col-span-3 lg:col-span-2">
           <h3 className="text-slate-900 dark:text-slate-100 font-bold mb-4 uppercase tracking-wider text-xs">
             Routing Numbers by State
           </h3>
