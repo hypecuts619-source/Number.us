@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
 import SEO from '../components/SEO';
+import { Helmet } from 'react-helmet-async';
 
 export default function NotFound() {
   return (
     <div className="flex flex-col items-center justify-center py-20 px-4 min-h-[70vh]">
+      <Helmet>
+        <meta name="prerender-status-code" content="404" />
+      </Helmet>
       <SEO 
         title="Page Not Found - USRoutingNumber.com" 
         description="We couldn't find the page you're looking for. Search for a bank or routing number." 

@@ -5,7 +5,7 @@
 
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 
 import Home from './pages/Home';
 import BankOverview from './pages/BankOverview';
@@ -77,11 +77,6 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
           <Header />
 
           <main className="flex-grow">
-            <Suspense fallback={
-              <div className="min-h-[60vh] flex flex-col items-center justify-center">
-                 <div className="w-10 h-10 border-4 border-slate-300 dark:border-slate-700 border-t-blue-500 rounded-full animate-spin"></div>
-              </div>
-            }>
               <Routes>
                 {/* Pages that do not strictly require routing data to render */}
                 <Route path="/" element={<Home />} />
@@ -143,7 +138,6 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
 
                 <Route path="*" element={<NotFound />} />
               </Routes>
-            </Suspense>
           </main>
 
           <footer className="bg-slate-50 dark:bg-slate-900 overflow-hidden shrink-0 mt-20 print:hidden pt-8 pb-12 px-6">

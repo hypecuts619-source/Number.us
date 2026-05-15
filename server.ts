@@ -69,6 +69,12 @@ async function startServer() {
         ${helmet.script?.toString() || ''}
       ` : '';
 
+      // Set status based on helmet output
+      const status = helmetHead.includes('prerender-status-code" content="404"') || html.includes('prerender-status-code') ? 404 : 200;
+
+      // Remove the hardcoded title so Helmet title works properly
+      template = template.replace(/<title>.*?<\/title>/i, '');
+      
       // inject the app-rendered HTML into the template.
       const htmlWithHead = template.replace(`<!-- SSR_HEAD -->`, helmetHead);
       // We don't inject window data directly as JSON since it is 5.5MB and would choke GoogleBot.
@@ -76,7 +82,7 @@ async function startServer() {
       const htmlWithData = htmlWithHead.replace(`<!-- SSR_DATA -->`, ``);
       const finalHtml = htmlWithData.replace(`<!-- SSR_OUT -->`, html);
 
-      res.status(200).set({ 'Content-Type': 'text/html' }).end(finalHtml);
+      res.status(status).set({ 'Content-Type': 'text/html' }).end(finalHtml);
     } catch (e: any) {
       if (vite) {
         vite.ssrFixStacktrace(e);
