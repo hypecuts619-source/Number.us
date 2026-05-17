@@ -142,15 +142,16 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
 
           <footer className="bg-slate-50 dark:bg-slate-900 overflow-hidden shrink-0 mt-20 print:hidden pt-8 pb-12 px-6">
             <FooterLinks />
-            <div className="max-w-7xl mx-auto text-center text-slate-500 dark:text-slate-400 text-sm max-w-3xl">
-              <nav className="flex justify-center flex-wrap gap-x-6 gap-y-2 mb-6">
-                <Link to="/about-us" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">About Us</Link>
-                <Link to="/contact-us" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Contact Us</Link>
-                <Link to="/sitemap" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Site Map</Link>
-                <Link to="/terms-of-service" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Terms of Service</Link>
-                <Link to="/privacy-policy" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 transition-colors">Privacy Policy</Link>
+            <div className="max-w-7xl mx-auto w-full text-center">
+              <nav className="flex justify-center flex-wrap gap-x-6 gap-y-2 mb-6 text-sm">
+                <Link to="/about-us" className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-blue-400 transition-colors">About Us</Link>
+                <Link to="/contact-us" className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-blue-400 transition-colors">Contact Us</Link>
+                <Link to="/sitemap" className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-blue-400 transition-colors">Site Map</Link>
+                <Link to="/terms-of-service" className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-blue-400 transition-colors">Terms of Service</Link>
+                <Link to="/privacy-policy" className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-blue-400 transition-colors">Privacy Policy</Link>
               </nav>
-              <div className="flex justify-center items-center gap-6 mb-6">
+              
+              <div className="flex justify-center items-center gap-6 mb-8">
                 <a href="https://x.com/StephenSeb12450" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors" aria-label="X (Twitter)">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -162,10 +163,18 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
                   </svg>
                 </a>
               </div>
-              <p>&copy; {new Date().getFullYear()} USRoutingNumber.com. All rights reserved.</p>
-              <p className="mt-4 text-xs text-slate-400 dark:text-slate-500 leading-relaxed max-w-4xl mx-auto">
-                <strong>Important Medical & Financial Disclaimer:</strong> USRoutingNumber.com is an independent educational publisher and is <strong>NOT</strong> a bank, financial institution, broker, or investment advisor. The information provided on this website is for general informational and educational purposes only and does not constitute financial, legal, or professional advice. While we strive to maintain our database using public records from the Federal Reserve and other regulatory bodies, we make no guarantees regarding the completeness, accuracy, or current validity of any routing numbers, SWIFT codes, or institutional data. <strong>Always verify</strong> routing numbers, wire instructions, and transaction details directly with your official financial institution before initiating any wire transfers, direct deposits, or ACH transactions. USRoutingNumber.com and its authors are not liable for any misrouted funds, financial losses, delayed transactions, return fees, or damages arising from reliance on this information. All bank names, logos, and trademarks are the property of their respective owners and are used strictly under nominative fair use for identification purposes.
-              </p>
+
+              <div className="w-full border-t border-slate-200 dark:border-slate-800 pt-8 mt-2">
+                <div className="max-w-4xl mx-auto px-4">
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium mb-4">
+                    &copy; {new Date().getFullYear()} USRoutingNumber.com. All rights reserved.
+                  </p>
+                  
+                  <p className="text-[11px] text-slate-500 dark:text-slate-500 leading-relaxed text-left sm:text-center">
+                    <strong>Important Financial &amp; Educational Disclaimer:</strong> USRoutingNumber.com is an independent educational publisher and is NOT a bank, financial institution, broker, or investment advisor. The information provided on this website is for general informational and educational purposes only and does not constitute financial, legal, or professional advice. While we strive to maintain our database using public records from the Federal Reserve and other regulatory bodies, we make no guarantees regarding the completeness, accuracy, or current validity of any routing numbers, SWIFT codes, or institutional data. Always verify routing numbers, wire instructions, and transaction details directly with your official financial institution before initiating any wire transfers, direct deposits, or ACH transactions. USRoutingNumber.com and its authors are not liable for any misrouted funds, financial losses, delayed transactions, return fees, or damages arising from reliance on this information. All bank names, logos, and trademarks are the property of their respective owners and are used strictly under nominative fair use for identification purposes.
+                  </p>
+                </div>
+              </div>
             </div>
           </footer>
         </div>
