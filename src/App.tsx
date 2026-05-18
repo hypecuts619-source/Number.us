@@ -164,6 +164,12 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
                 </a>
               </div>
 
+              <div className="flex justify-center mb-8">
+                <a href="https://www.producthunt.com/products/usroutingnumber-com?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-usroutingnumber-com" target="_blank" rel="noopener noreferrer">
+                  <img alt="Usroutingnumber.com - Get routing number in 1 click | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1149262&amp;theme=neutral&amp;t=1779084964430" />
+                </a>
+              </div>
+
               <div className="w-full border-t border-slate-200 dark:border-slate-800 pt-8 mt-2">
                 <div className="max-w-4xl mx-auto px-4">
                   <p className="text-sm text-slate-600 dark:text-slate-400 font-medium mb-4">
