@@ -55,12 +55,19 @@ export default function BankState() {
   const currentYear = new Date().getFullYear();
   const faqs = generateBankStateFAQs(bankName, stateFullName, primaryData.routing_number, primaryData.type);
 
+  const stateCanonicalUrl = useMemo(() => {
+    if (otherStates.length === 0) {
+      return `/routing-number/${bankSlug}`;
+    }
+    return `/routing-number/${bankSlug}/${state?.toLowerCase()}`;
+  }, [otherStates.length, bankSlug, state]);
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
       <SEO 
         title={generateBankStateTitle(bankName, stateFullName)}
         description={generateBankStateDescription(bankName, stateFullName, primaryData.routing_number)}
-        canonicalUrl={`/routing-number/${bankSlug}/${state?.toLowerCase()}`}
+        canonicalUrl={stateCanonicalUrl}
       >
         <script type="application/ld+json">
           {generateBreadcrumbSchema([

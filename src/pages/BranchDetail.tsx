@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useMemo } from 'react';
-import { getRoutingByBankStateAndCity, getStateFullName, getRoutingByBank, getOtherBanksInState } from '../lib/getData';
+import { getRoutingByBankStateAndCity, getStateFullName, getRoutingByBank, getOtherBanksInState, getRoutingByBankAndState } from '../lib/getData';
 import { generateSlug, unslug } from '../lib/generateSlug';
 import { 
   generateBankStateTitle, 
@@ -55,6 +55,20 @@ export default function BranchDetail() {
   }
 
   const primaryData = dataList[0];
+  const stateData = useMemo(() => {
+    if (!bankSlug || !state) return [];
+    return getRoutingByBankAndState(bankSlug, state);
+  }, [bankSlug, state]);
+
+  const cityCanonicalUrl = useMemo(() => {
+    if (stateData.length === dataList.length) {
+      if (otherStates.length === 0) {
+        return `/routing-number/${bankSlug}`;
+      }
+      return `/routing-number/${bankSlug}/${state?.toLowerCase()}`;
+    }
+    return `/routing-number/${bankSlug}/${state?.toLowerCase()}/${citySlug}`;
+  }, [stateData.length, dataList.length, otherStates.length, bankSlug, state, citySlug]);
   const currentYear = new Date().getFullYear();
   const faqs = generateBankStateFAQs(bankName, stateFullName, primaryData.routing_number, primaryData.type);
   const uniqueDescription = generateUniqueBankDescriptionForPage(bankName, cityTitle, stateFullName, primaryData.routing_number, primaryData.type, primaryData.zip);
@@ -66,7 +80,7 @@ export default function BranchDetail() {
       <SEO 
         title={`${bankName} Routing Number ${cityTitle}, ${stateFullName} 2026`}
         description={`Verified ${bankName} routing number for branches in ${cityTitle}, ${stateFullName}. Details for ACH, wire transfers, and address at ${primaryData.address}.`}
-        canonicalUrl={`/routing-number/${bankSlug}/${state?.toLowerCase()}/${citySlug}`}
+        canonicalUrl={cityCanonicalUrl}
       >
         <script type="application/ld+json">
           {generateBreadcrumbSchema([
