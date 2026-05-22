@@ -22,6 +22,22 @@ export default function SEO({
 }: SEOProps) {
   const currentUrl = `https://usroutingnumber.com${canonicalUrl.startsWith('/') ? canonicalUrl : `/${canonicalUrl}`}`;
   
+  const webAppSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "USRoutingNumber.com Verification Engine",
+    "url": "https://usroutingnumber.com",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": "Client-side Modulo 10 check-digit validation, offline local storage tracking, sub-millisecond bank directory search filtering."
+  };
+
   return (
     <Helmet>
       {/* Standard Metadata */}
@@ -51,8 +67,15 @@ export default function SEO({
       {/* Prevent clickjacking */}
       <meta httpEquiv="X-Frame-Options" content="DENY" />
 
+      {/* Global structured data schemas */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema, null, 2) }}
+      />
+
       {/* Additional schema or tags passed as children */}
       {children}
     </Helmet>
   );
 }
+

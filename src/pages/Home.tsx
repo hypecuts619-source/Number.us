@@ -35,8 +35,8 @@ export default function Home() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 md:py-12 relative flex flex-col">
       <SEO 
-        title="United States Routing Number Search | Find Any US Bank (2026)"
-        description="Looking for your bank's routing number? Lookup any US bank routing number for direct deposit, ACH, and wire transfers instantly."
+        title="US Routing Number Lookup: Instant Check & Verification"
+        description="Instantly find and verify any US bank routing number. Run client-side Modulo 10 checksum validation to prevent transfer errors. 100% secure."
         canonicalUrl="/"
       >
         <script type="application/ld+json">
