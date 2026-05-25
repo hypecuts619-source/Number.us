@@ -128,6 +128,37 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Educational Deep-Dive (Added for AdSense Value) */}
+        <div className="mb-12 prose prose-slate dark:prose-invert max-w-none px-4">
+          <h3 className="text-xl md:text-2xl font-bold mb-4">Understanding United States Routing Transit Numbers (RTN)</h3>
+          <p className="text-slate-600 dark:text-slate-400 mb-6">
+            A Routing Transit Number is a specific nine-digit numerical code utilized by American banking institutions to clear domestic funds, process direct deposits, and facilitate automated clearing house (ACH) transfers. Established by the American Bankers Association (ABA) in 1910, this infrastructure guarantees that transaction payloads reach their precise processing endpoints.
+          </p>
+          <h3 className="text-xl md:text-2xl font-bold mb-4">How Our Client-Side Modulo 10 Verification Works</h3>
+          <p className="text-slate-600 dark:text-slate-400 mb-6">
+            To eliminate costly financial transfer errors and routing rejections, our platform executes a live, browser-local geometric check-digit calculation. Every authorized routing number satisfies a strict weighted arithmetic verification formula: <code>3(d₁ + d₄ + d₇) + 7(d₂ + d₅ + d₈) + (d₃ + d₆ + d₉) ≡ 0 (mod 10)</code>. If a typographical error breaks this geometric constant, our layout flags the input immediately—protecting your transfers in absolute privacy without tracking your financial data.
+          </p>
+        </div>
+
+        {/* Featured Financial Resource Guides */}
+        <div className="mb-12 px-4">
+          <h2 className="text-2xl font-black mb-6 text-slate-900 dark:text-white">Featured Financial Resource Guides</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Link to="/reports/2026-us-credit-union-report" className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 hover:shadow-lg transition-all">
+               <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 mb-2">2026 Credit Union Report</h3>
+               <p className="text-sm text-slate-600 dark:text-slate-400">Discover where Americans are migrating for banking and find the top 10 most accessible credit unions.</p>
+            </Link>
+            <Link to="/international-wire-guide" className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 hover:shadow-lg transition-all">
+               <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 mb-2">International Wire Guide</h3>
+               <p className="text-sm text-slate-600 dark:text-slate-400">Everything you need to know about Swift codes, IBANs, and avoiding international wire rejection fees.</p>
+            </Link>
+            <Link to="/how-to-wire-money" className="group bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 hover:shadow-lg transition-all">
+               <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 mb-2">How to Wire Money</h3>
+               <p className="text-sm text-slate-600 dark:text-slate-400">A step-by-step guide to sending domestic wire transfers quickly, securely, and using the right ABA networks.</p>
+            </Link>
+          </div>
+        </div>
+
         {/* 3. Recently Viewed */}
         <div className="mb-12">
           {!recentLoaded ? (
@@ -269,6 +300,18 @@ export default function Home() {
               </Link>
             </div>
           </div>
+        </div>
+
+        <div className="mt-8 mb-12 text-center text-sm text-slate-500 dark:text-slate-400">
+          <span className="font-bold">Browse Routing Numbers by State:</span>{' '}
+          <Link to="/states/ca" className="hover:text-blue-600 underline">California</Link> |{' '}
+          <Link to="/states/tx" className="hover:text-blue-600 underline">Texas</Link> |{' '}
+          <Link to="/states/fl" className="hover:text-blue-600 underline">Florida</Link> |{' '}
+          <Link to="/states/ny" className="hover:text-blue-600 underline">New York</Link> |{' '}
+          <Link to="/states/il" className="hover:text-blue-600 underline">Illinois</Link> |{' '}
+          <Link to="/states/pa" className="hover:text-blue-600 underline">Pennsylvania</Link> |{' '}
+          <Link to="/states/oh" className="hover:text-blue-600 underline">Ohio</Link> |{' '}
+          <Link to="/states/ga" className="hover:text-blue-600 underline">Georgia</Link>
         </div>
 
         <FAQSection faqs={faqs} />
