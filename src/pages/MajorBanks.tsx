@@ -67,10 +67,10 @@ export default function MajorBanks() {
           </div>
           <ChevronRight className="text-blue-400 dark:text-blue-600 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
         </Link>
-        <Link to="/routing-number-lookup" className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl p-5 hover:shadow-sm transition-all flex items-center justify-between group">
+        <Link to="/routing-number/jpmorgan-chase-bank" className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl p-5 hover:shadow-sm transition-all flex items-center justify-between group">
           <div>
-            <h3 className="font-bold text-slate-800 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400">Reverse Lookup</h3>
-            <p className="text-sm text-slate-500 mt-1">Found a routing number? Look up which bank it belongs to.</p>
+            <h3 className="font-bold text-slate-800 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400">JPMorgan Chase ABA directory</h3>
+            <p className="text-sm text-slate-500 mt-1">Access the complete directory of Chase ACH and Wire routing codes.</p>
           </div>
           <ChevronRight className="text-slate-300 dark:text-slate-600 group-hover:text-blue-500" />
         </Link>

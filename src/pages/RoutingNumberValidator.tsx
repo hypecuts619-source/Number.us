@@ -6,49 +6,70 @@ export default function RoutingNumberValidator() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 md:py-12">
       <SEO 
-        title="Routing Number Validator 2026 | Check ABA Checksum"
-        description="Free online bank routing number validator. Check if a 9-digit ABA routing transit number mathematically meets the checksum, and confirm its Federal Reserve status."
+        title="ABA Routing Number Validator | Modulo 10 Checksum Calculator"
+        description="Instantly verify any 9-digit US bank routing number using our client-side Modulo 10 checksum calculator. 100% secure, private, and fast."
         canonicalUrl="/routing-number-validator"
-      />
+      >
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "ABA Routing Number Validator",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "All",
+            "browserRequirements": "Requires JavaScript",
+            "offers": { "@type": "Offer", "price": "0" },
+            "featureList": "Offline client-side Modulo 10 verification, Bank identification, Federal Reserve cross-reference"
+          })}
+        </script>
+      </SEO>
 
-      <div className="text-center mb-10">
+      <div className="text-center mb-8">
         <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4">
-          Routing Number Validator
+          Free US Bank Routing Number Validator
         </h1>
         <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
           Verify any 9-digit US routing number against the official ABA module 10 checksum algorithm and check if it's currently listed in our Federal Reserve database directory.
         </p>
+        <div className="mt-6 flex justify-center items-center gap-2 text-emerald-600 dark:text-emerald-400 font-medium bg-emerald-50 dark:bg-emerald-900/20 px-4 py-2 rounded-lg max-w-max mx-auto shadow-sm border border-emerald-100 dark:border-emerald-800">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+          Your privacy is guaranteed. This calculation is performed locally in your browser. No data is transmitted to our servers.
+        </div>
       </div>
 
       <AccountValidator />
-
       
       <div className="prose prose-base md:prose-lg text-slate-600 dark:text-slate-300 max-w-none mt-12 bg-slate-50 dark:bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">How does the validation work?</h2>
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">How the Modulo 10 Algorithm Works</h2>
         <p>
-          Our validator performs two main checks:
+          Our validator performs a strict mathematical test. Every valid routing number is exactly 9 digits and follows an intricate mathematical formula created by the American Bankers Association (ABA). 
+          The algorithm applies a specific weight—3, 7, and 1—to the first eight digits of the routing number. The sums of these weighted products are added together, and the final, ninth digit—the check digit—is mathematically derived to ensure that the total sum is a multiple of 10.
         </p>
-        <ul className="list-disc pl-6 space-y-4 font-normal mt-4">
-          <li><strong>Mathematical Checksum:</strong> Every valid routing number is exactly 9 digits and follows an intricate mathematical formula created by the American Bankers Association (ABA). The tool calculates the <a href="/check-digit-calculator" className="text-blue-600 dark:text-blue-400 hover:underline">Module 10 Checksum</a> to instantly tell you if the sequence is valid or if there's a typo.</li>
-          <li><strong>Database Lookup:</strong> Once mathematically validated, we cross-reference the number against the Federal Reserve's active E-Payments directory to verify which bank currently owns the code.</li>
-        </ul>
+        <p>
+          When you enter your ABA code into our <strong>Routing Number Validator</strong>, a client-side execution confirms this geometric sequence instantly. If it satisfies the algorithm, our offline processor cross-references a massive directory to return the actual Bank Name, City, and State.
+        </p>
 
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-8 mb-4">Why is validation important?</h2>
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-8 mb-4">Why Verify Your Transmit Number?</h2>
         <p>
-          Entering an incorrect routing number can cause severe delays and fees. If you provide an invalid structural number (one that fails the checksum) to your employer or a merchant, their software will typically reject it immediately. 
-          However, providing a mathematically valid but <em>wrong</em> routing number (for example, the wire transfer routing number instead of the ACH routing number for your bank) can result in intercepted funds and bank return fees. That's why verifying the number against our Federal Reserve directory is critical before setting up direct deposits.
+          Entering an incorrect routing number can cause severe delays and fees. If you provide an invalid structural number (one that fails the checksum) to your employer or a merchant, their billing software will reject it. Providing a mathematically valid but <em>wrong</em> routing number (for instance, the wire transfer sequence instead of the ACH equivalent) can result in intercepted funds. 
         </p>
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-4">Common Mistakes: Why a Routing Number Fails</h2>
+
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-4">Frequently Asked Questions</h2>
+        
+        <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mt-6 mb-2">How does the Modulo 10 routing number algorithm work?</h3>
         <p>
-          Getting a "wrong routing number" or "routing number not working" error is a high-anxiety moment. Before panicking, check these common failure modes:
+          The Modulo 10 technique specifically multiplies the first digit by 3, the second by 7, the third by 1, and repeats this sequence for the first 8 numbers. It then adds all the products together. The 9th digit (check digit) must be whatever number makes that total sum perfectly divisible by 10.
         </p>
-        <ul className="list-disc pl-6 space-y-4 font-normal mt-4">
-          <li><strong>ACH vs Wire Confusion:</strong> Using an ACH routing number when a wire number is required (or vice versa). E.g., Chase has a universal wire routing number, but dozens of state-specific ACH routing numbers.</li>
-          <li><strong>Mistyped Digit & Checksum Mismatch:</strong> A single transposed number guarantees the ABA checksum will fail. For example, typing "021000022" instead of "021000021".</li>
-          <li><strong>State-Specific Variations:</strong> Large banks often use different routing numbers depending on the state where you <em>originally opened</em> your account.</li>
-          <li><strong>Merger-Related Changes:</strong> When banks merge (e.g., SunTrust and BB&T merging into Truist), old routing numbers are eventually retired. It might mathematically validate, but the transaction will bounce if the bank no longer supports the legacy code.</li>
-          <li><strong>Formatting Errors:</strong> Copy-pasting a routing number with spaces or dashes (e.g., "021-000-021") into poorly coded billing software can throw an error. Numbers should always be contiguous.</li>
-        </ul>
+
+        <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mt-6 mb-2">Can a valid routing number mathematically belong to a closed bank?</h3>
+        <p>
+          Yes. Because the Modulo 10 checksum is merely a mathematical verification rule, a routing number from a merged or shuttered bank (like Washington Mutual) will still structurally pass the math test. That is exactly why our validator goes a step further and links the valid 9-digit code with our Federal Reserve dataset to confirm active institutional status.
+        </p>
+
+        <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mt-6 mb-2">Is it safe to type my routing number into an online validator?</h3>
+        <p>
+          Absolutely. Your routing number is public information indicating your bank's digital "address." By utilizing client-side verification directly inside your Chrome or Safari browser window, there are zero server logs created when you use our validation engine. It is mathematically impossible for us to reconstruct your separate Account Number from your ABA code.
+        </p>
 
         <div className="mt-8 grid md:grid-cols-2 gap-4">
           <Link to="/routing-number-lookup" className="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl p-5 hover:border-blue-500 transition-all flex items-center justify-between group no-underline">
