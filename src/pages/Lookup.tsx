@@ -62,7 +62,6 @@ export default function Lookup() {
           title="Routing Number Validation Result | USRoutingNumber.com"
           description={`Routing number search result for ${routingNumber}. Verify mathematical validity and checksum.`}
           canonicalUrl={`/lookup/${routingNumber}`}
-          noindex={true}
         >
           <meta name="prerender-status-code" content="404" />
           <script type="application/ld+json">
@@ -153,7 +152,7 @@ export default function Lookup() {
       <SEO 
         title={generateLookupTitle(data.routing_number)}
         description={generateLookupDescription(data.routing_number, data.bank_name)}
-        canonicalUrl={`/routing-number/${generateSlug(data.bank_name)}`}
+        canonicalUrl={`/lookup/${data.routing_number}`}
       >
         <script type="application/ld+json">
           {generateFinancialInstitutionSchema(

@@ -60,15 +60,7 @@ export default function BranchDetail() {
     return getRoutingByBankAndState(bankSlug, state);
   }, [bankSlug, state]);
 
-  const cityCanonicalUrl = useMemo(() => {
-    if (stateData.length === dataList.length) {
-      if (otherStates.length === 0) {
-        return `/routing-number/${bankSlug}`;
-      }
-      return `/routing-number/${bankSlug}/${state?.toLowerCase()}`;
-    }
-    return `/routing-number/${bankSlug}/${state?.toLowerCase()}/${citySlug}`;
-  }, [stateData.length, dataList.length, otherStates.length, bankSlug, state, citySlug]);
+  const cityCanonicalUrl = `/routing-number/${bankSlug}/${state?.toLowerCase()}/${citySlug}`;
   const currentYear = new Date().getFullYear();
   const faqs = generateBankStateFAQs(bankName, stateFullName, primaryData.routing_number, primaryData.type);
   const uniqueDescription = generateUniqueBankDescriptionForPage(bankName, cityTitle, stateFullName, primaryData.routing_number, primaryData.type, primaryData.zip);

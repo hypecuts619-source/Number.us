@@ -45,8 +45,11 @@ export default function RoutingNumberCard({ data }: { data: RoutingData }) {
             </span>
           </div>
         </div>
-        <div className="w-full md:w-auto flex flex-col items-stretch shrink-0 print:hidden mt-2 md:mt-0">
+        <div className="w-full md:w-auto flex flex-col items-center md:items-stretch shrink-0 print:hidden mt-2 md:mt-0 gap-3">
           <CopyButton text={data.routing_number} />
+          <a href={`/lookup/${data.routing_number}`} className="text-xs text-blue-600 dark:text-blue-400 hover:underline font-medium text-center">
+            View ABA Checksum Details &rarr;
+          </a>
         </div>
       </div>
       

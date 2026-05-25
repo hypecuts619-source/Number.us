@@ -13,7 +13,6 @@ export default function NotFound() {
         title="Page Not Found - USRoutingNumber.com" 
         description="We couldn't find the page you're looking for. Search for a bank or routing number." 
         canonicalUrl="/404"
-        noindex={true}
       />
       <div className="text-center max-w-2xl mx-auto">
         <h1 className="text-6xl font-black text-slate-900 dark:text-white mb-4">404</h1>

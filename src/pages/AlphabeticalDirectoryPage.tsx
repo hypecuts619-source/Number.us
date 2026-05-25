@@ -120,7 +120,7 @@ export default function AlphabeticalDirectoryPage() {
                           {bank.routing_number}
                         </span>
                         <Link 
-                          to={`/routing/${bank.routing_number}`}
+                          to={`/lookup/${bank.routing_number}`}
                           className="text-xs font-semibold text-slate-400 group-hover:text-blue-600 flex items-center gap-1 transition-colors"
                         >
                           Verify <ChevronRight className="w-3 h-3" />
