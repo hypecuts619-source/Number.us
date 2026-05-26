@@ -33,18 +33,18 @@ export default function AdsterraNativeSlot({ zoneId, format }: AdsterraNativeSlo
   }, [zoneId, scriptId]);
 
   const containerClasses = format === 'horizontal'
-    ? 'min-h-[90px] w-full max-w-[728px] mx-auto'
-    : 'min-h-[250px] w-full max-w-[300px] mx-auto';
+    ? 'w-full max-w-[728px]'
+    : 'w-full max-w-[300px]';
 
   return (
-    <div className={`relative flex flex-col items-center justify-center my-6 ${containerClasses}`}>
-      <span className="text-[9px] uppercase tracking-widest text-slate-300 dark:text-slate-600 mb-1 select-none pointer-events-none">
+    <div className={`relative flex flex-col items-center justify-center my-6 mx-auto bg-slate-50/50 dark:bg-slate-800/10 border border-slate-100 dark:border-slate-800/50 rounded-xl py-2 ${containerClasses}`}>
+      <span className="text-[9px] uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-2 select-none pointer-events-none text-center">
         Sponsored Link
       </span>
       <div 
         id={`container-${zoneId}`} 
         ref={containerRef} 
-        className="w-full h-full flex justify-center items-center overflow-hidden" 
+        className="w-full flex justify-center items-center" 
       />
     </div>
   );
