@@ -40,52 +40,48 @@ export default function Home() {
         description="Instantly find and verify any US bank routing number. Run client-side Modulo 10 checksum validation to prevent transfer errors. 100% secure."
         canonicalUrl="/"
       >
-        <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "WebApplication",
-              "name": "USRoutingNumber.com Verification Engine",
-              "url": "https://usroutingnumber.com",
-              "applicationCategory": "FinanceApplication",
-              "operatingSystem": "All",
-              "browserRequirements": "Requires JavaScript. Requires HTML5.",
-              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-              "featureList": "Client-side Modulo 10 check-digit validation, offline local storage tracking, sub-millisecond bank directory search filtering."
-            }
-          `}
-        </script>
-        <script type="application/ld+json">
-          {generateWebSiteSchema()}
-        </script>
-        <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "USRoutingNumber",
-              "url": "https://usroutingnumber.com",
-              "logo": "https://usroutingnumber.com/favicon.svg",
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "email": "contact@usroutingnumber.com",
-                "contactType": "customer service"
-              }
-            }
-          `}
-        </script>
-        <script type="application/ld+json">
-          {generateFAQSchema(faqs)}
-        </script>
+        {/* Unified Schema Graph to Maximize CTR and Fix Mobile Index Parsing */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebApplication",
+                "@id": "https://usroutingnumber.com/#webapp",
+                "name": "USRoutingNumber.com Verification Engine",
+                "url": "https://usroutingnumber.com",
+                "applicationCategory": "FinanceApplication",
+                "operatingSystem": "All",
+                "browserRequirements": "Requires JavaScript. Requires HTML5.",
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+                "featureList": "Client-side Modulo 10 check-digit validation, offline local storage tracking, sub-millisecond bank directory search filtering."
+              },
+              {
+                "@type": "Organization",
+                "@id": "https://usroutingnumber.com/#organization",
+                "name": "USRoutingNumber",
+                "url": "https://usroutingnumber.com",
+                "logo": "https://usroutingnumber.com/favicon.svg",
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "email": "contact@usroutingnumber.com",
+                  "contactType": "customer service"
+                }
+              },
+              { ...JSON.parse(generateWebSiteSchema()), "@context": undefined, "@id": "https://usroutingnumber.com/#website" },
+              { ...JSON.parse(generateFAQSchema(faqs)), "@context": undefined, "@id": "https://usroutingnumber.com/#faq" }
+            ]
+          })
+        }} />
       </SEO>
 
-      {/* Header - Desktop Top, Mobile Below Search */}
+      {/* Header - Fixed Intent Alignment to Prevent Search Snippet Overrides */}
       <div className="order-2 md:order-1 text-center md:text-left mb-8 md:mb-12 mt-8 md:mt-0">
         <div className="mb-4">
           <DataIntegrityBadge />
         </div>
         <h1 className="text-3xl md:text-6xl font-black mb-4 text-slate-900 dark:text-white tracking-tight leading-tight">
-          Financial Routing <span className="text-blue-600 dark:text-blue-400">Dashboard</span>
+          US Routing Number <span className="text-blue-600 dark:text-blue-400">Lookup & Verify</span>
         </h1>
         <p className="text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto md:mx-0">
           Instantly access verified routing data for 2026. Secure, authorized Federal Reserve records at your fingertips.
@@ -215,147 +211,147 @@ export default function Home() {
       <div className="order-3 w-full flex flex-col">
         {/* Exploration & Tools */}
         <div className="grid lg:grid-cols-3 gap-8 md:gap-12">
-        <div className="lg:col-span-2 space-y-12">
-                    
-          <AccountValidator />
+          <div className="lg:col-span-2 space-y-12">
+                      
+            <AccountValidator />
 
-          {/* SEO Text (Pushed Down) */}
-          <section className={`relative ${!isArticleExpanded ? 'max-h-[500px] overflow-hidden' : ''}`}>
-            <h2 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mb-6">Official US Routing Guide</h2>
-            <div className="prose prose-base md:prose-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
-              <p>
-                A routing transit number (RTN) is a nine-digit code used by financial institutions in the United States to identify where an account is held. Established in 1910 by the ABA, it remains the standard for US bank identification today.
-              </p>
-              
-              <CheckDiagram />
+            {/* SEO Text (Pushed Down) */}
+            <section className={`relative ${!isArticleExpanded ? 'max-h-[500px] overflow-hidden' : ''}`}>
+              <h2 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mb-6">Official US Routing Guide</h2>
+              <div className="prose prose-base md:prose-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+                <p>
+                  A routing transit number (RTN) is a nine-digit code used by financial institutions in the United States to identify where an account is held. Established in 1910 by the ABA, it remains the standard for US bank identification today.
+                </p>
+                
+                <CheckDiagram />
 
-              <h3 className="text-xl md:text-2xl font-black text-slate-800 dark:text-white mt-12 mb-4">Verification Standards</h3>
-              <p>
-                We use the official Federal Reserve routing datasets and the ABA Checksum algorithm to verify every number in our directory. Every 9th digit serves as a mathematical checksum, ensuring that accidental data entry errors can be detected before a payment is processed.
-              </p>
-            </div>
-
-            {!isArticleExpanded && (
-              <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-white dark:from-slate-900 to-transparent flex items-end justify-center pb-4">
-                <button 
-                  onClick={() => setIsArticleExpanded(true)} 
-                  className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-8 py-3 rounded-full font-black shadow-2xl transition-transform active:scale-95"
-                >
-                  Expand Complete Guide
-                </button>
+                <h3 className="text-xl md:text-2xl font-black text-slate-800 dark:text-white mt-12 mb-4">Verification Standards</h3>
+                <p>
+                  We use the official Federal Reserve routing datasets and the ABA Checksum algorithm to verify every number in our directory. Every 9th digit serves as a mathematical checksum, ensuring that accidental data entry errors can be detected before a payment is processed.
+                </p>
               </div>
-            )}
-          </section>
 
-          <RegionalBankDirectory />
-        </div>
-
-        <aside className="space-y-8">
-          <div className="bg-gradient-to-br from-indigo-600 to-purple-700 dark:from-indigo-800 dark:to-purple-900 rounded-3xl p-8 text-white shadow-xl shadow-indigo-900/20">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/20 rounded-full text-xs font-bold mb-4">
-               Featured Research
-            </div>
-            <h2 className="text-xl font-black mb-2 tracking-tight">2026 Credit Union Migration Report</h2>
-            <p className="text-sm text-indigo-100 mb-6 leading-relaxed">
-              Why Americans are moving away from Big Tech banking, plus our directory of the Top 10 Most Accessible Credit Unions.
-            </p>
-            <Link to="/reports/2026-us-credit-union-report" className="inline-flex items-center gap-2 bg-white text-indigo-900 px-5 py-2.5 rounded-xl font-bold text-sm shadow-sm hover:bg-indigo-50 transition-colors w-full justify-center">
-              Read the Full Report <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="bg-slate-900 dark:bg-blue-600 rounded-3xl p-8 text-white shadow-2xl shadow-blue-900/20">
-            <h2 className="text-xl font-black mb-4">Top Searched Institutions</h2>
-            <ul className="space-y-4">
-              {topBanks.map((bank, i) => (
-                <li key={i}>
-                  <Link
-                    to={`/routing-number/${generateSlug(bank)}`}
-                    className="flex justify-between items-center group"
+              {!isArticleExpanded && (
+                <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-white dark:from-slate-900 to-transparent flex items-end justify-center pb-4">
+                  <button 
+                    onClick={() => setIsArticleExpanded(true)} 
+                    className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-8 py-3 rounded-full font-black shadow-2xl transition-transform active:scale-95"
                   >
-                    <span className="font-bold opacity-80 group-hover:opacity-100 group-hover:translate-x-1 transition-all">
-                      {bank}
-                    </span>
-                    <ArrowRight className="w-4 h-4 opacity-50" />
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                    Expand Complete Guide
+                  </button>
+                </div>
+              )}
+            </section>
+
+            <RegionalBankDirectory />
           </div>
 
-          <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-3xl p-8 shadow-sm">
-            <h2 className="text-lg font-black text-slate-900 dark:text-white mb-4">Member Data Authority</h2>
-            <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
-              Our Credit Union directory uses 2026 call report data from the <strong>NCUA</strong>.
-            </p>
-            <Link to="/credit-unions" className="inline-flex items-center gap-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-6 py-3 rounded-xl font-bold text-sm shadow-sm hover:border-blue-400 transition-colors">
-              Directory Access <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="mt-8">
-            <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="rectangle" />
-          </div>
-
-                  </aside>
-      </div>
-
-      <div className="mt-16 pt-16 border-t border-slate-100 dark:border-slate-800">
-        <div className="mt-8 md:mt-12 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 md:p-12 shadow-sm mb-16">
-          <div className="bg-blue-50 dark:bg-slate-800/50 border border-blue-100 dark:border-slate-700 rounded-3xl p-8 text-center max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Complete US Financial Directory</h2>
-            <p className="text-slate-600 dark:text-slate-300 mb-6">Explore our exhaustive directory of active routing numbers across all 50 states.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link 
-                to="/states" 
-                className="w-full sm:w-auto bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-200 font-bold py-3 px-8 rounded-full hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-slate-400 transition-colors shadow-sm"
-              >
-                Browse Banks by State &rarr;
-              </Link>
-              <Link 
-                to="/banks" 
-                className="w-full sm:w-auto bg-blue-600 dark:bg-blue-500 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors shadow-sm"
-              >
-                A-Z Bank Directory &rarr;
+          <aside className="space-y-8">
+            <div className="bg-gradient-to-br from-indigo-600 to-purple-700 dark:from-indigo-800 dark:to-purple-900 rounded-3xl p-8 text-white shadow-xl shadow-indigo-900/20">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/20 rounded-full text-xs font-bold mb-4">
+                 Featured Research
+              </div>
+              <h2 className="text-xl font-black mb-2 tracking-tight">2026 Credit Union Migration Report</h2>
+              <p className="text-sm text-indigo-100 mb-6 leading-relaxed">
+                Why Americans are moving away from Big Tech banking, plus our directory of the Top 10 Most Accessible Credit Unions.
+              </p>
+              <Link to="/reports/2026-us-credit-union-report" className="inline-flex items-center gap-2 bg-white text-indigo-900 px-5 py-2.5 rounded-xl font-bold text-sm shadow-sm hover:bg-indigo-50 transition-colors w-full justify-center">
+                Read the Full Report <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
+
+            <div className="bg-slate-900 dark:bg-blue-600 rounded-3xl p-8 text-white shadow-2xl shadow-blue-900/20">
+              <h2 className="text-xl font-black mb-4">Top Searched Institutions</h2>
+              <ul className="space-y-4">
+                {topBanks.map((bank, i) => (
+                  <li key={i}>
+                    <Link
+                      to={`/routing-number/${generateSlug(bank)}`}
+                      className="flex justify-between items-center group"
+                    >
+                      <span className="font-bold opacity-80 group-hover:opacity-100 group-hover:translate-x-1 transition-all">
+                        {bank}
+                      </span>
+                      <ArrowRight className="w-4 h-4 opacity-50" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-3xl p-8 shadow-sm">
+              <h2 className="text-lg font-black text-slate-900 dark:text-white mb-4">Member Data Authority</h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
+                Our Credit Union directory uses 2026 call report data from the <strong>NCUA</strong>.
+              </p>
+              <Link to="/credit-unions" className="inline-flex items-center gap-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-6 py-3 rounded-xl font-bold text-sm shadow-sm hover:border-blue-400 transition-colors">
+                Directory Access <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {/* Sidebar Ad Unit - Isolated Rectangle Placement */}
+            <div className="mt-8">
+              <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="rectangle" />
+            </div>
+          </aside>
+        </div>
+
+        <div className="mt-16 pt-16 border-t border-slate-100 dark:border-slate-800">
+          <div className="mt-8 md:mt-12 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 md:p-12 shadow-sm mb-16">
+            <div className="bg-blue-50 dark:bg-slate-800/50 border border-blue-100 dark:border-slate-700 rounded-3xl p-8 text-center max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Complete US Financial Directory</h2>
+              <p className="text-slate-600 dark:text-slate-300 mb-6">Explore our exhaustive directory of active routing numbers across all 50 states.</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Link 
+                  to="/states" 
+                  className="w-full sm:w-auto bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-200 font-bold py-3 px-8 rounded-full hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-slate-400 transition-colors shadow-sm"
+                >
+                  Browse Banks by State &rarr;
+                </Link>
+                <Link 
+                  to="/banks" 
+                  className="w-full sm:w-auto bg-blue-600 dark:bg-blue-500 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors shadow-sm"
+                >
+                  A-Z Bank Directory &rarr;
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 mb-12 text-center text-sm text-slate-500 dark:text-slate-400">
+            <span className="font-bold">Browse Routing Numbers by State:</span>{' '}
+            <Link to="/states/ca" className="hover:text-blue-600 underline">California</Link> |{' '}
+            <Link to="/states/tx" className="hover:text-blue-600 underline">Texas</Link> |{' '}
+            <Link to="/states/fl" className="hover:text-blue-600 underline">Florida</Link> |{' '}
+            <Link to="/states/ny" className="hover:text-blue-600 underline">New York</Link> |{' '}
+            <Link to="/states/il" className="hover:text-blue-600 underline">Illinois</Link> |{' '}
+            <Link to="/states/pa" className="hover:text-blue-600 underline">Pennsylvania</Link> |{' '}
+            <Link to="/states/oh" className="hover:text-blue-600 underline">Ohio</Link> |{' '}
+            <Link to="/states/ga" className="hover:text-blue-600 underline">Georgia</Link>
+          </div>
+
+          <FAQSection faqs={faqs} />
+
+          {/* Footer Ad Unit - Differentiated Zone ID Configuration */}
+          <div className="mt-12 text-center">
+            <AdsterraNativeSlot zoneId="YOUR_DEDICATED_HORIZONTAL_FOOTER_ZONE_ID" format="horizontal" />
           </div>
         </div>
 
-        <div className="mt-8 mb-12 text-center text-sm text-slate-500 dark:text-slate-400">
-          <span className="font-bold">Browse Routing Numbers by State:</span>{' '}
-          <Link to="/states/ca" className="hover:text-blue-600 underline">California</Link> |{' '}
-          <Link to="/states/tx" className="hover:text-blue-600 underline">Texas</Link> |{' '}
-          <Link to="/states/fl" className="hover:text-blue-600 underline">Florida</Link> |{' '}
-          <Link to="/states/ny" className="hover:text-blue-600 underline">New York</Link> |{' '}
-          <Link to="/states/il" className="hover:text-blue-600 underline">Illinois</Link> |{' '}
-          <Link to="/states/pa" className="hover:text-blue-600 underline">Pennsylvania</Link> |{' '}
-          <Link to="/states/oh" className="hover:text-blue-600 underline">Ohio</Link> |{' '}
-          <Link to="/states/ga" className="hover:text-blue-600 underline">Georgia</Link>
+        {/* Floating Action Button (Mobile) */}
+        <div className="md:hidden fixed bottom-6 left-6 right-6 z-40">
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="w-full bg-blue-600 dark:bg-blue-500 text-white font-black py-4 px-4 rounded-2xl shadow-2xl shadow-blue-500/40 flex items-center justify-center gap-3 active:scale-95 transition-transform"
+          >
+            <Search className="w-5 h-5" />
+            <span>Validate Account Now</span>
+          </button>
         </div>
 
-        <FAQSection faqs={faqs} />
-
-        <div className="mt-12 text-center">
-            <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" />
-        </div>
+        {/* Spacer for sticky button */}
+        <div className="md:hidden h-20"></div>
       </div>
-
-      {/* Floating Action Button (Mobile) */}
-      <div className="md:hidden fixed bottom-6 left-6 right-6 z-40">
-        <button 
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="w-full bg-blue-600 dark:bg-blue-500 text-white font-black py-4 px-4 rounded-2xl shadow-2xl shadow-blue-500/40 flex items-center justify-center gap-3 active:scale-95 transition-transform"
-        >
-          <Search className="w-5 h-5" />
-          <span>Validate Account Now</span>
-        </button>
-      </div>
-
-      {/* Spacer for sticky button */}
-      <div className="md:hidden h-20"></div>
-      
-      </div> {/* End order-3 w-full flex flex-col */}
     </div>
   );
 }

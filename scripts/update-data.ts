@@ -69,9 +69,7 @@ async function updateData() {
           city: titleCaseCity,
           state: item.state,
           type: 'ACH',
-          address: 'Headquarters / Main Branch',
-          phone: 'Check Online',
-          zip: resolvedZip,
+          zip: resolvedZip === 'Unknown' ? '' : resolvedZip,
         });
       }
     });
@@ -95,9 +93,7 @@ async function updateData() {
           city: titleCaseCity,
           state: item.state,
           type: 'WIRE',
-          address: 'Headquarters / Main Branch',
-          phone: 'Check Online',
-          zip: resolvedZip,
+          zip: resolvedZip === 'Unknown' ? '' : resolvedZip,
         });
       }
     });
@@ -112,9 +108,7 @@ async function updateData() {
           city: over.city,
           state: over.state,
           type: 'Fedwire / ACH',
-          address: 'Federal Reserve Bank',
-          phone: 'Check Online',
-          zip: resolvedZip
+          zip: resolvedZip === 'Unknown' ? '' : resolvedZip
        });
     });
 
