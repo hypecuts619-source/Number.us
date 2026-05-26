@@ -14,6 +14,7 @@ import { useFavorites } from '../hooks/useFavorites';
 import { useRecentlyViewed } from '../hooks/useRecentlyViewed';
 import { Heart, Clock, ArrowRight, Search } from 'lucide-react';
 import DataIntegrityBadge from '../components/DataIntegrityBadge';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function Home() {
   const topBanks = getTopSearchedBanks();
@@ -39,6 +40,21 @@ export default function Home() {
         description="Instantly find and verify any US bank routing number. Run client-side Modulo 10 checksum validation to prevent transfer errors. 100% secure."
         canonicalUrl="/"
       >
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "USRoutingNumber.com Verification Engine",
+              "url": "https://usroutingnumber.com",
+              "applicationCategory": "FinanceApplication",
+              "operatingSystem": "All",
+              "browserRequirements": "Requires JavaScript. Requires HTML5.",
+              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+              "featureList": "Client-side Modulo 10 check-digit validation, offline local storage tracking, sub-millisecond bank directory search filtering."
+            }
+          `}
+        </script>
         <script type="application/ld+json">
           {generateWebSiteSchema()}
         </script>
@@ -277,6 +293,10 @@ export default function Home() {
             </Link>
           </div>
 
+          <div className="mt-8">
+            <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="rectangle" />
+          </div>
+
                   </aside>
       </div>
 
@@ -315,6 +335,10 @@ export default function Home() {
         </div>
 
         <FAQSection faqs={faqs} />
+
+        <div className="mt-12 text-center">
+            <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" />
+        </div>
       </div>
 
       {/* Floating Action Button (Mobile) */}
