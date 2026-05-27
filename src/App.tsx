@@ -59,6 +59,7 @@ import RoutingNumberSecurityProtocols from './pages/RoutingNumberSecurityProtoco
 import AnatomyOfACheck from './pages/AnatomyOfACheck';
 import InternationalVsDomesticRouting from './pages/InternationalVsDomesticRouting';
 import UnderstandingTheModulus10Algorithm from './pages/UnderstandingTheModulus10Algorithm';
+import DigitalBankingShift2026 from './pages/DigitalBankingShift2026';
 
 import { Toaster } from 'sonner';
 import { ThemeProvider } from './ThemeContext';
@@ -122,6 +123,7 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
               <Route path="/blog/anatomy-of-a-check" element={<AnatomyOfACheck />} />
               <Route path="/blog/international-vs-domestic-routing" element={<InternationalVsDomesticRouting />} />
               <Route path="/blog/understanding-modulus-10-algorithm" element={<UnderstandingTheModulus10Algorithm />} />
+              <Route path="/blog/digital-banking-shift-2026" element={<DigitalBankingShift2026 />} />
 
               <Route path="/credit-unions" element={<CreditUnionDirectory />} />
               <Route path="/glossary/:slug" element={<GlossaryTerm />} />

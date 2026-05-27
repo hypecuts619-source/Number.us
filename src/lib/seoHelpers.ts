@@ -1,9 +1,15 @@
+export const ensureMetaDescriptionLength = (text: string): string => {
+  if (text.length <= 155) return text;
+  return text.substring(0, 152).trim() + '...';
+};
+
 export const generateBankOverviewTitle = (bankName: string) => {
   return `${bankName} Routing Number Directory (Federal Reserve 2026)`;
 };
 
 export const generateBankOverviewDescription = (bankName: string) => {
-  return `Find the official 2026 routing numbers for ${bankName} across all states. Verify exact numbers for direct deposits, wire transfers, and ACH routing.`;
+  const desc = `Find the official 2026 routing numbers for ${bankName} across all states. Verify exact numbers for direct deposits, wire transfers, and ACH routing.`;
+  return ensureMetaDescriptionLength(desc);
 };
 
 export const generateBankStateTitle = (bankName: string, stateName: string) => {
@@ -11,7 +17,8 @@ export const generateBankStateTitle = (bankName: string, stateName: string) => {
 };
 
 export const generateBankStateDescription = (bankName: string, stateName: string, routingNumber: string) => {
-  return `The official 2026 Federal Reserve verified routing number for ${bankName} in ${stateName} is ${routingNumber}. Use this code for direct deposit, ACH and wire transfers.`;
+  const desc = `The official 2026 Federal Reserve verified routing number for ${bankName} in ${stateName} is ${routingNumber}. Use this code for direct deposit, ACH and wire transfers.`;
+  return ensureMetaDescriptionLength(desc);
 };
 
 export const generateLookupTitle = (routingNumber: string) => {
@@ -19,7 +26,8 @@ export const generateLookupTitle = (routingNumber: string) => {
 };
 
 export const generateLookupDescription = (routingNumber: string, bankName: string) => {
-  return `Verify if routing number ${routingNumber} belongs to ${bankName}. Check instantaneous validation status for wire transfers, ACH direct deposits and checks.`;
+  const desc = `Verify if routing number ${routingNumber} belongs to ${bankName}. Check instantaneous validation status for wire transfers, ACH direct deposits and checks.`;
+  return ensureMetaDescriptionLength(desc);
 };
 
 export const generateUniqueBankDescriptionForPage = (bankName: string, city: string, state: string, routingNumber: string, type: string, zip?: string) => {

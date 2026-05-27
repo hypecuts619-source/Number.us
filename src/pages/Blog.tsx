@@ -6,6 +6,15 @@ import glossaryData from '../data/glossaryData.json';
 
 const articles = [
   {
+    title: "The Shift to Digital Banking in 2026: Why Verifying Your Routing Number is Crucial",
+    description: "With digital migration accelerating in 2026, automated clearing and remote verifications are making correct routing numbers strictly enforced. Find out why it matters.",
+    path: "/blog/digital-banking-shift-2026",
+    date: "May 27, 2026",
+    readTime: "10 min read",
+    category: "Updates & Guides",
+    slug: "digital-banking-shift-2026"
+  },
+  {
     title: "Routing Number Changes in 2026: What You Need to Know",
     description: "The 2026 banking landscape is seeing routing numbers consolidate due to mergers. Learn what you must do to avoid failed payments.",
     path: "/routing-number-changes-2026",

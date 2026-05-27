@@ -1,9 +1,33 @@
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 export default function BreadcrumbNav({ crumbs }: { crumbs: { name: string; url: string }[] }) {
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://usroutingnumber.com/"
+      },
+      ...crumbs.map((crumb, idx) => ({
+        "@type": "ListItem",
+        "position": idx + 2,
+        "name": crumb.name,
+        "item": `https://usroutingnumber.com${crumb.url.startsWith('/') ? crumb.url : `/${crumb.url}`}`
+      }))
+    ]
+  };
+
   return (
-    <nav className="flex items-center text-sm text-slate-500 dark:text-slate-400 mb-8 overflow-x-auto whitespace-nowrap pb-2 scrollbar-none" aria-label="Breadcrumb">
+    <>
+      <Helmet>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
+      </Helmet>
+      <nav className="flex items-center text-sm text-slate-500 dark:text-slate-400 mb-8 overflow-x-auto whitespace-nowrap pb-2 scrollbar-none" aria-label="Breadcrumb">
       <Link to="/" className="hover:text-[#1e3a5f] dark:hover:text-blue-400 hover:underline font-medium shrink-0">
         Home
       </Link>
@@ -19,6 +43,7 @@ export default function BreadcrumbNav({ crumbs }: { crumbs: { name: string; url:
           )}
         </div>
       ))}
-    </nav>
+      </nav>
+    </>
   );
 }

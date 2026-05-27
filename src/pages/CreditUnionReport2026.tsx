@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
 import { generateSlug } from '../lib/generateSlug';
 import { Landmark, TrendingUp, ShieldCheck, Users, UsersRound, Wallet, PiggyBank, ArrowRight, Building2, BadgeCheck } from 'lucide-react';
 
+import { Helmet } from 'react-helmet-async';
+import { generateArticleSchema } from '../lib/seoHelpers';
+
 export default function CreditUnionReport2026() {
   const allData = getAllRoutingData();
   
@@ -31,6 +34,8 @@ export default function CreditUnionReport2026() {
         };
     });
 
+  const pageUrl = `https://usroutingnumber.com/reports/2026-us-credit-union-report`;
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 md:py-16">
       <SEO 
@@ -38,6 +43,16 @@ export default function CreditUnionReport2026() {
         description="A 1,200-word deep dive into why millions of Americans are switching from national banks to local credit unions in 2026. Includes data on the top 10 most accessible CUs."
         canonicalUrl="/reports/2026-us-credit-union-report"
       />
+      <Helmet>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: generateArticleSchema(
+            "2026 Report: The Great Migration to US Credit Unions",
+            "A 1,200-word deep dive into why millions of Americans are switching from national banks to local credit unions in 2026.",
+            pageUrl,
+            "2026-05-15"
+          )
+        }} />
+      </Helmet>
 
       <BreadcrumbNav crumbs={[
         { name: 'Reports', url: '/blog' },
