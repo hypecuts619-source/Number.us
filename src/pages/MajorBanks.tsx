@@ -7,6 +7,7 @@ import SEO from '../components/SEO';
 import { generateMajorBanksFAQs } from '../lib/faqTemplates';
 import { generateFAQSchema } from '../lib/seoHelpers';
 import FAQSection from '../components/FAQSection';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 const MAJOR_BANKS = [
   { name: 'JPMorgan Chase Bank', abbreviation: 'Chase' },
@@ -58,7 +59,6 @@ export default function MajorBanks() {
         </p>
       </div>
 
-      
       <div className="mb-8 grid md:grid-cols-2 gap-4">
         <Link to="/routing-number-validator" className="bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/30 rounded-xl p-5 hover:shadow-sm transition-all flex items-center justify-between group">
           <div>
@@ -76,7 +76,11 @@ export default function MajorBanks() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="majorbanks-hero" />
+      </div>
+
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {MAJOR_BANKS.map((bank) => {
           const slug = generateSlug(bank.name);
           return (

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { ArrowRight, BookOpen, Clock } from 'lucide-react';
 import glossaryData from '../data/glossaryData.json';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 const articles = [
   {
@@ -223,7 +224,11 @@ export default function Blog() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="blog-hero" />
+      </div>
+
+<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {articles.map((article, idx) => (
           <Link 
             to={article.path} 

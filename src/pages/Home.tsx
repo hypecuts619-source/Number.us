@@ -88,6 +88,10 @@ export default function Home() {
         </p>
       </div>
 
+      <div className="order-2 md:order-1 mb-8">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="home-hero-bottom" />
+      </div>
+
       {/* Main Action Area - Mobile Top, Desktop Below Header */}
       <div className="order-1 md:order-2 flex flex-col w-full">
         {/* 1. Favorites - High Priority Smart Access */}
@@ -289,9 +293,8 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Sidebar Ad Unit - Isolated Rectangle Placement */}
+            {/* Sidebar ad slot removed for global top/bottom placement */}
             <div className="mt-8">
-              <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="rectangle" />
             </div>
           </aside>
         </div>
@@ -332,10 +335,7 @@ export default function Home() {
 
           <FAQSection faqs={faqs} />
 
-          {/* Footer Ad Unit - Differentiated Zone ID Configuration */}
-          <div className="mt-12 text-center">
-            <AdsterraNativeSlot zoneId="YOUR_DEDICATED_HORIZONTAL_FOOTER_ZONE_ID" format="horizontal" />
-          </div>
+          {/* Footer ad slot removed for global bottom placement */}
         </div>
 
         {/* Floating Action Button (Mobile) */}

@@ -3,6 +3,7 @@ import SEO from '../components/SEO';
 import RegionalBankDirectory from '../components/RegionalBankDirectory';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import { Landmark, ShieldCheck, Info } from 'lucide-react';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function RegionalBanksLanding() {
   return (
@@ -24,7 +25,11 @@ export default function RegionalBanksLanding() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6 mb-16">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="regionalbankslanding-hero" />
+      </div>
+
+<div className="grid md:grid-cols-3 gap-6 mb-16">
         <div className="p-6 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
           <Landmark className="w-8 h-8 text-blue-600 mb-4" />
           <h3 className="font-bold mb-2">Verified Data</h3>

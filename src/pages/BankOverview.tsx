@@ -20,6 +20,7 @@ import { toast } from 'sonner';
 import NotFound from './NotFound';
 
 import VerifyRouteCallout from '../components/VerifyRouteCallout';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function BankOverview() {
   const { bankSlug } = useParams<{ bankSlug: string }>();
@@ -138,6 +139,7 @@ export default function BankOverview() {
         <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight leading-tight max-w-2xl">
           {pageH1}
         </h1>
+
         <div className="flex gap-2">
           <button 
             onClick={handleToggleFavorite}
@@ -163,8 +165,11 @@ export default function BankOverview() {
       <RegulatoryBadge bankName={bankName} />
       <TrustIndicator />
 
-      
-      <div className="grid md:grid-cols-3 gap-12 mt-10">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="bankoverview-hero" />
+      </div>
+
+<div className="grid md:grid-cols-3 gap-12 mt-10">
         <div className="md:col-span-2">
           <div className="prose prose-base md:prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-slate-300 mb-10 max-w-none">
             <p>
@@ -255,7 +260,6 @@ export default function BankOverview() {
             </table>
           </div>
 
-          
           <FAQSection faqs={faqs} />
           
           <FeedbackModule bankName={bankName} context="Bank Overview Page" />

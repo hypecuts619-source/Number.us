@@ -3,6 +3,7 @@ import BreadcrumbNav from '../components/BreadcrumbNav';
 import { Link } from 'react-router-dom';
 import { ShieldCheck } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function AboutUs() {
   const schema = {
@@ -107,7 +108,11 @@ export default function AboutUs() {
             <li><strong>The FDIC BankFind Tool:</strong> We use FDIC-insured institution data to track bank closures, renames, and mergers in real-time.</li>
             <li><strong>NCUA Quarterly Call Reports:</strong> Our credit union directory is enriched with raw data from the National Credit Union Administration (NCUA), specifically targeting the 5300 Call Report files for the most accurate member-owned institution data.</li>
           </ul>
-        </div>
+        </div>      <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="aboutus-hero" />
+      </div>
+
+
 
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-10">Contact Us</h2>
         <p>

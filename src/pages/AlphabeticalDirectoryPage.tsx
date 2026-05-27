@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { Search, Loader2, ChevronRight, Building2 } from 'lucide-react';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 interface RoutingBank {
   routing_number: string;
@@ -76,6 +77,10 @@ export default function AlphabeticalDirectoryPage() {
             </Link>
           ))}
         </div>
+      </div>
+
+      <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="alphabeticaldirectorypage-hero" />
       </div>
 
       <div className="min-h-[400px]">

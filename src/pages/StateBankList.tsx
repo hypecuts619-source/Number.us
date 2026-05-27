@@ -4,6 +4,7 @@ import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import { getStateFullName, getAllRoutingData } from '../lib/getData';
 import { generateSlug } from '../lib/generateSlug';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function StateBankList() {
   const { state } = useParams<{ state: string }>();
@@ -88,7 +89,11 @@ export default function StateBankList() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 mb-4">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="statebanklist-hero" />
+      </div>
+
+<div className="grid grid-cols-2 gap-4 mb-4">
         <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-xl border border-green-100 dark:border-green-800">
            <div className="text-green-600 dark:text-green-400 text-sm font-bold uppercase mb-1">Status</div>
            <div className="text-3xl font-black text-slate-900 dark:text-white">Verified</div>
@@ -172,7 +177,6 @@ export default function StateBankList() {
         </div>
       </div>
 
-      
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredBanks.map(bank => (
           <Link

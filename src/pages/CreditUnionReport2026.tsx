@@ -9,6 +9,7 @@ import { Landmark, TrendingUp, ShieldCheck, Users, UsersRound, Wallet, PiggyBank
 
 import { Helmet } from 'react-helmet-async';
 import { generateArticleSchema } from '../lib/seoHelpers';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function CreditUnionReport2026() {
   const allData = getAllRoutingData();
@@ -67,6 +68,7 @@ export default function CreditUnionReport2026() {
         <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.1] mb-8">
           The Great Migration: Why Millions are Choosing Credit Unions Over "Big Tech" Banking
         </h1>
+
         <ArticleAuthorMeta 
           author="Mathew George, Head of Financial Data Architecture"
           date="May 15, 2026"
@@ -75,7 +77,11 @@ export default function CreditUnionReport2026() {
         />
       </header>
 
-      <div className="prose prose-slate dark:prose-invert max-w-none">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="creditunionreport2026-hero" />
+      </div>
+
+<div className="prose prose-slate dark:prose-invert max-w-none">
         <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed mb-12 italic border-l-4 border-blue-500 pl-6">
           "The landscape of American retail banking is undergoing its most significant shift since the 2008 financial crisis. In 2026, the movement is no longer about technology—it is about trust, transparency, and a return to community-driven financial stewardship."
         </p>

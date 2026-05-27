@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import glossaryData from '../data/glossaryData.json';
 import SEO from '../components/SEO';
 import { ShieldCheck, ArrowLeft, BookOpen, ExternalLink, HelpCircle } from 'lucide-react';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function GlossaryTerm() {
   const { slug } = useParams<{ slug: string }>();
@@ -63,7 +64,11 @@ export default function GlossaryTerm() {
         </h1>
       </div>
 
-      <div className="prose prose-lg prose-slate dark:prose-invert max-w-none">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="glossaryterm-hero" />
+      </div>
+
+<div className="prose prose-lg prose-slate dark:prose-invert max-w-none">
         <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 mb-10 leading-relaxed italic text-slate-700 dark:text-slate-300">
           <BookOpen className="w-6 h-6 text-blue-600 mb-4" />
           {termData.definition}

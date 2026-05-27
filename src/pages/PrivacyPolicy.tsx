@@ -1,5 +1,6 @@
 import React from 'react';
 import SEO from '../components/SEO';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function PrivacyPolicy() {
   return (
@@ -12,7 +13,11 @@ export default function PrivacyPolicy() {
 
       <h1 className="text-3xl font-black mb-8 text-[#1e3a5f] dark:text-slate-100">Privacy Policy</h1>
       
-      <div className="prose prose-slate dark:prose-invert max-w-none space-y-6 text-slate-700 dark:text-slate-300">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="privacypolicy-hero" />
+      </div>
+
+<div className="prose prose-slate dark:prose-invert max-w-none space-y-6 text-slate-700 dark:text-slate-300">
         <p>Last Updated: {new Date().toLocaleDateString()}</p>
 
         <h2 className="text-xl font-bold text-slate-900 dark:text-white mt-8 mb-4">1. Information We Collect</h2>

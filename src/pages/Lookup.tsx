@@ -19,6 +19,7 @@ import CheckDigitVisualizer from '../components/CheckDigitVisualizer';
 import TransferCompatibilityChecker from '../components/TransferCompatibilityChecker';
 import DirectDepositFormGenerator from '../components/DirectDepositFormGenerator';
 import { ClickableRoutingNumber } from '../components/ClickableRoutingNumber';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 function isValidRoutingNumber(routingNumber: string): boolean {
   if (!/^\d{9}$/.test(routingNumber)) {
@@ -73,6 +74,7 @@ export default function Lookup() {
           <h1 className="text-2xl text-slate-500 font-bold uppercase tracking-wider mb-2">
             Routing Number Details
           </h1>
+
           <div className="mb-6 flex justify-center">
             <ClickableRoutingNumber 
               number={routingNumber || ''} 
@@ -84,8 +86,11 @@ export default function Lookup() {
             <CopyButton text={routingNumber || ''} />
           </div>
 
-          
-          <div className="flex flex-col items-center gap-4 mb-6">
+                <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="lookup-hero" />
+      </div>
+
+<div className="flex flex-col items-center gap-4 mb-6">
             {isValid ? (
               <div className="inline-block bg-yellow-50 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-400 border border-yellow-200 dark:border-yellow-800 px-4 py-2 rounded-full font-bold text-sm">
                 ✓ Mathematically Valid (Institution Unknown)
@@ -122,8 +127,6 @@ export default function Lookup() {
           </Link>
         </div>
 
-        
-        
         <div className="prose prose-base md:prose-lg text-slate-600 max-w-none mt-12 bg-slate-50 p-5 md:p-8 rounded-2xl border border-slate-100">
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-0">How routing number validation works</h2>
           <p>
@@ -185,7 +188,6 @@ export default function Lookup() {
               <CopyButton text={data.routing_number} />
             </div>
 
-                        
             <VerifiedBadge />
             <RegulatoryBadge bankName={data.bank_name} />
             <div className="max-w-md mx-auto text-left">
@@ -247,12 +249,10 @@ export default function Lookup() {
         />
       </div>
 
-      
       <TransferCompatibilityChecker routingNumberType={data.type || 'BOTH'} />
 
       <DirectDepositFormGenerator bankName={data.bank_name} routingNumber={data.routing_number} />
 
-      
       <div className="prose prose-base md:prose-lg text-slate-600 dark:text-slate-300 max-w-none mt-12 bg-white dark:bg-slate-800 p-5 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-700">
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-0">Understanding Your Validated Routing Number</h2>
         <p>

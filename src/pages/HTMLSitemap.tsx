@@ -4,6 +4,7 @@ import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import { getStates } from '../lib/getData';
 import { generateSlug } from '../lib/generateSlug';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function HTMLSitemap() {
   const states = getStates();
@@ -22,7 +23,11 @@ export default function HTMLSitemap() {
         Website Directory Structure
       </h1>
 
-      <div className="grid md:grid-cols-3 gap-12 mt-12">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="htmlsitemap-hero" />
+      </div>
+
+<div className="grid md:grid-cols-3 gap-12 mt-12">
         <section>
           <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-6 border-b pb-2">Main Navigation</h2>
           <ul className="space-y-3">

@@ -1,6 +1,7 @@
 import SEO from '../components/SEO';
 import { Link } from 'react-router-dom';
 import AccountValidator from '../components/AccountValidator';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function RoutingNumberValidator() {
   return (
@@ -31,6 +32,7 @@ export default function RoutingNumberValidator() {
         <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
           Verify any 9-digit US routing number against the official ABA module 10 checksum algorithm and check if it's currently listed in our Federal Reserve database directory.
         </p>
+
         <div className="mt-6 flex justify-center items-center gap-2 text-emerald-600 dark:text-emerald-400 font-medium bg-emerald-50 dark:bg-emerald-900/20 px-4 py-2 rounded-lg max-w-max mx-auto shadow-sm border border-emerald-100 dark:border-emerald-800">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
           Your privacy is guaranteed. This calculation is performed locally in your browser. No data is transmitted to our servers.
@@ -39,7 +41,11 @@ export default function RoutingNumberValidator() {
 
       <AccountValidator />
       
-      <div className="prose prose-base md:prose-lg text-slate-600 dark:text-slate-300 max-w-none mt-12 bg-slate-50 dark:bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="routingnumbervalidator-hero" />
+      </div>
+
+<div className="prose prose-base md:prose-lg text-slate-600 dark:text-slate-300 max-w-none mt-12 bg-slate-50 dark:bg-slate-900/50 p-6 md:p-8 rounded-2xl border border-slate-200 dark:border-slate-800">
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">How the Modulo 10 Algorithm Works</h2>
         <p>
           Our validator performs a strict mathematical test. Every valid routing number is exactly 9 digits and follows an intricate mathematical formula created by the American Bankers Association (ABA). 

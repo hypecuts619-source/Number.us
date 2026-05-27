@@ -2,6 +2,7 @@ import React from 'react';
 import SEO from '../components/SEO';
 import EmbedWidget from '../components/EmbedWidget';
 import { Mail, Globe, Share2 } from 'lucide-react';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function WebmasterTools() {
   return (
@@ -24,7 +25,11 @@ export default function WebmasterTools() {
       <EmbedWidget />
 
       <div className="mt-24 grid md:grid-cols-3 gap-12">
-        <div className="space-y-4">
+              <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="webmastertools-hero" />
+      </div>
+
+<div className="space-y-4">
           <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center text-blue-600">
             <Globe className="w-6 h-6" />
           </div>

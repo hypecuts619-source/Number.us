@@ -26,6 +26,7 @@ import CheckDigitValidation from '../components/CheckDigitValidation';
 import { generateUniqueBankDescriptionForPage } from '../lib/seoHelpers';
 
 import NotFound from './NotFound';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function BranchDetail() {
   const { bankSlug, state, city: citySlug } = useParams<{ bankSlug: string, state: string, city: string }>();
@@ -121,8 +122,11 @@ export default function BranchDetail() {
       </div>
       <TrustIndicator />
 
-      
-      <div className="grid lg:grid-cols-3 gap-12 mt-8">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="branchdetail-hero" />
+      </div>
+
+<div className="grid lg:grid-cols-3 gap-12 mt-8">
         <div className="lg:col-span-2 space-y-12">
           
           <div className="bg-blue-50 dark:bg-blue-900/10 p-6 rounded-2xl border border-blue-100 dark:border-blue-900/30 mb-8">
@@ -221,7 +225,6 @@ export default function BranchDetail() {
           
           <FeedbackModule bankName={bankName} routingNumber={primaryData.routing_number} context={`Branch Detail: ${cityTitle}, ${stateFullName}`} />
 
-          
           <div className="text-sm text-slate-400 dark:text-slate-500 border-t border-slate-200 dark:border-slate-800 pt-6">
             <p><strong>Disclaimer:</strong> {bankName} routing numbers are subject to change due to bank mergers or geographic restructuring. USRoutingNumber.com makes every effort to keep these {currentYear} records accurate using Federal Reserve data feeds.</p>
           </div>

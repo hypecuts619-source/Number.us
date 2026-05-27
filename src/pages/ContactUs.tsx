@@ -3,6 +3,7 @@ import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import { Mail, MessageSquare, Send } from 'lucide-react';
 import { toast } from 'sonner';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function ContactUs() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -37,7 +38,11 @@ export default function ContactUs() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-10 mt-12">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="contactus-hero" />
+      </div>
+
+<div className="grid md:grid-cols-3 gap-10 mt-12">
         <div className="md:col-span-1 space-y-8">
           <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700">
             <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center mb-4">

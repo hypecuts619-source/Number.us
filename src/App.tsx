@@ -68,6 +68,8 @@ import Header from './components/Header';
 import FooterLinks from './components/FooterLinks';
 import ScrollToTop from './components/ScrollToTop';
 
+import AdsterraNativeSlot from './components/AdsterraNativeSlot';
+
 // For SSR support
 export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
   return (
@@ -141,6 +143,11 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
                 <Route path="*" element={<NotFound />} />
               </Routes>
           </main>
+
+          {/* Global Ad Slot: Before Footer */}
+          <div className="w-full max-w-7xl mx-auto px-4 mt-8 mb-4 flex justify-center">
+            <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="bottom-global" />
+          </div>
 
           <footer className="bg-slate-50 dark:bg-slate-900 overflow-hidden shrink-0 mt-20 print:hidden pt-8 pb-12 px-6">
             <FooterLinks />

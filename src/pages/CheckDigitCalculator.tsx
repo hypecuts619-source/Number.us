@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Calculator, ArrowRight, RefreshCw } from 'lucide-react';
 import SEO from '../components/SEO';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function CheckDigitCalculator() {
   const [eightDigits, setEightDigits] = useState('');
@@ -58,8 +59,11 @@ export default function CheckDigitCalculator() {
         </p>
       </div>
 
-      
-      <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-12 border-2 border-slate-200 dark:border-slate-800 shadow-sm max-w-2xl mx-auto mb-16">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="checkdigitcalculator-hero" />
+      </div>
+
+<div className="bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-12 border-2 border-slate-200 dark:border-slate-800 shadow-sm max-w-2xl mx-auto mb-16">
         <form onSubmit={handleCalculate} className="space-y-6">
           <div>
             <label htmlFor="eightDigits" className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2 uppercase tracking-wider">

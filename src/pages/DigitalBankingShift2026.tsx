@@ -4,6 +4,7 @@ import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import { generateArticleSchema } from '../lib/seoHelpers';
 import { Helmet } from 'react-helmet-async';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function DigitalBankingShift2026() {
   const pageUrl = "https://usroutingnumber.com/blog/digital-banking-shift-2026";
@@ -37,7 +38,7 @@ export default function DigitalBankingShift2026() {
         <h1 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 leading-tight">
           {title}
         </h1>
-        
+
         <div className="flex items-center gap-4 text-sm text-slate-500 mb-12 pb-8 border-b border-slate-200 dark:border-slate-800">
           <time dateTime="2026-05-27" className="font-medium bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full">
             May 27, 2026
@@ -84,7 +85,11 @@ export default function DigitalBankingShift2026() {
           <Link to="/direct-deposit-routing-number" className="inline-flex items-center gap-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-6 py-3 rounded-xl font-bold text-sm hover:border-blue-500 transition-colors no-underline">
             Find Your Direct Deposit Routing Code &rarr;
           </Link>
-        </div>
+        </div>      <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="digitalbankingshift2026-hero" />
+      </div>
+
+
 
         <h2 className="text-2xl font-bold mt-12 mb-6">Using Modulo 10 as Your First Line of Defense</h2>
 

@@ -25,6 +25,7 @@ import RecentlyViewedWidget from '../components/RecentlyViewedWidget';
 import TrustIndicator from '../components/TrustIndicator';
 
 import NotFound from './NotFound';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function BankState() {
   const { bankSlug, state } = useParams<{ bankSlug: string, state: string }>();
@@ -90,7 +91,11 @@ export default function BankState() {
         {bankName} Routing Number {stateFullName} (Federal Reserve {currentYear})
       </h1>
 
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="bankstate-hero" />
+      </div>
+
+<div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
         <div className="flex flex-wrap gap-4 items-center">
           <VerifiedBadge />
           <RegulatoryBadge bankName={bankName} />
@@ -106,7 +111,6 @@ export default function BankState() {
         </button>
       </div>
 
-      
       <div className="grid lg:grid-cols-3 gap-12 mt-8">
         <div className="lg:col-span-2 space-y-12">
           
@@ -200,7 +204,6 @@ export default function BankState() {
             </p>
           </section>
 
-          
           <section className="prose prose-base md:prose-lg prose-slate dark:prose-invert text-slate-600 dark:text-slate-300 max-w-none">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white" id="routing-vs-account">Routing Number Versus Account Number</h2>
             <p>
@@ -229,7 +232,6 @@ export default function BankState() {
           
           <FeedbackModule bankName={bankName} routingNumber={primaryData.routing_number} context={`Bank State Page: ${stateFullName}`} />
 
-          
           <div className="text-sm text-slate-400 dark:text-slate-500 border-t dark:border-slate-800 pt-6 mt-8">
             <p><strong>Disclaimer:</strong> The information provided on this page regarding {bankName} is for educational purposes. Always double-check your routing number with your financial institution before initiating any major transfers.</p>
           </div>

@@ -3,6 +3,7 @@ import SEO from '../components/SEO';
 import { ShieldCheck, ArrowRight, CheckCircle, Info, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ArticleAuthorMeta from '../components/ArticleAuthorMeta';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function EssentialGuide() {
   const currentYear = new Date().getFullYear();
@@ -54,7 +55,7 @@ export default function EssentialGuide() {
         <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-tight mb-6">
           How to Find and Verify US Routing Numbers: The {currentYear} Essential Guide
         </h1>
-        
+
         <ArticleAuthorMeta 
           date="May 10, 2026" 
           readTime="12 min read" 
@@ -63,7 +64,11 @@ export default function EssentialGuide() {
         />
       </div>
 
-      <div className="prose prose-lg prose-slate dark:prose-invert max-w-none">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="essentialguide-hero" />
+      </div>
+
+<div className="prose prose-lg prose-slate dark:prose-invert max-w-none">
         <p className="lead text-xl text-slate-600 dark:text-slate-300">
           In the modern financial landscape, the 9-digit American Bankers Association (ABA) routing transit number (RTN) remains the backbone of the United States payment system. Whether you're setting up a new direct deposit or sending a high-value wire transfer, one digit out of place can lead to delayed funds or expensive return fees.
         </p>

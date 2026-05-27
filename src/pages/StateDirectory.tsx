@@ -4,6 +4,7 @@ import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import { getStateFullName, getAllRoutingData } from '../lib/getData';
 import { MapPin } from 'lucide-react';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 const STATES = [
   'AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY',
@@ -42,8 +43,11 @@ export default function StateDirectory() {
         </p>
       </div>
 
-      
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="statedirectory-hero" />
+      </div>
+
+<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {STATES.map(state => (
            <Link 
              key={state} 

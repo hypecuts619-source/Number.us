@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
 import SEO from '../components/SEO';
 import { Helmet } from 'react-helmet-async';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function NotFound() {
   return (
@@ -21,7 +22,7 @@ export default function NotFound() {
         <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed">
           The routing number or page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
         </p>
-        
+
         <div className="w-full max-w-xl mx-auto mb-10 bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800">
           <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-4">Try searching instead:</h3>
           <SearchBar />
@@ -40,7 +41,11 @@ export default function NotFound() {
           >
             Browse Major Banks
           </Link>
-        </div>
+        </div>      <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="notfound-hero" />
+      </div>
+
+
       </div>
     </div>
   );

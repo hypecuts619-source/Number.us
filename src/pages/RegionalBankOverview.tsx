@@ -6,6 +6,7 @@ import { ShieldCheck, Share2, Copy, Check, Heart } from 'lucide-react';
 import { toast } from 'sonner';
 import { useFavorites } from '../hooks/useFavorites';
 import { ClickableRoutingNumber } from '../components/ClickableRoutingNumber';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function RegionalBankOverview() {
   const { bankSlug } = useParams<{ bankSlug: string }>();
@@ -175,7 +176,11 @@ export default function RegionalBankOverview() {
         </div>
       </div>
 
-      <div className="prose prose-lg prose-slate dark:prose-invert max-w-none mb-10 min-h-[120px]">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="regionalbankoverview-hero" />
+      </div>
+
+<div className="prose prose-lg prose-slate dark:prose-invert max-w-none mb-10 min-h-[120px]">
         <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
           {bank.description} To ensure secure and rapid wire transfers, ACH deposits, and general financial processes, using the correct 9-digit ABA routing number is crucial. Here is the verified routing data for {bank.bankName} headquartered in {bank.state}.
         </p>

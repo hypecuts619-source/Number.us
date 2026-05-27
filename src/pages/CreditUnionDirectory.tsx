@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import banksData from '../data/banksData.json';
 import { ShieldCheck, Landmark } from 'lucide-react';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function CreditUnionDirectory() {
   const creditUnions = banksData.filter(b => b.institutionType === 'Credit Union');
@@ -27,7 +28,11 @@ export default function CreditUnionDirectory() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="credituniondirectory-hero" />
+      </div>
+
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {creditUnions.length > 0 ? (
           creditUnions.map((cu) => (
             <Link 

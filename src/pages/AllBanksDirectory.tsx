@@ -4,6 +4,7 @@ import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
 import { getAllRoutingData } from '../lib/getData';
 import { generateSlug } from '../lib/generateSlug';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function AllBanksDirectory() {
   const allBanks = useMemo(() => {
@@ -61,14 +62,17 @@ export default function AllBanksDirectory() {
         ))}
       </div>
 
-      
       <div className="space-y-16">
         {banksByLetter.map(([letter, banks]) => (
           <section key={letter} id={`letter-${letter}`} className="scroll-mt-24">
             <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-6 border-b-2 border-slate-200 dark:border-slate-800 pb-2">
               {letter}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="allbanksdirectory-hero" />
+      </div>
+
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {banks.map(bank => (
                 <Link
                   key={bank}

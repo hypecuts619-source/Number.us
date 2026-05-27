@@ -6,6 +6,7 @@ import BreadcrumbNav from '../components/BreadcrumbNav';
 import { getAllRoutingData } from '../lib/getData';
 import { generateSlug } from '../lib/generateSlug';
 import { MapPin, Building2, Search } from 'lucide-react';
+import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function CaliforniaRoutingNumbers() {
   const data = getAllRoutingData();
@@ -47,8 +48,13 @@ export default function CaliforniaRoutingNumbers() {
           <p className="text-xl md:text-2xl text-blue-100 opacity-90 leading-relaxed mb-8">
             Complete database of financial institutions in the Golden State. Access verified routing codes for ACH, Wire, and Direct Deposit.
           </p>
+
           <div className="flex flex-wrap gap-4">
-             <div className="bg-white/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/20">
+                   <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">
+        <AdsterraNativeSlot zoneId="6948551188cd9c3d25dbc16afc6eb8f4" format="horizontal" uniqueId="californiaroutingnumbers-hero" />
+      </div>
+
+<div className="bg-white/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/20">
                 <span className="block text-blue-200 text-xs font-bold uppercase tracking-widest mb-1">Records Found</span>
                 <span className="text-2xl font-black">All Verified</span>
              </div>
@@ -60,7 +66,6 @@ export default function CaliforniaRoutingNumbers() {
         </div>
       </div>
 
-      
       <div className="grid lg:grid-cols-3 gap-12">
         <div className="lg:col-span-2">
           <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
