@@ -10,6 +10,7 @@ import { Landmark, TrendingUp, ShieldCheck, Users, UsersRound, Wallet, PiggyBank
 import { Helmet } from 'react-helmet-async';
 import { generateArticleSchema } from '../lib/seoHelpers';
 import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
+import LookupCTA from '../components/LookupCTA';
 
 export default function CreditUnionReport2026() {
   const allData = getAllRoutingData();
@@ -182,6 +183,7 @@ export default function CreditUnionReport2026() {
           © 2026 USRoutingNumber.com Special Report Series
         </p>
       </footer>
-    </div>
+            <LookupCTA />
+      </div>
   );
 }

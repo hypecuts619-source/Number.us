@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Clock, ArrowRight } from 'lucide-react';
 import ArticleAuthorMeta from '../components/ArticleAuthorMeta';
 import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
+import LookupCTA from '../components/LookupCTA';
 
 export default function RejectedRoutingFix() {
   return (
@@ -95,6 +96,7 @@ export default function RejectedRoutingFix() {
           </Link>
           
         </div>
+              <LookupCTA />
       </div>
     </div>
   );

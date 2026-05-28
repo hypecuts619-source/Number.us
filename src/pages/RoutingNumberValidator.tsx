@@ -2,6 +2,7 @@ import SEO from '../components/SEO';
 import { Link } from 'react-router-dom';
 import AccountValidator from '../components/AccountValidator';
 import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
+import LookupCTA from '../components/LookupCTA';
 
 export default function RoutingNumberValidator() {
   return (
@@ -93,6 +94,7 @@ export default function RoutingNumberValidator() {
             <span className="text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform">&rarr;</span>
           </Link>
         </div>
+              <LookupCTA />
       </div>
     </div>
   );

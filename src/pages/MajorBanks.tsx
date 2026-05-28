@@ -8,6 +8,7 @@ import { generateMajorBanksFAQs } from '../lib/faqTemplates';
 import { generateFAQSchema } from '../lib/seoHelpers';
 import FAQSection from '../components/FAQSection';
 import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
+import LookupCTA from '../components/LookupCTA';
 
 const MAJOR_BANKS = [
   { name: 'JPMorgan Chase Bank', abbreviation: 'Chase' },
@@ -105,6 +106,7 @@ export default function MajorBanks() {
 
       <div className="mt-16 bg-white border border-slate-200 rounded-3xl p-8 md:p-12 shadow-sm">
         <FAQSection faqs={faqs} />
+              <LookupCTA />
       </div>
     </div>
   );

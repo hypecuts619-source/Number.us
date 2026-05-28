@@ -5,6 +5,7 @@ import BreadcrumbNav from '../components/BreadcrumbNav';
 import { generateArticleSchema } from '../lib/seoHelpers';
 import { Helmet } from 'react-helmet-async';
 import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
+import LookupCTA from '../components/LookupCTA';
 
 export default function DigitalBankingShift2026() {
   const pageUrl = "https://usroutingnumber.com/blog/digital-banking-shift-2026";
@@ -114,6 +115,7 @@ export default function DigitalBankingShift2026() {
         <Link to="/blog" className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-colors font-medium">
           &larr; Back to all Guides
         </Link>
+              <LookupCTA />
       </div>
     </div>
   );

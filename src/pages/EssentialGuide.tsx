@@ -4,6 +4,7 @@ import { ShieldCheck, ArrowRight, CheckCircle, Info, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ArticleAuthorMeta from '../components/ArticleAuthorMeta';
 import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
+import LookupCTA from '../components/LookupCTA';
 
 export default function EssentialGuide() {
   const currentYear = new Date().getFullYear();
@@ -171,6 +172,7 @@ export default function EssentialGuide() {
             <span className="text-xs text-slate-500">How to handle Florida-specific ACH and Wire routing.</span>
           </Link>
         </div>
+              <LookupCTA />
       </div>
     </div>
   );

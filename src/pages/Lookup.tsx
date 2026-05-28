@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useMemo, useEffect } from 'react';
-import { MapPin, Phone, ExternalLink } from 'lucide-react';
+import { MapPin, Phone, ExternalLink, BookOpen } from 'lucide-react';
 import { getRoutingByNumber, getStateFullName, getRelatedBanks } from '../lib/getData';
 import { getFederalReserveDistrict } from '../lib/fedDistrict';
 import { generateLookupTitle, generateLookupDescription, generateFAQSchema, generateFinancialInstitutionSchema } from '../lib/seoHelpers';
@@ -306,6 +306,39 @@ export default function Lookup() {
         <p>
           Whether you are submitting authorization forms for a new corporate paycheck direct deposit, configuring recurring mortgage drafts via an Automated Clearing House (ACH) portal, or wiring emergency funds domestically across state lines, possessing an accurate routing numeric sequence is paramount. When in absolute doubt relative to standard ACH vs expedited wire operations, we categorically advise contacting a licensed {data.bank_name} banking representative physically stationed in {data.city}, {getStateFullName(data.state)} to guarantee absolute transfer fulfillment.
         </p>
+      </div>
+
+      <div className="mt-12 bg-slate-50 dark:bg-slate-800/50 p-6 md:p-8 rounded-3xl border border-slate-200 dark:border-slate-700">
+        <h2 className="text-2xl font-bold mb-6 font-sans text-slate-900 dark:text-white flex items-center gap-2">
+          <BookOpen className="w-6 h-6 text-blue-600" />
+          Related Guides & Resources
+        </h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          <Link to="/ach-vs-wire-transfers" className="flex items-start gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl hover:shadow-md transition-shadow border border-slate-100 dark:border-slate-800 group">
+            <div className="flex-1">
+              <div className="font-bold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 transition-colors">ACH vs. Wire Transfers</div>
+              <div className="text-sm text-slate-500 line-clamp-2">Understand the key differences between these payment methods and when to use each for your transfers.</div>
+            </div>
+          </Link>
+          <Link to="/how-to-find-routing-number-on-check" className="flex items-start gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl hover:shadow-md transition-shadow border border-slate-100 dark:border-slate-800 group">
+            <div className="flex-1">
+              <div className="font-bold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 transition-colors">How to Find Your Routing Number</div>
+              <div className="text-sm text-slate-500 line-clamp-2">Not sure how to read your check or find your routing number without one? Read our detailed guide.</div>
+            </div>
+          </Link>
+          <Link to="/routing-vs-account-number" className="flex items-start gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl hover:shadow-md transition-shadow border border-slate-100 dark:border-slate-800 group">
+            <div className="flex-1">
+              <div className="font-bold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 transition-colors">Routing vs Account Number</div>
+              <div className="text-sm text-slate-500 line-clamp-2">Learn the difference between routing numbers and account numbers and how they work together.</div>
+            </div>
+          </Link>
+          <Link to="/rejected-routing-number-fix" className="flex items-start gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl hover:shadow-md transition-shadow border border-slate-100 dark:border-slate-800 group">
+            <div className="flex-1">
+              <div className="font-bold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 transition-colors">Fix Rejected Transactions</div>
+              <div className="text-sm text-slate-500 line-clamp-2">What happens if you use the wrong routing number? Find out how to fix rejected ACH and wire transfers.</div>
+            </div>
+          </Link>
+        </div>
       </div>
 
       <div className="mt-8 md:mt-16 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 md:p-12 shadow-sm mb-12">
