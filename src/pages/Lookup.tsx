@@ -1,6 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
 import { useMemo, useEffect } from 'react';
+import { MapPin, Phone, ExternalLink } from 'lucide-react';
 import { getRoutingByNumber, getStateFullName, getRelatedBanks } from '../lib/getData';
+import { getFederalReserveDistrict } from '../lib/fedDistrict';
 import { generateLookupTitle, generateLookupDescription, generateFAQSchema, generateFinancialInstitutionSchema } from '../lib/seoHelpers';
 import { generateLookupFAQs } from '../lib/faqTemplates';
 import { generateSlug } from '../lib/generateSlug';
@@ -228,16 +230,42 @@ export default function Lookup() {
                </div>
              </div>
              <div>
-               <div className="text-sm text-slate-500 font-semibold mb-1 uppercase">Location</div>
-               <div className="text-lg font-medium text-slate-800">
+               <div className="text-sm text-slate-500 font-semibold mb-1 uppercase">Location (Main Office)</div>
+               <div className="text-lg font-medium text-slate-800 dark:text-slate-200">
+                 {data.address && data.address !== 'Unknown' && <div className="block">{data.address}</div>}
                  {data.city}, {getStateFullName(data.state)} {data.zip && data.zip !== 'Unknown' ? data.zip : ''}
                </div>
+               <a 
+                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(data.bank_name + ' ' + (data.address || '') + ' ' + data.city + ' ' + data.state)}`} 
+                 target="_blank" 
+                 rel="noreferrer"
+                 className="flex items-center gap-1 text-sm text-blue-600 hover:underline mt-2 font-medium"
+               >
+                 <MapPin className="w-4 h-4" /> View on Map
+               </a>
+               <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-snug">
+                 * This is the bank's main corporate office or processing center associated with this FedACH routing number. For local branches, please visit the bank's official website.
+               </p>
              </div>
              <div>
-               <div className="text-sm text-slate-500 font-semibold mb-1 uppercase">Phone Number</div>
-               <div className="text-lg font-medium text-slate-800">
-                 {data.phone || 'Check Online'}
-               </div>
+               <div className="text-sm text-slate-500 font-semibold mb-1 uppercase">Contact Support</div>
+               {data.phone && data.phone !== 'Unknown' ? (
+                 <a href={`tel:${data.phone.replace(/\D/g, '')}`} className="text-lg font-medium text-blue-600 hover:underline flex items-center gap-2">
+                   <Phone className="w-5 h-5" /> {data.phone}
+                 </a>
+               ) : (
+                 <div className="text-lg font-medium text-slate-800 dark:text-slate-200">
+                   Check Online
+                 </div>
+               )}
+               <a
+                 href={`https://www.google.com/search?q=${encodeURIComponent(data.bank_name + ' official site customer support')}`}
+                 target="_blank"
+                 rel="noreferrer"
+                 className="inline-flex items-center justify-center w-full mt-4 bg-slate-900 dark:bg-blue-600 text-white py-3 px-4 rounded-xl font-bold hover:bg-slate-800 dark:hover:bg-blue-700 transition-colors gap-2"
+               >
+                 <ExternalLink className="w-4 h-4" /> Official Website Support
+               </a>
              </div>
           </div>
         </div>
@@ -263,6 +291,12 @@ export default function Lookup() {
         <p>
           Behind the scenes, the first eight integers denote the localized Federal Reserve sorting territory alongside the specific institutional identifier. The critical 9th digit serves solely as an automated mathematical checksum. By applying a meticulously weighted formula (multiplying specific digits by 3, 7, and 1 respectively), banking software can instantaneously detect human transcription errors, thereby blocking the transaction from initiating until the data is manually corrected.
         </p>
+
+        <div className="my-6 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-600 p-4 rounded-r-xl">
+          <p className="m-0 font-medium text-blue-900 dark:text-blue-100">
+            <strong>Federal Reserve District Context:</strong> This number is used for Federal Reserve processing primarily within the <strong>{getFederalReserveDistrict(data.routing_number)}</strong> district.
+          </p>
+        </div>
 
         {data.routing_number && /^\d{9}$/.test(data.routing_number) && (
           <CheckDigitVisualizer routingNumber={data.routing_number} />
