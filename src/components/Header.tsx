@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Landmark } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 
 export default function Header() {
@@ -21,8 +21,9 @@ export default function Header() {
   return (
     <header className="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 shrink-0 sticky top-0 z-50 shadow-sm dark:shadow-none">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link to="/" onClick={closeMenu} className="text-2xl font-black text-[#1e3a5f] dark:text-blue-400 tracking-tight z-50 relative">
-          USRouting<span className="text-blue-600 dark:text-blue-300">Number.com</span>
+        <Link to="/" onClick={closeMenu} className="flex items-center gap-2 text-2xl font-black text-[#1e3a5f] dark:text-blue-400 tracking-tight z-50 relative">
+          <Landmark className="w-7 h-7 text-blue-600 dark:text-blue-400" />
+          <span>USRouting<span className="text-blue-600 dark:text-blue-300">Number.com</span></span>
         </Link>
         
         {/* Desktop Nav */}

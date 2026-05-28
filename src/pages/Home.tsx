@@ -35,6 +35,10 @@ export default function Home() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 md:py-12 relative flex flex-col">
+      {/* Subtle Premium Background Effect */}
+      <div className="absolute top-0 left-0 w-full h-[600px] bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none z-0 mix-blend-overlay"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-blue-600/5 dark:bg-blue-500/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
+
       <SEO 
         title="US Routing Number Lookup: Instant Check & Verification"
         description="Instantly find and verify any US bank routing number. Run client-side Modulo 10 checksum validation to prevent transfer errors. 100% secure."
@@ -76,16 +80,35 @@ export default function Home() {
       </SEO>
 
       {/* Header - Fixed Intent Alignment to Prevent Search Snippet Overrides */}
-      <div className="order-2 md:order-1 text-center md:text-left mb-8 md:mb-12 mt-8 md:mt-0">
-        <div className="mb-4">
+      <div className="order-2 md:order-1 text-center mb-8 md:mb-14 mt-8 md:mt-4 relative z-10">
+        <div className="mb-6 flex justify-center">
           <DataIntegrityBadge />
         </div>
-        <h1 className="text-3xl md:text-6xl font-black mb-4 text-slate-900 dark:text-white tracking-tight leading-tight">
-          US Routing Number <span className="text-blue-600 dark:text-blue-400">Lookup & Verify</span>
+        <h1 className="text-4xl md:text-7xl font-black mb-6 text-slate-900 dark:text-white tracking-tight leading-[1.1]">
+          US Routing Number <br className="hidden md:block" />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+            Lookup & Verify
+          </span>
         </h1>
-        <p className="text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto md:mx-0">
+        <p className="text-lg md:text-2xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto font-medium">
           Instantly access verified routing data for 2026. Secure, authorized Federal Reserve records at your fingertips.
         </p>
+        
+        {/* Subtle Trust Indicators */}
+        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mt-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+          <div className="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-300">
+            <svg className="w-5 h-5 text-slate-900 dark:text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+            256-Bit Secure
+          </div>
+          <div className="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-300">
+            <svg className="w-5 h-5 text-slate-900 dark:text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+            FedACH Synced
+          </div>
+          <div className="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-300">
+            <svg className="w-5 h-5 text-slate-900 dark:text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Sub-millisecond Search
+          </div>
+        </div>
       </div>
 
       <div className="order-2 md:order-1 mb-8">
@@ -131,15 +154,17 @@ export default function Home() {
         ) : null}
 
         {/* 2. Primary Search */}
-        <div className="mb-8 md:mb-12 relative z-20">
-          <div className="bg-white dark:bg-slate-800/40 p-6 md:p-10 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-2xl shadow-slate-200/50 dark:shadow-none">
-            <div className="flex items-center gap-2 mb-6">
-              <span className="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-[0.2em] bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full">Secure Lookup</span>
-              <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800"></div>
+        <div className="mb-8 md:mb-16 relative z-20">
+          <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-8 md:p-12 rounded-[2.5rem] border border-white dark:border-slate-700 shadow-2xl shadow-blue-900/10 dark:shadow-none relative group">
+            {/* Subtle glow behind the search box */}
+            <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-tr from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -z-10"></div>
+            
+            <div className="flex items-center gap-2 mb-8 justify-center">
+              <span className="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-[0.2em] bg-blue-50 dark:bg-blue-900/30 px-4 py-1.5 rounded-full ring-1 ring-blue-100 dark:ring-blue-800">Bank & Routing Directory Search</span>
             </div>
             <SearchBar />
-            <p className="text-center mt-6 text-xs font-medium text-slate-400 dark:text-slate-500">
-              Search by institution name, routing number, or location.
+            <p className="text-center mt-6 text-sm font-medium text-slate-500 dark:text-slate-400">
+              Type <strong className="text-slate-700 dark:text-slate-300">bank name</strong>, <strong className="text-slate-700 dark:text-slate-300">9-digit number</strong>, or <strong className="text-slate-700 dark:text-slate-300">city</strong>
             </p>
           </div>
         </div>
@@ -340,13 +365,21 @@ export default function Home() {
 
         {/* Floating Action Button (Mobile) */}
         <div className="md:hidden fixed bottom-6 left-6 right-6 z-40">
-          <button 
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="w-full bg-blue-600 dark:bg-blue-500 text-white font-black py-4 px-4 rounded-2xl shadow-2xl shadow-blue-500/40 flex items-center justify-center gap-3 active:scale-95 transition-transform"
-          >
-            <Search className="w-5 h-5" />
-            <span>Validate Account Now</span>
-          </button>
+          <div className="relative group">
+            {/* Backdrop glow */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl blur opacity-30 group-hover:opacity-70 transition duration-500"></div>
+            <button 
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                // Optional: Focus the search bar after scrolling
+                setTimeout(() => document.querySelector('input[type="text"]')?.focus(), 500);
+              }}
+              className="relative w-full bg-slate-900/90 dark:bg-slate-800/90 backdrop-blur-md border border-slate-700/50 text-white font-black py-4 px-4 rounded-2xl shadow-2xl flex items-center justify-center gap-3 active:scale-95 transition-transform"
+            >
+              <Search className="w-5 h-5 text-blue-400" />
+              <span>Validate Account Now</span>
+            </button>
+          </div>
         </div>
 
         {/* Spacer for sticky button */}
