@@ -9,15 +9,17 @@
     "preview": "NODE_ENV=production node dist/server.cjs",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
-    "sitemap": "node scripts/generate-sitemap.js",
+    "sitemap": "tsx scripts/generate-sitemap.ts",
     "update-data": "tsx scripts/update-data.ts",
     "start": "NODE_ENV=production node dist/server.cjs"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
     "@tailwindcss/vite": "^4.1.14",
+    "@types/compression": "^1.8.1",
     "@vitejs/plugin-react": "^5.0.4",
     "clsx": "^2.1.1",
+    "compression": "^1.8.1",
     "csv-parse": "^6.2.1",
     "dotenv": "^17.2.3",
     "express": "^4.22.1",

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BadgeCheck, XCircle, AlertCircle } from 'lucide-react';
 import { getRoutingByNumber } from '../lib/getData';
+import { trackRoutingLookup } from '../lib/analytics';
 
 function isValidRoutingNumberChecksum(routingNumber: string): boolean {
   if (!/^\d{9}$/.test(routingNumber)) return false;
@@ -56,6 +57,12 @@ export default function AccountValidator() {
         bankName
       });
       setIsLoading(false);
+
+      // Track the validation execution
+      trackRoutingLookup(
+        routingNumber.length,
+        isRoutingValidFormat ? 'success' : 'error'
+      );
     }, 400);
   };
 

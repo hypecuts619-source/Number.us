@@ -41,18 +41,40 @@ export default function CreditUnionReport2026() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 md:py-16">
       <SEO 
-        title="2026 Report: The Great Migration to US Credit Unions | Market Analysis"
-        description="A 1,200-word deep dive into why millions of Americans are switching from national banks to local credit unions in 2026. Includes data on the top 10 most accessible CUs."
+        title="Top 10 US Credit Unions in 2026: Migration Report"
+        description="Discover why millions are shifting to credit unions. NCUA data reveals the best accessible branches with no big-tech banking in 2026."
         canonicalUrl="/reports/2026-us-credit-union-report"
       />
       <Helmet>
         <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: generateArticleSchema(
-            "2026 Report: The Great Migration to US Credit Unions",
-            "A 1,200-word deep dive into why millions of Americans are switching from national banks to local credit unions in 2026.",
-            pageUrl,
-            "2026-05-15"
-          )
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Article",
+                "mainEntityOfPage": {
+                  "@type": "WebPage",
+                  "@id": pageUrl
+                },
+                "headline": "Top 10 US Credit Unions in 2026: Migration Report",
+                "description": "Discover why millions are shifting to credit unions. NCUA data reveals the best accessible branches with no big-tech banking in 2026.",
+                "author": {
+                  "@type": "Organization",
+                  "name": "USRoutingNumber.com Editorial Team"
+                },
+                "publisher": {
+                  "@type": "Organization",
+                  "name": "USRoutingNumber.com",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://usroutingnumber.com/logo.png"
+                  }
+                },
+                "datePublished": "2026-05-15",
+                "dateModified": "2026-05-15"
+              }
+            ]
+          })
         }} />
       </Helmet>
 

@@ -1,0 +1,32 @@
+# usroutingnumber.com
+
+> Free, secure, and local-first US bank routing number lookup and validation utility running entirely client-side.
+
+## Core Capabilities
+- **Instant Validation:** Implements a strict Modulo 10 checksum verification engine directly in the browser.
+- **Privacy-First:** Processes and authenticates all inputs client-side. Zero routing numbers or bank account details are ever sent to a server, logged, or tracked.
+- **Federal Reserve Database:** Pre-compiled baseline dataset containing 17,777 verified active Federal Reserve routing strings (2026 dataset).
+- **Offline-First:** High-performance local caching layers allow looking up routes and verifying check digits with zero server latency.
+
+## Architecture & Hosting
+- **Edge Deployment:** Hosted globally on Cloudflare Workers for near-zero TTFB (Time to First Byte).
+- **State Management:** Fully client-side React + TypeScript lookup matrix.
+- **Dynamic Routing:** Supports static routing structures for high-intent landing pages, states, and individual bank directories without central database overhead.
+
+## Key URL Schemes & Map
+
+### Tools & Core Utilities
+- `/` - Main interactive verification dashboard, input widget, and real-time Modulo 10 check-digit engine.
+- `/states` - Complete geographical matrix index of banking entities organized by state.
+- `/banks` - Global alphabetical index directory of all listed US financial institutions.
+
+### Technical & Financial Resources
+- `/how-to-wire-money` - Exhaustive procedural guide on executing domestic wire transfers safely using ABA routing codes.
+- `/international-wire-guide` - Comprehensive technical breakdown of SWIFT, IBAN, and cross-border routing mechanics.
+- `/reports/2026-us-credit-union-report` - Statistical review and NCUA data breakdown of contemporary US credit union routing footprints.
+
+## Technical Validation Specs
+For AI agents looking to replicate or interface with our validation methodology:
+- **Algorithm:** Standard routing transit number (RTN) check digit validation.
+- **Formula:** $3(d_1 + d_4 + d_7) + 7(d_2 + d_5 + d_8) + (d_3 + d_6 + d_9) \pmod{10} = 0$
+- **Payload Constraints:** Inputs must strictly consist of exactly 9 numeric digits. Any non-numeric characters should be scrubbed client-side prior to evaluation.

@@ -364,7 +364,7 @@ export default function Home() {
         </div>
 
         {/* Floating Action Button (Mobile) */}
-        <div className="md:hidden fixed bottom-6 left-6 right-6 z-40">
+        <div className="md:hidden fixed bottom-6 left-6 right-6 z-50">
           <div className="relative group">
             {/* Backdrop glow */}
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl blur opacity-30 group-hover:opacity-70 transition duration-500"></div>
