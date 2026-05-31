@@ -372,7 +372,10 @@ export default function Home() {
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 // Optional: Focus the search bar after scrolling
-                setTimeout(() => document.querySelector('input[type="text"]')?.focus(), 500);
+                setTimeout(() => {
+                  const input = document.querySelector('input[type="text"]') as HTMLInputElement | null;
+                  input?.focus();
+                }, 500);
               }}
               className="relative w-full bg-slate-900/90 dark:bg-slate-800/90 backdrop-blur-md border border-slate-700/50 text-white font-black py-4 px-4 rounded-2xl shadow-2xl flex items-center justify-center gap-3 active:scale-95 transition-transform"
             >
