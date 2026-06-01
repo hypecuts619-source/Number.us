@@ -13,6 +13,9 @@ export default function Changes2026() {
         title="Routing Number Changes 2026 Guide & Deep Dive 2026"
         description="A comprehensive 2026 editorial guide on routing number changes 2026 guide & deep dive 2026. Discover the mechanics, history, and technical aspects of bank routing numbers."
         canonicalUrl="/routing-number-changes-2026"
+        type="article"
+        datePublished="2026-05-15T00:00:00Z"
+        dateModified="2026-06-01T00:00:00Z"
       />
 
       <div className="mb-10 lg:mb-14 not-prose">
