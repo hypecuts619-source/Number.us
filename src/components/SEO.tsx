@@ -26,7 +26,7 @@ export default function SEO({
   dateModified,
   authorName = "Stephen Sebastian"
 }: SEOProps) {
-  const currentUrl = `https://usroutingnumber.com${canonicalUrl.startsWith('/') ? canonicalUrl : `/${canonicalUrl}`}`;
+  const currentUrl = `https://usroutingnumber.com${canonicalUrl.startsWith('/') ? canonicalUrl : `/${canonicalUrl}`}`.toLowerCase();
   
   const webAppSchema = {
     "@context": "https://schema.org",

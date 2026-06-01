@@ -23,6 +23,7 @@ const staticRoutes = [
   { url: `${baseUrl}/how-to-wire-money`, priority: 0.9 },
   { url: `${baseUrl}/international-wire-guide`, priority: 0.9 },
   { url: `${baseUrl}/reports/2026-us-credit-union-report`, priority: 0.9 },
+  { url: `${baseUrl}/blog/nacha-ach-fraud-prevention-mandate-2026`, priority: 0.9 },
   { url: `${baseUrl}/how-to-find-routing-number`, priority: 0.8 },
   { url: `${baseUrl}/zelle-routing-number`, priority: 0.8 },
   { url: `${baseUrl}/routing-number-validator`, priority: 0.9 },

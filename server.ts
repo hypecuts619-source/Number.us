@@ -11,6 +11,33 @@ async function startServer() {
   const app = express();
   const PORT = 3000;
 
+  // Self-healing check for routing.json integrity
+  const publicDataPath = path.resolve(__dirname, 'public/data/routing.json');
+  let dataValid = false;
+  try {
+    if (fs.existsSync(publicDataPath)) {
+      const content = fs.readFileSync(publicDataPath, 'utf8');
+      JSON.parse(content);
+      // Ensure the file has substantial content, not truncated
+      if (content.length > 2000000) {
+        dataValid = true;
+      }
+    }
+  } catch (e) {
+    console.warn("Routing data file exists but is corrupted or truncated. Recovering...");
+  }
+
+  if (!dataValid) {
+    try {
+      console.log("Integrity test failed or routing data is missing. Initiating self-healing recovery...");
+      const { execSync } = await import('child_process');
+      execSync('npx tsx scripts/update-data.ts', { stdio: 'inherit' });
+      console.log("Self-healing: routing data successfully regenerated!");
+    } catch (err: any) {
+      console.error("Self-healing: Failed to run automatic recovery of routing data:", err);
+    }
+  }
+
   app.use(compression());
   app.use(express.json());
 
@@ -33,9 +60,25 @@ async function startServer() {
       : path.resolve(__dirname, 'dist/client/data/routing.json');
     if (fs.existsSync(dataPath)) {
       cachedRoutingData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+    } else {
+      // Fallback to checking the other potential path
+      const backupPath = process.env.NODE_ENV !== "production"
+        ? path.resolve(__dirname, 'dist/client/data/routing.json')
+        : path.resolve(__dirname, 'public/data/routing.json');
+      if (fs.existsSync(backupPath)) {
+        cachedRoutingData = JSON.parse(fs.readFileSync(backupPath, 'utf8'));
+      }
     }
   } catch(e) {
-    console.error("Failed to load routing data:", e);
+    console.error("Failed to load routing data primary path. Attempting fallback...", e);
+    try {
+      const backupPath = path.resolve(__dirname, 'public/data/routing.json');
+      if (fs.existsSync(backupPath)) {
+        cachedRoutingData = JSON.parse(fs.readFileSync(backupPath, 'utf8'));
+      }
+    } catch (err) {
+      console.error("Critical: Failed to load routing data from fallback path:", err);
+    }
   }
 
   app.use('*', async (req, res, next) => {

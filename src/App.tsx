@@ -60,6 +60,7 @@ import AnatomyOfACheck from './pages/AnatomyOfACheck';
 import InternationalVsDomesticRouting from './pages/InternationalVsDomesticRouting';
 import UnderstandingTheModulus10Algorithm from './pages/UnderstandingTheModulus10Algorithm';
 import DigitalBankingShift2026 from './pages/DigitalBankingShift2026';
+import NachaMandate2026 from './pages/NachaMandate2026';
 
 import { Toaster } from 'sonner';
 import { ThemeProvider } from './ThemeContext';
@@ -114,6 +115,7 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
                 <Route path="/regional-banks/:bankSlug" element={<RegionalBankOverview />} />
               <Route path="/how-to-find-routing-number-guide" element={<EssentialGuide />} />
               <Route path="/blog/ach-vs-wire-routing-guide" element={<ACHvsWire />} />
+              <Route path="/blog/nacha-ach-fraud-prevention-mandate-2026" element={<NachaMandate2026 />} />
               <Route path="/blog/secure-wire-transfer-guide" element={<SecureTransfers />} />
               <Route path="/blog/rejected-routing-number-troubleshooting" element={<RejectedRoutingFix />} />
 

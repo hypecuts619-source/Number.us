@@ -7,6 +7,15 @@ import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 const articles = [
   {
+    title: "The June 2026 Nacha Mandate: Why Verifying Routing Numbers Is Your Best Defense Against ACH Fraud",
+    description: "Learn why the June 2026 Nacha ACH fraud prevention mandate matters. Discover how to verify routing numbers and protect against BEC scams, payroll fraud, and credit-push attacks.",
+    path: "/blog/nacha-ach-fraud-prevention-mandate-2026",
+    date: "June 1, 2026",
+    readTime: "11 min read",
+    category: "Compliance",
+    slug: "nacha-ach-fraud-prevention-mandate-2026"
+  },
+  {
     title: "The Shift to Digital Banking in 2026: Why Verifying Your Routing Number is Crucial",
     description: "With digital migration accelerating in 2026, automated clearing and remote verifications are making correct routing numbers strictly enforced. Find out why it matters.",
     path: "/blog/digital-banking-shift-2026",
