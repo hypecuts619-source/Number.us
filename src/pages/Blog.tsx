@@ -7,6 +7,51 @@ import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 const articles = [
   {
+    title: "Chase Routing Number: List by State & How to Find [2026]",
+    description: "Find and verify Chase (JPMorgan Chase) Routing Numbers for all US states. See domestic ACH and Wire transfer codes, and learn how to find your Chase routing code.",
+    path: "/blog/chase-routing-number",
+    date: "June 2, 2026",
+    readTime: "12 min read",
+    category: "Guides",
+    slug: "chase-routing-number"
+  },
+  {
+    title: "Wells Fargo Routing Number: List by State & How to Find [2026]",
+    description: "Find and verify Wells Fargo Routing Numbers for all US states. See domestic ACH and Wire transfer codes, and learn how to find your Wells Fargo routing code.",
+    path: "/blog/wells-fargo-routing-number",
+    date: "June 2, 2026",
+    readTime: "11 min read",
+    category: "Guides",
+    slug: "wells-fargo-routing-number"
+  },
+  {
+    title: "Bank of America Routing Number: List by State & How to Find [2026]",
+    description: "Find and verify Bank of America (BofA) Routing Numbers for all US states. See domestic ACH and Wire transfer codes, and learn how to find your Bank of America routing code.",
+    path: "/blog/bank-of-america-routing-number",
+    date: "June 2, 2026",
+    readTime: "11 min read",
+    category: "Guides",
+    slug: "bank-of-america-routing-number"
+  },
+  {
+    title: "What Is a Routing Number? Complete Beginner's Guide [2026]",
+    description: "A complete, beginner-friendly guide explaining what a bank routing number is, its official definition, how routing transits function, and how to verify yours safely.",
+    path: "/blog/what-is-routing-number",
+    date: "June 2, 2026",
+    readTime: "8 min read",
+    category: "Banking Basics",
+    slug: "what-is-routing-number"
+  },
+  {
+    title: "Chime Routing Number: Partner Banks & How to Find [2026]",
+    description: "Looking for the Chime Routing Number? Find out why Chime uses Stride Bank & The Bancorp Bank for routing, copy the active 9-digit ABA codes, and see how to find yours.",
+    path: "/blog/chime-routing-number",
+    date: "June 2, 2026",
+    readTime: "9 min read",
+    category: "FinTech",
+    slug: "chime-routing-number"
+  },
+  {
     title: "The June 2026 Nacha Mandate: Why Verifying Routing Numbers Is Your Best Defense Against ACH Fraud",
     description: "Learn why the June 2026 Nacha ACH fraud prevention mandate matters. Discover how to verify routing numbers and protect against BEC scams, payroll fraud, and credit-push attacks.",
     path: "/blog/nacha-ach-fraud-prevention-mandate-2026",

@@ -40,8 +40,8 @@ export default function Home() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-blue-600/5 dark:bg-blue-500/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
 
       <SEO 
-        title="US Routing Number Lookup: Instant Check & Verification"
-        description="Instantly find and verify any US bank routing number. Run client-side Modulo 10 checksum validation to prevent transfer errors. 100% secure."
+        title="US Bank Routing Numbers 2026 | Find & Verify Any Bank Instantly"
+        description="Find routing numbers for 25,000+ US banks. Verify routing numbers instantly with our ISO checksum validator. Includes Chase, Wells Fargo, BofA, Citi, and all major banks."
         canonicalUrl="/"
       >
         {/* Unified Schema Graph to Maximize CTR and Fix Mobile Index Parsing */}

@@ -47,6 +47,71 @@ export default function HowToFind() {
 
         <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">When managing personal finances in 2026, differentiating between the varied types of routing numbers is a critical skill for avoiding crippling financial turbulence. As established, wiring funds for a down payment on a house operates on a completely separate infrastructural track than direct depositing a bi-weekly payroll. If your real estate agent requests wire instructions, you must explicitly demand the 'Wire <Link to="/routing-number-validator" className="text-blue-600 dark:text-blue-400 hover:underline">Routing Number</Link>' from your banking representative, actively specifying that it is not for <Link to="/blog/ultimate-guide-to-ach-transfers" className="text-blue-600 dark:text-blue-400 hover:underline">ACH</Link> purposes. Furthermore, when switching <Link to="/banks/a-z" className="text-blue-600 dark:text-blue-400 hover:underline">banks</Link>, managing the transition of these numbers is paramount. Consumers must maintain old accounts for at least 30 to 60 days to allow pending direct deposits and automated subscriptions to successfully clear, systematically updating their billing profiles with the new routing parameters to ensure a seamless economic transition.</p>
 
+        <h2 className="text-2xl font-bold mt-12 mb-4">How to Find Chase Routing Number [2026]</h2>
+        <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6 font-medium">Chase (JPMorgan Chase) processes millions of electronic transfers daily. If you need to locate your Chase ABA routing code, you have various direct methods:</p>
+        <ul className="list-disc pl-6 mb-6 text-slate-700 dark:text-slate-300 space-y-2 text-lg">
+          <li><strong>Chase Mobile App:</strong> Log in, tap your checking account, and select "Account Details" or "Show details". Here, you will find both your ACH routing number and your full account number.</li>
+          <li><strong>Chase Online Dashboard:</strong> Log in to chase.com, find your checking page, and click the last 4 digits of your account number under the account name. Details will expand with the full routing strings.</li>
+          <li><strong>Physical Checkbook:</strong> For Chase checking, the 9-digit code is printed at the bottom left. Popular Chase routers include <code>021000021</code> (NY) and <code>121000248</code> (CA). See the complete regional list in our <Link to="/blog/chase-routing-number" className="text-blue-600 dark:text-blue-400 hover:underline underline">Chase Routing Number Guide</Link>.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold mt-12 mb-4">How to Find Wells Fargo Routing Number [2026]</h2>
+        <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6 font-medium">Wells Fargo assigns regional ABA codes based on the state where you opened your checking account. Here is how to find yours:</p>
+        <ul className="list-disc pl-6 mb-6 text-slate-700 dark:text-slate-300 space-y-2 text-lg">
+          <li><strong>Wells Fargo Mobilization:</strong> Open the app, select your checking layout, and choose the "Routing & Account" tab to view specific ACH and Wire codes.</li>
+          <li><strong>Printed Checks:</strong> Wells Fargo routing codes are printed on checks starting with "12" or "02". See of our state-by-state list in our <Link to="/blog/wells-fargo-routing-number" className="text-blue-600 dark:text-blue-400 hover:underline underline">Wells Fargo Routing Number Guide</Link>.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold mt-12 mb-4">How to Find Bank of America Routing Number [2026]</h2>
+        <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6 font-medium">Bank of America (BofA) relies on different codes for digital ACH transfers and fast Fedwire transfers:</p>
+        <ul className="list-disc pl-6 mb-6 text-slate-700 dark:text-slate-300 space-y-2 text-lg">
+          <li><strong>BofA app:</strong> Tap your checking account, tap the "Info" section icon next to your balance summary, and check your 9-digit ACH routing code.</li>
+          <li><strong>Wire Router:</strong> Bank of America uses alternative codes for wiring money. See the exact tables inside our <Link to="/blog/bank-of-america-routing-number" className="text-blue-600 dark:text-blue-400 hover:underline underline">Bank of America Routing Number Guide</Link>.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold mt-12 mb-4">How to Find Citibank Routing Number [2026]</h2>
+        <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">Log in to the Citibank app, open your checking hub, and tap "Routing Numbers" in the account menu. Alternately, you can find the primary 9-digit transit code printed at the bottom of your checkbooks or in your monthly account PDF output.</p>
+
+        <h2 className="text-2xl font-bold mt-12 mb-4">Comparison Table: Major Bank Routing Codes [2026]</h2>
+        <div className="overflow-x-auto my-8 border border-slate-200 dark:border-slate-800 rounded-xl">
+          <table className="min-w-full divide-y divide-slate-200 dark:divide-slate-800 text-sm md:text-base">
+            <thead className="bg-slate-50 dark:bg-slate-900/50">
+              <tr>
+                <th className="px-6 py-4 text-left font-bold text-slate-900 dark:text-white uppercase tracking-wider text-xs">Bank Card Name</th>
+                <th className="px-6 py-4 text-left font-bold text-slate-900 dark:text-white uppercase tracking-wider text-xs">Primary ACH Routing</th>
+                <th className="px-6 py-4 text-left font-bold text-slate-900 dark:text-white uppercase tracking-wider text-xs">Primary Wire Routing</th>
+                <th className="px-6 py-4 text-left font-bold text-slate-900 dark:text-white uppercase tracking-wider text-xs">State Options</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-950">
+              <tr>
+                <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">JPMorgan Chase</td>
+                <td className="px-6 py-4 font-mono text-blue-600 dark:text-blue-400">021000021</td>
+                <td className="px-6 py-4 font-mono">021000021</td>
+                <td className="px-6 py-4 text-slate-500 text-xs">State variable</td>
+              </tr>
+              <tr>
+                <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">Wells Fargo</td>
+                <td className="px-6 py-4 font-mono text-blue-600 dark:text-blue-400">121000248</td>
+                <td className="px-6 py-4 font-mono">121100782</td>
+                <td className="px-6 py-4 text-slate-500 text-xs">State variable</td>
+              </tr>
+              <tr>
+                <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">Bank of America</td>
+                <td className="px-6 py-4 font-mono text-blue-600 dark:text-blue-400">026009593</td>
+                <td className="px-6 py-4 font-mono">026009593</td>
+                <td className="px-6 py-4 text-slate-500 text-xs">State variable</td>
+              </tr>
+              <tr>
+                <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">Citibank</td>
+                <td className="px-6 py-4 font-mono text-blue-600 dark:text-blue-400">021000089</td>
+                <td className="px-6 py-4 font-mono">021000089</td>
+                <td className="px-6 py-4 text-slate-500 text-xs">State variable</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">In an era defined by sophisticated cyber threats, the security surrounding electronic funds transfers and bank routing infrastructure is of paramount importance. Routing numbers, by themselves, are public information. They identify the bank, not the individual. However, when combined with a specific consumer or business account number, they form the keys to the financial kingdom. The primary vulnerability in the modern banking ecosystem is not the compromise of the fundamental <Link to="/states" className="text-blue-600 dark:text-blue-400 hover:underline">Federal Reserve</Link> clearing networks—which utilize military-grade encryption and isolated dark-fiber connections—but rather the exploitation of endpoint vulnerabilities through social engineering, phishing, and business email compromise (BEC). Attackers frequently intercept digital communications and alter routing and account numbers on invoices to divert funds to fraudulent accounts.</p>
 
         <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">When navigating the complexities of electronic funds transfer, understanding the specific mechanics of <Link to="/blog/ultimate-guide-to-ach-transfers" className="text-blue-600 dark:text-blue-400 hover:underline">ACH</Link> is vital. A standard ACH transaction involves an Originator (the person or entity initiating the transfer), an Originating Depository Financial Institution (ODFI), the ACH Operator (typically the <Link to="/states" className="text-blue-600 dark:text-blue-400 hover:underline">Federal Reserve</Link> or the Electronic Payments Network), a Receiving Depository Financial Institution (RDFI), and finally the Receiver. The <Link to="/routing-number-validator" className="text-blue-600 dark:text-blue-400 hover:underline">routing number</Link> serves as the digital address of the RDFI. Errors in this number mean the transaction is sent to the wrong bank or, more commonly, rejected by the ACH Operator entirely. In 2026, the volume of ACH transactions continues to set records, driven by the increasing digitization of business-to-business (B2B) payments and the continued decline of physical cash. As a result, ensuring the accuracy of your routing information is no longer just a matter of convenience; it is a fundamental requirement for participating in the modern economy.</p>
