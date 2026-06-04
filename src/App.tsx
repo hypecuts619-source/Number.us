@@ -66,6 +66,7 @@ import WellsFargoRoutingNumber from './pages/WellsFargoRoutingNumber';
 import BankOfAmericaRoutingNumber from './pages/BankOfAmericaRoutingNumber';
 import WhatIsRoutingNumber from './pages/WhatIsRoutingNumber';
 import ChimeRoutingNumber from './pages/ChimeRoutingNumber';
+import UserRetention from './components/UserRetention';
 
 import { Toaster } from 'sonner';
 import { ThemeProvider } from './ThemeContext';
@@ -82,6 +83,7 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
     <ThemeProvider>
         <ScrollToTop />
         <Toaster position="top-right" />
+        <UserRetention />
         <div className="min-h-screen flex flex-col font-sans bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-blue-200 dark:selection:bg-blue-900 pb-24 md:pb-0">
           <Header />
 
