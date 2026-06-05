@@ -79,20 +79,18 @@ const generateSitemap = () => {
     }
   });
 
-  // XML Generation
-  let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-  xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-
   const date = new Date().toISOString().split('T')[0];
+  const allPages: string[] = [];
 
   // 1. Static Routes
   for (const route of staticRoutes) {
-    xml += `  <url>\n`;
+    let xml = `  <url>\n`;
     xml += `    <loc>${route.url}</loc>\n`;
     xml += `    <lastmod>${date}</lastmod>\n`;
     xml += `    <changefreq>weekly</changefreq>\n`;
     xml += `    <priority>${route.priority.toFixed(1)}</priority>\n`;
     xml += `  </url>\n`;
+    allPages.push(xml);
   }
 
   // 2. Dynamic Routes
@@ -101,24 +99,53 @@ const generateSitemap = () => {
     if (url.includes('/lookup/')) priority = 0.8;
     if (url.includes('/routing-number/') && !url.includes('/states/')) priority = 0.7;
 
-    xml += `  <url>\n`;
+    let xml = `  <url>\n`;
     xml += `    <loc>${url}</loc>\n`;
     xml += `    <lastmod>${date}</lastmod>\n`;
     xml += `    <changefreq>monthly</changefreq>\n`;
     xml += `    <priority>${priority}</priority>\n`;
     xml += `  </url>\n`;
+    allPages.push(xml);
   }
 
-  xml += `</urlset>`;
+  const chunkSize = 500;
+  const numChunks = Math.ceil(allPages.length / chunkSize);
+  
+  // Clean up existing sitemap files
+  const publicDir = path.resolve('public');
+  const files = fs.readdirSync(publicDir);
+  files.forEach(file => {
+    if (file.startsWith('sitemap') && file.endsWith('.xml')) {
+      fs.unlinkSync(path.join(publicDir, file));
+    }
+  });
 
-  // Write sitemap
-  fs.writeFileSync(sitemapPath, xml, 'utf8');
-  console.log(`✅ Sitemap successfully generated with ${staticRoutes.length + urls.size} pages.`);
+  // Write chunk files
+  for (let i = 0; i < numChunks; i++) {
+    const chunkUrls = allPages.slice(i * chunkSize, (i + 1) * chunkSize);
+    let chunkXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+    chunkXml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+    chunkXml += chunkUrls.join('');
+    chunkXml += `</urlset>`;
+    
+    fs.writeFileSync(path.resolve(`public/sitemap-${i + 1}.xml`), chunkXml, 'utf8');
+  }
 
-  // Update robots.txt
-  const robotsTxt = `User-agent: *\nAllow: /\n\nSitemap: ${baseUrl}/sitemap.xml\n`;
-  fs.writeFileSync(robotsPath, robotsTxt, 'utf8');
-  console.log('🤖 robots.txt updated');
+  // Write Sitemap Index
+  let indexXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+  indexXml += `<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+  
+  for (let i = 0; i < numChunks; i++) {
+    indexXml += `  <sitemap>\n`;
+    indexXml += `    <loc>${baseUrl}/sitemap-${i + 1}.xml</loc>\n`;
+    indexXml += `    <lastmod>${date}</lastmod>\n`;
+    indexXml += `  </sitemap>\n`;
+  }
+  
+  indexXml += `</sitemapindex>`;
+  fs.writeFileSync(sitemapPath, indexXml, 'utf8');
+
+  console.log(`✅ Sitemap successfully split into ${numChunks} files with a total of ${allPages.length} pages (500 pages per file).`);
 };
 
 generateSitemap();
