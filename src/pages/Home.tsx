@@ -1,9 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useMemo, useState } from 'react';
-import SearchBar from '../components/SearchBar';
-import AccountValidator from '../components/AccountValidator';
-import CheckDiagram from '../components/CheckDiagram';
-import RegionalBankDirectory from '../components/RegionalBankDirectory';
+import { useMemo, useState, lazy, Suspense } from 'react';
 import { getTopSearchedBanks } from '../lib/getData';
 import { generateSlug } from '../lib/generateSlug';
 import { generateHomeFAQs } from '../lib/faqTemplates';
@@ -15,6 +11,12 @@ import { useRecentlyViewed } from '../hooks/useRecentlyViewed';
 import { Heart, Clock, ArrowRight, Search } from 'lucide-react';
 import DataIntegrityBadge from '../components/DataIntegrityBadge';
 import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
+
+// Lazy loaded components for better LCP
+const SearchBar = lazy(() => import('../components/SearchBar'));
+const AccountValidator = lazy(() => import('../components/AccountValidator'));
+const CheckDiagram = lazy(() => import('../components/CheckDiagram'));
+const RegionalBankDirectory = lazy(() => import('../components/RegionalBankDirectory'));
 
 export default function Home() {
   const topBanks = getTopSearchedBanks();
@@ -40,8 +42,8 @@ export default function Home() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-blue-600/5 dark:bg-blue-500/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
 
       <SEO 
-        title="US Bank Routing Numbers 2026 | Find & Verify Any Bank Instantly"
-        description="Find routing numbers for 25,000+ US banks. Verify routing numbers instantly with our ISO checksum validator. Includes Chase, Wells Fargo, BofA, Citi, and all major banks."
+        title="Routing Numbers for All US Banks [2026] | Lookup & Verify"
+        description="Lookup routing numbers for 25,000+ US banks including Chase, Wells Fargo, BofA, Citi. Verify with our free checksum validator."
         canonicalUrl="/"
       >
         {/* Unified Schema Graph to Maximize CTR and Fix Mobile Index Parsing */}
@@ -72,7 +74,20 @@ export default function Home() {
                   "contactType": "customer service"
                 }
               },
-              { ...JSON.parse(generateWebSiteSchema()), "@context": undefined, "@id": "https://usroutingnumber.com/#website" },
+              {
+                "@type": "WebSite",
+                "@id": "https://usroutingnumber.com/#website",
+                "url": "https://usroutingnumber.com/",
+                "name": "USRoutingNumber.com",
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://usroutingnumber.com/routing-number-lookup?q={search_term_string}"
+                  },
+                  "query-input": "required name=search_term_string"
+                }
+              },
               { ...JSON.parse(generateFAQSchema(faqs)), "@context": undefined, "@id": "https://usroutingnumber.com/#faq" }
             ]
           })
@@ -162,10 +177,27 @@ export default function Home() {
             <div className="flex items-center gap-2 mb-8 justify-center">
               <span className="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-[0.2em] bg-blue-50 dark:bg-blue-900/30 px-4 py-1.5 rounded-full ring-1 ring-blue-100 dark:ring-blue-800">Bank & Routing Directory Search</span>
             </div>
-            <SearchBar />
+            <Suspense fallback={<div className="h-12 bg-slate-100 dark:bg-slate-800 rounded-xl animate-pulse" />}>
+              <SearchBar />
+            </Suspense>
             <p className="text-center mt-6 text-sm font-medium text-slate-500 dark:text-slate-400">
               Type <strong className="text-slate-700 dark:text-slate-300">bank name</strong>, <strong className="text-slate-700 dark:text-slate-300">9-digit number</strong>, or <strong className="text-slate-700 dark:text-slate-300">city</strong>
             </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+              <Link to="/states" className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-xl py-3 px-4 font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm text-sm">
+                <span role="img" aria-label="bank">🏛️</span> Find by State
+              </Link>
+              <Link to="/banks" className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-xl py-3 px-4 font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm text-sm">
+                <span role="img" aria-label="bank">🏦</span> Find by Bank
+              </Link>
+              <Link to="/how-to-wire-money" className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-xl py-3 px-4 font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm text-sm">
+                <span role="img" aria-label="card">💳</span> How to Wire
+              </Link>
+              <Link to="/international-wire-guide" className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-xl py-3 px-4 font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm text-sm lg:col-span-1 col-span-2">
+                <span role="img" aria-label="earth">🌍</span> International
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -242,7 +274,9 @@ export default function Home() {
         <div className="grid lg:grid-cols-3 gap-8 md:gap-12">
           <div className="lg:col-span-2 space-y-12">
                       
-            <AccountValidator />
+            <Suspense fallback={<div className="h-48 bg-slate-100 dark:bg-slate-800 rounded-3xl animate-pulse" />}>
+              <AccountValidator />
+            </Suspense>
 
             {/* SEO Text (Pushed Down) */}
             <section className={`relative ${!isArticleExpanded ? 'max-h-[500px] overflow-hidden' : ''}`}>
@@ -252,7 +286,9 @@ export default function Home() {
                   A routing transit number (RTN) is a nine-digit code used by financial institutions in the United States to identify where an account is held. Established in 1910 by the ABA, it remains the standard for US bank identification today.
                 </p>
                 
-                <CheckDiagram />
+                <Suspense fallback={<div className="h-64 bg-slate-100 dark:bg-slate-800 rounded-2xl animate-pulse" />}>
+                  <CheckDiagram />
+                </Suspense>
 
                 <h3 className="text-xl md:text-2xl font-black text-slate-800 dark:text-white mt-12 mb-4">Verification Standards</h3>
                 <p>
@@ -272,7 +308,9 @@ export default function Home() {
               )}
             </section>
 
-            <RegionalBankDirectory />
+            <Suspense fallback={<div className="h-96 bg-slate-100 dark:bg-slate-800 rounded-3xl animate-pulse" />}>
+              <RegionalBankDirectory />
+            </Suspense>
           </div>
 
           <aside className="space-y-8">

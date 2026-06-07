@@ -264,8 +264,8 @@ export default function Blog() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <SEO 
-        title="Guides & Explanations: US Bank Routing Numbers"
-        description="Comprehensive articles to help you find and understand your bank routing numbers, account numbers, and wire transfers."
+        title="Bank Routing Number Guides [2026] | Wire Transfers & ACH"
+        description="Learn how to find your routing number, differences between ACH & wire transfers, and protect your banking details with our 2026 financial guides."
         canonicalUrl="/blog"
       />
 

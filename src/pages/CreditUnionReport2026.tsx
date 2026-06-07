@@ -41,7 +41,7 @@ export default function CreditUnionReport2026() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 md:py-16">
       <SEO 
-        title="Top 10 US Credit Unions in 2026: Migration Report"
+        title="Top 10 US Credit Unions [2026 Report] | Find Routing Numbers"
         description="Discover why millions are shifting to credit unions. NCUA data reveals the best accessible branches with no big-tech banking in 2026."
         canonicalUrl="/reports/2026-us-credit-union-report"
       />

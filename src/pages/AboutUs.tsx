@@ -35,8 +35,8 @@ export default function AboutUs() {
         </script>
       </Helmet>
       <SEO 
-        title="About Us | USRoutingNumber.com"
-        description="Learn about USRoutingNumber.com, our mission, and why you can trust our financial routing directory."
+        title="About Us | Reliable Bank Routing Number Verification"
+        description="Learn how USRoutingNumber provides accurate, verified US bank routing numbers directly from Federal Reserve data, ensuring safe and reliable money transfers."
         canonicalUrl="/about-us"
       />
 

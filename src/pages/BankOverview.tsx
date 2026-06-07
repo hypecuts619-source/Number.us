@@ -37,16 +37,16 @@ export default function BankOverview() {
 
   let pageTitle = generateBankOverviewTitle(bankName);
   let pageDesc = generateBankOverviewDescription(bankName);
-  let pageH1 = `${bankName} Routing Number Directory (Federal Reserve 2026)`;
+  let pageH1 = `${bankName} Routing Number [2026] | Find & Verify`;
   
   if (isBofA) {
     pageTitle = "Bank of America Routing Number Directory (2026) | Find by State";
     pageDesc = "Find the correct Bank of America routing number for ACH, direct deposit, and wire transfers by state. Verify your BofA ABA number instantly.";
-    pageH1 = "Bank of America (BofA) Routing Numbers by State";
+    pageH1 = "Bank of America (BofA) Routing Number [2026] | Find & Verify";
   } else if (isChase) {
     pageTitle = "Chase Bank Routing Number Directory (2026) | ACH & Wire Routes";
     pageDesc = "Get the exact JPMorgan Chase routing number for your state. Distinguish between Chase ACH, domestic wire, and SWIFT codes to prevent delays.";
-    pageH1 = "JPMorgan Chase Bank Routing Numbers";
+    pageH1 = "JPMorgan Chase Bank Routing Number [2026] | Find & Verify";
   }
 
   const favorited = isFavorite(bankSlug || '');
@@ -202,6 +202,20 @@ export default function BankOverview() {
               Directing funds blindly can lead to lost capital, bounced transfers, and severe logistical headaches. Below, we provide the most comprehensive, meticulously updated database of routing transit numbers for {bankName}, conveniently arranged and organized alphabetically by state. 
               Please be aware that <strong>ACH direct deposits</strong> (used for standard 2-3 business day transfers like paychecks) and <strong>Wire transfers</strong> (used for same-day, irrevocable transfers) sometimes necessitate entirely distinct code numbers. We highly encourage you to select your specific state from the detailed directory below to review the explicit usage guidelines, confirm compatibility, and guarantee your money successfully arrives destination without any unnecessary delays.
             </p>
+
+            <div className="bg-slate-50 dark:bg-slate-800/40 p-6 rounded-xl border border-slate-200 dark:border-slate-700 my-8 space-y-4">
+              <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mt-0 mb-4">How to Use {bankName} Routing Numbers</h3>
+              
+              <div>
+                <strong className="text-slate-900 dark:text-white">For Direct Deposit & ACH:</strong><br/>
+                When setting up payroll or automated bill pay, you must use the local, state-specific routing number corresponding to the branch where you opened your account. Look up your state in the directory below to find this number. Using a general wire routing number for ACH transfers can result in rejected payments. For more details, see our <Link to="/blog/ach-vs-wire-routing-guide" className="text-blue-600 hover:underline">ACH vs. Wire Transfer Guide</Link>.
+              </div>
+
+              <div>
+                <strong className="text-slate-900 dark:text-white">For Wire Transfers:</strong><br/>
+                Domestic wire transfers frequently rely on a single, universal national routing code (or a regional hub code) rather than your local branch's ACH code. Submitting the wrong routing type will block your funds. Review our <Link to="/how-to-wire-money" className="text-blue-600 hover:underline">How to Wire Money Guide</Link> or the <Link to="/international-wire-guide" className="text-blue-600 hover:underline">International Wire Guide</Link> to ensure secure execution.
+              </div>
+            </div>
 
             <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mt-10 mb-4 border-b dark:border-slate-700 pb-2">Extensive Overview of {bankName}</h2>
             <p className="mt-4">{bankDetails?.history}</p>
