@@ -56,13 +56,13 @@ export default function UserRetention() {
     // Show PWA install prompt slightly after it becomes available to avoid stacking 
     // too heavily with the bookmark prompt
     if (deferredPrompt) {
-      const hasSeenInstallPrompt = localStorage.getItem('hasSeenInstallPrompt');
+      const hasSeenInstallPrompt = localStorage.getItem('hasSeenInstallPrompt_v2');
       
       if (!hasSeenInstallPrompt) {
         const installTimer = setTimeout(() => {
           toast.success('Install for Offline Use', {
             description: 'Add our app to your home screen for instant routing lookups anytime.',
-            duration: 15000,
+            duration: 20000,
             position: 'bottom-center',
             action: {
               label: 'Install App',
@@ -70,17 +70,17 @@ export default function UserRetention() {
                 deferredPrompt.prompt();
                 const { outcome } = await deferredPrompt.userChoice;
                 setDeferredPrompt(null);
-                localStorage.setItem('hasSeenInstallPrompt', 'true');
+                localStorage.setItem('hasSeenInstallPrompt_v2', 'true');
               },
             },
             cancel: {
               label: 'Maybe later',
               onClick: () => {
-                localStorage.setItem('hasSeenInstallPrompt', 'true');
+                localStorage.setItem('hasSeenInstallPrompt_v2', 'true');
               }
             },
           });
-        }, 15000);
+        }, 3000);
 
         return () => clearTimeout(installTimer);
       }
