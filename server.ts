@@ -41,6 +41,16 @@ async function startServer() {
   app.use(compression());
   app.use(express.json());
 
+  // Redirect trailing slashes to prevent Google duplicate content indexing issues
+  app.use((req, res, next) => {
+    if (req.path.length > 1 && req.path.endsWith('/')) {
+      const query = req.url.slice(req.path.length);
+      const safePath = req.path.replace(/\/+$/, '');
+      return res.redirect(301, safePath + query);
+    }
+    next();
+  });
+
   let vite: any;
   if (process.env.NODE_ENV !== "production") {
     vite = await createViteServer({

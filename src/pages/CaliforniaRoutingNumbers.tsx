@@ -104,7 +104,7 @@ export default function CaliforniaRoutingNumbers() {
                {topCities.map(([city, count]) => (
                  <Link 
                   key={city}
-                  to={`/routing-number/ca/${generateSlug(city)}`}
+                  to={`/?q=${encodeURIComponent(city)}`}
                   className="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl hover:bg-blue-50 transition-colors"
                  >
                    <span className="font-medium">{city}</span>
