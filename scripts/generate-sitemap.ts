@@ -29,6 +29,8 @@ const staticRoutes = [
   { url: `${baseUrl}/blog/bank-of-america-routing-number`, priority: 0.9 },
   { url: `${baseUrl}/blog/what-is-routing-number`, priority: 0.9 },
   { url: `${baseUrl}/blog/chime-routing-number`, priority: 0.9 },
+  { url: `${baseUrl}/blog/chase-vs-wells-fargo-routing`, priority: 0.9 },
+  { url: `${baseUrl}/blog/credit-union-routing-numbers`, priority: 0.9 },
   { url: `${baseUrl}/how-to-find-routing-number`, priority: 0.8 },
   { url: `${baseUrl}/zelle-routing-number`, priority: 0.8 },
   { url: `${baseUrl}/routing-number-validator`, priority: 0.9 },

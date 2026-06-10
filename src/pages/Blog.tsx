@@ -16,6 +16,24 @@ const articles = [
     slug: "chase-routing-number"
   },
   {
+    title: "Chase vs. Wells Fargo Routing Numbers: Key Differences Explained [2026]",
+    description: "A comprehensive technical breakdown of how JPMorgan Chase and Wells Fargo organize their routing numbers, including state rules, wire transfers, and ACH logic.",
+    path: "/blog/chase-vs-wells-fargo-routing",
+    date: "June 10, 2026",
+    readTime: "8 min read",
+    category: "Deep Dives",
+    slug: "chase-vs-wells-fargo-routing"
+  },
+  {
+    title: "Credit Union Routing Numbers: How They Differ from Big Banks [2026]",
+    description: "Learn how credit union routing numbers differ from big national banks, how shared branching affects ACH and wire transfers, and where to find yours.",
+    path: "/blog/credit-union-routing-numbers",
+    date: "June 10, 2026",
+    readTime: "7 min read",
+    category: "Guides",
+    slug: "credit-union-routing-numbers"
+  },
+  {
     title: "Wells Fargo Routing Number: List by State & How to Find [2026]",
     description: "Find and verify Wells Fargo Routing Numbers for all US states. See domestic ACH and Wire transfer codes, and learn how to find your Wells Fargo routing code.",
     path: "/blog/wells-fargo-routing-number",
