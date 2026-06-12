@@ -68,6 +68,9 @@ import WhatIsRoutingNumber from './pages/WhatIsRoutingNumber';
 import ChimeRoutingNumber from './pages/ChimeRoutingNumber';
 import ChaseVsWellsFargoRouting from './pages/ChaseVsWellsFargoRouting';
 import CreditUnionRoutingDifferences from './pages/CreditUnionRoutingDifferences';
+import AbaVsAchRoutingNumbers from './pages/AbaVsAchRoutingNumbers';
+import BestCreditUnionsInUS from './pages/BestCreditUnionsInUS';
+import DirectDepositSetupGuide from './pages/DirectDepositSetupGuide';
 import UserRetention from './components/UserRetention';
 
 import { Toaster } from 'sonner';
@@ -139,6 +142,9 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
               <Route path="/blog/digital-banking-shift-2026" element={<DigitalBankingShift2026 />} />
               <Route path="/blog/chase-vs-wells-fargo-routing" element={<ChaseVsWellsFargoRouting />} />
               <Route path="/blog/credit-union-routing-numbers" element={<CreditUnionRoutingDifferences />} />
+              <Route path="/blog/aba-vs-ach-routing-numbers" element={<AbaVsAchRoutingNumbers />} />
+              <Route path="/blog/best-credit-unions-in-us" element={<BestCreditUnionsInUS />} />
+              <Route path="/blog/direct-deposit-setup-guide" element={<DirectDepositSetupGuide />} />
               
               <Route path="/blog/chase-routing-number" element={<ChaseRoutingNumber />} />
               <Route path="/blog/wells-fargo-routing-number" element={<WellsFargoRoutingNumber />} />

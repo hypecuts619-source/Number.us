@@ -7,6 +7,33 @@ import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 const articles = [
   {
+    title: "ABA vs ACH Routing Numbers: A Technical Guide for AP & Payroll [2026]",
+    description: "Understand the exact differences between ABA and ACH routing numbers to prevent B2B payment failures, optimize accounts payable, and verify vendor details.",
+    path: "/blog/aba-vs-ach-routing-numbers",
+    date: "June 12, 2026",
+    readTime: "9 min read",
+    category: "Technical Guides",
+    slug: "aba-vs-ach-routing-numbers"
+  },
+  {
+    title: "Top 10 Best Credit Unions in the US [2026] & Their Routing Structures",
+    description: "Evaluate the top credit unions for AP/Payroll integration, direct deposit speeds, and structural routing network reliability.",
+    path: "/blog/best-credit-unions-in-us",
+    date: "June 12, 2026",
+    readTime: "11 min read",
+    category: "Industry Reports",
+    slug: "best-credit-unions-in-us"
+  },
+  {
+    title: "Direct Deposit Setup With Your Routing Number: The Definitive 2026 HR Guide",
+    description: "Learn the technical requirements for establishing direct deposit routing, troubleshooting ACH rejections, and validating employee transit codes.",
+    path: "/blog/direct-deposit-setup-guide",
+    date: "June 12, 2026",
+    readTime: "10 min read",
+    category: "Payroll & AP Operations",
+    slug: "direct-deposit-setup-guide"
+  },
+  {
     title: "Chase Routing Number: List by State & How to Find [2026]",
     description: "Find and verify Chase (JPMorgan Chase) Routing Numbers for all US states. See domestic ACH and Wire transfer codes, and learn how to find your Chase routing code.",
     path: "/blog/chase-routing-number",
