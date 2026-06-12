@@ -131,9 +131,10 @@ async function startServer() {
       
       // inject the app-rendered HTML into the template.
       const htmlWithHead = template.replace(`<!-- SSR_HEAD -->`, helmetHead);
-      // We don't inject window data directly as JSON since it is 5.5MB and would choke GoogleBot.
-      // Hydration will have a mismatch but React will catch it and re-render.
-      const htmlWithData = htmlWithHead.replace(`<!-- SSR_DATA -->`, ``);
+      // Bake the global server-side pre-compiled state object directly into the HTML
+      // This guarantees Googlebot receives fully populated semantic text on the first byte, without CSR timeouts.
+      const injectedStr = `<script>window.__ROUTING_DATA__ = ${JSON.stringify(cachedRoutingData)}</script>`;
+      const htmlWithData = htmlWithHead.replace(`<!-- SSR_DATA -->`, injectedStr);
       const finalHtml = htmlWithData.replace(`<!-- SSR_OUT -->`, html);
 
       res.status(status).set({ 'Content-Type': 'text/html' }).end(finalHtml);

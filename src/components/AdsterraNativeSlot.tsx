@@ -1,16 +1,26 @@
 import React, { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 interface AdsterraNativeSlotProps {
   zoneId: string;
   format: 'horizontal' | 'rectangle';
   uniqueId?: string;
+  isDensePage?: boolean;
 }
 
-export default function AdsterraNativeSlot({ zoneId, format, uniqueId = '1' }: AdsterraNativeSlotProps) {
+export default function AdsterraNativeSlot({ zoneId, format, uniqueId = '1', isDensePage = false }: AdsterraNativeSlotProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+
+  // High-Value Ad-Load Regulation Logic
+  // Hide global advertisements on deep programmatic branch routes to prevent thin-content/excessive-ads penalties, 
+  // unless explicitly flagged as a dense data page.
+  const pathSegments = location.pathname.split('/').filter(Boolean);
+  const isDeepProgrammaticPath = pathSegments[0] === 'routing-number' && pathSegments.length >= 3;
+  const shouldDampen = isDeepProgrammaticPath && !isDensePage;
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || shouldDampen) return;
     
     // Clear any existing content to prevent duplicates on re-render
     containerRef.current.innerHTML = '';
@@ -35,7 +45,11 @@ export default function AdsterraNativeSlot({ zoneId, format, uniqueId = '1' }: A
          containerRef.current.innerHTML = '';
       }
     };
-  }, [zoneId, uniqueId]);
+  }, [zoneId, uniqueId, shouldDampen]);
+
+  if (shouldDampen) {
+    return null; // Suppress ad load
+  }
 
   const containerClasses = format === 'horizontal'
     ? 'w-full max-w-[728px] min-h-[90px]'

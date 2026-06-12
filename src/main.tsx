@@ -14,16 +14,16 @@ if ('serviceWorker' in navigator) {
 async function bootstrap() {
   let initialData = (window as any).__ROUTING_DATA__;
 
-  // We wait for the data to be fetched before hydrating so that we don't get a hydration mismatch!
-  // The server renders the full UI as if the data is present. By waiting for the fetch, 
-  // we align the client state with the server state before React mounts.
-  if (!initialData) {
+  // Unified SSR Data Integration Protocol
+  // Read from window synchronously. The edge worker will bake this in.
+  // We only fetch in development mode to simulate edge injection.
+  if (!initialData && import.meta.env.DEV) {
     try {
       const res = await fetch('/data/routing.json');
       initialData = await res.json();
       (window as any).__ROUTING_DATA__ = initialData;
     } catch (e) {
-      console.error('Failed to load routing data before hydration', e);
+      console.error('DEV ONLY: Failed to load routing data before hydration', e);
     }
   }
 

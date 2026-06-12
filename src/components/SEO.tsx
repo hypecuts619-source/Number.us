@@ -1,6 +1,17 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
+interface DynamicSchemaData {
+  bankName: string;
+  routingNumber: string;
+  city?: string;
+  state?: string;
+  zip?: string;
+  address?: string;
+  phone?: string;
+  isCreditUnion?: boolean;
+}
+
 interface SEOProps {
   title: string;
   description: string;
@@ -12,6 +23,7 @@ interface SEOProps {
   datePublished?: string;
   dateModified?: string;
   authorName?: string;
+  schemaData?: DynamicSchemaData;
 }
 
 export default function SEO({ 
@@ -24,7 +36,8 @@ export default function SEO({
   children,
   datePublished,
   dateModified,
-  authorName = "Stephen Sebastian"
+  authorName = "Stephen Sebastian",
+  schemaData
 }: SEOProps) {
   const currentUrl = `https://usroutingnumber.com${canonicalUrl.startsWith('/') ? canonicalUrl : `/${canonicalUrl}`}`.toLowerCase();
   
@@ -72,6 +85,66 @@ export default function SEO({
     }
   } : null;
 
+  // Programmatic JSON-LD Schema Factory for dynamic branches
+  const dynamicSchemas: any[] = [];
+  if (schemaData) {
+    const { bankName, routingNumber, city, state, zip, address, phone, isCreditUnion } = schemaData;
+    const branchName = city && state ? `${bankName} ${city} Branch` : bankName;
+    const orgType = isCreditUnion ? "CreditUnion" : "BankOrCreditUnion";
+
+    dynamicSchemas.push({
+      "@context": "https://schema.org",
+      "@type": orgType,
+      "name": branchName,
+      "url": currentUrl,
+      "telephone": phone || undefined,
+      "address": city && state ? {
+        "@type": "PostalAddress",
+        "streetAddress": address && address !== 'Unknown' ? address : undefined,
+        "addressLocality": city,
+        "addressRegion": state,
+        "postalCode": zip && zip !== 'Unknown' ? zip : undefined,
+        "addressCountry": "US"
+      } : undefined,
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "Routing Number",
+        "value": routingNumber
+      },
+      "makesOffer": {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "FinancialProduct",
+          "name": "Checking Account Direct Deposit Integration",
+          "description": `ACH routing setup utilizing transit number ${routingNumber}.`
+        }
+      }
+    });
+
+    dynamicSchemas.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": `What is the routing number for ${bankName} ${city ? `in ${city}, ${state}` : ''}?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `The verified 9-digit ABA routing number for ${bankName} ${city ? `in ${city}` : ''} is ${routingNumber}. Use this code for domestic wire transfers and ACH direct deposits.`
+          }
+        },
+        {
+          "@type": "Question",
+          "name": `Is it safe to use ${routingNumber} for a direct deposit into my ${bankName} account?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `Yes, ${routingNumber} satisfies the Modulus-10 checksum validation required by the Federal Reserve and can be used to set up payroll direct deposits with Accounts Payable.`
+          }
+        }
+      ]
+    });
+  }
+
   return (
     <Helmet>
       {/* Standard Metadata */}
@@ -113,6 +186,14 @@ export default function SEO({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema, null, 2) }}
         />
       )}
+
+      {dynamicSchemas.map((schema, index) => (
+        <script
+          key={`schema-${index}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema, null, 2) }}
+        />
+      ))}
 
       {/* Additional schema or tags passed as children */}
       {children}

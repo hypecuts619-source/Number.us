@@ -224,28 +224,32 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
 }
 
 export default function App({ initialData = null, RouterComponent = BrowserRouter, routerProps = {}, helmetContext = {} }: any) {
-  const [dataLoaded, setDataLoaded] = useState(!!initialData);
+  const [dataLoaded, setDataLoaded] = useState(() => {
+    if (initialData) return true;
+    if (typeof window !== 'undefined' && (window as any).__ROUTING_DATA__) return true;
+    return false;
+  });
 
   useEffect(() => {
-    if (initialData) {
-      if (typeof window !== 'undefined') {
-        (window as any).__ROUTING_DATA__ = initialData;
-      }
-      return;
+    if (initialData && typeof window !== 'undefined') {
+      (window as any).__ROUTING_DATA__ = initialData;
     }
     
-    fetch('/data/routing.json')
-      .then(res => res.json())
-      .then(data => {
-        (window as any).__ROUTING_DATA__ = data;
-        setDataLoaded(true);
-      })
-      .catch(err => {
-        console.error('Failed to load routing data', err);
-        (window as any).__ROUTING_DATA__ = [];
-        setDataLoaded(true);
-      });
-  }, [initialData]);
+    // Strict fallback for local dev or if edge injection fails
+    if (!dataLoaded && typeof window !== 'undefined') {
+      fetch('/data/routing.json')
+        .then(res => res.json())
+        .then(data => {
+          (window as any).__ROUTING_DATA__ = data;
+          setDataLoaded(true);
+        })
+        .catch(err => {
+          console.error('Failed to load routing data', err);
+          (window as any).__ROUTING_DATA__ = [];
+          setDataLoaded(true);
+        });
+    }
+  }, [initialData, dataLoaded]);
 
   return (
     <HelmetProvider context={helmetContext}>
