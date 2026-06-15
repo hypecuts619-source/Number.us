@@ -157,7 +157,7 @@ export default function Lookup() {
       <SEO 
         title={generateLookupTitle(data.routing_number)}
         description={generateLookupDescription(data.routing_number, data.bank_name)}
-        canonicalUrl={`/lookup/${data.routing_number}`}
+        canonicalUrl={`/routing-number/${generateSlug(data.bank_name)}`}
       >
         <script type="application/ld+json">
           {generateFinancialInstitutionSchema(

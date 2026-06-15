@@ -56,7 +56,14 @@ export default function BankState() {
   const currentYear = new Date().getFullYear();
   const faqs = generateBankStateFAQs(bankName, stateFullName, primaryData.routing_number, primaryData.type);
 
-  const stateCanonicalUrl = `/routing-number/${bankSlug}/${state?.toLowerCase()}`;
+  const stateCanonicalUrl = useMemo(() => {
+    const allBankData = bankSlug ? getRoutingByBank(bankSlug) : [];
+    const uniqueStates = new Set(allBankData.map(d => d.state));
+    if (uniqueStates.size === 1) {
+      return `/routing-number/${bankSlug}`;
+    }
+    return `/routing-number/${bankSlug}/${state?.toLowerCase()}`;
+  }, [bankSlug, state]);
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">

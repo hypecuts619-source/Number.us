@@ -62,22 +62,44 @@ const generateSitemap = () => {
 
   const urls = new Set<string>();
 
+  // Pre-calculate banks to determine duplicates
+  const bankCounts: Record<string, number> = {};
+  const bankStateCounts: Record<string, Set<string>> = {};
+
+  data.forEach((bank: any) => {
+    if (!bank.bank_name) return;
+    const slug = generateSlug(bank.bank_name);
+    bankCounts[slug] = (bankCounts[slug] || 0) + 1;
+    
+    if (!bankStateCounts[slug]) bankStateCounts[slug] = new Set();
+    if (bank.state) bankStateCounts[slug].add(bank.state);
+  });
+
   // Extract from data
   data.forEach((bank: any) => {
     if (!bank.bank_name || !bank.routing_number) return;
     
     const slug = generateSlug(bank.bank_name);
-    const rn = bank.routing_number;
     
+    // Always index the overview page
     urls.add(`${baseUrl}/routing-number/${slug}`);
-    urls.add(`${baseUrl}/lookup/${rn}`);
+    
+    // DELIBERATELY EXCLUDED: `/lookup/${rn}` because its canonical now points to the Bank Overview.
     
     if (bank.state) {
       const state = bank.state.toLowerCase();
-      urls.add(`${baseUrl}/states/${state}`);
-      urls.add(`${baseUrl}/routing-number/${slug}/${state}`);
+      urls.add(`${baseUrl}/states/${state}`); // state directory is always valid
       
-      if (bank.city) {
+      const totalStates = bankStateCounts[slug].size;
+      const totalBranches = bankCounts[slug];
+      
+      // Only include state-level routing page if bank operates in > 1 state
+      if (totalStates > 1) {
+        urls.add(`${baseUrl}/routing-number/${slug}/${state}`);
+      }
+      
+      // Only include city-level branch page if bank has > 1 branch globally
+      if (totalBranches > 1 && bank.city) {
         const city = generateSlug(bank.city);
         urls.add(`${baseUrl}/routing-number/${slug}/${state}/${city}`);
       }
