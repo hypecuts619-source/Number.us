@@ -61,7 +61,24 @@ export default {
 
     // Fallthrough: Allow request to proceed to the origin (our React SSR app)
     try {
-      return await fetch(request);
+      const isStaticAsset = url.pathname.match(/\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$/i);
+      
+      const response = await fetch(request.url, {
+        method: request.method,
+        headers: request.headers,
+        body: request.method === 'GET' || request.method === 'HEAD' ? undefined : request.body,
+        redirect: request.redirect,
+        cf: isStaticAsset ? undefined : {
+          cacheTtl: 0,
+          cacheEverything: false
+        }
+      } as any);
+      
+      const newResponse = new Response(response.body, response);
+      if (!isStaticAsset) {
+        newResponse.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+      }
+      return newResponse;
     } catch (e) {
       return new Response('Origin Fetch Error', { status: 502 });
     }

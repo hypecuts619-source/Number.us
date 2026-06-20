@@ -116,20 +116,21 @@ async function startServer() {
 
       const { html } = await render(url, cachedRoutingData);
 
-      // React 19 hoists title, meta, link, and scripts directly to the renderToString output
-      // We extract them to inject into the <head>
+      // React 19 hoists title, meta, link natively, so they appear at the root of the html string.
+      // We extract them to inject cleanly into the <head> for perfect SEO.
       const titleMatch = html.match(/<title>[\s\S]*?<\/title>/i);
       const metaMatches = html.match(/<meta[^>]+>/ig) || [];
       const linkMatches = html.match(/<link[^>]+>/ig) || [];
-      const scriptMatches = html.match(/<script type="application\/ld\+json">[\s\S]*?<\/script>/ig) || [];
 
       const headInjection = [
         titleMatch ? titleMatch[0] : '',
         ...metaMatches,
-        ...linkMatches,
-        ...scriptMatches
+        ...linkMatches
       ].join('\n');
 
+      // We remove the natively hoisted head tags from the body so they aren't duplicated.
+      // critically, we DO NOT remove <script> tags, because React 19 does not natively hoist
+      // JSON-LD scripts, so removing them breaks hydration at the exact DOM node they were rendered.
       const cleanHtml = html
         .replace(/<title>[\s\S]*?<\/title>/ig, '')
         .replace(/<meta[^>]+>/ig, '')
@@ -149,7 +150,10 @@ async function startServer() {
       const htmlWithData = htmlWithHead.replace(`<!-- SSR_DATA -->`, injectedStr);
       const finalHtml = htmlWithData.replace(`<!-- SSR_OUT -->`, cleanHtml);
 
-      res.status(status).set({ 'Content-Type': 'text/html' }).end(finalHtml);
+      res.status(status).set({ 
+        'Content-Type': 'text/html',
+        'Cache-Control': 'no-cache, no-store, must-revalidate, max-age=0'
+      }).end(finalHtml);
     } catch (e: any) {
       if (vite) {
         vite.ssrFixStacktrace(e);
