@@ -17,7 +17,7 @@ async function bootstrap() {
   // Unified SSR Data Integration Protocol
   // Read from window synchronously. The edge worker will bake this in.
   // We only fetch in development mode to simulate edge injection.
-  if (!initialData && import.meta.env.DEV) {
+  if (!initialData && (import.meta as any).env?.DEV) {
     try {
       const res = await fetch('/data/routing.json');
       initialData = await res.json();

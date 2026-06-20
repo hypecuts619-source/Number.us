@@ -4,9 +4,9 @@ export interface Env {
 
 export default {
   async fetch(
-    request: Request,
+    request: Request & { cf?: { country?: string } },
     env: Env,
-    ctx: ExecutionContext
+    ctx: any
   ): Promise<Response> {
     const url = new URL(request.url);
     const country = (request.cf?.country as string) || '';

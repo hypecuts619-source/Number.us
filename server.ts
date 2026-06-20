@@ -114,28 +114,40 @@ async function startServer() {
         render = entryServer.render;
       }
 
-      const { html, helmet, helmetContext } = await render(url, cachedRoutingData);
+      const { html } = await render(url, cachedRoutingData);
 
-      const helmetHead = helmet ? `
-        ${helmet.title?.toString() || ''}
-        ${helmet.meta?.toString() || ''}
-        ${helmet.link?.toString() || ''}
-        ${helmet.script?.toString() || ''}
-      ` : '';
+      // React 19 hoists title, meta, link, and scripts directly to the renderToString output
+      // We extract them to inject into the <head>
+      const titleMatch = html.match(/<title>[\s\S]*?<\/title>/i);
+      const metaMatches = html.match(/<meta[^>]+>/ig) || [];
+      const linkMatches = html.match(/<link[^>]+>/ig) || [];
+      const scriptMatches = html.match(/<script type="application\/ld\+json">[\s\S]*?<\/script>/ig) || [];
+
+      const headInjection = [
+        titleMatch ? titleMatch[0] : '',
+        ...metaMatches,
+        ...linkMatches,
+        ...scriptMatches
+      ].join('\n');
+
+      const cleanHtml = html
+        .replace(/<title>[\s\S]*?<\/title>/ig, '')
+        .replace(/<meta[^>]+>/ig, '')
+        .replace(/<link[^>]+>/ig, '');
 
       // Set status based on helmet output
-      const status = helmetHead.includes('prerender-status-code" content="404"') || html.includes('prerender-status-code') ? 404 : 200;
+      const status = headInjection.includes('prerender-status-code" content="404"') || cleanHtml.includes('prerender-status-code') ? 404 : 200;
 
       // Remove the hardcoded title so Helmet title works properly
       template = template.replace(/<title>.*?<\/title>/i, '');
       
       // inject the app-rendered HTML into the template.
-      const htmlWithHead = template.replace(`<!-- SSR_HEAD -->`, helmetHead);
+      const htmlWithHead = template.replace(`<!-- SSR_HEAD -->`, headInjection);
       // Bake the global server-side pre-compiled state object directly into the HTML
       // This guarantees Googlebot receives fully populated semantic text on the first byte, without CSR timeouts.
       const injectedStr = `<script>window.__ROUTING_DATA__ = ${JSON.stringify(cachedRoutingData)}</script>`;
       const htmlWithData = htmlWithHead.replace(`<!-- SSR_DATA -->`, injectedStr);
-      const finalHtml = htmlWithData.replace(`<!-- SSR_OUT -->`, html);
+      const finalHtml = htmlWithData.replace(`<!-- SSR_OUT -->`, cleanHtml);
 
       res.status(status).set({ 'Content-Type': 'text/html' }).end(finalHtml);
     } catch (e: any) {

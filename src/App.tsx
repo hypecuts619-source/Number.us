@@ -165,6 +165,7 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
                 <Route path="/routing-number/:bankSlug/:state" element={!dataLoaded ? <div className="min-h-[60vh]"></div> : <BankState />} />
                 <Route path="/routing-number/:bankSlug/:state/:city" element={!dataLoaded ? <div className="min-h-[60vh]"></div> : <BranchDetail />} />
                 <Route path="/lookup/:routingNumber" element={!dataLoaded ? <div className="min-h-[60vh]"></div> : <Lookup />} />
+                <Route path="/:routingNumber" element={!dataLoaded ? <div className="min-h-[60vh]"></div> : <Lookup />} />
 
                 <Route path="*" element={<NotFound />} />
               </Routes>
