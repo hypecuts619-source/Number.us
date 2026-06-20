@@ -155,30 +155,86 @@ export default function Lookup() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
       <SEO 
-        title={generateLookupTitle(data.routing_number)}
-        description={generateLookupDescription(data.routing_number, data.bank_name)}
-        canonicalUrl={`/routing-number/${generateSlug(data.bank_name)}`}
-      >
-        <script type="application/ld+json">
-          {generateFinancialInstitutionSchema(
-            data.bank_name,
-            data.routing_number,
-            data.address,
-            data.city,
-            getStateFullName(data.state),
-            data.zip !== 'Unknown' ? data.zip : undefined,
-            data.phone
-          )}
-        </script>
-        <script type="application/ld+json">
-          {generateFAQSchema(faqs)}
-        </script>
-      </SEO>
+        title={`Routing Number ${data.routing_number} — ${data.bank_name}, ${data.city}, ${getStateFullName(data.state)} | USRoutingNumber`}
+        description={`Routing number ${data.routing_number} for ${data.bank_name} in ${data.city}, ${getStateFullName(data.state)}. Verified Federal Reserve data. Use for ACH transfers, direct deposit, and wire transfers.`}
+        canonicalUrl={`/${data.routing_number}`}
+        type="article"
+        imageUrl="https://usroutingnumber.com/og-image-routing.png"
+        keywords={`${data.routing_number} routing number, ${data.bank_name} routing number, ${data.bank_name} ${getStateFullName(data.state)} routing number, ABA routing number ${data.routing_number}, bank routing number ${data.city}`}
+        schemas={[
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "BankOrCreditUnion",
+                "@id": `https://usroutingnumber.com/${data.routing_number}#bank`,
+                "name": data.bank_name,
+                "identifier": {
+                  "@type": "PropertyValue",
+                  "propertyID": "ABA Routing Number",
+                  "value": data.routing_number
+                },
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": data.city,
+                  "addressRegion": getStateFullName(data.state),
+                  "addressCountry": "US"
+                },
+                "url": `https://usroutingnumber.com/routing-number/${generateSlug(data.bank_name)}/${data.state.toLowerCase()}`
+              },
+              {
+                "@type": "WebPage",
+                "@id": `https://usroutingnumber.com/${data.routing_number}#webpage`,
+                "url": `https://usroutingnumber.com/${data.routing_number}`,
+                "name": `Routing Number ${data.routing_number} — ${data.bank_name}, ${data.city}, ${getStateFullName(data.state)}`,
+                "description": `Routing number ${data.routing_number} for ${data.bank_name} in ${data.city}, ${getStateFullName(data.state)}. Verified Federal Reserve data.`,
+                "isPartOf": {
+                  "@id": "https://usroutingnumber.com/#website"
+                },
+                "about": {
+                  "@id": `https://usroutingnumber.com/${data.routing_number}#bank`
+                },
+                "inLanguage": "en-US"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://usroutingnumber.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": getStateFullName(data.state),
+                "item": `https://usroutingnumber.com/states/${data.state.toLowerCase()}`
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": data.bank_name,
+                "item": `https://usroutingnumber.com/routing-number/${generateSlug(data.bank_name)}/${data.state.toLowerCase()}`
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": `Routing Number ${data.routing_number}`,
+                "item": `https://usroutingnumber.com/${data.routing_number}`
+              }
+            ]
+          }
+        ]}
+      />
 
         <div className="bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-3xl p-6 md:p-12 shadow-sm mb-12">
           <div className="text-center mb-8">
-            <h1 className="text-2xl text-slate-500 font-bold uppercase tracking-wider mb-2">
-              Routing Number Details
+            <h1 className="text-2xl text-slate-500 font-bold tracking-wider mb-2">
+              Routing Number {data.routing_number} — {data.bank_name}, {data.city}, {getStateFullName(data.state)}
             </h1>
             <div className="mb-6 flex justify-center">
               <ClickableRoutingNumber 

@@ -86,28 +86,79 @@ export default function BranchDetail() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
       <SEO 
-        title={`${bankName} Routing Number ${cityTitle}, ${stateFullName} 2026`}
-        description={`Verified ${bankName} routing number for branches in ${cityTitle}, ${stateFullName}. Details for ACH, wire transfers, and address at ${primaryData.address}.`}
-        canonicalUrl={cityCanonicalUrl}
-        schemaData={{
-          bankName: bankName,
-          routingNumber: primaryData.routing_number,
-          city: cityTitle,
-          state: stateFullName,
-          zip: primaryData.zip,
-          address: primaryData.address,
-          phone: primaryData.phone,
-          isCreditUnion: isCreditUnion
-        }}
-      >
-        <script type="application/ld+json">
-          {generateBreadcrumbSchema([
-            { name: bankName, url: `https://usroutingnumber.com/routing-number/${bankSlug}` },
-            { name: stateFullName, url: `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}` },
-            { name: cityTitle, url: `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}/${citySlug}` }
-          ])}
-        </script>
-      </SEO>
+        title={`${bankName} Routing Number ${cityTitle}, ${stateFullName} — Verified`}
+        description={`Verified routing number for ${bankName} in ${cityTitle}, ${stateFullName}. Location address: ${primaryData.address}. Federal Reserve data. ABA routing code.`}
+        canonicalUrl={`/routing-number/${bankSlug}/${state?.toLowerCase()}/${citySlug}`}
+        type="article"
+        imageUrl="https://usroutingnumber.com/og-image-branch.png"
+        keywords={`${bankName} ${cityTitle} routing number, ${bankName} ${stateFullName} routing number ${cityTitle}, ${cityTitle} routing number, ${bankName} ABA number ${cityTitle}`}
+        schemas={[
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "BankOrCreditUnion",
+                "@id": `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}/${citySlug}#bank`,
+                "name": bankName,
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": primaryData.address,
+                  "addressLocality": cityTitle,
+                  "addressRegion": stateFullName,
+                  "postalCode": primaryData.zip,
+                  "addressCountry": "US"
+                },
+                "telephone": primaryData.phone,
+                "url": `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}/${citySlug}`
+              },
+              {
+                "@type": "WebPage",
+                "@id": `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}/${citySlug}#webpage`,
+                "url": `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}/${citySlug}`,
+                "name": `${bankName} Routing Number ${cityTitle}, ${stateFullName} — Verified`,
+                "description": `Verified routing number for ${bankName} in ${cityTitle}, ${stateFullName}. Location address: ${primaryData.address}. Federal Reserve data.`,
+                "isPartOf": {
+                  "@id": "https://usroutingnumber.com/#website"
+                },
+                "about": {
+                  "@id": `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}/${citySlug}#bank`
+                },
+                "inLanguage": "en-US"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://usroutingnumber.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": stateFullName,
+                "item": `https://usroutingnumber.com/states/${state?.toLowerCase()}`
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": bankName,
+                "item": `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}`
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": cityTitle,
+                "item": `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}/${citySlug}`
+              }
+            ]
+          }
+        ]}
+      />
 
       <BreadcrumbNav crumbs={[
         { name: bankName, url: `/routing-number/${bankSlug}` },
@@ -116,7 +167,7 @@ export default function BranchDetail() {
       ]} />
 
       <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-slate-100 tracking-tight mb-4">
-        {bankName} Routing Number {cityTitle}, {stateFullName} 2026
+        {bankName} Routing Number {cityTitle}, {stateFullName}
       </h1>
       <p className="text-xl text-slate-500 dark:text-slate-400 mb-6">{currentYear} Official Branch Routing Information</p>
 

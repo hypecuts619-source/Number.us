@@ -42,57 +42,66 @@ export default function Home() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-blue-600/5 dark:bg-blue-500/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
 
       <SEO 
-        title="Routing Numbers for All US Banks [2026] | Lookup & Verify"
-        description="Lookup routing numbers for 25,000+ US banks including Chase, Wells Fargo, BofA, Citi. Verify with our free checksum validator."
+        title="US Routing Number Lookup | Find Any Bank (2026) — Free & Verified"
+        description="Find verified US bank routing numbers for 2026. Search by bank name, 9-digit routing number, or state. Federal Reserve data. Free lookup tool. 28,000+ routing numbers."
         canonicalUrl="/"
-      >
-        {/* Unified Schema Graph to Maximize CTR and Fix Mobile Index Parsing */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+        keywords="routing number, bank routing number, ABA routing number, US bank routing number, routing number lookup, find routing number, routing number search"
+        imageUrl="https://usroutingnumber.com/og-image-home.png"
+        schemas={[
+          {
             "@context": "https://schema.org",
             "@graph": [
               {
-                "@type": "WebApplication",
-                "@id": "https://usroutingnumber.com/#webapp",
-                "name": "USRoutingNumber.com Verification Engine",
-                "url": "https://usroutingnumber.com",
-                "applicationCategory": "FinanceApplication",
-                "operatingSystem": "All",
-                "browserRequirements": "Requires JavaScript. Requires HTML5.",
-                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-                "featureList": "Client-side Modulo 10 check-digit validation, offline local storage tracking, sub-millisecond bank directory search filtering."
-              },
-              {
-                "@type": "Organization",
-                "@id": "https://usroutingnumber.com/#organization",
-                "name": "USRoutingNumber",
-                "url": "https://usroutingnumber.com",
-                "logo": "https://usroutingnumber.com/favicon.svg",
-                "contactPoint": {
-                  "@type": "ContactPoint",
-                  "email": "contact@usroutingnumber.com",
-                  "contactType": "customer service"
-                }
-              },
-              {
                 "@type": "WebSite",
                 "@id": "https://usroutingnumber.com/#website",
-                "url": "https://usroutingnumber.com/",
-                "name": "USRoutingNumber.com",
+                "url": "https://usroutingnumber.com",
+                "name": "US Routing Number",
+                "description": "Find verified US bank routing numbers for 2026. Search by bank name, 9-digit routing number, or state.",
+                "publisher": {
+                  "@id": "https://usroutingnumber.com/#organization"
+                },
                 "potentialAction": {
                   "@type": "SearchAction",
                   "target": {
                     "@type": "EntryPoint",
-                    "urlTemplate": "https://usroutingnumber.com/routing-number-lookup?q={search_term_string}"
+                    "urlTemplate": "https://usroutingnumber.com/search?q={search_term}"
                   },
-                  "query-input": "required name=search_term_string"
-                }
+                  "query-input": "required name=search_term"
+                },
+                "inLanguage": "en-US"
               },
-              { ...JSON.parse(generateFAQSchema(faqs)), "@context": undefined, "@id": "https://usroutingnumber.com/#faq" }
+              {
+                "@type": "Organization",
+                "@id": "https://usroutingnumber.com/#organization",
+                "name": "US Routing Number",
+                "url": "https://usroutingnumber.com",
+                "logo": {
+                  "@type": "ImageObject",
+                  "@id": "https://usroutingnumber.com/#logo",
+                  "url": "https://usroutingnumber.com/pwa-192x192.png",
+                  "contentUrl": "https://usroutingnumber.com/pwa-192x192.png",
+                  "width": 192,
+                  "height": 192,
+                  "caption": "US Routing Number"
+                },
+                "image": {
+                  "@id": "https://usroutingnumber.com/#logo"
+                }
+              }
             ]
-          })
-        }} />
-      </SEO>
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://usroutingnumber.com/"
+            }]
+          }
+        ]}
+      />
 
       {/* Header - Fixed Intent Alignment to Prevent Search Snippet Overrides */}
       <div className="order-2 md:order-1 text-center mb-8 md:mb-14 mt-8 md:mt-4 relative z-10">
@@ -100,10 +109,7 @@ export default function Home() {
           <DataIntegrityBadge />
         </div>
         <h1 className="text-4xl md:text-7xl font-black mb-6 text-slate-900 dark:text-white tracking-tight leading-[1.1]">
-          US Routing Number <br className="hidden md:block" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
-            Lookup & Verify
-          </span>
+          US Routing Number Lookup — Find Verified Bank Routing Numbers
         </h1>
         <p className="text-lg md:text-2xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto font-medium">
           Instantly access verified routing data for 2026. Secure, authorized Federal Reserve records at your fingertips.

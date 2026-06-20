@@ -21,5 +21,5 @@ export function render(url: string, routingData: any) {
 
   const { helmet } = helmetContext;
 
-  return { html, helmet };
+  return { html, helmet, helmetContext };
 }

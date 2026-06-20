@@ -35,18 +35,18 @@ export default function BankOverview() {
   const isBofA = bankName.toLowerCase().includes('bank of america');
   const isChase = bankName.toLowerCase().includes('jpmorgan chase') || bankName.toLowerCase() === 'chase bank';
 
-  let pageTitle = generateBankOverviewTitle(bankName);
-  let pageDesc = generateBankOverviewDescription(bankName);
-  let pageH1 = `${bankName} Routing Number [2026] | Find & Verify`;
+  let pageTitle = `${bankName} Routing Number Directory | ACH & Wire Routes`;
+  let pageDesc = `Find the exact ${bankName} routing number for your state. Verified ACH, direct deposit, and wire transfer routing numbers for ${bankName}.`;
+  let pageH1 = `${bankName} Routing Numbers`;
   
   if (isBofA) {
-    pageTitle = "Bank of America Routing Number Directory (2026) | Find by State";
-    pageDesc = "Find the correct Bank of America routing number for ACH, direct deposit, and wire transfers by state. Verify your BofA ABA number instantly.";
-    pageH1 = "Bank of America (BofA) Routing Number [2026] | Find & Verify";
+    pageTitle = "Bank of America Routing Number Directory | ACH & Wire Routes";
+    pageDesc = "Find the exact Bank of America routing number for your state. Verified ACH, direct deposit, and wire transfer routing numbers for BofA.";
+    pageH1 = "Bank of America (BofA) Routing Numbers";
   } else if (isChase) {
-    pageTitle = "Chase Bank Routing Number Directory (2026) | ACH & Wire Routes";
-    pageDesc = "Get the exact JPMorgan Chase routing number for your state. Distinguish between Chase ACH, domestic wire, and SWIFT codes to prevent delays.";
-    pageH1 = "JPMorgan Chase Bank Routing Number [2026] | Find & Verify";
+    pageTitle = "Chase Bank Routing Number Directory | ACH & Wire Routes";
+    pageDesc = "Find the exact JPMorgan Chase routing number for your state. Verified ACH, direct deposit, and wire transfer routing numbers for Chase.";
+    pageH1 = "JPMorgan Chase Bank Routing Numbers";
   }
 
   const favorited = isFavorite(bankSlug || '');
@@ -114,24 +114,55 @@ export default function BankOverview() {
         title={pageTitle}
         description={pageDesc}
         canonicalUrl={`/routing-number/${bankSlug}`}
-      >
-        <script type="application/ld+json">
-          {generateBreadcrumbSchema([
-            { name: bankName, url: `https://usroutingnumber.com/routing-number/${bankSlug}` }
-          ])}
-        </script>
-        <script type="application/ld+json">
-          {generateFAQSchema(faqs)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
+        type="article"
+        imageUrl={`https://usroutingnumber.com/og-image-${bankSlug}.png`}
+        keywords={`${bankName} routing number, ${bankName} ABA number, ${bankName} wire routing number, ${bankName} ACH routing number`}
+        schemas={[
+          {
             "@context": "https://schema.org",
-            "@type": "BankOrCreditUnion",
-            "name": bankName,
-            "url": `https://usroutingnumber.com/routing-number/${bankSlug}`
-          })}
-        </script>
-      </SEO>
+            "@graph": [
+              {
+                "@type": "BankOrCreditUnion",
+                "@id": `https://usroutingnumber.com/routing-number/${bankSlug}#bank`,
+                "name": bankName,
+                "url": `https://usroutingnumber.com/routing-number/${bankSlug}`
+              },
+              {
+                "@type": "WebPage",
+                "@id": `https://usroutingnumber.com/routing-number/${bankSlug}#webpage`,
+                "url": `https://usroutingnumber.com/routing-number/${bankSlug}`,
+                "name": pageTitle,
+                "description": pageDesc,
+                "isPartOf": {
+                  "@id": "https://usroutingnumber.com/#website"
+                },
+                "about": {
+                  "@id": `https://usroutingnumber.com/routing-number/${bankSlug}#bank`
+                },
+                "inLanguage": "en-US"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://usroutingnumber.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": bankName,
+                "item": `https://usroutingnumber.com/routing-number/${bankSlug}`
+              }
+            ]
+          }
+        ]}
+      />
 
       <BreadcrumbNav crumbs={[{ name: bankName, url: `/routing-number/${bankSlug}` }]} />
 

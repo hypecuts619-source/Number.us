@@ -68,26 +68,69 @@ export default function BankState() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
       <SEO 
-        title={generateBankStateTitle(bankName, stateFullName)}
-        description={generateBankStateDescription(bankName, stateFullName, primaryData.routing_number)}
-        canonicalUrl={stateCanonicalUrl}
-      >
-        <script type="application/ld+json">
-          {generateBreadcrumbSchema([
-            { name: bankName, url: `https://usroutingnumber.com/routing-number/${bankSlug}` },
-            { name: stateFullName, url: `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}` }
-          ])}
-        </script>
-        <script type="application/ld+json">
-          {generateFAQSchema(faqs)}
-        </script>
-        <script type="application/ld+json">
-          {generateFinancialInstitutionSchema(
-            bankName, 
-            primaryData.routing_number
-          )}
-        </script>
-      </SEO>
+        title={`${bankName} Routing Numbers in ${stateFullName} | All Branches & Codes`}
+        description={`Find all ${dataList.length} verified routing numbers for ${bankName} in ${stateFullName}. Federal Reserve data for ACH, direct deposit, and wire transfers.`}
+        canonicalUrl={`/routing-number/${bankSlug}/${state?.toLowerCase()}`}
+        type="article"
+        imageUrl="https://usroutingnumber.com/og-image-bank.png"
+        keywords={`${bankName} routing number, ${bankName} ${stateFullName} routing number, ${bankName} routing number ${stateFullName}, ${bankName} ABA number, ${bankName} bank code`}
+        schemas={[
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "BankOrCreditUnion",
+                "@id": `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}#bank`,
+                "name": bankName,
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressRegion": stateFullName,
+                  "addressCountry": "US"
+                },
+                "url": `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}`
+              },
+              {
+                "@type": "WebPage",
+                "@id": `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}#webpage`,
+                "url": `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}`,
+                "name": `${bankName} Routing Numbers in ${stateFullName} | All Branches & Codes`,
+                "description": `Find all verified routing numbers for ${bankName} in ${stateFullName}. Federal Reserve data for ACH, direct deposit, and wire transfers.`,
+                "isPartOf": {
+                  "@id": "https://usroutingnumber.com/#website"
+                },
+                "about": {
+                  "@id": `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}#bank`
+                },
+                "inLanguage": "en-US"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://usroutingnumber.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": stateFullName,
+                "item": `https://usroutingnumber.com/states/${state?.toLowerCase()}`
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": bankName,
+                "item": `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}`
+              }
+            ]
+          }
+        ]}
+      />
 
       <BreadcrumbNav crumbs={[
         { name: bankName, url: `/routing-number/${bankSlug}` },
@@ -95,7 +138,7 @@ export default function BankState() {
       ]} />
 
       <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-6">
-        {bankName} Routing Number {stateFullName} (Federal Reserve {currentYear})
+        {bankName} Routing Numbers in {stateFullName}
       </h1>
 
             <div className="w-full max-w-7xl mx-auto mb-8 flex justify-center">

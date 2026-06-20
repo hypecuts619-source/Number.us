@@ -114,7 +114,7 @@ async function startServer() {
         render = entryServer.render;
       }
 
-      const { html, helmet } = render(url, cachedRoutingData);
+      const { html, helmet, helmetContext } = await render(url, cachedRoutingData);
 
       const helmetHead = helmet ? `
         ${helmet.title?.toString() || ''}

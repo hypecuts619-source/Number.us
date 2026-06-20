@@ -70,9 +70,48 @@ export default function StateBankList() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <SEO 
-        title={`Banks in ${stateFullName} (${state.toUpperCase()}) | USRoutingNumber.com`}
-        description={`Find routing numbers for banks operating in ${stateFullName}. Search local branch routing codes for ACH and wire transfers.`}
+        title={`Bank Routing Numbers in ${stateFullName} | ${uniqueBanks.length}+ Banks — Verified Directory`}
+        description={`Browse all ${uniqueBanks.length}+ verified bank routing numbers in ${stateFullName}. Find ABA routing codes for ACH, direct deposit, and wire transfers. Federal Reserve data.`}
         canonicalUrl={`/states/${state}`}
+        type="article"
+        imageUrl="https://usroutingnumber.com/og-image-state.png"
+        keywords={`${stateFullName} routing number, ${stateFullName} bank routing number, banks in ${stateFullName}, ${stateFullName} ABA routing number, routing number ${stateFullName}`}
+        schemas={[
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebPage",
+                "@id": `https://usroutingnumber.com/states/${state}#webpage`,
+                "url": `https://usroutingnumber.com/states/${state}`,
+                "name": `Bank Routing Numbers in ${stateFullName} | Verified Directory`,
+                "description": `Browse all verified bank routing numbers in ${stateFullName}. Find ABA routing codes for ACH, direct deposit, and wire transfers.`,
+                "isPartOf": {
+                  "@id": "https://usroutingnumber.com/#website"
+                },
+                "inLanguage": "en-US"
+              }
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://usroutingnumber.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": stateFullName,
+                "item": `https://usroutingnumber.com/states/${state}`
+              }
+            ]
+          }
+        ]}
       />
       
       <BreadcrumbNav crumbs={[
@@ -82,7 +121,7 @@ export default function StateBankList() {
 
       <div className="mb-8">
         <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4">
-          Routing Numbers for {stateFullName} Banks [2026]
+          Bank Routing Numbers in {stateFullName}
         </h1>
         <p className="text-xl text-slate-600 dark:text-slate-400">
           Showing registered financial institutions with branch routing numbers in {stateFullName}.
