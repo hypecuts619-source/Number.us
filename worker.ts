@@ -21,16 +21,14 @@ export default {
     const userAgent = request.headers.get('user-agent')?.toLowerCase() || '';
     const acceptLanguage = request.headers.get('accept-language');
     
+    // EXCLUDES legit search engines (removed generic 'bot', 'spider', 'crawler' to allow Googlebot/Bing)
     const botPatterns = [
       'headless',
       'puppeteer',
       'python-requests',
       'curl',
       'wget',
-      'scrapy',
-      'bot',
-      'spider',
-      'crawler'
+      'scrapy'
     ];
 
     const isKnownBot = botPatterns.some(pattern => userAgent.includes(pattern));
@@ -61,9 +59,17 @@ export default {
 
     // Fallthrough: Allow request to proceed to the origin (our React SSR app)
     try {
-      const isStaticAsset = url.pathname.match(/\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$/i);
+      const isStaticAsset = url.pathname.match(/\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|xml|txt)$/i);
       
-      const response = await fetch(request.url, {
+      // To bypass completely any stubborn Cloudflare Edge Cache for HTML SSR Pages:
+      // We append a random cache-buster to the origin fetch URL so CF gets a MISS every time.
+      let fetchUrl = request.url;
+      if (!isStaticAsset) {
+        const separator = fetchUrl.includes('?') ? '&' : '?';
+        fetchUrl = `${fetchUrl}${separator}_cb=${Date.now()}`;
+      }
+
+      const response = await fetch(fetchUrl, {
         method: request.method,
         headers: request.headers,
         body: request.method === 'GET' || request.method === 'HEAD' ? undefined : request.body,
@@ -76,7 +82,7 @@ export default {
       
       const newResponse = new Response(response.body, response);
       if (!isStaticAsset) {
-        newResponse.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+        newResponse.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate, max-age=0');
       }
       return newResponse;
     } catch (e) {

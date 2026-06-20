@@ -41,6 +41,20 @@ async function startServer() {
   app.use(compression());
   app.use(express.json());
 
+  // Explicitly serve XML sitemaps and robots.txt to prevent any express.static flakiness in Cloud Run
+  app.get(['/*.xml', '/*.txt'], (req, res, next) => {
+    const isProd = process.env.NODE_ENV === "production";
+    const baseDir = isProd ? path.resolve(__dirname, 'dist/client') : path.resolve(__dirname, 'public');
+    const filePath = path.join(baseDir, req.path);
+    if (fs.existsSync(filePath)) {
+      res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate'); // Let Search Engines handle the 0 max-age
+      if (req.path.endsWith('.xml')) res.setHeader('Content-Type', 'application/xml');
+      if (req.path.endsWith('.txt')) res.setHeader('Content-Type', 'text/plain');
+      return res.sendFile(filePath);
+    }
+    next();
+  });
+
   // Redirect trailing slashes to prevent Google duplicate content indexing issues
   app.use((req, res, next) => {
     if (req.path.length > 1 && req.path.endsWith('/')) {
