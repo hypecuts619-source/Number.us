@@ -13,16 +13,48 @@ export default function RoutingNumberValidator() {
         canonicalUrl="/routing-number-validator"
       >
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebApplication",
-            "name": "ABA Routing Number Validator",
-            "applicationCategory": "FinanceApplication",
-            "operatingSystem": "All",
-            "browserRequirements": "Requires JavaScript",
-            "offers": { "@type": "Offer", "price": "0" },
-            "featureList": "Offline client-side Modulo 10 verification, Bank identification, Federal Reserve cross-reference"
-          })}
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "ABA Routing Number Validator",
+              "applicationCategory": "FinanceApplication",
+              "operatingSystem": "All",
+              "browserRequirements": "Requires JavaScript",
+              "offers": { "@type": "Offer", "price": "0" },
+              "featureList": "Offline client-side Modulo 10 verification, Bank identification, Federal Reserve cross-reference"
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "How does the Modulo 10 routing number algorithm work?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The Modulo 10 technique specifically multiplies the first digit by 3, the second by 7, the third by 1, and repeats this sequence for the first 8 numbers. It then adds all the products together. The 9th digit (check digit) must be whatever number makes that total sum perfectly divisible by 10."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can a valid routing number mathematically belong to a closed bank?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Because the Modulo 10 checksum is merely a mathematical verification rule, a routing number from a merged or shuttered bank (like Washington Mutual) will still structurally pass the math test. That is exactly why our validator goes a step further and links the valid 9-digit code with our Federal Reserve dataset to confirm active institutional status."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is it safe to type my routing number into an online validator?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely. Your routing number is public information indicating your bank's digital address. By utilizing client-side verification directly inside your Chrome or Safari browser window, there are zero server logs created when you use our validation engine. It is mathematically impossible for us to reconstruct your separate Account Number from your ABA code."
+                  }
+                }
+              ]
+            }
+          ])}
         </script>
       </SEO>
 

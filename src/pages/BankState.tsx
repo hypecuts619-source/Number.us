@@ -68,8 +68,8 @@ export default function BankState() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
       <SEO 
-        title={`${bankName} Routing Numbers in ${stateFullName} | All Branches & Codes`}
-        description={`Find all ${dataList.length} verified routing numbers for ${bankName} in ${stateFullName}. Federal Reserve data for ACH, direct deposit, and wire transfers.`}
+        title={`${bankName} Routing Number in ${stateFullName} | Verify for Wire & ACH`}
+        description={`Find and verify the official ${bankName} routing number for ACH, direct deposit, and wire transfers in ${stateFullName}.`}
         canonicalUrl={`/routing-number/${bankSlug}/${state?.toLowerCase()}`}
         type="article"
         imageUrl="https://usroutingnumber.com/og-image-bank.png"
@@ -128,7 +128,8 @@ export default function BankState() {
                 "item": `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}`
               }
             ]
-          }
+          },
+          generateFAQSchema(faqs)
         ]}
       />
 
@@ -288,6 +289,19 @@ export default function BankState() {
         </div>
 
         <aside className="space-y-8">
+          <div className="bg-slate-900 text-white p-8 rounded-3xl shadow-lg">
+             <h3 className="text-xl font-bold mb-4">Wire Transfer Guides</h3>
+             <p className="text-slate-400 text-sm mb-6">Need to send money with {bankName} in {stateFullName}? Read our comprehensive guides on domestic and international wires.</p>
+             <div className="space-y-3">
+               <Link to="/how-to-wire-money" className="block w-full text-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl transition-all">
+                 Domestic Wire Guide
+               </Link>
+               <Link to="/international-wire-guide" className="block w-full text-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl transition-all">
+                 International Wire Guide
+               </Link>
+             </div>
+          </div>
+
           <RelatedLinks 
             title={`Other Banks in ${stateFullName}`} 
             links={otherBanksInState.map(b => ({

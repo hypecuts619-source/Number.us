@@ -34,19 +34,24 @@ export default function BankOverview() {
   const bankName = bankData.length > 0 ? bankData[0].bank_name : '';
   const isBofA = bankName.toLowerCase().includes('bank of america');
   const isChase = bankName.toLowerCase().includes('jpmorgan chase') || bankName.toLowerCase() === 'chase bank';
+  const isEmpire = bankName.toLowerCase().includes('empire state bank');
 
-  let pageTitle = `${bankName} Routing Number Directory | ACH & Wire Routes`;
-  let pageDesc = `Find the exact ${bankName} routing number for your state. Verified ACH, direct deposit, and wire transfer routing numbers for ${bankName}.`;
+  let pageTitle = `${bankName} Routing Number | Verify for Wire & ACH`;
+  let pageDesc = `Find and verify the official ${bankName} routing number for ACH, direct deposit, and wire transfers. Verified routing transit numbers.`;
   let pageH1 = `${bankName} Routing Numbers`;
   
   if (isBofA) {
-    pageTitle = "Bank of America Routing Number Directory | ACH & Wire Routes";
-    pageDesc = "Find the exact Bank of America routing number for your state. Verified ACH, direct deposit, and wire transfer routing numbers for BofA.";
+    pageTitle = "Bank of America Routing Number | Verify for Wire & ACH";
+    pageDesc = "Find and verify the official Bank of America routing number for ACH, direct deposit, and wire transfers. Verified BofA routing transit numbers.";
     pageH1 = "Bank of America (BofA) Routing Numbers";
   } else if (isChase) {
-    pageTitle = "Chase Bank Routing Number Directory | ACH & Wire Routes";
-    pageDesc = "Find the exact JPMorgan Chase routing number for your state. Verified ACH, direct deposit, and wire transfer routing numbers for Chase.";
+    pageTitle = "Chase Bank Routing Number | Verify for Wire & ACH";
+    pageDesc = "Find and verify the official JPMorgan Chase routing number for ACH, direct deposit, and wire transfers. Verified Chase routing transit numbers.";
     pageH1 = "JPMorgan Chase Bank Routing Numbers";
+  } else if (isEmpire) {
+    pageTitle = "Empire State Bank Routing Number | Official ACH & Wire Codes";
+    pageDesc = "Find the verified Empire State Bank routing number. Get the official 9-digit ABA code for Empire State Bank wire transfers and direct deposits.";
+    pageH1 = "Empire State Bank Routing Numbers";
   }
 
   const favorited = isFavorite(bankSlug || '');
@@ -102,6 +107,11 @@ export default function BankOverview() {
        { question: "What is the Chase wire transfer routing number?", answer: "For most domestic wire transfers regardless of your state, Chase uses a universal routing structural code (commonly 021000021, but verify first)." },
        { question: "Is the Chase routing number the same for all states?", answer: "No, Chase maintains dozens of discrete routing transit numbers for standard ACH transactions based on the exact state where the account holding branch resides." },
        { question: "What happens if I use the wrong Chase routing number for direct deposit?", answer: "If you utilize a structurally invalid number, the employer's payroll system will instantly reject it. If you utilize a valid but incorrect number (such as the wire number), the funds may be delayed or reversed entirely." }
+    );
+  } else if (isEmpire) {
+    faqs.push(
+      { question: "What is the official routing number for Empire State Bank?", answer: "The primary routing number for Empire State Bank is 021913862. You can use this for standard direct deposits and ACH transactions." },
+      { question: "Is the Empire State Bank routing number the same for wire transfers?", answer: "Usually, community banks like Empire State Bank use the same routing number for both ACH and wire transfers, but you should always verify with your local branch representative before sending a large wire." }
     );
   }
 
@@ -160,7 +170,8 @@ export default function BankOverview() {
                 "item": `https://usroutingnumber.com/routing-number/${bankSlug}`
               }
             ]
-          }
+          },
+          generateFAQSchema(faqs)
         ]}
       />
 
@@ -312,6 +323,19 @@ export default function BankOverview() {
                   </div>
 
         <aside className="space-y-8">
+          <div className="bg-slate-900 text-white p-8 rounded-3xl shadow-lg">
+             <h3 className="text-xl font-bold mb-4">Wire Transfer Guides</h3>
+             <p className="text-slate-400 text-sm mb-6">Need to send money with {bankName}? Read our comprehensive guides on domestic and international wires.</p>
+             <div className="space-y-3">
+               <Link to="/how-to-wire-money" className="block w-full text-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl transition-all">
+                 Domestic Wire Guide
+               </Link>
+               <Link to="/international-wire-guide" className="block w-full text-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl transition-all">
+                 International Wire Guide
+               </Link>
+             </div>
+          </div>
+
           <RelatedLinks 
             title="Related Banks" 
             links={getRelatedBanks(bankName, 8).map(b => ({

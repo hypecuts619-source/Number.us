@@ -86,8 +86,8 @@ export default function BranchDetail() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
       <SEO 
-        title={`${bankName} Routing Number ${cityTitle}, ${stateFullName} — Verified`}
-        description={`Verified routing number for ${bankName} in ${cityTitle}, ${stateFullName}. Location address: ${primaryData.address}. Federal Reserve data. ABA routing code.`}
+        title={`${bankName} Routing Number in ${cityTitle}, ${stateFullName} | Verify for Wire & ACH`}
+        description={`Find and verify the official ${bankName} routing number for ACH, direct deposit, and wire transfers in ${cityTitle}, ${stateFullName}.`}
         canonicalUrl={`/routing-number/${bankSlug}/${state?.toLowerCase()}/${citySlug}`}
         type="article"
         imageUrl="https://usroutingnumber.com/og-image-branch.png"
@@ -156,7 +156,8 @@ export default function BranchDetail() {
                 "item": `https://usroutingnumber.com/routing-number/${bankSlug}/${state?.toLowerCase()}/${citySlug}`
               }
             ]
-          }
+          },
+          generateFAQSchema(faqs)
         ]}
       />
 
@@ -274,11 +275,16 @@ export default function BranchDetail() {
           )}
 
           <div className="bg-slate-900 text-white p-8 rounded-3xl shadow-lg">
-             <h3 className="text-xl font-bold mb-4">Direct Deposit Guide</h3>
-             <p className="text-slate-400 text-sm mb-6">Learn how to set up your payroll direct deposit using your {bankName} routing number step-by-step.</p>
-             <Link to="/how-to-find-routing-number" className="block w-full text-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl transition-all">
-               Read Guide
-             </Link>
+             <h3 className="text-xl font-bold mb-4">Transfer & Deposit Guides</h3>
+             <p className="text-slate-400 text-sm mb-6">Learn how to set up your payroll direct deposit or send wire transfers using your {bankName} routing number step-by-step.</p>
+             <div className="space-y-3">
+               <Link to="/how-to-find-routing-number" className="block w-full text-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl transition-all">
+                 Direct Deposit Guide
+               </Link>
+               <Link to="/international-wire-guide" className="block w-full text-center bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl transition-all">
+                 International Wire Guide
+               </Link>
+             </div>
           </div>
         </aside>
       </div>

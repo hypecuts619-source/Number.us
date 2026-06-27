@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import SEO from '../components/SEO';
 import { Link } from 'react-router-dom';
 import { Clock, ArrowRight } from 'lucide-react';
@@ -8,8 +9,75 @@ import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 import RelatedGuideCard from '../components/RelatedGuideCard';
 
 export default function InternationalWireGuide() {
+  const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HowTo",
+        "name": "How to Wire Money Internationally",
+        "description": "A step-by-step guide to sending an international wire transfer via the SWIFT network.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Acquire the SWIFT/BIC Code",
+            "text": "Unlike domestic wires, you need the 8 or 11-character SWIFT/BIC code of the receiving bank, not just an ABA routing number."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Obtain IBAN or Account Number",
+            "text": "Get the recipient's International Bank Account Number (IBAN) or standard account number, along with their full name and address."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Initiate the Transfer",
+            "text": "Log into your banking portal, select 'International Wire', and enter the SWIFT code, IBAN, and amount."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Review Exchange Rates and Fees",
+            "text": "Confirm the outbound wire fee (usually $35-$50), note any foreign exchange rate markups, and authorize the transaction."
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the difference between an ABA routing number and a SWIFT code?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "An ABA routing number is a 9-digit code used exclusively for domestic transfers within the United States. A SWIFT code (or BIC) is an 8 or 11-character alphanumeric code used internationally to identify banks globally."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does an international wire transfer cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Outgoing international wire transfers from US banks typically cost between $35 and $50. Additionally, intermediary banks may deduct fees (lifting fees) from the principal, and you may face exchange rate markups."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does an international wire transfer take?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "International wire transfers usually take 1 to 5 business days to clear, depending on the destination country, the number of intermediary clearing banks involved, and time zone differences."
+            }
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 w-full">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(schemaMarkup)}
+        </script>
+      </Helmet>
       <SEO 
         title="International Wire Guide Guide & Deep Dive 2026"
         description="A comprehensive 2026 editorial guide on international wire guide guide & deep dive 2026. Discover the mechanics, history, and technical aspects of bank routing numbers."
@@ -59,6 +127,38 @@ export default function InternationalWireGuide() {
         <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">When managing personal finances in 2026, differentiating between the varied types of routing numbers is a critical skill for avoiding crippling financial turbulence. As established, wiring funds for a down payment on a house operates on a completely separate infrastructural track than direct depositing a bi-weekly payroll. If your real estate agent requests wire instructions, you must explicitly demand the 'Wire <Link to="/routing-number-validator" className="text-blue-600 dark:text-blue-400 hover:underline">Routing Number</Link>' from your banking representative, actively specifying that it is not for <Link to="/blog/ultimate-guide-to-ach-transfers" className="text-blue-600 dark:text-blue-400 hover:underline">ACH</Link> purposes. Furthermore, when switching <Link to="/banks/a-z" className="text-blue-600 dark:text-blue-400 hover:underline">banks</Link>, managing the transition of these numbers is paramount. Consumers must maintain old accounts for at least 30 to 60 days to allow pending direct deposits and automated subscriptions to successfully clear, systematically updating their billing profiles with the new routing parameters to ensure a seamless economic transition.</p>
 
         <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">The distinction between an <Link to="/blog/ultimate-guide-to-ach-transfers" className="text-blue-600 dark:text-blue-400 hover:underline">ACH</Link> <Link to="/routing-number-validator" className="text-blue-600 dark:text-blue-400 hover:underline">routing number</Link> and a wire routing number is a common source of confusion for consumers and businesses alike. While some financial institutions use a single 9-digit code for all electronic incoming transactions, many larger <Link to="/banks/a-z" className="text-blue-600 dark:text-blue-400 hover:underline">banks</Link>—especially those with regional subdivisions or complex operational histories—maintain separate routing numbers for different networks. If you attempt to send a Fedwire transfer using an ACH routing number, the transaction will almost certainly be rejected by the <Link to="/states" className="text-blue-600 dark:text-blue-400 hover:underline">Federal Reserve</Link>'s automated systems. This results in standard return fees, critical delays in funding, and immense frustration. Therefore, any guide to wire transfers in 2026 must emphasize the absolute necessity of independently verifying wire routing instructions directly with the recipient financial institution before authorizing the release of funds.</p>
+
+        <h2 className="text-3xl font-bold text-slate-900 dark:text-white mt-8 mb-6 border-b border-slate-200 dark:border-slate-800 pb-2">Step-by-Step: How to Wire Money Internationally</h2>
+        <div className="space-y-6 mb-8">
+          <div className="flex gap-4">
+            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">1</div>
+            <div>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Acquire the SWIFT/BIC Code</h3>
+              <p className="text-slate-700 dark:text-slate-300">Unlike domestic wires, you need the 8 or 11-character SWIFT/BIC code of the receiving bank, not just an ABA routing number.</p>
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">2</div>
+            <div>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Obtain IBAN or Account Number</h3>
+              <p className="text-slate-700 dark:text-slate-300">Get the recipient's International Bank Account Number (IBAN) or standard account number, along with their full name and address.</p>
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">3</div>
+            <div>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Initiate the Transfer</h3>
+              <p className="text-slate-700 dark:text-slate-300">Log into your banking portal, select 'International Wire', and enter the SWIFT code, IBAN, and amount. Ensure all details are perfectly accurate.</p>
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-lg">4</div>
+            <div>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Review Exchange Rates and Fees</h3>
+              <p className="text-slate-700 dark:text-slate-300">Confirm the outbound wire fee (usually $35-$50), note any foreign exchange rate markups, and authorize the transaction. The transfer will typically take 1 to 5 business days.</p>
+            </div>
+          </div>
+        </div>
         
         <RelatedGuideCard 
           to="/how-to-wire-money" 
@@ -70,6 +170,53 @@ export default function InternationalWireGuide() {
         
             <h2 className="text-2xl font-bold mt-12 mb-4">Conclusion & Financial Outlook</h2>
             <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">Navigating the complexities of the domestic and banking sectors demands constant vigilance. As the US financial infrastructure boldly transitions into 2026, the humble 9-digit ABA routing transit number remains the steadfast anchor connecting legacy systems to the future of real-time macroeconomic exchange. Ensure you always mathematically validate your banking instructions and leverage authoritative directories to prevent severe payment failure disruptions.</p>
+
+            <h2 className="text-3xl font-bold mt-16 mb-8 text-slate-900 dark:text-white border-t border-slate-200 dark:border-slate-800 pt-10">
+              International Wire Transfers: Frequently Asked Questions
+            </h2>
+            <div className="space-y-6">
+              <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
+                <div className="flex items-start gap-4">
+                  <div className="bg-blue-100 dark:bg-blue-900/40 p-2 rounded-lg shrink-0 mt-1">
+                    <span className="font-black text-blue-700 dark:text-blue-400">Q.</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">What is the difference between an ABA routing number and a SWIFT code?</h3>
+                    <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+                      An <strong>ABA routing number</strong> is a 9-digit code used exclusively for domestic transfers within the United States. A <strong>SWIFT code</strong> (or BIC) is an 8 or 11-character alphanumeric code used internationally to identify banks globally on the SWIFT network.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
+                <div className="flex items-start gap-4">
+                  <div className="bg-blue-100 dark:bg-blue-900/40 p-2 rounded-lg shrink-0 mt-1">
+                    <span className="font-black text-blue-700 dark:text-blue-400">Q.</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">How much does an international wire transfer cost?</h3>
+                    <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+                      Outgoing international wire transfers from US banks typically cost between $35 and $50. Additionally, intermediary banks may deduct fees (lifting fees) from the principal, and you may face exchange rate markups if you send funds in a foreign currency.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
+                <div className="flex items-start gap-4">
+                  <div className="bg-blue-100 dark:bg-blue-900/40 p-2 rounded-lg shrink-0 mt-1">
+                    <span className="font-black text-blue-700 dark:text-blue-400">Q.</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">How long does an international wire transfer take?</h3>
+                    <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+                      International wire transfers usually take <strong>1 to 5 business days</strong> to clear, depending on the destination country, the number of intermediary clearing banks involved, and time zone differences.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         

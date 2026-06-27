@@ -25,6 +25,7 @@ import WhatIsARoutingNumber from './pages/WhatIsARoutingNumber';
 import DirectDepositRoutingNumber from './pages/DirectDepositRoutingNumber';
 import FindRoutingNumberOnCheck from './pages/FindRoutingNumberOnCheck';
 import RoutingNumberLookup from './pages/RoutingNumberLookup';
+import RoutingNumberLookupBank from './pages/RoutingNumberLookupBank';
 import RegionalBanksLanding from './pages/RegionalBanksLanding';
 import RegionalBankOverview from './pages/RegionalBankOverview';
 import EssentialGuide from './pages/EssentialGuide';
@@ -123,6 +124,7 @@ export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
                 <Route path="/states/:state" element={!dataLoaded ? <div className="min-h-[60vh] flex justify-center items-center"><div className="w-10 h-10 border-4 border-t-blue-500 rounded-full animate-spin"></div></div> : <StateBankList />} />
                 
                 <Route path="/routing-number-lookup" element={<RoutingNumberLookup />} />
+                <Route path="/routing-number-lookup/:bankSlug" element={<RoutingNumberLookupBank />} />
                 <Route path="/regional-banks" element={<RegionalBanksLanding />} />
                 <Route path="/regional-banks/:bankSlug" element={<RegionalBankOverview />} />
               <Route path="/how-to-find-routing-number-guide" element={<EssentialGuide />} />

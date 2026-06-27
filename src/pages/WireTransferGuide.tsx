@@ -40,6 +40,33 @@ export default function WireTransferGuide() {
             }
           }
         ]
+      },
+      {
+        "@type": "HowTo",
+        "name": "How to Wire Money Domestically in the US",
+        "description": "A step-by-step guide to sending a domestic wire transfer securely via the Fedwire system.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Gather Recipient Information",
+            "text": "Collect the recipient's full name, physical address, bank name, and exact 9-digit wire transfer routing number."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Verify Wire Routing vs ACH",
+            "text": "Ensure the routing number provided is specifically designated for wire transfers, not just ACH direct deposits."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Initiate the Transfer",
+            "text": "Log into your online banking portal or visit a local branch, navigate to the wire transfer section, and input the collected details."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Confirm Fees and Send",
+            "text": "Review the outbound wire fee (typically $25-$35) and authorize the transaction."
+          }
+        ]
       }
     ]
   };
@@ -101,6 +128,38 @@ export default function WireTransferGuide() {
 
         <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">At the core of the 9-digit ABA routing transit number lies an elegant mathematical safeguard known as the <Link to="/blog/understanding-modulus-10-algorithm" className="text-blue-600 dark:text-blue-400 hover:underline">Modulus 10</Link> checksum algorithm. Introduced decades ago to prevent transcription errors during the era of manual <Link to="/blog/anatomy-of-a-check" className="text-blue-600 dark:text-blue-400 hover:underline">check</Link> processing, this algorithm remains the primary line of defense against erroneous data entry in the digital age. The algorithm applies a specific weight—3, 7, and 1—to the first eight digits of the <Link to="/routing-number-validator" className="text-blue-600 dark:text-blue-400 hover:underline">routing number</Link>. The sums of these weighted products are added together, and the final, ninth digit—the check digit—is mathematically derived to ensure that the total sum is a multiple of 10. When a user inputs a routing number into an online payment gateway, client-side scripts can instantly execute this algorithm to <Link to="/routing-number-lookup" className="text-blue-600 dark:text-blue-400 hover:underline">verify</Link> the structural integrity of the number before any data is transmitted to the server.</p>
         
+        <h2 className="text-3xl font-bold text-slate-900 dark:text-white mt-8 mb-6 border-b border-slate-200 dark:border-slate-800 pb-2">Step-by-Step: How to Wire Money Domestically</h2>
+        <div className="space-y-6 mb-8">
+          <div className="flex gap-4">
+            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-lg">1</div>
+            <div>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Gather Recipient Information</h3>
+              <p className="text-slate-700 dark:text-slate-300">Collect the recipient's full name, physical address, bank name, and their exact 9-digit wire transfer routing number.</p>
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-lg">2</div>
+            <div>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Verify Wire Routing vs ACH</h3>
+              <p className="text-slate-700 dark:text-slate-300">Ensure the routing number provided is specifically designated for wire transfers, not just ACH direct deposits. Using an ACH number for a Fedwire transfer will cause a rejection.</p>
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-lg">3</div>
+            <div>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Initiate the Transfer</h3>
+              <p className="text-slate-700 dark:text-slate-300">Log into your online banking portal or visit a local branch, navigate to the wire transfer section, and input the collected details.</p>
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-lg">4</div>
+            <div>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Confirm Fees and Send</h3>
+              <p className="text-slate-700 dark:text-slate-300">Review the outbound wire fee (typically $25-$35 for domestic wires) and authorize the transaction. The funds typically settle same-day.</p>
+            </div>
+          </div>
+        </div>
+
         <RelatedGuideCard 
           to="/international-wire-guide" 
           title="International Wire Transfer Guide" 

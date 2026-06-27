@@ -370,6 +370,18 @@ export default function Lookup() {
           Related Guides & Resources
         </h2>
         <div className="grid md:grid-cols-2 gap-4">
+          <Link to="/how-to-wire-money" className="flex items-start gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl hover:shadow-md transition-shadow border border-slate-100 dark:border-slate-800 group">
+            <div className="flex-1">
+              <div className="font-bold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 transition-colors">Domestic Wire Guide</div>
+              <div className="text-sm text-slate-500 line-clamp-2">Learn how to securely wire money to any domestic US bank account.</div>
+            </div>
+          </Link>
+          <Link to="/international-wire-guide" className="flex items-start gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl hover:shadow-md transition-shadow border border-slate-100 dark:border-slate-800 group">
+            <div className="flex-1">
+              <div className="font-bold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 transition-colors">International Wire Guide</div>
+              <div className="text-sm text-slate-500 line-clamp-2">A step-by-step guide on SWIFT codes, IBANs, and international transfers.</div>
+            </div>
+          </Link>
           <Link to="/ach-vs-wire-transfers" className="flex items-start gap-4 p-4 bg-white dark:bg-slate-900 rounded-xl hover:shadow-md transition-shadow border border-slate-100 dark:border-slate-800 group">
             <div className="flex-1">
               <div className="font-bold text-slate-900 dark:text-white mb-1 group-hover:text-blue-600 transition-colors">ACH vs. Wire Transfers</div>
