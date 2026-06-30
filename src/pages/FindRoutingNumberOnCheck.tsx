@@ -10,8 +10,8 @@ export default function FindRoutingNumberOnCheck() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 w-full">
       <SEO 
-        title="Find Routing Number On Check Guide & Deep Dive 2026"
-        description="A comprehensive 2026 editorial guide on find routing number on check guide & deep dive 2026. Discover the mechanics, history, and technical aspects of bank routing numbers."
+        title="How to Find a Routing Number on a Check in 30 Seconds"
+        description="Looking for the routing number on your check? Follow our simple, step-by-step guide to find your 9-digit ABA routing number instantly."
         canonicalUrl="/find-routing-number-on-check"
       />
 
@@ -22,7 +22,7 @@ export default function FindRoutingNumberOnCheck() {
           <span className="whitespace-nowrap">15 min read</span>
         </div>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight mb-6 leading-tight">
-          Find Routing Number On Check Guide & Deep Dive 2026
+          How to Find a Routing Number on a Check in 30 Seconds
         </h1>
 
         <ArticleAuthorMeta 

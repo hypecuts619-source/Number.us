@@ -16,6 +16,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <script>
+      window.onerror = function(message, source, lineno, colno, error) {
+        if (typeof message === 'string' && message.indexOf('Script error') > -1) {
+          return true; // suppress
+        }
+        return false;
+      };
+      window.addEventListener('error', function(e) {
+        if (e.message === 'Script error.' || e.message === 'Script error' || (e.error && e.error.message && e.error.message.indexOf('Script error') > -1)) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      });
+      const originalConsoleError = console.error;
+      console.error = function(...args) {
+        if (args.length > 0 && typeof args[0] === 'string' && args[0].includes('Script error')) {
+          return;
+        }
+        originalConsoleError.apply(console, args);
+      };
+    </script>
     <!-- SSR_HEAD -->
     <!-- Deferred third-party scripts -->
     <script>
@@ -26,6 +47,7 @@
 
       function loadThirdPartyScripts() {
         if (window.thirdPartyScriptsLoaded) return;
+        if (window.location.hostname === 'localhost' || window.location.hostname.includes('run.app')) return;
         window.thirdPartyScriptsLoaded = true;
         
         // Google Analytics

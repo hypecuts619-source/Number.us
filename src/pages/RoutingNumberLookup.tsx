@@ -23,8 +23,8 @@ export default function RoutingNumberLookup() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <SEO 
-        title="Routing Number Lookup & Bank Search Engine"
-        description="Search our comprehensive database of Federal Reserve ABA routing numbers. Find your bank's routing number instantly by name or reverse lookup an existing number."
+        title="Instant Routing Number Lookup | 25,000+ Banks Verified"
+        description="Need a routing number fast? Use our free, instant lookup tool to find verified routing numbers for over 25,000 US banks and credit unions. No sign-up."
         canonicalUrl="/routing-number-lookup"
       >
         <script type="application/ld+json">

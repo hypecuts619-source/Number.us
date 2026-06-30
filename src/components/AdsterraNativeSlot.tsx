@@ -47,7 +47,8 @@ export default function AdsterraNativeSlot({ zoneId, format, uniqueId = '1', isD
     };
   }, [zoneId, uniqueId, shouldDampen]);
 
-  if (shouldDampen) {
+  // @ts-ignore
+  if (shouldDampen || (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.DEV)) {
     return null; // Suppress ad load
   }
 

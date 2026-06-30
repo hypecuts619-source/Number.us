@@ -36,21 +36,21 @@ export default function BankOverview() {
   const isChase = bankName.toLowerCase().includes('jpmorgan chase') || bankName.toLowerCase() === 'chase bank';
   const isEmpire = bankName.toLowerCase().includes('empire state bank');
 
-  let pageTitle = `${bankName} Routing Number | Verify for Wire & ACH`;
-  let pageDesc = `Find and verify the official ${bankName} routing number for ACH, direct deposit, and wire transfers. Verified routing transit numbers.`;
+  let pageTitle = `${bankName} Routing Number by State - Lookup & Verify [2026]`;
+  let pageDesc = `Looking for your ${bankName} routing number? Find official ACH, wire transfer, and direct deposit codes. 100% verified Federal Reserve data.`;
   let pageH1 = `${bankName} Routing Numbers`;
   
   if (isBofA) {
-    pageTitle = "Bank of America Routing Number | Verify for Wire & ACH";
-    pageDesc = "Find and verify the official Bank of America routing number for ACH, direct deposit, and wire transfers. Verified BofA routing transit numbers.";
+    pageTitle = "Bank of America Routing Number by State - Lookup & Verify [2026]";
+    pageDesc = "Looking for your Bank of America routing number? Find official ACH, wire transfer, and direct deposit codes. 100% verified Federal Reserve data.";
     pageH1 = "Bank of America (BofA) Routing Numbers";
   } else if (isChase) {
-    pageTitle = "Chase Bank Routing Number | Verify for Wire & ACH";
-    pageDesc = "Find and verify the official JPMorgan Chase routing number for ACH, direct deposit, and wire transfers. Verified Chase routing transit numbers.";
+    pageTitle = "Chase Bank Routing Number by State - Lookup & Verify [2026]";
+    pageDesc = "Looking for your Chase routing number? Find official ACH, wire transfer, and direct deposit codes. 100% verified Federal Reserve data.";
     pageH1 = "JPMorgan Chase Bank Routing Numbers";
   } else if (isEmpire) {
-    pageTitle = "Empire State Bank Routing Number | Official ACH & Wire Codes";
-    pageDesc = "Find the verified Empire State Bank routing number. Get the official 9-digit ABA code for Empire State Bank wire transfers and direct deposits.";
+    pageTitle = "Empire State Bank Routing Number by State - Lookup & Verify [2026]";
+    pageDesc = "Looking for your Empire State Bank routing number? Find official ACH, wire transfer, and direct deposit codes. 100% verified Federal Reserve data.";
     pageH1 = "Empire State Bank Routing Numbers";
   }
 

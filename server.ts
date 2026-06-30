@@ -29,7 +29,7 @@ async function startServer() {
 
   if (!dataValid) {
     try {
-      console.log("Integrity test failed or routing data is missing. Initiating self-healing recovery...");
+      console.log("Routing data is missing or incomplete. Initiating data download...");
       const { execSync } = await import('child_process');
       execSync('npx tsx scripts/update-data.ts', { stdio: 'inherit' });
       console.log("Self-healing: routing data successfully regenerated!");

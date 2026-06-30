@@ -34,8 +34,8 @@ export default function AllBanksDirectory() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <SEO 
-        title="All Banks Directory (A-Z) | USRoutingNumber.com"
-        description="Comprehensive A-Z directory of all verified US banks and credit unions. Find routing numbers for any financial institution."
+        title="Search Routing Numbers by Bank Name & State [2026]"
+        description="Searching for your bank's routing number? Enter your bank name or state into our fast, free routing number search tool to get verified results instantly."
         canonicalUrl="/banks"
       />
       

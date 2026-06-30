@@ -10,8 +10,8 @@ export default function DirectDepositRoutingNumber() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 w-full">
       <SEO 
-        title="Direct Deposit Routing Number Guide & Deep Dive 2026"
-        description="A comprehensive 2026 editorial guide on direct deposit routing number guide & deep dive 2026. Discover the mechanics, history, and technical aspects of bank routing numbers."
+        title="Find Routing Number for Direct Deposit - 2026 Guide"
+        description="Setting up direct deposit? Learn exactly how to find your bank's routing number and account number quickly and securely."
         canonicalUrl="/direct-deposit-routing-number"
       />
 
@@ -22,7 +22,7 @@ export default function DirectDepositRoutingNumber() {
           <span className="whitespace-nowrap">15 min read</span>
         </div>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight mb-6 leading-tight">
-          Direct Deposit Routing Number Guide & Deep Dive 2026
+          Find Routing Number for Direct Deposit - 2026 Guide
         </h1>
 
         <ArticleAuthorMeta 

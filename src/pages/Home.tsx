@@ -42,8 +42,8 @@ export default function Home() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-blue-600/5 dark:bg-blue-500/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
 
       <SEO 
-        title="US Routing Number Lookup | Find Any Bank (2026) — Free & Verified"
-        description="Find verified US bank routing numbers for 2026. Search by bank name, 9-digit routing number, or state. Federal Reserve data. Free lookup tool. 28,000+ routing numbers."
+        title="Bank Routing Number Lookup - 25k US Banks [Free]"
+        description="Search our comprehensive database of over 25,000 US bank routing numbers. Get verified ACH and wire transfer codes instantly for direct deposits."
         canonicalUrl="/"
         keywords="routing number, bank routing number, ABA routing number, US bank routing number, routing number lookup, find routing number, routing number search"
         imageUrl="https://usroutingnumber.com/og-image-home.png"
