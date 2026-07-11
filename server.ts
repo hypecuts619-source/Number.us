@@ -47,10 +47,16 @@ async function startServer() {
     const baseDir = isProd ? path.resolve(__dirname, 'dist/client') : path.resolve(__dirname, 'public');
     const filePath = path.join(baseDir, req.path);
     if (fs.existsSync(filePath)) {
-      res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate'); // Let Search Engines handle the 0 max-age
-      if (req.path.endsWith('.xml')) res.setHeader('Content-Type', 'application/xml');
-      if (req.path.endsWith('.txt')) res.setHeader('Content-Type', 'text/plain');
-      return res.sendFile(filePath);
+      let contentType = 'text/plain; charset=utf-8';
+      if (req.path.endsWith('.xml')) contentType = 'application/xml';
+      else if (req.path.endsWith('llms.txt')) contentType = 'text/markdown; charset=utf-8';
+      
+      return res.sendFile(filePath, { 
+        headers: { 
+          'Cache-Control': 'public, max-age=0, must-revalidate',
+          'Content-Type': contentType 
+        } 
+      });
     }
     next();
   });

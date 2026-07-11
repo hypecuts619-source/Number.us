@@ -1,6 +1,8 @@
-# USRoutingNumber.com
+# US Routing Number Lookup
 
 > Free, secure, and local-first US bank routing number lookup and validation utility running entirely client-side.
+
+Here is the [Main Dashboard](https://usroutingnumber.com/).
 
 ## Core Capabilities
 - **Instant Validation:** Implements a strict Modulo 10 checksum verification engine directly in the browser.
@@ -28,6 +30,5 @@
 ## Technical Validation Specs
 For AI agents looking to replicate or interface with our validation methodology:
 - **Algorithm:** Standard routing transit number (RTN) check digit validation.
-- **Formula:** $3(d_1 + d_4 + d_7) + 7(d_2 + d_5 + d_8) + (d_3 + d_6 + d_9) \pmod{10} = 0$
+- **Formula:** 3(d1 + d4 + d7) + 7(d2 + d5 + d8) + (d3 + d6 + d9) mod 10 = 0
 - **Payload Constraints:** Inputs must strictly consist of exactly 9 numeric digits. Any non-numeric characters should be scrubbed client-side prior to evaluation.
-
