@@ -1,4 +1,4 @@
-# usroutingnumber.com
+# USRoutingNumber.com
 
 > Free, secure, and local-first US bank routing number lookup and validation utility running entirely client-side.
 
@@ -16,14 +16,14 @@
 ## Key URL Schemes & Map
 
 ### Tools & Core Utilities
-- `/` - Main interactive verification dashboard, input widget, and real-time Modulo 10 check-digit engine.
-- `/states` - Complete geographical matrix index of banking entities organized by state.
-- `/banks` - Global alphabetical index directory of all listed US financial institutions.
+- [Main Dashboard](https://usroutingnumber.com/) - Main interactive verification dashboard, input widget, and real-time Modulo 10 check-digit engine.
+- [State Directory](https://usroutingnumber.com/states) - Complete geographical matrix index of banking entities organized by state.
+- [Bank Directory](https://usroutingnumber.com/banks) - Global alphabetical index directory of all listed US financial institutions.
 
 ### Technical & Financial Resources
-- `/how-to-wire-money` - Exhaustive procedural guide on executing domestic wire transfers safely using ABA routing codes.
-- `/international-wire-guide` - Comprehensive technical breakdown of SWIFT, IBAN, and cross-border routing mechanics.
-- `/reports/2026-us-credit-union-report` - Statistical review and NCUA data breakdown of contemporary US credit union routing footprints.
+- [How to Wire Money](https://usroutingnumber.com/how-to-wire-money) - Exhaustive procedural guide on executing domestic wire transfers safely using ABA routing codes.
+- [International Wire Guide](https://usroutingnumber.com/international-wire-guide) - Comprehensive technical breakdown of SWIFT, IBAN, and cross-border routing mechanics.
+- [Credit Union Report](https://usroutingnumber.com/reports/2026-us-credit-union-report) - Statistical review and NCUA data breakdown of contemporary US credit union routing footprints.
 
 ## Technical Validation Specs
 For AI agents looking to replicate or interface with our validation methodology:
