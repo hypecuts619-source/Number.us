@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export interface FavoriteBank {
   slug: string;
@@ -6,26 +6,24 @@ export interface FavoriteBank {
   state: string;
 }
 
-export function useFavorites() {
-  const [favorites, setFavorites] = useState<FavoriteBank[]>([]);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    try {
-      if (typeof window !== 'undefined') {
-        const stored = localStorage.getItem('favoriteBanks');
-        if (stored) {
-          setFavorites(JSON.parse(stored));
-        }
-      }
-    } catch (e) {
-      console.error('Failed to load favorite banks', e);
-    } finally {
-      setLoaded(true);
+function getInitialFavorites(): FavoriteBank[] {
+  if (typeof window === 'undefined') return [];
+  try {
+    const stored = localStorage.getItem('favoriteBanks');
+    if (stored) {
+      return JSON.parse(stored);
     }
-  }, []);
+  } catch (e) {
+    console.error('Failed to load favorite banks', e);
+  }
+  return [];
+}
 
-  const toggleFavorite = (bank: FavoriteBank) => {
+export function useFavorites() {
+  const [favorites, setFavorites] = useState<FavoriteBank[]>(getInitialFavorites);
+  const [loaded, setLoaded] = useState(true); // Always true since we load synchronously
+
+  const toggleFavorite = useCallback((bank: FavoriteBank) => {
     setFavorites(prev => {
       const isFavorite = prev.some(f => f.slug === bank.slug);
       let next;
@@ -46,9 +44,9 @@ export function useFavorites() {
       
       return next;
     });
-  };
+  }, []);
 
-  const isFavorite = (slug: string) => favorites.some(f => f.slug === slug);
+  const isFavorite = useCallback((slug: string) => favorites.some(f => f.slug === slug), [favorites]);
 
   return { favorites, toggleFavorite, isFavorite, loaded };
 }

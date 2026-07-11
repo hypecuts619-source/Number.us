@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 
 export interface ViewedItem {
   routingNumber: string;
@@ -6,26 +6,24 @@ export interface ViewedItem {
   timestamp: number;
 }
 
-export function useRecentlyViewed() {
-  const [items, setItems] = useState<ViewedItem[]>([]);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    try {
-      if (typeof window !== 'undefined') {
-        const stored = localStorage.getItem('recentlyViewed');
-        if (stored) {
-          setItems(JSON.parse(stored));
-        }
-      }
-    } catch (e) {
-      console.error('Failed to load recently viewed items', e);
-    } finally {
-      setLoaded(true);
+function getInitialRecentlyViewed(): ViewedItem[] {
+  if (typeof window === 'undefined') return [];
+  try {
+    const stored = localStorage.getItem('recentlyViewed');
+    if (stored) {
+      return JSON.parse(stored);
     }
-  }, []);
+  } catch (e) {
+    console.error('Failed to load recently viewed items', e);
+  }
+  return [];
+}
 
-  const addItem = (routingNumber: string, bankName: string) => {
+export function useRecentlyViewed() {
+  const [items, setItems] = useState<ViewedItem[]>(getInitialRecentlyViewed);
+  const [loaded, setLoaded] = useState(true);
+
+  const addItem = useCallback((routingNumber: string, bankName: string) => {
     setItems(prevItems => {
       const newItem = { routingNumber, bankName, timestamp: Date.now() };
       // Remove if exists
@@ -43,7 +41,7 @@ export function useRecentlyViewed() {
       
       return newItems;
     });
-  };
+  }, []);
 
   return { items, addItem, loaded };
 }
