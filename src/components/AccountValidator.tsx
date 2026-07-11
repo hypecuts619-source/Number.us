@@ -91,7 +91,7 @@ export default function AccountValidator() {
             />
             <button
               type="submit"
-              className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 md:py-3.5 px-8 rounded-lg transition-colors whitespace-nowrap shadow-lg shadow-emerald-500/20 text-lg md:text-base"
+              className="bg-emerald-700 hover:bg-emerald-600 text-white font-bold py-3 md:py-3.5 px-8 rounded-lg transition-colors whitespace-nowrap shadow-lg shadow-emerald-500/20 text-lg md:text-base"
             >
               {isLoading ? 'Validating...' : 'Validate'}
             </button>

@@ -58,7 +58,7 @@ export default function AdsterraNativeSlot({ zoneId, format, uniqueId = '1', isD
 
   return (
     <div className={`relative flex flex-col items-center justify-center my-6 mx-auto bg-slate-50/50 dark:bg-slate-800/10 border border-slate-100 dark:border-slate-800/50 rounded-xl py-2 ${containerClasses}`}>
-      <span className="text-[9px] uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-2 select-none pointer-events-none text-center">
+      <span className="text-[9px] uppercase tracking-widest text-slate-600 dark:text-slate-400 mb-2 select-none pointer-events-none text-center">
         Sponsored Link
       </span>
       {/* The Adsterra script uses document.write or looks for element by ID within its execution context */}

@@ -95,12 +95,12 @@ export default function FooterLinks() {
             Resources
           </h3>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/how-to-find-routing-number-guide" className="text-blue-600 dark:text-blue-400 font-bold hover:underline transition-colors">2026 Routing Number Guide</Link></li>
-            <li><Link to="/routing-number-lookup" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Reverse Lookup</Link></li>
-            <li><Link to="/routing-number-validator" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">ABA Validator</Link></li>
-            <li><Link to="/contact-us" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact Support</Link></li>
-            <li><Link to="/privacy-policy" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Privacy Policy</Link></li>
-            <li><Link to="/terms-of-service" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Terms of Service</Link></li>
+            <li><Link to="/how-to-find-routing-number-guide" className="text-blue-600 dark:text-blue-400 font-bold hover:underline transition-colors block py-1">2026 Routing Number Guide</Link></li>
+            <li><Link to="/routing-number-lookup" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">Reverse Lookup</Link></li>
+            <li><Link to="/routing-number-validator" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">ABA Validator</Link></li>
+            <li><Link to="/contact-us" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">Contact Support</Link></li>
+            <li><Link to="/privacy-policy" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">Privacy Policy</Link></li>
+            <li><Link to="/terms-of-service" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">Terms of Service</Link></li>
           </ul>
         </div>
         
@@ -110,12 +110,12 @@ export default function FooterLinks() {
             Our Standards
           </h3>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/about-us" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About Us</Link></li>
-            <li><Link to="/about-us#verification" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">How We Verify Data</Link></li>
-            <li><Link to="/about-us#regulatory-sources" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Regulatory Sources</Link></li>
-            <li><Link to="/about-us#editorial-guidelines" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Editorial Guidelines</Link></li>
-            <li><Link to="/blog" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors border-b border-slate-200 dark:border-slate-700 pb-2">Financial Analysis Blog</Link></li>
-            <li><Link to="/reports/2026-us-credit-union-report" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">2026 Market Report</Link></li>
+            <li><Link to="/about-us" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">About Us</Link></li>
+            <li><Link to="/about-us#verification" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">How We Verify Data</Link></li>
+            <li><Link to="/about-us#regulatory-sources" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">Regulatory Sources</Link></li>
+            <li><Link to="/about-us#editorial-guidelines" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">Editorial Guidelines</Link></li>
+            <li><Link to="/blog" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors border-b border-slate-200 dark:border-slate-700 pb-2 block py-1">Financial Analysis Blog</Link></li>
+            <li><Link to="/reports/2026-us-credit-union-report" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium block py-1">2026 Market Report</Link></li>
           </ul>
         </div>
 

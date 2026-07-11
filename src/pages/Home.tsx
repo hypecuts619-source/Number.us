@@ -23,16 +23,6 @@ export default function Home() {
   const { favorites, loaded: favsLoaded } = useFavorites();
   const { items: recentItems, loaded: recentLoaded } = useRecentlyViewed();
 
-  const PersonalizationSkeleton = () => (
-    <div className="animate-pulse bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 mb-8">
-      <div className="h-6 w-32 bg-slate-200 dark:bg-slate-700 rounded mb-4"></div>
-      <div className="space-y-3">
-        <div className="h-12 w-full bg-slate-200 dark:bg-slate-700 rounded-xl"></div>
-        <div className="h-12 w-full bg-slate-200 dark:bg-slate-700 rounded-xl"></div>
-      </div>
-    </div>
-  );
-
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 md:py-12 relative flex flex-col">
       {/* Subtle Premium Background Effect */}
@@ -114,16 +104,16 @@ export default function Home() {
         </p>
         
         {/* Subtle Trust Indicators */}
-        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mt-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-          <div className="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-300">
+        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mt-8 opacity-90 transition-all duration-500">
+          <div className="flex items-center gap-2 text-sm font-bold text-slate-800 dark:text-slate-200">
             <svg className="w-5 h-5 text-slate-900 dark:text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
             256-Bit Secure
           </div>
-          <div className="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-300">
+          <div className="flex items-center gap-2 text-sm font-bold text-slate-800 dark:text-slate-200">
             <svg className="w-5 h-5 text-slate-900 dark:text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
             FedACH Synced
           </div>
-          <div className="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-300">
+          <div className="flex items-center gap-2 text-sm font-bold text-slate-800 dark:text-slate-200">
             <svg className="w-5 h-5 text-slate-900 dark:text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
             Sub-millisecond Search
           </div>
@@ -136,10 +126,39 @@ export default function Home() {
 
       {/* Main Action Area - Mobile Top, Desktop Below Header */}
       <div className="order-1 md:order-2 flex flex-col w-full">
-        {/* 1. Favorites - High Priority Smart Access */}
-        {!favsLoaded ? (
-          <PersonalizationSkeleton />
-        ) : favorites.length > 0 ? (
+        {/* 1. Primary Search */}
+        <div className="mb-8 md:mb-16 relative z-20">
+          <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-8 md:p-12 rounded-[2.5rem] border border-white dark:border-slate-700 shadow-2xl shadow-blue-900/10 dark:shadow-none relative group mt-12 md:mt-0">
+            {/* Subtle glow behind the search box */}
+            <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-tr from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -z-10"></div>
+            
+            <div className="flex items-center gap-2 mb-8 justify-center">
+              <span className="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-[0.2em] bg-blue-50 dark:bg-blue-900/30 px-4 py-1.5 rounded-full ring-1 ring-blue-100 dark:ring-blue-800">Bank & Routing Directory Search</span>
+            </div>
+            <SearchBar />
+            <p className="text-center mt-6 text-sm font-medium text-slate-500 dark:text-slate-400">
+              Type <strong className="text-slate-700 dark:text-slate-300">bank name</strong>, <strong className="text-slate-700 dark:text-slate-300">9-digit number</strong>, or <strong className="text-slate-700 dark:text-slate-300">city</strong>
+            </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+              <Link to="/states" className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-xl py-3 px-4 font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm text-sm">
+                <span role="img" aria-label="bank">🏛️</span> Find by State
+              </Link>
+              <Link to="/banks" className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-xl py-3 px-4 font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm text-sm">
+                <span role="img" aria-label="bank">🏦</span> Find by Bank
+              </Link>
+              <Link to="/how-to-wire-money" className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-xl py-3 px-4 font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm text-sm">
+                <span role="img" aria-label="card">💳</span> How to Wire
+              </Link>
+              <Link to="/international-wire-guide" className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-xl py-3 px-4 font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm text-sm lg:col-span-1 col-span-2">
+                <span role="img" aria-label="earth">🌍</span> International
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* 2. Favorites - High Priority Smart Access */}
+        {(favsLoaded && favorites.length > 0) ? (
           <div className="bg-rose-50 dark:bg-rose-900/10 border border-rose-100 dark:border-rose-900/30 rounded-3xl p-6 md:p-8 shadow-sm mb-8 animate-in fade-in zoom-in-95 duration-500">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3 text-rose-700 dark:text-rose-400">
@@ -172,40 +191,9 @@ export default function Home() {
           </div>
         ) : null}
 
-        {/* 2. Primary Search */}
-        <div className="mb-8 md:mb-16 relative z-20">
-          <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-8 md:p-12 rounded-[2.5rem] border border-white dark:border-slate-700 shadow-2xl shadow-blue-900/10 dark:shadow-none relative group">
-            {/* Subtle glow behind the search box */}
-            <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-tr from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 -z-10"></div>
-            
-            <div className="flex items-center gap-2 mb-8 justify-center">
-              <span className="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-[0.2em] bg-blue-50 dark:bg-blue-900/30 px-4 py-1.5 rounded-full ring-1 ring-blue-100 dark:ring-blue-800">Bank & Routing Directory Search</span>
-            </div>
-            <SearchBar />
-            <p className="text-center mt-6 text-sm font-medium text-slate-500 dark:text-slate-400">
-              Type <strong className="text-slate-700 dark:text-slate-300">bank name</strong>, <strong className="text-slate-700 dark:text-slate-300">9-digit number</strong>, or <strong className="text-slate-700 dark:text-slate-300">city</strong>
-            </p>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-              <Link to="/states" className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-xl py-3 px-4 font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm text-sm">
-                <span role="img" aria-label="bank">🏛️</span> Find by State
-              </Link>
-              <Link to="/banks" className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-xl py-3 px-4 font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm text-sm">
-                <span role="img" aria-label="bank">🏦</span> Find by Bank
-              </Link>
-              <Link to="/how-to-wire-money" className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-xl py-3 px-4 font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm text-sm">
-                <span role="img" aria-label="card">💳</span> How to Wire
-              </Link>
-              <Link to="/international-wire-guide" className="bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white rounded-xl py-3 px-4 font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm text-sm lg:col-span-1 col-span-2">
-                <span role="img" aria-label="earth">🌍</span> International
-              </Link>
-            </div>
-          </div>
-        </div>
-
         {/* Educational Deep-Dive (Added for AdSense Value) */}
         <div className="mb-12 prose prose-slate dark:prose-invert max-w-none px-4">
-          <h3 className="text-xl md:text-2xl font-bold mb-4">Understanding United States Routing Transit Numbers (RTN)</h3>
+          <h2 className="text-xl md:text-2xl font-bold mb-4">Understanding United States Routing Transit Numbers (RTN)</h2>
           <p className="text-slate-600 dark:text-slate-400 mb-6">
             A Routing Transit Number is a specific nine-digit numerical code utilized by American banking institutions to clear domestic funds, process direct deposits, and facilitate automated clearing house (ACH) transfers. Established by the American Bankers Association (ABA) in 1910, this infrastructure guarantees that transaction payloads reach their precise processing endpoints.
           </p>
@@ -236,9 +224,7 @@ export default function Home() {
 
         {/* 3. Recently Viewed */}
         <div className="mb-12">
-          {!recentLoaded ? (
-            <PersonalizationSkeleton />
-          ) : recentItems.length > 0 ? (
+          {(recentLoaded && recentItems.length > 0) ? (
             <div className="bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
               <div className="flex items-center gap-3 mb-6 text-slate-700 dark:text-slate-300">
                 <div className="p-2 bg-white dark:bg-slate-700/50 rounded-xl shadow-sm italic">
