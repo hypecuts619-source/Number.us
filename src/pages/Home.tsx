@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useMemo, useState, lazy, Suspense } from 'react';
+import { useMemo, useState } from 'react';
 import { getTopSearchedBanks } from '../lib/getData';
 import { generateSlug } from '../lib/generateSlug';
 import { generateHomeFAQs } from '../lib/faqTemplates';
@@ -11,12 +11,10 @@ import { useRecentlyViewed } from '../hooks/useRecentlyViewed';
 import { Heart, Clock, ArrowRight, Search } from 'lucide-react';
 import DataIntegrityBadge from '../components/DataIntegrityBadge';
 import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
-
-// Lazy loaded components for better LCP
-const SearchBar = lazy(() => import('../components/SearchBar'));
-const AccountValidator = lazy(() => import('../components/AccountValidator'));
-const CheckDiagram = lazy(() => import('../components/CheckDiagram'));
-const RegionalBankDirectory = lazy(() => import('../components/RegionalBankDirectory'));
+import SearchBar from '../components/SearchBar';
+import AccountValidator from '../components/AccountValidator';
+import CheckDiagram from '../components/CheckDiagram';
+import RegionalBankDirectory from '../components/RegionalBankDirectory';
 
 export default function Home() {
   const topBanks = getTopSearchedBanks();
@@ -183,9 +181,7 @@ export default function Home() {
             <div className="flex items-center gap-2 mb-8 justify-center">
               <span className="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase tracking-[0.2em] bg-blue-50 dark:bg-blue-900/30 px-4 py-1.5 rounded-full ring-1 ring-blue-100 dark:ring-blue-800">Bank & Routing Directory Search</span>
             </div>
-            <Suspense fallback={<div className="h-12 bg-slate-100 dark:bg-slate-800 rounded-xl animate-pulse" />}>
-              <SearchBar />
-            </Suspense>
+            <SearchBar />
             <p className="text-center mt-6 text-sm font-medium text-slate-500 dark:text-slate-400">
               Type <strong className="text-slate-700 dark:text-slate-300">bank name</strong>, <strong className="text-slate-700 dark:text-slate-300">9-digit number</strong>, or <strong className="text-slate-700 dark:text-slate-300">city</strong>
             </p>
@@ -280,9 +276,7 @@ export default function Home() {
         <div className="grid lg:grid-cols-3 gap-8 md:gap-12">
           <div className="lg:col-span-2 space-y-12">
                       
-            <Suspense fallback={<div className="h-48 bg-slate-100 dark:bg-slate-800 rounded-3xl animate-pulse" />}>
-              <AccountValidator />
-            </Suspense>
+            <AccountValidator />
 
             {/* SEO Text (Pushed Down) */}
             <section className={`relative ${!isArticleExpanded ? 'max-h-[500px] overflow-hidden' : ''}`}>
@@ -292,9 +286,7 @@ export default function Home() {
                   A routing transit number (RTN) is a nine-digit code used by financial institutions in the United States to identify where an account is held. Established in 1910 by the ABA, it remains the standard for US bank identification today.
                 </p>
                 
-                <Suspense fallback={<div className="h-64 bg-slate-100 dark:bg-slate-800 rounded-2xl animate-pulse" />}>
-                  <CheckDiagram />
-                </Suspense>
+                <CheckDiagram />
 
                 <h3 className="text-xl md:text-2xl font-black text-slate-800 dark:text-white mt-12 mb-4">Verification Standards</h3>
                 <p>
@@ -314,9 +306,7 @@ export default function Home() {
               )}
             </section>
 
-            <Suspense fallback={<div className="h-96 bg-slate-100 dark:bg-slate-800 rounded-3xl animate-pulse" />}>
-              <RegionalBankDirectory />
-            </Suspense>
+            <RegionalBankDirectory />
           </div>
 
           <aside className="space-y-8">
