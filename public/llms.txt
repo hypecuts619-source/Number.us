@@ -1,5 +1,4 @@
 # USRoutingNumber.com
-
 > Free, secure, and local-first US bank routing number lookup and validation utility running entirely client-side.
 
 ## Core Capabilities

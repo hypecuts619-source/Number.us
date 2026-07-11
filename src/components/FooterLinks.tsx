@@ -51,12 +51,12 @@ export default function FooterLinks() {
           <h3 className="text-slate-900 dark:text-slate-100 font-bold mb-4 uppercase tracking-wider text-xs">
             Major Banks
           </h3>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-1 text-sm">
             {topBanks.map(bank => (
               <li key={bank.slug}>
                 <Link 
                   to={`/routing-number/${bank.slug}`}
-                  className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-2"
                 >
                   {bank.name} Routing Numbers
                 </Link>
@@ -65,7 +65,7 @@ export default function FooterLinks() {
             <li>
               <Link 
                 to="/banks"
-                className="text-blue-600 dark:text-blue-400 font-medium hover:underline transition-colors mt-2 inline-block"
+                className="text-blue-600 dark:text-blue-400 font-medium hover:underline transition-colors mt-2 inline-block py-2"
               >
                 Full A-Z Bank Directory &rarr;
               </Link>
@@ -73,7 +73,7 @@ export default function FooterLinks() {
             <li>
               <Link 
                 to="/credit-unions"
-                className="text-slate-500 dark:text-slate-400 text-xs hover:underline transition-colors mt-1 inline-block font-bold"
+                className="text-slate-500 dark:text-slate-400 text-xs hover:underline transition-colors mt-1 inline-block font-bold py-2"
               >
                 Credit Union Routing Directory
               </Link>
@@ -81,7 +81,7 @@ export default function FooterLinks() {
             <li>
               <Link 
                 to="/regional-banks"
-                className="text-slate-500 dark:text-slate-400 text-xs hover:underline transition-colors mt-1 inline-block"
+                className="text-slate-500 dark:text-slate-400 text-xs hover:underline transition-colors mt-1 inline-block py-2"
               >
                 State Regional Banks
               </Link>
@@ -94,13 +94,13 @@ export default function FooterLinks() {
           <h3 className="text-slate-900 dark:text-slate-100 font-bold mb-4 uppercase tracking-wider text-xs">
             Resources
           </h3>
-          <ul className="space-y-2 text-sm">
-            <li><Link to="/how-to-find-routing-number-guide" className="text-blue-600 dark:text-blue-400 font-bold hover:underline transition-colors block py-1">2026 Routing Number Guide</Link></li>
-            <li><Link to="/routing-number-lookup" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">Reverse Lookup</Link></li>
-            <li><Link to="/routing-number-validator" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">ABA Validator</Link></li>
-            <li><Link to="/contact-us" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">Contact Support</Link></li>
-            <li><Link to="/privacy-policy" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">Privacy Policy</Link></li>
-            <li><Link to="/terms-of-service" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">Terms of Service</Link></li>
+          <ul className="space-y-1 text-sm">
+            <li><Link to="/how-to-find-routing-number-guide" className="text-blue-600 dark:text-blue-400 font-bold hover:underline transition-colors block py-2">2026 Routing Number Guide</Link></li>
+            <li><Link to="/routing-number-lookup" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-2">Reverse Lookup</Link></li>
+            <li><Link to="/routing-number-validator" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-2">ABA Validator</Link></li>
+            <li><Link to="/contact-us" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-2">Contact Support</Link></li>
+            <li><Link to="/privacy-policy" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-2">Privacy Policy</Link></li>
+            <li><Link to="/terms-of-service" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-2">Terms of Service</Link></li>
           </ul>
         </div>
         
@@ -109,13 +109,13 @@ export default function FooterLinks() {
            <h3 className="text-slate-900 dark:text-slate-100 font-bold mb-4 uppercase tracking-wider text-xs">
             Our Standards
           </h3>
-          <ul className="space-y-2 text-sm">
-            <li><Link to="/about-us" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">About Us</Link></li>
-            <li><Link to="/about-us#verification" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">How We Verify Data</Link></li>
-            <li><Link to="/about-us#regulatory-sources" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">Regulatory Sources</Link></li>
-            <li><Link to="/about-us#editorial-guidelines" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-1">Editorial Guidelines</Link></li>
-            <li><Link to="/blog" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors border-b border-slate-200 dark:border-slate-700 pb-2 block py-1">Financial Analysis Blog</Link></li>
-            <li><Link to="/reports/2026-us-credit-union-report" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium block py-1">2026 Market Report</Link></li>
+          <ul className="space-y-1 text-sm">
+            <li><Link to="/about-us" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-2">About Us</Link></li>
+            <li><Link to="/about-us#verification" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-2">How We Verify Data</Link></li>
+            <li><Link to="/about-us#regulatory-sources" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-2">Regulatory Sources</Link></li>
+            <li><Link to="/about-us#editorial-guidelines" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-2">Editorial Guidelines</Link></li>
+            <li><Link to="/blog" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors border-b border-slate-200 dark:border-slate-700 pb-2 block py-2">Financial Analysis Blog</Link></li>
+            <li><Link to="/reports/2026-us-credit-union-report" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium block py-2">2026 Market Report</Link></li>
           </ul>
         </div>
 
@@ -124,13 +124,13 @@ export default function FooterLinks() {
            <h3 className="text-slate-900 dark:text-slate-100 font-bold mb-4 uppercase tracking-wider text-xs">
             Popular Guides
           </h3>
-          <ul className="space-y-2 text-sm">
-            <li><Link to="/routing-number-changes-2026" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">2026 Routing Changes</Link></li>
-            <li><Link to="/routing-number-vs-account-number" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Routing vs Account Number</Link></li>
-            <li><Link to="/how-to-wire-money" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">How to Wire Money</Link></li>
-            <li><Link to="/international-wire-guide" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">International Wires</Link></li>
-            <li><Link to="/find-routing-number-on-check" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Routing Number on Checks</Link></li>
-            <li><Link to="/blog/ultimate-guide-to-ach-transfers" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium border-t border-slate-100 dark:border-slate-800 pt-2 mt-1 block">Ultimate ACH Guide</Link></li>
+          <ul className="space-y-1 text-sm">
+            <li><Link to="/routing-number-changes-2026" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-2">2026 Routing Changes</Link></li>
+            <li><Link to="/routing-number-vs-account-number" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-2">Routing vs Account Number</Link></li>
+            <li><Link to="/how-to-wire-money" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-2">How to Wire Money</Link></li>
+            <li><Link to="/international-wire-guide" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-2">International Wires</Link></li>
+            <li><Link to="/find-routing-number-on-check" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors block py-2">Routing Number on Checks</Link></li>
+            <li><Link to="/blog/ultimate-guide-to-ach-transfers" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium border-t border-slate-100 dark:border-slate-800 pt-3 mt-1 block pb-2">Ultimate ACH Guide</Link></li>
           </ul>
         </div>
 
@@ -139,12 +139,12 @@ export default function FooterLinks() {
           <h3 className="text-slate-900 dark:text-slate-100 font-bold mb-4 uppercase tracking-wider text-xs">
             Routing Numbers by State
           </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-2 text-sm">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-1 text-sm">
             {statesList.map(state => (
               <Link 
                 key={state.slug}
                 to={`/states/${state.slug}`}
-                className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors truncate"
+                className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors truncate block py-2"
               >
                 {state.name}
               </Link>
@@ -153,7 +153,7 @@ export default function FooterLinks() {
           <div className="mt-4">
             <Link 
               to="/states"
-              className="text-blue-600 dark:text-blue-400 font-medium hover:underline transition-colors mt-2 inline-block text-sm"
+              className="text-blue-600 dark:text-blue-400 font-medium hover:underline transition-colors mt-2 inline-block py-2 text-sm"
             >
               Directory Overview &rarr;
             </Link>
