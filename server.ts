@@ -17,9 +17,9 @@ async function startServer() {
   try {
     if (fs.existsSync(publicDataPath)) {
       const content = fs.readFileSync(publicDataPath, 'utf8');
-      JSON.parse(content);
+      const parsed = JSON.parse(content);
       // Ensure the file has substantial content, not truncated
-      if (content.length > 2000000) {
+      if (Array.isArray(parsed) && parsed.length > 10000) {
         dataValid = true;
       }
     }

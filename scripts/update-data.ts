@@ -3,12 +3,18 @@ import https from 'https';
 import path from 'path';
 import zipcodes from 'zipcodes';
 
-async function download(url: string): Promise<any> {
+async function downloadText(url: string): Promise<string> {
   return new Promise((resolve, reject) => {
     https.get(url, (res) => {
+      if (res.statusCode && res.statusCode >= 400) {
+        resolve("");
+        return;
+      }
       let data = '';
       res.on('data', (chunk) => (data += chunk));
-      res.on('end', () => resolve(JSON.parse(data)));
+      res.on('end', () => {
+        resolve(data);
+      });
       res.on('error', reject);
     }).on('error', reject);
   });
@@ -42,61 +48,76 @@ const frbOverrides = [
 
 async function updateData() {
   try {
-    console.log('Downloading latest ACH participants from community repository...');
-    const ach = await download('https://raw.githubusercontent.com/smwa/routing-numbers/master/fedach_participants.json');
+    console.log('Downloading latest ACH participants from moov-io repository...');
+    const achText = await downloadText('https://raw.githubusercontent.com/moov-io/fed/master/data/FedACHdir.txt');
     
-    console.log('Downloading latest Fedwire participants from community repository...');
-    const wire = await download('https://raw.githubusercontent.com/smwa/routing-numbers/master/fedwire_participants.json');
+    console.log('Downloading latest Fedwire participants from moov-io repository...');
+    const wireText = await downloadText('https://raw.githubusercontent.com/moov-io/fed/master/data/fpddir.txt');
 
-    console.log(`Downloaded ${ach.length} ACH records and ${wire.length} Wire records.`);
+    if (!achText || !wireText) {
+      console.warn('Could not fetch latest routing data from the remote repository (it may be down or moved).');
+      console.warn('Will use existing routing data if available.');
+      return;
+    }
 
     const map = new Map();
 
-    ach.forEach((item) => {
-      const rn = item.routingNumber;
+    const achLines = achText.split('\n');
+    let achCount = 0;
+    achLines.forEach(line => {
+      if (line.length < 130) return;
+      const rn = line.substring(0, 9);
+      const name = line.substring(35, 71).trim();
+      const cityRaw = line.substring(107, 127).trim();
+      const state = line.substring(127, 129);
+      
+      const titleCaseCity = cityRaw.split(' ').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+      const zips = zipcodes.lookupByName(titleCaseCity, state);
+      const resolvedZip = zips && zips.length > 0 ? zips[0].zip : 'Unknown';
+      
       if (!map.has(rn)) {
-        const titleCaseCity = item.city
-            .split(' ')
-            .map((w: string) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
-            .join(' ');
-        
-        const zips = zipcodes.lookupByName(titleCaseCity, item.state);
-        const resolvedZip = zips && zips.length > 0 ? zips[0].zip : 'Unknown';
-
         map.set(rn, {
           routing_number: rn,
-          bank_name: item.name.replace(/\s+/g, ' '),
+          bank_name: name.replace(/\s+/g, ' '),
           city: titleCaseCity,
-          state: item.state,
+          state: state,
           type: 'ACH',
           zip: resolvedZip === 'Unknown' ? '' : resolvedZip,
         });
+        achCount++;
       }
     });
 
-    wire.forEach((item) => {
-      const rn = item.routingNumber;
+    const wireLines = wireText.split('\n');
+    let wireCount = 0;
+    wireLines.forEach(line => {
+      if (line.length < 70) return;
+      const rn = line.substring(0, 9);
+      const name = line.substring(27, 63).trim();
+      const state = line.substring(63, 65);
+      const cityRaw = line.substring(65, 90).trim();
+      
       if (map.has(rn)) {
-         map.get(rn).type = 'BOTH';
+        map.get(rn).type = 'BOTH';
+        wireCount++;
       } else {
-        const titleCaseCity = item.city
-            .split(' ')
-            .map((w: string) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
-            .join(' ');
-        
-        const zips = zipcodes.lookupByName(titleCaseCity, item.state);
+        const titleCaseCity = cityRaw.split(' ').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+        const zips = zipcodes.lookupByName(titleCaseCity, state);
         const resolvedZip = zips && zips.length > 0 ? zips[0].zip : 'Unknown';
-
+        
         map.set(rn, {
           routing_number: rn,
-          bank_name: item.name.replace(/\s+/g, ' '),
+          bank_name: name.replace(/\s+/g, ' '),
           city: titleCaseCity,
-          state: item.state,
+          state: state,
           type: 'WIRE',
           zip: resolvedZip === 'Unknown' ? '' : resolvedZip,
         });
+        wireCount++;
       }
     });
+
+    console.log(`Parsed ${achCount} ACH records and ${wireCount} Wire records.`);
 
     // Apply Fed Reserve overrides
     frbOverrides.forEach(over => {
