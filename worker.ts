@@ -34,13 +34,14 @@ export default {
     const isKnownBot = botPatterns.some(pattern => userAgent.includes(pattern));
     const isMissingStandardHeaders = !acceptLanguage || userAgent === '';
 
-    if (isKnownBot || isMissingStandardHeaders) {
+    const isGooglebot = userAgent.includes("googlebot") || userAgent.includes("bingbot");
+    if (!isGooglebot && (isKnownBot || isMissingStandardHeaders)) {
       return new Response('Forbidden: Anomalous Request Signature Detected', { status: 403 });
     }
 
     // 3. Data Endpoint Protection
     // Strict referer-checking for sensitive static JSON drops
-    if (url.pathname.startsWith('/data/routing.json')) {
+    if (!isGooglebot && url.pathname.startsWith('/data/routing.json')) {
       const referer = request.headers.get('referer');
       const origin = request.headers.get('origin');
       
