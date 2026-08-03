@@ -31,17 +31,52 @@ export default {
       'scrapy'
     ];
 
+    // Crawlers and unfurlers that must never be challenged. Search engines
+    // routinely omit Accept-Language, so without an explicit allowlist the
+    // header check below 403s them — which is exactly how Googlebot ended up
+    // blocked before it was special-cased here.
+    const allowedAgents = [
+      // Search engines
+      'googlebot',
+      'google-inspectiontool',
+      'googleother',
+      'storebot-google',
+      'bingbot',
+      'bingpreview',
+      'applebot',
+      'duckduckbot',
+      'yandexbot',
+      'baiduspider',
+      'slurp',
+      // Ads / quality tooling on domains we serve
+      'adsbot-google',
+      'mediapartners-google',
+      'chrome-lighthouse',
+      'google page speed',
+      // Link unfurlers
+      'facebookexternalhit',
+      'twitterbot',
+      'linkedinbot',
+      'slackbot',
+      'discordbot',
+      'telegrambot',
+      'redditbot',
+      'pinterest',
+      'whatsapp',
+      'embedly'
+    ];
+
     const isKnownBot = botPatterns.some(pattern => userAgent.includes(pattern));
     const isMissingStandardHeaders = !acceptLanguage || userAgent === '';
 
-    const isGooglebot = userAgent.includes("googlebot") || userAgent.includes("bingbot");
-    if (!isGooglebot && (isKnownBot || isMissingStandardHeaders)) {
+    const isAllowedAgent = allowedAgents.some(pattern => userAgent.includes(pattern));
+    if (!isAllowedAgent && (isKnownBot || isMissingStandardHeaders)) {
       return new Response('Forbidden: Anomalous Request Signature Detected', { status: 403 });
     }
 
     // 3. Data Endpoint Protection
     // Strict referer-checking for sensitive static JSON drops
-    if (!isGooglebot && url.pathname.startsWith('/data/routing.json')) {
+    if (!isAllowedAgent && url.pathname.startsWith('/data/routing.json')) {
       const referer = request.headers.get('referer');
       const origin = request.headers.get('origin');
       
@@ -60,32 +95,17 @@ export default {
 
     // Fallthrough: Allow request to proceed to the origin (our React SSR app)
     try {
-      const isStaticAsset = url.pathname.match(/\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|xml|txt)$/i);
-      
-      // To bypass completely any stubborn Cloudflare Edge Cache for HTML SSR Pages:
-      // We append a random cache-buster to the origin fetch URL so CF gets a MISS every time.
-      let fetchUrl = request.url;
-      if (!isStaticAsset) {
-        const separator = fetchUrl.includes('?') ? '&' : '?';
-        fetchUrl = `${fetchUrl}${separator}_cb=${Date.now()}`;
-      }
-
-      const response = await fetch(fetchUrl, {
+      const response = await fetch(request.url, {
         method: request.method,
         headers: request.headers,
         body: request.method === 'GET' || request.method === 'HEAD' ? undefined : request.body,
-        redirect: request.redirect,
-        cf: isStaticAsset ? undefined : {
-          cacheTtl: 0,
-          cacheEverything: false
-        }
+        redirect: request.redirect
       } as any);
-      
-      const newResponse = new Response(response.body, response);
-      if (!isStaticAsset) {
-        newResponse.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate, max-age=0');
-      }
-      return newResponse;
+
+      // Pass the origin's Cache-Control through untouched. server.ts sends
+      // max-age=0 with s-maxage + stale-while-revalidate, so browsers still
+      // revalidate on every request while the edge can serve and refresh.
+      return new Response(response.body, response);
     } catch (e) {
       return new Response('Origin Fetch Error', { status: 502 });
     }
