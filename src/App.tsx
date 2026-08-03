@@ -4,8 +4,9 @@
  */
 
 import { HelmetProvider } from 'react-helmet-async';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { ensureFullRoutingData, isPartialRoutingData } from './lib/getData';
 
 import Home from './pages/Home';
 import BankOverview from './pages/BankOverview';
@@ -83,8 +84,43 @@ import ScrollToTop from './components/ScrollToTop';
 
 import AdsterraNativeSlot from './components/AdsterraNativeSlot';
 
+/**
+ * The server renders each route from a slice of the dataset rather than the
+ * whole thing. That slice is correct for the URL that was requested, but a
+ * client-side navigation can land on a route it cannot satisfy, so the first
+ * in-app navigation upgrades to the full dataset before rendering.
+ */
+function useRouteDataReady(dataLoaded: boolean): boolean {
+  const location = useLocation();
+  const initialPathRef = useRef<string | null>(null);
+  const [upgraded, setUpgraded] = useState(() => !isPartialRoutingData());
+
+  if (initialPathRef.current === null) {
+    initialPathRef.current = location.pathname;
+  }
+
+  const isInitialRoute = location.pathname === initialPathRef.current;
+
+  useEffect(() => {
+    if (upgraded || isInitialRoute) return;
+    let cancelled = false;
+    ensureFullRoutingData().then(() => {
+      if (!cancelled) setUpgraded(true);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [upgraded, isInitialRoute, location.pathname]);
+
+  // The server-rendered route is already backed by the right slice; every
+  // other route waits for the full dataset.
+  return dataLoaded && (isInitialRoute || upgraded);
+}
+
 // For SSR support
-export function AppContent({ dataLoaded }: { dataLoaded: boolean }) {
+export function AppContent({ dataLoaded: dataLoadedProp }: { dataLoaded: boolean }) {
+  const dataLoaded = useRouteDataReady(dataLoadedProp);
+
   return (
     <ThemeProvider>
         <ScrollToTop />

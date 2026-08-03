@@ -1,8 +1,8 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Fuse from 'fuse.js';
 import { useNavigate } from 'react-router-dom';
 import { Search, Clock, X } from 'lucide-react';
-import { getAllRoutingData } from '../lib/getData';
+import { getAllRoutingData, ensureFullRoutingData, isPartialRoutingData } from '../lib/getData';
 import { generateSlug } from '../lib/generateSlug';
 import InlineCopyButton from './InlineCopyButton';
 import { RoutingData } from '../lib/types';
@@ -11,7 +11,17 @@ export default function SearchBar() {
   const [query, setQuery] = useState('');
   const [recentSearches, setRecentSearches] = useState<RoutingData[]>([]);
   const navigate = useNavigate();
-  const data = useMemo(() => getAllRoutingData(), []);
+  const [data, setData] = useState<RoutingData[]>(() => getAllRoutingData());
+  const fullDataRequested = useRef(false);
+
+  // Site search spans every bank, but the server only ships the current
+  // route's slice. Pull the full dataset on first intent to search rather than
+  // on page load, so browsing pages never pays for it.
+  const loadFullDataset = () => {
+    if (fullDataRequested.current || !isPartialRoutingData()) return;
+    fullDataRequested.current = true;
+    ensureFullRoutingData().then(setData);
+  };
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -52,20 +62,21 @@ export default function SearchBar() {
   const [fuseInstance, setFuseInstance] = useState<Fuse<RoutingData> | null>(null);
 
   useEffect(() => {
-    // Only parse and index when we have data, but delay it to avoid blocking initial render
-    if (data && data.length > 0 && !fuseInstance) {
+    // Only parse and index when we have data, but delay it to avoid blocking initial render.
+    // Re-indexes when the route slice is upgraded to the full dataset.
+    if (data && data.length > 0) {
       const timer = setTimeout(() => {
         setFuseInstance(
           new Fuse(data, {
             keys: ['bank_name', 'routing_number', 'state', 'city'],
             threshold: 0.3,
-            ignoreLocation: true, 
+            ignoreLocation: true,
           })
         );
       }, 500); // Wait 500ms after render to not block LCP
       return () => clearTimeout(timer);
     }
-  }, [data, fuseInstance]);
+  }, [data]);
 
   const results = (query && fuseInstance) ? fuseInstance.search(query).slice(0, 5) : [];
 
@@ -98,7 +109,11 @@ export default function SearchBar() {
             className="w-full pl-10 md:pl-12 pr-10 md:pr-28 py-3.5 md:py-5 text-base md:text-xl bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 border-2 border-slate-300 dark:border-slate-700 rounded-2xl shadow-lg focus:border-blue-600 focus:ring-4 focus:ring-blue-500/20 outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500"
             placeholder="Search by bank name (e.g. Chase) or routing number..."
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onFocus={loadFullDataset}
+            onChange={(e) => {
+              loadFullDataset();
+              setQuery(e.target.value);
+            }}
           />
           <Search className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 w-5 h-5 md:w-6 md:h-6" />
           

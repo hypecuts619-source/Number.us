@@ -2,17 +2,20 @@ import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
-import { getAllRoutingData } from '../lib/getData';
+import { getRoutingSummary } from '../lib/getData';
 import { generateSlug } from '../lib/generateSlug';
 import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 export default function AllBanksDirectory() {
-  const allBanks = useMemo(() => {
-    const data = getAllRoutingData();
-    const bankNames = new Set<string>();
-    data.forEach(d => bankNames.add(d.bank_name));
-    return Array.from(bankNames).sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
-  }, []);
+  // Bank names come from the precomputed summary so this page never has to
+  // carry the raw dataset.
+  const allBanks = useMemo(
+    () =>
+      [...getRoutingSummary().bankNames].sort((a, b) =>
+        a.toLowerCase().localeCompare(b.toLowerCase())
+      ),
+    []
+  );
 
   const banksByLetter = useMemo(() => {
     const grouped = new Map<string, string[]>();

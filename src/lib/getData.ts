@@ -4,6 +4,8 @@ import { generateSlug } from './generateSlug';
 declare global {
   interface Window {
     __ROUTING_DATA__: RoutingData[];
+    /** True when __ROUTING_DATA__ holds only the current route's slice. */
+    __ROUTING_PARTIAL__?: boolean;
   }
 }
 
@@ -18,6 +20,93 @@ export const getAllRoutingData = (): RoutingData[] => {
     return window.__ROUTING_DATA__ || ssrData || [];
   }
   return ssrData || [];
+};
+
+/**
+ * Aggregates that a couple of hub pages derive from the whole dataset.
+ * Precomputing them lets those pages render without the raw records.
+ */
+export interface RoutingSummary {
+  /** Record count per uppercase state abbreviation. */
+  stateCounts: Record<string, number>;
+  /** Distinct bank names in dataset order. */
+  bankNames: string[];
+}
+
+export const buildRoutingSummary = (data: RoutingData[]): RoutingSummary => {
+  const stateCounts: Record<string, number> = {};
+  const bankNames = new Set<string>();
+  for (const d of data) {
+    const s = d.state.toUpperCase();
+    stateCounts[s] = (stateCounts[s] || 0) + 1;
+    bankNames.add(d.bank_name);
+  }
+  return { stateCounts, bankNames: Array.from(bankNames) };
+};
+
+let ssrSummary: RoutingSummary | null = null;
+
+export const setSSRSummary = (summary: RoutingSummary | null) => {
+  ssrSummary = summary;
+};
+
+/**
+ * Dataset-wide aggregates. Uses the server-injected summary when present and
+ * otherwise derives them from whatever data is loaded — which is correct on
+ * client-side navigation, where the full dataset has already been fetched.
+ */
+export const getRoutingSummary = (): RoutingSummary => {
+  if (typeof window !== 'undefined' && (window as any).__ROUTING_SUMMARY__) {
+    return (window as any).__ROUTING_SUMMARY__ as RoutingSummary;
+  }
+  if (ssrSummary) return ssrSummary;
+  return buildRoutingSummary(getAllRoutingData());
+};
+
+/**
+ * Whether the in-memory dataset is only the slice the server rendered this
+ * route with. Features that reduce over every bank (site search, directories)
+ * must call ensureFullRoutingData() before trusting getAllRoutingData().
+ */
+export const isPartialRoutingData = (): boolean => {
+  if (typeof window === 'undefined') return false;
+  return window.__ROUTING_PARTIAL__ === true;
+};
+
+let fullDataPromise: Promise<RoutingData[]> | null = null;
+
+/**
+ * Lazily upgrade the route slice to the complete dataset.
+ *
+ * Deliberately never called during render or hydration: swapping the dataset
+ * underneath a tree the server rendered from a slice would desync the two.
+ * Call it from an effect or a user interaction instead.
+ */
+export const ensureFullRoutingData = (): Promise<RoutingData[]> => {
+  if (typeof window === 'undefined') return Promise.resolve(ssrData || []);
+  if (!isPartialRoutingData()) return Promise.resolve(getAllRoutingData());
+  if (fullDataPromise) return fullDataPromise;
+
+  fullDataPromise = fetch('/data/routing.json')
+    .then((res) => {
+      if (!res.ok) throw new Error(`routing.json responded ${res.status}`);
+      return res.json();
+    })
+    .then((data: RoutingData[]) => {
+      window.__ROUTING_DATA__ = data;
+      window.__ROUTING_PARTIAL__ = false;
+      ssrData = data;
+      return data;
+    })
+    .catch((err) => {
+      // Leave the slice in place so the current route keeps working, but allow
+      // a later caller to retry.
+      console.error('Failed to load full routing dataset', err);
+      fullDataPromise = null;
+      return getAllRoutingData();
+    });
+
+  return fullDataPromise;
 };
 
 export const getBanks = (): string[] => {

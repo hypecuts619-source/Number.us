@@ -4,6 +4,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import compression from 'compression';
+import { sliceDataForRoute, summaryFieldForRoute } from './src/lib/routeData';
+import { buildRoutingSummary } from './src/lib/getData';
 
 const __dirname = process.cwd();
 
@@ -111,6 +113,14 @@ async function startServer() {
     }
   }
 
+  // Dataset-wide aggregates for the hub pages, built once on first use.
+  const emptySummary = { stateCounts: {}, bankNames: [] };
+  let cachedSummary: ReturnType<typeof buildRoutingSummary> | null = null;
+  const getRoutingSummary = () => {
+    if (!cachedSummary) cachedSummary = buildRoutingSummary(cachedRoutingData);
+    return cachedSummary;
+  };
+
   app.use('*', async (req, res, next) => {
     const url = req.originalUrl;
     
@@ -134,7 +144,18 @@ async function startServer() {
         render = entryServer.render;
       }
 
-      const { html } = await render(url, cachedRoutingData);
+      // Ship only the records this route renders. Inlining the whole dataset
+      // (~2.4 MB of JSON) on every response dominated TTFB/LCP, including on
+      // guide pages that never read bank data.
+      const routeData = sliceDataForRoute(url, cachedRoutingData);
+      const isPartial = routeData.length !== cachedRoutingData.length;
+      // Ship only the summary field this route reads.
+      const summaryField = summaryFieldForRoute(url);
+      const routeSummary = summaryField
+        ? { ...emptySummary, [summaryField]: getRoutingSummary()[summaryField] }
+        : null;
+
+      const { html } = await render(url, routeData, routeSummary);
 
       // React 19 hoists title, meta, link natively, so they appear at the root of the html string.
       // We extract them to inject cleanly into the <head> for perfect SEO.
@@ -166,13 +187,23 @@ async function startServer() {
       const htmlWithHead = template.replace(`<!-- SSR_HEAD -->`, headInjection);
       // Bake the global server-side pre-compiled state object directly into the HTML
       // This guarantees Googlebot receives fully populated semantic text on the first byte, without CSR timeouts.
-      const injectedStr = `<script>window.__ROUTING_DATA__ = ${JSON.stringify(cachedRoutingData)}</script>`;
+      const summaryStr = routeSummary
+        ? `window.__ROUTING_SUMMARY__ = ${JSON.stringify(routeSummary)};`
+        : '';
+      const injectedStr = `<script>window.__ROUTING_DATA__ = ${JSON.stringify(routeData)};window.__ROUTING_PARTIAL__ = ${isPartial};${summaryStr}</script>`;
       const htmlWithData = htmlWithHead.replace(`<!-- SSR_DATA -->`, injectedStr);
       const finalHtml = htmlWithData.replace(`<!-- SSR_OUT -->`, cleanHtml);
 
-      res.status(status).set({ 
+      // Let the CDN serve and revalidate HTML instead of re-rendering per hit.
+      // Browsers still revalidate every time (max-age=0), so a redeploy or a
+      // data refresh is picked up immediately.
+      const cacheControl = status === 200
+        ? 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400'
+        : 'public, max-age=0, s-maxage=60';
+
+      res.status(status).set({
         'Content-Type': 'text/html',
-        'Cache-Control': 'no-cache, no-store, must-revalidate, max-age=0'
+        'Cache-Control': cacheControl
       }).end(finalHtml);
     } catch (e: any) {
       if (vite) {
