@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import BreadcrumbNav from '../components/BreadcrumbNav';
-import { getStateFullName, getAllRoutingData } from '../lib/getData';
+import { getStateFullName, getRoutingSummary } from '../lib/getData';
 import { MapPin } from 'lucide-react';
 import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
@@ -13,16 +13,9 @@ const STATES = [
 ];
 
 export default function StateDirectory() {
-  const data = getAllRoutingData();
-  
-  const stateCounts = useMemo(() => {
-    const counts: Record<string, number> = {};
-    data.forEach(d => {
-      const s = d.state.toUpperCase();
-      counts[s] = (counts[s] || 0) + 1;
-    });
-    return counts;
-  }, [data]);
+  // Counts come from the precomputed summary so this page never has to carry
+  // the raw dataset.
+  const stateCounts = getRoutingSummary().stateCounts;
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">

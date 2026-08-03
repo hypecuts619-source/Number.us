@@ -2,12 +2,13 @@ import { StrictMode } from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
 import App from './App';
-import { setSSRData } from './lib/getData';
+import { setSSRData, setSSRSummary } from './lib/getData';
 
-export function render(url: string, routingData: any) {
+export function render(url: string, routingData: any, routingSummary: any = null) {
   const helmetContext = {} as any;
   setSSRData(routingData);
-  
+  setSSRSummary(routingSummary);
+
   const html = renderToString(
     <StrictMode>
       <App 
