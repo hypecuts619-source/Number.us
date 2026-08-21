@@ -40,11 +40,8 @@ export default function GlossaryTerm() {
         title={`${termData.term} - Definition & Banking Glossary`}
         description={`What is ${termData.term}? Read our authoritative 2026 definition, core use cases, and expert FAQ for this essential banking term.`}
         canonicalUrl={`/glossary/${slug}`}
-      >
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-      </SEO>
+        schemas={[faqSchema]}
+      />
 
       <div className="mb-10">
         <Link 

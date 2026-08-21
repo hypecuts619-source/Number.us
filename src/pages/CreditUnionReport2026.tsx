@@ -44,10 +44,8 @@ export default function CreditUnionReport2026() {
         title="Top 10 US Credit Unions [2026 Report] | Find Routing Numbers"
         description="Discover why millions are shifting to credit unions. NCUA data reveals the best accessible branches with no big-tech banking in 2026."
         canonicalUrl="/reports/2026-us-credit-union-report"
-      />
-      <Helmet>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+        schemas={[
+          {
             "@context": "https://schema.org",
             "@graph": [
               {
@@ -74,9 +72,9 @@ export default function CreditUnionReport2026() {
                 "dateModified": "2026-05-15"
               }
             ]
-          })
-        }} />
-      </Helmet>
+          }
+        ]}
+      />
 
       <BreadcrumbNav crumbs={[
         { name: 'Reports', url: '/blog' },

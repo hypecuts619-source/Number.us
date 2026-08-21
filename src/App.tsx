@@ -266,8 +266,9 @@ export function AppContent({ dataLoaded: dataLoadedProp }: { dataLoaded: boolean
 
 export default function App({ initialData = null, RouterComponent = BrowserRouter, routerProps = {}, helmetContext = {}, helmetData }: any) {
   const [dataLoaded, setDataLoaded] = useState(() => {
-    if (initialData && Array.isArray(initialData) && initialData.length > 1000) return true;
-    if (typeof window !== 'undefined' && Array.isArray((window as any).__ROUTING_DATA__) && (window as any).__ROUTING_DATA__.length > 1000) return true;
+    if (typeof window === 'undefined') return true;
+    if (initialData && Array.isArray(initialData)) return true;
+    if (Array.isArray((window as any).__ROUTING_DATA__)) return true;
     return false;
   });
 

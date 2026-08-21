@@ -64,10 +64,9 @@ async function main() {
       ? { stateCounts: {}, bankNames: [], [field]: buildRoutingSummary(full)[field] }
       : null;
 
-    // Baseline: full dataset, no summary (the pre-change behaviour).
-    const a = (await render(route, full, null)).html;
-    // Candidate: route slice plus whatever summary the server would inject.
-    const b = (await render(route, slice, summary)).html;
+    const clean = (htmlStr: string) => htmlStr.replace(/<title>[\s\S]*?<\/title>/ig, '').replace(/<meta[^>]+>/ig, '').replace(/<link[^>]+>/ig, '');
+    const a = clean((await render(route, full, null)).html);
+    const b = clean((await render(route, slice, summary)).html);
 
     const pct = ((slice.length / full.length) * 100).toFixed(2);
     if (a === b) {

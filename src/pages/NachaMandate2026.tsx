@@ -71,11 +71,8 @@ export default function NachaMandate2026() {
         datePublished="2026-06-01T08:00:00Z"
         dateModified="2026-06-01T08:00:00Z"
         authorName="Stephen Sebastian"
-      >
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-      </SEO>
+        schemas={[faqSchema]}
+      />
 
       {/* Hero Header */}
       <div className="mb-10 lg:mb-14 not-prose">

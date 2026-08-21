@@ -47,13 +47,13 @@ export const generateUniqueBankDescriptionForPage = (bankName: string, city: str
   return `The ${bankName} branch located in ${cityState}${zipText} utilizes routing number ${routingNumber} for ${type === 'BOTH' ? 'both domestic ACH and wire' : type + ' only'} transfers. As a reputable ${institutionType} serving the ${state} region, this institution is regulated by the ${isCUnion ? 'NCUA' : 'Federal Reserve'} and provides critical financial infrastructure for local residents and businesses. ${randomStatus} By using the validated nine-digit ABA routing transit number ${routingNumber}, you ensure your direct deposits and transfers are directed accurately to the ${bankName} facility in ${city}.`;
 };
 
-// Return a stringified script tag for SEO
+// Schema generators for SEO JSON-LD
 export const generateBreadcrumbSchema = (crumbs: { name: string; url: string }[]) => {
   const allCrumbs = [
     { name: 'Home', url: 'https://usroutingnumber.com/' },
     ...crumbs
   ];
-  const schema = {
+  return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: allCrumbs.map((crumb, index) => ({
@@ -63,11 +63,10 @@ export const generateBreadcrumbSchema = (crumbs: { name: string; url: string }[]
       item: crumb.url,
     })),
   };
-  return JSON.stringify(schema);
 };
 
 export const generateFAQSchema = (faqs: { question: string; answer: string }[]) => {
-  const schema = {
+  return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: faqs.map((faq) => ({
@@ -79,7 +78,6 @@ export const generateFAQSchema = (faqs: { question: string; answer: string }[]) 
       },
     })),
   };
-  return JSON.stringify(schema);
 };
 
 export const generateFinancialInstitutionSchema = (
@@ -117,11 +115,11 @@ export const generateFinancialInstitutionSchema = (
     schema.telephone = phone;
   }
 
-  return JSON.stringify(schema);
+  return schema;
 };
 
 export const generateWebSiteSchema = () => {
-  const schema = {
+  return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'USRoutingNumber.com',
@@ -132,11 +130,10 @@ export const generateWebSiteSchema = () => {
       'query-input': 'required name=search_term_string'
     }
   };
-  return JSON.stringify(schema);
 };
 
 export const generateArticleSchema = (title: string, description: string, url: string, datePublished: string) => {
-  const schema = {
+  return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     mainEntityOfPage: {
@@ -160,5 +157,4 @@ export const generateArticleSchema = (title: string, description: string, url: s
     datePublished: datePublished,
     dateModified: datePublished,
   };
-  return JSON.stringify(schema);
 };

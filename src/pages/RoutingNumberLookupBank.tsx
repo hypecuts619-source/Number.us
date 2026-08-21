@@ -50,11 +50,8 @@ export default function RoutingNumberLookupBank() {
         title={`${bankName} Routing Number Lookup Tool`}
         description={`Reverse lookup and verify any routing number for ${bankName}. Instantly check the branch location, city, and validity of ${bankName} ABA codes.`}
         canonicalUrl={`/routing-number-lookup/${bankSlug}`}
-      >
-        <script type="application/ld+json">
-          {JSON.stringify(schemaMarkup)}
-        </script>
-      </SEO>
+        schemas={[schemaMarkup]}
+      />
       
       <div className="text-center max-w-3xl mx-auto mb-6">
         <h1 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-4">

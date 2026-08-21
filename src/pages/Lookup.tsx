@@ -66,12 +66,10 @@ export default function Lookup() {
           description={`Routing number search result for ${routingNumber}. Verify mathematical validity and checksum.`}
           canonicalUrl={`/${routingNumber}`}
           noindex={true}
+          schemas={[generateFAQSchema(faqs)]}
         >
           <meta name="prerender-status-code" content="404" />
           <meta name="robots" content="noindex, nofollow" />
-          <script type="application/ld+json">
-            {generateFAQSchema(faqs)}
-          </script>
         </SEO>
         
         <div className="bg-white border-2 border-slate-200 rounded-3xl p-6 md:p-12 shadow-sm mb-12 text-center">

@@ -33,9 +33,8 @@ export default function DirectDepositSetupGuide() {
         title="Direct Deposit Setup With Your Routing Number: The Definitive 2026 HR Guide"
         description="Learn the technical requirements for establishing direct deposit routing, troubleshooting ACH rejections, and validating employee transit codes."
         canonicalUrl="/blog/direct-deposit-setup-guide"
-      >
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldSchema) }} />
-      </SEO>
+        schemas={[ldSchema]}
+      />
 
       <div className="mb-10">
         <div className="flex items-center gap-2 text-sm font-semibold text-blue-500 mb-4">

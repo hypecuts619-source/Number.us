@@ -46,11 +46,8 @@ export default function EssentialGuide() {
         title={`How to Find and Verify US Routing Numbers: The ${currentYear} Essential Guide`}
         description="Learn the expert methods to find, verify, and use US routing numbers for ACH, Wire transfers, and Direct Deposits. Includes security tips to avoid fraud."
         canonicalUrl="/how-to-find-routing-number-guide"
-      >
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-      </SEO>
+        schemas={[faqSchema]}
+      />
 
       <div className="mb-8">
         <h1 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-tight mb-6">

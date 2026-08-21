@@ -26,9 +26,8 @@ export default function RoutingNumberLookup() {
         title="Instant Routing Number Lookup | 25,000+ Banks Verified"
         description="Need a routing number fast? Use our free, instant lookup tool to find verified routing numbers for over 25,000 US banks and credit unions. No sign-up."
         canonicalUrl="/routing-number-lookup"
-      >
-        <script type="application/ld+json">
-          {JSON.stringify({
+        schemas={[
+          {
             "@context": "https://schema.org",
             "@type": "WebApplication",
             "name": "ABA Routing Number Lookup Tool",
@@ -37,9 +36,9 @@ export default function RoutingNumberLookup() {
             "browserRequirements": "Requires JavaScript",
             "offers": { "@type": "Offer", "price": "0" },
             "featureList": "Reverse routing number lookup, Bank search by ABA code, Verify routing number branch location"
-          })}
-        </script>
-      </SEO>
+          }
+        ]}
+      />
       
       <div className="text-center max-w-3xl mx-auto mb-6">
         <h1 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-4">

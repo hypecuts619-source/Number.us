@@ -67,13 +67,27 @@ export default function SEO({
       {noindex && <meta name="robots" content="noindex, follow" />}
 
       {/* JSON-LD Schemas */}
-      {schemas.map((schema, index) => (
-        <script
-          key={`schema-${index}`}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
+      {schemas.map((schema, index) => {
+        if (!schema) return null;
+        let jsonString = '';
+        if (typeof schema === 'string') {
+          try {
+            const parsed = JSON.parse(schema);
+            jsonString = JSON.stringify(parsed);
+          } catch {
+            jsonString = schema;
+          }
+        } else {
+          jsonString = JSON.stringify(schema);
+        }
+        return (
+          <script
+            key={`schema-${index}`}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: jsonString }}
+          />
+        );
+      })}
 
       {children}
     </Helmet>

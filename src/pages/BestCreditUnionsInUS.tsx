@@ -20,9 +20,8 @@ export default function BestCreditUnionsInUS() {
         title="Top 10 Best Credit Unions in the US [2026] & Their Routing Structures"
         description="Evaluate the top credit unions for AP/Payroll integration, direct deposit speeds, and structural routing network reliability."
         canonicalUrl="/blog/best-credit-unions-in-us"
-      >
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldSchema) }} />
-      </SEO>
+        schemas={[ldSchema]}
+      />
 
       <div className="mb-10">
         <div className="flex items-center gap-2 text-sm font-semibold text-blue-500 mb-4">

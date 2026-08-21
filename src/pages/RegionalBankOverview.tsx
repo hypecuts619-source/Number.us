@@ -99,11 +99,8 @@ export default function RegionalBankOverview() {
         title={`${bank.bankName} Routing Number | Find & Verify (${currentYear})`}
         description={bank.description}
         canonicalUrl={`/regional-banks/${bankSlug}`}
-      >
-        <script type="application/ld+json">
-          {JSON.stringify(breadcrumbSchema)}
-        </script>
-      </SEO>
+        schemas={[breadcrumbSchema]}
+      />
 
       <nav aria-label="Breadcrumb" className="mb-6">
         <ol className="flex text-sm text-slate-500 dark:text-slate-400 font-medium">

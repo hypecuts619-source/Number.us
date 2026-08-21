@@ -18,17 +18,15 @@ export default function DigitalBankingShift2026() {
         title={title}
         description={description}
         canonicalUrl="/blog/digital-banking-shift-2026"
-      />
-      <Helmet>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: generateArticleSchema(
+        schemas={[
+          generateArticleSchema(
             title,
             description,
             pageUrl,
             "2026-05-27"
           )
-        }} />
-      </Helmet>
+        ]}
+      />
 
       <BreadcrumbNav crumbs={[
         { name: 'Blog', url: '/blog' },

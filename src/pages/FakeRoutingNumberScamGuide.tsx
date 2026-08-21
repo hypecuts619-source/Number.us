@@ -10,16 +10,16 @@ import FAQSection from '../components/FAQSection';
 export default function FakeRoutingNumberScamGuide() {
   const faqData = [
     {
-      q: "Can someone steal money with just my routing number?",
-      a: "A routing number alone cannot be used to withdraw money; it is public information that identifies your bank. However, when paired with your checking account number, unauthorized ACH debits can be attempted. Always monitor your bank accounts and use positive pay or ACH block features."
+      question: "Can someone steal money with just my routing number?",
+      answer: "A routing number alone cannot be used to withdraw money; it is public information that identifies your bank. However, when paired with your checking account number, unauthorized ACH debits can be attempted. Always monitor your bank accounts and use positive pay or ACH block features."
     },
     {
-      q: "How can I verify if a routing number is legitimate?",
-      a: "You can verify any 9-digit US routing number using our Modulo 10 Checksum Validator and cross-referencing it with official Federal Reserve E-Payments Routing Directory records."
+      question: "How can I verify if a routing number is legitimate?",
+      answer: "You can verify any 9-digit US routing number using our Modulo 10 Checksum Validator and cross-referencing it with official Federal Reserve E-Payments Routing Directory records."
     },
     {
-      q: "What should I do if I provided my routing number to a suspicious website or scammer?",
-      a: "Immediately contact your bank's fraud department to freeze or close the affected account. Request a new account number and monitor your credit reports for suspicious activity."
+      question: "What should I do if I provided my routing number to a suspicious website or scammer?",
+      answer: "Immediately contact your bank's fraud department to freeze or close the affected account. Request a new account number and monitor your credit reports for suspicious activity."
     }
   ];
 
@@ -143,7 +143,7 @@ export default function FakeRoutingNumberScamGuide() {
         <LookupCTA />
 
         <div className="mt-16">
-          <FAQSection customFaqs={faqData} title="Frequently Asked Questions About Fraud & Security" />
+          <FAQSection faqs={faqData} />
         </div>
       </div>
     </div>

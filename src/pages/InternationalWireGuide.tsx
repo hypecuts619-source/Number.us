@@ -73,15 +73,11 @@ export default function InternationalWireGuide() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 w-full">
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(schemaMarkup)}
-        </script>
-      </Helmet>
       <SEO 
         title="International Wire Guide Guide & Deep Dive 2026"
         description="A comprehensive 2026 editorial guide on international wire guide guide & deep dive 2026. Discover the mechanics, history, and technical aspects of bank routing numbers."
         canonicalUrl="/international-wire-guide"
+        schemas={[schemaMarkup]}
       />
 
       <div className="mb-10 lg:mb-14 not-prose">

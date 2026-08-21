@@ -73,15 +73,11 @@ export default function WireTransferGuide() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 w-full">
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-      </Helmet>
       <SEO 
         title="How To Wire Money Guide & Deep Dive 2026"
         description="A comprehensive 2026 editorial guide on how to wire money guide & deep dive 2026. Discover the mechanics, history, and technical aspects of bank routing numbers."
         canonicalUrl="/how-to-wire-money"
+        schemas={[faqSchema]}
       />
 
       <div className="mb-10 lg:mb-14 not-prose">

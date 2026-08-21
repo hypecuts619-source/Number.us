@@ -45,9 +45,8 @@ export default function CheckDigitCalculator() {
         title={`Routing Number Check Digit Calculator (${currentYear}) | USRoutingNumber.com`}
         description="Calculate the 9th check digit of any ABA routing number. Enter the first 8 digits to instantly generate the mathematically valid full routing number."
         canonicalUrl="/check-digit-calculator"
-      >
-        <script type="application/ld+json">
-          {JSON.stringify({
+        schemas={[
+          {
             "@context": "https://schema.org",
             "@type": "WebApplication",
             "name": "Routing Number Check Digit Calculator",
@@ -56,9 +55,9 @@ export default function CheckDigitCalculator() {
             "browserRequirements": "Requires JavaScript",
             "offers": { "@type": "Offer", "price": "0" },
             "featureList": "Calculate 9th ABA check digit, Modulus 10 math algorithm"
-          })}
-        </script>
-      </SEO>
+          }
+        ]}
+      />
 
       <div className="mb-12 text-center">
          <div className="inline-flex items-center justify-center p-3 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full mb-6">

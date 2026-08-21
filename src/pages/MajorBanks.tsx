@@ -42,11 +42,8 @@ export default function MajorBanks() {
         title={`Major US Banks Routing Numbers (${new Date().getFullYear()}) | USRoutingNumber.com`}
         description="Directory of routing numbers for the largest banks in the United States including Chase, Bank of America, Wells Fargo, and Citibank."
         canonicalUrl="/major-banks"
-      >
-        <script type="application/ld+json">
-          {generateFAQSchema(faqs)}
-        </script>
-      </SEO>
+        schemas={[generateFAQSchema(faqs)]}
+      />
 
       <div className="mb-10 text-center max-w-3xl mx-auto">
         <div className="inline-flex items-center justify-center p-3 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full mb-6">

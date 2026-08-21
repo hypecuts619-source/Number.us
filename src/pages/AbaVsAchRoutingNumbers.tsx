@@ -33,9 +33,8 @@ export default function AbaVsAchRoutingNumbers() {
         title="ABA vs ACH Routing Numbers: A Technical Guide for AP & Payroll [2026]"
         description="Understand the exact differences between ABA and ACH routing numbers to prevent B2B payment failures, optimize accounts payable, and verify vendor details."
         canonicalUrl="/blog/aba-vs-ach-routing-numbers"
-      >
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldSchema) }} />
-      </SEO>
+        schemas={[ldSchema]}
+      />
 
       <div className="mb-10">
         <div className="flex items-center gap-2 text-sm font-semibold text-blue-500 mb-4">
