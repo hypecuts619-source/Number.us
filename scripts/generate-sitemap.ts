@@ -23,18 +23,8 @@ const staticRoutes = [
   { url: `${baseUrl}/how-to-wire-money`, priority: 0.9 },
   { url: `${baseUrl}/international-wire-guide`, priority: 0.9 },
   { url: `${baseUrl}/reports/2026-us-credit-union-report`, priority: 0.9 },
-  { url: `${baseUrl}/blog/nacha-ach-fraud-prevention-mandate-2026`, priority: 0.9 },
-  { url: `${baseUrl}/blog/chase-routing-number`, priority: 0.9 },
-  { url: `${baseUrl}/blog/wells-fargo-routing-number`, priority: 0.9 },
-  { url: `${baseUrl}/blog/bank-of-america-routing-number`, priority: 0.9 },
-  { url: `${baseUrl}/blog/what-is-routing-number`, priority: 0.9 },
-  { url: `${baseUrl}/blog/chime-routing-number`, priority: 0.9 },
-  { url: `${baseUrl}/blog/chase-vs-wells-fargo-routing`, priority: 0.9 },
-  { url: `${baseUrl}/blog/credit-union-routing-numbers`, priority: 0.9 },
-  { url: `${baseUrl}/blog/aba-vs-ach-routing-numbers`, priority: 0.9 },
-  { url: `${baseUrl}/blog/best-credit-unions-in-us`, priority: 0.9 },
-  { url: `${baseUrl}/blog/direct-deposit-setup-guide`, priority: 0.9 },
   { url: `${baseUrl}/how-to-find-routing-number`, priority: 0.8 },
+  { url: `${baseUrl}/how-to-find-routing-number-guide`, priority: 0.8 },
   { url: `${baseUrl}/zelle-routing-number`, priority: 0.8 },
   { url: `${baseUrl}/routing-number-validator`, priority: 0.9 },
   { url: `${baseUrl}/routing-number-changes-2026`, priority: 0.8 },
@@ -44,6 +34,7 @@ const staticRoutes = [
   { url: `${baseUrl}/check-digit-calculator`, priority: 0.8 },
   { url: `${baseUrl}/terms-of-service`, priority: 0.3 },
   { url: `${baseUrl}/privacy-policy`, priority: 0.3 },
+  { url: `${baseUrl}/sitemap`, priority: 0.7 },
   { url: `${baseUrl}/routing-number-vs-account-number`, priority: 0.8 },
   { url: `${baseUrl}/what-is-a-routing-number`, priority: 0.8 },
   { url: `${baseUrl}/aba-routing-number`, priority: 0.8 },
@@ -54,13 +45,70 @@ const staticRoutes = [
   { url: `${baseUrl}/credit-unions`, priority: 0.8 },
   { url: `${baseUrl}/major-banks`, priority: 0.8 },
   { url: `${baseUrl}/banks/a-z`, priority: 0.7 },
-  { url: `${baseUrl}/webmaster-tools`, priority: 0.5 }
+  { url: `${baseUrl}/webmaster-tools`, priority: 0.5 },
+  { url: `${baseUrl}/what-is-routing-number`, priority: 0.8 },
+  // Editorial guides & articles
+  { url: `${baseUrl}/blog/ach-vs-wire-routing-guide`, priority: 0.8 },
+  { url: `${baseUrl}/blog/nacha-ach-fraud-prevention-mandate-2026`, priority: 0.9 },
+  { url: `${baseUrl}/blog/secure-wire-transfer-guide`, priority: 0.8 },
+  { url: `${baseUrl}/blog/rejected-routing-number-troubleshooting`, priority: 0.8 },
+  { url: `${baseUrl}/blog/ultimate-guide-to-ach-transfers`, priority: 0.8 },
+  { url: `${baseUrl}/blog/wire-transfers-demystified`, priority: 0.8 },
+  { url: `${baseUrl}/blog/bank-mergers-routing-numbers`, priority: 0.8 },
+  { url: `${baseUrl}/blog/future-instant-payments-fednow`, priority: 0.8 },
+  { url: `${baseUrl}/blog/routing-number-security`, priority: 0.8 },
+  { url: `${baseUrl}/blog/anatomy-of-a-check`, priority: 0.8 },
+  { url: `${baseUrl}/blog/international-vs-domestic-routing`, priority: 0.8 },
+  { url: `${baseUrl}/blog/understanding-modulus-10-algorithm`, priority: 0.8 },
+  { url: `${baseUrl}/blog/digital-banking-shift-2026`, priority: 0.8 },
+  { url: `${baseUrl}/blog/chase-vs-wells-fargo-routing`, priority: 0.8 },
+  { url: `${baseUrl}/blog/credit-union-routing-numbers`, priority: 0.8 },
+  { url: `${baseUrl}/blog/aba-vs-ach-routing-numbers`, priority: 0.8 },
+  { url: `${baseUrl}/blog/best-credit-unions-in-us`, priority: 0.8 },
+  { url: `${baseUrl}/blog/direct-deposit-setup-guide`, priority: 0.8 },
+  { url: `${baseUrl}/blog/fake-routing-number-scam-prevention`, priority: 0.8 },
+  { url: `${baseUrl}/blog/chase-routing-number`, priority: 0.9 },
+  { url: `${baseUrl}/blog/wells-fargo-routing-number`, priority: 0.9 },
+  { url: `${baseUrl}/blog/bank-of-america-routing-number`, priority: 0.9 },
+  { url: `${baseUrl}/blog/what-is-routing-number`, priority: 0.9 },
+  { url: `${baseUrl}/blog/chime-routing-number`, priority: 0.9 }
 ];
 
 const generateSitemap = () => {
   const data = JSON.parse(fs.readFileSync(routingDataPath, 'utf8'));
 
   const urls = new Set<string>();
+
+  // Add all 26 alphabetical bank index pages
+  'abcdefghijklmnopqrstuvwxyz'.split('').forEach(letter => {
+    urls.add(`${baseUrl}/banks/a-z/${letter}`);
+  });
+
+  // Add all glossary term pages
+  try {
+    const glossaryPath = path.resolve('src/data/glossaryData.json');
+    if (fs.existsSync(glossaryPath)) {
+      const glossary = JSON.parse(fs.readFileSync(glossaryPath, 'utf8'));
+      glossary.forEach((item: any) => {
+        if (item.slug) urls.add(`${baseUrl}/glossary/${item.slug}`);
+      });
+    }
+  } catch (e) {
+    console.error('Could not load glossary for sitemap', e);
+  }
+
+  // Add all regional bank overview pages
+  try {
+    const regionalBanksPath = path.resolve('src/data/banksData.json');
+    if (fs.existsSync(regionalBanksPath)) {
+      const regionalBanks = JSON.parse(fs.readFileSync(regionalBanksPath, 'utf8'));
+      regionalBanks.forEach((item: any) => {
+        if (item.slug) urls.add(`${baseUrl}/regional-banks/${item.slug}`);
+      });
+    }
+  } catch (e) {
+    console.error('Could not load regional banks for sitemap', e);
+  }
 
   // Pre-calculate banks to determine duplicates
   const bankCounts: Record<string, number> = {};
