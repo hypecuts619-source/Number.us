@@ -7,6 +7,15 @@ import AdsterraNativeSlot from '../components/AdsterraNativeSlot';
 
 const articles = [
   {
+    title: "Fake Routing Number Scams: How to Spot Fraud & Protect Your Funds [2026]",
+    description: "Learn how fraudsters exploit routing and account numbers, how to spot fake routing numbers, and how to protect your business and personal accounts from ACH fraud.",
+    path: "/blog/fake-routing-number-scam-prevention",
+    date: "July 20, 2026",
+    readTime: "10 min read",
+    category: "Security & Fraud Alert",
+    slug: "fake-routing-number-scam-prevention"
+  },
+  {
     title: "ABA vs ACH Routing Numbers: A Technical Guide for AP & Payroll [2026]",
     description: "Understand the exact differences between ABA and ACH routing numbers to prevent B2B payment failures, optimize accounts payable, and verify vendor details.",
     path: "/blog/aba-vs-ach-routing-numbers",

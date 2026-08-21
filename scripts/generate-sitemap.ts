@@ -135,7 +135,7 @@ const generateSitemap = () => {
     allPages.push(xml);
   }
 
-  const chunkSize = 500;
+  const chunkSize = 2500;
   const numChunks = Math.ceil(allPages.length / chunkSize);
   
   // Clean up existing sitemap files

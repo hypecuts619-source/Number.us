@@ -73,6 +73,7 @@ import CreditUnionRoutingDifferences from './pages/CreditUnionRoutingDifferences
 import AbaVsAchRoutingNumbers from './pages/AbaVsAchRoutingNumbers';
 import BestCreditUnionsInUS from './pages/BestCreditUnionsInUS';
 import DirectDepositSetupGuide from './pages/DirectDepositSetupGuide';
+import FakeRoutingNumberScamGuide from './pages/FakeRoutingNumberScamGuide';
 import UserRetention from './components/UserRetention';
 
 import { Toaster } from 'sonner';
@@ -183,6 +184,7 @@ export function AppContent({ dataLoaded: dataLoadedProp }: { dataLoaded: boolean
               <Route path="/blog/aba-vs-ach-routing-numbers" element={<AbaVsAchRoutingNumbers />} />
               <Route path="/blog/best-credit-unions-in-us" element={<BestCreditUnionsInUS />} />
               <Route path="/blog/direct-deposit-setup-guide" element={<DirectDepositSetupGuide />} />
+              <Route path="/blog/fake-routing-number-scam-prevention" element={<FakeRoutingNumberScamGuide />} />
               
               <Route path="/blog/chase-routing-number" element={<ChaseRoutingNumber />} />
               <Route path="/blog/wells-fargo-routing-number" element={<WellsFargoRoutingNumber />} />
@@ -262,10 +264,10 @@ export function AppContent({ dataLoaded: dataLoadedProp }: { dataLoaded: boolean
   );
 }
 
-export default function App({ initialData = null, RouterComponent = BrowserRouter, routerProps = {}, helmetContext = {} }: any) {
+export default function App({ initialData = null, RouterComponent = BrowserRouter, routerProps = {}, helmetContext = {}, helmetData }: any) {
   const [dataLoaded, setDataLoaded] = useState(() => {
-    if (initialData) return true;
-    if (typeof window !== 'undefined' && (window as any).__ROUTING_DATA__) return true;
+    if (initialData && Array.isArray(initialData) && initialData.length > 1000) return true;
+    if (typeof window !== 'undefined' && Array.isArray((window as any).__ROUTING_DATA__) && (window as any).__ROUTING_DATA__.length > 1000) return true;
     return false;
   });
 
@@ -274,7 +276,7 @@ export default function App({ initialData = null, RouterComponent = BrowserRoute
       (window as any).__ROUTING_DATA__ = initialData;
     }
     
-    // Strict fallback for local dev or if edge injection fails
+    // Background fetch full dataset on client if only an SSR slice was provided
     if (!dataLoaded && typeof window !== 'undefined') {
       fetch('/data/routing.json')
         .then(res => res.json())
@@ -284,14 +286,16 @@ export default function App({ initialData = null, RouterComponent = BrowserRoute
         })
         .catch(err => {
           console.error('Failed to load routing data', err);
-          (window as any).__ROUTING_DATA__ = [];
+          if (!(window as any).__ROUTING_DATA__) {
+            (window as any).__ROUTING_DATA__ = [];
+          }
           setDataLoaded(true);
         });
     }
   }, [initialData, dataLoaded]);
 
   return (
-    <HelmetProvider context={helmetContext}>
+    <HelmetProvider context={helmetContext} helmetData={helmetData}>
       <RouterComponent {...routerProps}>
         <AppContent dataLoaded={dataLoaded} />
       </RouterComponent>

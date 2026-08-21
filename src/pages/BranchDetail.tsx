@@ -88,7 +88,7 @@ export default function BranchDetail() {
       <SEO 
         title={`${bankName} Routing Number in ${cityTitle}, ${stateFullName} | Verify for Wire & ACH`}
         description={`Find and verify the official ${bankName} routing number for ACH, direct deposit, and wire transfers in ${cityTitle}, ${stateFullName}.`}
-        canonicalUrl={`/routing-number/${bankSlug}/${state?.toLowerCase()}/${citySlug}`}
+        canonicalUrl={cityCanonicalUrl}
         type="article"
         imageUrl="https://usroutingnumber.com/og-image-branch.png"
         keywords={`${bankName} ${cityTitle} routing number, ${bankName} ${stateFullName} routing number ${cityTitle}, ${cityTitle} routing number, ${bankName} ABA number ${cityTitle}`}

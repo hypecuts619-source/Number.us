@@ -70,7 +70,7 @@ export default function BankState() {
       <SEO 
         title={`${bankName} Routing Number in ${stateFullName} | Verify for Wire & ACH`}
         description={`Find and verify the official ${bankName} routing number for ACH, direct deposit, and wire transfers in ${stateFullName}.`}
-        canonicalUrl={`/routing-number/${bankSlug}/${state?.toLowerCase()}`}
+        canonicalUrl={stateCanonicalUrl}
         type="article"
         imageUrl="https://usroutingnumber.com/og-image-bank.png"
         keywords={`${bankName} routing number, ${bankName} ${stateFullName} routing number, ${bankName} routing number ${stateFullName}, ${bankName} ABA number, ${bankName} bank code`}

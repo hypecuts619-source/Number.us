@@ -9,11 +9,13 @@ export default function NotFound() {
     <div className="flex flex-col items-center justify-center py-20 px-4 min-h-[70vh]">
       <Helmet>
         <meta name="prerender-status-code" content="404" />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       <SEO 
         title="Page Not Found - USRoutingNumber.com" 
         description="We couldn't find the page you're looking for. Search for a bank or routing number." 
         canonicalUrl="/404"
+        noindex={true}
       />
       <div className="text-center max-w-2xl mx-auto">
         <h1 className="text-6xl font-black text-slate-900 dark:text-white mb-4">404</h1>

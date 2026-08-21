@@ -64,9 +64,11 @@ export default function Lookup() {
         <SEO 
           title="Routing Number Validation Result | USRoutingNumber.com"
           description={`Routing number search result for ${routingNumber}. Verify mathematical validity and checksum.`}
-          canonicalUrl={`/lookup/${routingNumber}`}
+          canonicalUrl={`/${routingNumber}`}
+          noindex={true}
         >
           <meta name="prerender-status-code" content="404" />
+          <meta name="robots" content="noindex, nofollow" />
           <script type="application/ld+json">
             {generateFAQSchema(faqs)}
           </script>
