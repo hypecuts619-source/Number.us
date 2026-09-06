@@ -119,7 +119,7 @@ export default function AccountValidator() {
                       Identified as: <span className="font-bold">{result.bankName}</span>
                       {' • '}
                       <button 
-                        onClick={() => navigate(`/lookup/${routingNumber}`)}
+                        onClick={() => navigate(`/${routingNumber}`)}
                         className="text-blue-600 dark:text-blue-400 hover:underline"
                       >
                         View Full Details &rarr;

@@ -85,7 +85,7 @@ export default function SearchBar() {
     
     // If the user typed exactly a 9-digit routing number, search for it directly
     if (/^\d{9}$/.test(query.trim())) {
-      navigate(`/lookup/${query.trim()}`);
+      navigate(`/${query.trim()}`);
       return;
     }
 
@@ -93,7 +93,7 @@ export default function SearchBar() {
       const bestMatch = results[0].item;
       saveRecentSearch(bestMatch);
       if (/^\d+$/.test(query)) {
-        navigate(`/lookup/${bestMatch.routing_number}`);
+        navigate(`/${bestMatch.routing_number}`);
       } else {
         navigate(`/routing-number/${generateSlug(bestMatch.bank_name)}`);
       }
@@ -175,7 +175,7 @@ export default function SearchBar() {
                 saveRecentSearch(item);
                 navigate(
                   /^\d+$/.test(query)
-                    ? `/lookup/${item.routing_number}`
+                    ? `/${item.routing_number}`
                     : `/routing-number/${generateSlug(item.bank_name)}`
                 );
                 setQuery('');
@@ -186,7 +186,7 @@ export default function SearchBar() {
                   saveRecentSearch(item);
                   navigate(
                     /^\d+$/.test(query)
-                      ? `/lookup/${item.routing_number}`
+                      ? `/${item.routing_number}`
                       : `/routing-number/${generateSlug(item.bank_name)}`
                   );
                   setQuery('');

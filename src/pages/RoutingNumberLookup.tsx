@@ -13,7 +13,7 @@ export default function RoutingNumberLookup() {
     e.preventDefault();
     const query = searchInput.trim().replace(/\D/g, '');
     if (query.length === 9) {
-      navigate(`/lookup/${query}`);
+      navigate(`/${query}`);
     } else if (searchInput.trim().length > 0) {
       // If it's a name, we navigate to home to use the main search
       navigate(`/?q=${encodeURIComponent(searchInput)}`);

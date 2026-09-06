@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { RoutingData } from '../lib/types';
 import { cn } from '../lib/utils';
 import PrintDownloadButtons from './PrintDownloadButtons';
@@ -47,9 +48,9 @@ export default function RoutingNumberCard({ data }: { data: RoutingData }) {
         </div>
         <div className="w-full md:w-auto flex flex-col items-center md:items-stretch shrink-0 print:hidden mt-2 md:mt-0 gap-3">
           <CopyButton text={data.routing_number} />
-          <a href={`/lookup/${data.routing_number}`} className="text-xs text-blue-600 dark:text-blue-400 hover:underline font-medium text-center">
+          <Link to={`/${data.routing_number}`} className="text-xs text-blue-600 dark:text-blue-400 hover:underline font-medium text-center">
             View ABA Checksum Details &rarr;
-          </a>
+          </Link>
         </div>
       </div>
       

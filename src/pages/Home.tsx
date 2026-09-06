@@ -236,7 +236,7 @@ export default function Home() {
                 {recentItems.slice(0, 3).map((item) => (
                   <Link
                     key={item.routingNumber}
-                    to={`/lookup/${item.routingNumber}`}
+                    to={`/${item.routingNumber}`}
                     className="group bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-500/5 transition-all outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <div className="flex flex-col">

@@ -27,7 +27,7 @@ export default function RoutingNumberLookupBank() {
     e.preventDefault();
     const query = searchInput.trim().replace(/\D/g, '');
     if (query.length === 9) {
-      navigate(`/lookup/${query}`);
+      navigate(`/${query}`);
     } else if (searchInput.trim().length > 0) {
       navigate(`/?q=${encodeURIComponent(searchInput)}`);
     }

@@ -34,6 +34,7 @@ const NEIGHBOUR_BANK_HEADROOM = 12;
 const SUMMARY_PATHS: Record<string, 'stateCounts' | 'bankNames'> = {
   '/states': 'stateCounts',
   '/banks': 'bankNames',
+  '/banks/a-z': 'bankNames',
 };
 
 function normalisePath(pathname: string): string {
@@ -42,14 +43,17 @@ function normalisePath(pathname: string): string {
 
 /** Whether `pathname` renders from the dataset-wide summary. */
 export function routeNeedsSummary(pathname: string): boolean {
-  return normalisePath(pathname) in SUMMARY_PATHS;
+  const clean = normalisePath(pathname);
+  return clean in SUMMARY_PATHS || clean.startsWith('/banks/a-z');
 }
 
 /** The summary field `pathname` reads, or null if it reads none. */
 export function summaryFieldForRoute(
   pathname: string
 ): 'stateCounts' | 'bankNames' | null {
-  return SUMMARY_PATHS[normalisePath(pathname)] ?? null;
+  const clean = normalisePath(pathname);
+  if (clean.startsWith('/banks/a-z')) return 'bankNames';
+  return SUMMARY_PATHS[clean] ?? null;
 }
 
 /** Collect one representative record per distinct bank, in document order. */
@@ -143,7 +147,7 @@ export function sliceDataForRoute(pathname: string, data: RoutingData[]): Routin
   const clean = pathname.split(/[?#]/)[0].replace(/\/+$/, '').toLowerCase() || '/';
 
   // Hub pages render from the injected summary, so they need no raw records.
-  if (clean in SUMMARY_PATHS) return [];
+  if (routeNeedsSummary(clean)) return [];
 
   // The credit-union report filters to credit unions and nothing else.
   if (clean === '/reports/2026-us-credit-union-report') {

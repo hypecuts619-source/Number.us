@@ -17,7 +17,7 @@ export default function RecentlyViewedWidget() {
         {items.map(item => (
           <li key={item.routingNumber}>
             <Link 
-              to={`/lookup/${item.routingNumber}`}
+              to={`/${item.routingNumber}`}
               className="group block"
             >
               <div className="text-sm font-medium text-slate-800 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 line-clamp-1">
